@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Orbiter X — haX.baby Baby's First Website hackathon" />
+  <title>Orbiter X · Home · haX.baby</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://avatars.githubusercontent.com" />
+</head>
+<body>
+
+  <!-- Header / Nav -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Orbiter<span class="accent">X</span></a>
+
+      <button class="nav-toggle" aria-label="Menu toggle" aria-expanded="false">&#9776;</button>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="hackathon.html">Hackathon</a>
+        <a href="team.html">Team</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero reveal" id="home">
+    <canvas id="stars"></canvas>
+    <div class="container hero-content">
+      <p class="kicker"><span class="dot"></span> Orbiter X &middot; haX.baby</p>
+      <h1>Baby&rsquo;s First Website<br/><em>Team Orbiter X</em></h1>
+      <p>48 ghante, ek sealed challenge — early-web creativity paired with modern craft. Built by Abhay &amp; Divyansh.</p>
+    </div>
+  </section>
+
+  <!-- Hackathon short facts -->
+  <section class="hackathon reveal" id="hackathon">
+    <div class="container">
+      <h2>Hackathon &mdash; Quick Facts</h2>
+      <p class="note">Poori detail ke liye <a href="hackathon.html">Full Hackathon Page</a> dekhein.</p>
+      <ul class="facts">
+        <li><span class="k">Event</span><span>Baby&rsquo;s First Website &mdash; haX.baby</span></li>
+        <li><span class="k">Sprint</span><span>17 October 2026, 17:17 IST &rarr; 19 October 2026, 17:17 IST (48 ghante)</span></li>
+        <li><span class="k">Entry</span><span>Online, free &mdash; solo ya team of 2&ndash;3</span></li>
+        <li><span class="k">Theme</span><span>Early-web creativity paired with modern web development</span></li>
+        <li><span class="k">Prize pool</span><span>$400 &mdash; 1st $160, 2nd $120, 3rd $80, 4th $40</span></li>
+        <li><span class="k">Kickoff</span><span>&ldquo;The secret challenge brief is revealed to everyone.&rdquo;</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Team preview -->
+  <section class="team reveal" id="team">
+    <div class="container">
+      <h2>Team Members</h2>
+      <p style="text-align:center; color: var(--muted); max-width: 600px; margin: 0 auto 30px;">
+        Orbiter X ke do founders — frontend aur backend. Poori jankari ke liye Team page dekhein.
+      </p>
+      <div class="team-grid">
+        <!-- Member 1: Divyansh Kumar -->
+        <article class="team-card">
+          <img class="team-avatar" src="https://avatars.githubusercontent.com/u/178350275?v=4" alt="Divyansh Kumar avatar" />
+          <h3 class="team-name">Divyansh Kumar</h3>
+          <p class="team-role">Full Stack Developer</p>
+          <p class="team-bio">BCA Student · Frontend &amp; Product Implementation Lead · TypeScript, JavaScript, HTML, CSS, Python, Java</p>
+          <div class="skill-badges"><span>TypeScript</span><span>JavaScript</span><span>React</span><span>UI/UX</span></div>
+          <div class="team-links">
+            <a href="https://github.com/Mr-Divyansh" target="_blank" rel="noopener" title="GitHub">&#x1F517;</a>
+            <a href="https://d-web-studio-portfolio.vercel.app/" target="_blank" rel="noopener" title="Portfolio">&#x1F4F7;</a>
+          </div>
+          <div class="team-stats"><span class="team-stat">33 repos</span><span class="team-stat">4 followers</span><span class="team-stat">786 contrib.</span></div>
+        </article>
+
+        <!-- Member 2: Abhay Gautam -->
+        <article class="team-card">
+          <img class="team-avatar" src="https://avatars.githubusercontent.com/u/abhaygautam0876-png?v=4" alt="Abhay Gautam avatar" />
+          <h3 class="team-name">Abhay Gautam</h3>
+          <p class="team-role">Frontend Developer &amp; AI Enthusiast</p>
+          <p class="team-bio">HTML · CSS · JavaScript · AI-assisted rapid prototyping · Frontend testing &amp; visual refinement</p>
+          <div class="skill-badges"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>AI</span></div>
+          <div class="team-links"><a href="https://github.com/abhaygautam0876-png" target="_blank" rel="noopener" title="GitHub">&#x1F517;</a></div>
+          <div class="team-stats"><span class="team-stat">Frontend Lead</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span id="year"></span> Orbiter X &middot; haX.baby &middot; Built for Baby&rsquo;s First Website hackathon
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
