@@ -1,6 +1,6 @@
-/* ORBIT-X · script.js
-   Smooth scrolling · mobile nav · reveal on scroll · starfield
-   No dependencies — vanilla JS only. */
+﻿/* ORBIT-X Â· script.js
+   Smooth scrolling Â· mobile nav Â· reveal on scroll Â· starfield
+   No dependencies â€” vanilla JS only. */
 
 (function () {
   "use strict";
@@ -12,14 +12,14 @@
   var menu = document.querySelector(".nav-links");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------- Sticky header state ---------- */
+  
   function onScroll() {
     if (header) header.classList.toggle("scrolled", window.scrollY > 8);
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ---------- Mobile nav ---------- */
+  
   if (toggle && menu) {
     toggle.addEventListener("click", function () {
       var open = menu.classList.toggle("open");
@@ -32,7 +32,7 @@
     });
   }
 
-  /* ---------- Smooth scroll (header offset) ---------- */
+  
   document.addEventListener("click", function (e) {
     var link = e.target.closest('a[href^="#"]');
     if (!link) return;
@@ -47,7 +47,7 @@
     if (history.pushState) history.pushState(null, "", id);
   });
 
-  /* ---------- Reveal on scroll ---------- */
+  
   var revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && revealEls.length) {
     var io = new IntersectionObserver(function (entries) {
@@ -63,7 +63,7 @@
     revealEls.forEach(function (el) { el.classList.add("visible"); });
   }
 
-  /* ---------- Active nav link ---------- */
+  
   var spyTargets = document.querySelectorAll("section[id]");
   var menuAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
   if ("IntersectionObserver" in window && spyTargets.length && menuAnchors.length) {
@@ -79,11 +79,11 @@
     spyTargets.forEach(function (s) { spy.observe(s); });
   }
 
-  /* ---------- Footer year ---------- */
+  
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  /* ---------- Hero starfield ---------- */
+  
   var canvas = document.getElementById("stars");
   if (canvas && canvas.getContext) {
     var ctx = canvas.getContext("2d");
@@ -136,6 +136,7 @@
 
     resize();
     window.addEventListener("resize", resize);
-    paint(!reduceMotion); /* static stars if user prefers reduced motion */
+    paint(!reduceMotion); 
   }
 })();
+
