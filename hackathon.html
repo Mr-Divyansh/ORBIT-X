@@ -11,8 +11,6 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  
   <header class="site-header" id="site-header">
     <div class="container header-inner">
       <a href="index.html" class="brand">
@@ -23,7 +21,6 @@
         </svg>
         Orbiter<span class="accent">X</span>
       </a>
-
       <button class="nav-toggle" id="nav-toggle" aria-label="Menu toggle" aria-expanded="false" aria-controls="nav-links">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -31,7 +28,6 @@
           <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
       </button>
-
       <nav class="nav-links" id="nav-links" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="hackathon.html" class="active">Hackathon</a>
@@ -39,9 +35,7 @@
       </nav>
     </div>
   </header>
-
   <main>
-    
     <section class="hero reveal" id="home">
       <canvas id="stars" aria-hidden="true"></canvas>
       <div class="container hero-content">
@@ -50,312 +44,88 @@
         <p class="hero-sub reveal-delay-3">One sealed challenge, forty-eight hours. Early-web creativity paired with modern craft.</p>
       </div>
     </section>
-
-    
     <section class="container reveal" id="brief">
       <div class="section-header">
         <p class="section-label"><span class="num" aria-hidden="true">01</span> The Brief</p>
         <h2>Official Problem Statement</h2>
       </div>
-
       <div class="note-box">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="12" y1="16" x2="12" y2="12"></line>
-          <line x1="12" y1="8" x2="12.01" y2="8"></line>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
         <p><strong>Draft note:</strong> Original brief kahin bhi mila nahi — mirror me nahi, live API pe bhi <code>"problem": null</code> hai. Isliye ye statement confirmed event facts se banayi gayi hai. Tweak/approve kar lo, bas.</p>
       </div>
-
       <div class="card reveal">
         <p><strong>One sealed challenge, forty-eight hours.</strong> Build a complete website from scratch — early-web creativity, modern craft. Solo ya team of 2&ndash;3.</p>
       </div>
-
-      <h3>The Brief</h3>
+      <h3>The brief</h3>
       <p>Build a complete, working website from scratch in 48 hours. Not a template, not a drag-and-drop page — your own HTML, CSS and JavaScript (or any web stack you're comfortable with), shipped as a real, visitable site with a live URL.</p>
       <p>The theme is <strong>early-web creativity paired with modern craft</strong>: the charm of the old web — personal pages, handmade layouts, playful little details, view-source friendliness — built with today's standards, responsiveness and tooling.</p>
-
-      <h3>What to Build</h3>
-      <ul class="clean">
+      <h3>What to build</h3>
+      <ul>
         <li>One complete website, at least 3 pages, with working navigation</li>
         <li>Responsive — works on phone and desktop</li>
         <li>Opens without console errors in a modern browser</li>
         <li>Deployed live (GitHub Pages / Netlify / Vercel / koi bhi host) plus a public source repo</li>
         <li>A short About / credits section naming your team</li>
       </ul>
-
       <h3>Requirements</h3>
-      <ul class="clean">
+      <ul>
         <li>Solo or team of 2&ndash;3</li>
         <li>All code written inside the 48-hour window</li>
-        <li>Libraries and frameworks allowed; no-code builders allowed <strong>nahi hain</strong></li>
+        <li>Libraries and frameworks allowed; no-code builders allowed nahi hain</li>
         <li>Content original ho, ya properly credited ho</li>
         <li>Submission me repo URL aur live URL dono chahiye</li>
       </ul>
-
       <h3>Rules</h3>
-      <ul class="clean">
+      <ul>
         <li>Entry online aur free hai</li>
         <li>Submissions kickoff (17 October 2026, 17:17 IST) ke baad open, 19 October 2026, 17:17 IST pe close</li>
         <li>Ek team ke multiple submissions me best wala count hoga</li>
       </ul>
-    </section>
-
-    
-    <section class="container reveal" id="judging" style="padding-top: var(--space-xl);">
-      <div class="section-header">
-        <p class="section-label"><span class="num" aria-hidden="true">02</span> Evaluation</p>
-        <h2>Judging Criteria</h2>
-      </div>
-      <p style="margin-bottom: var(--space-l);">Weights suggested hain — organizers approve kar lein:</p>
-
-      <ul class="judging-list reveal" id="judging-list">
-        <li style="--fill: 30%;">
-          <div class="crit-label">
-            <span class="crit-name">Design and Creativity</span>
-            <span class="crit-weight">30%</span>
-          </div>
-          <div class="crit-bar"><div class="crit-fill"></div></div>
-        </li>
-        <li style="--fill: 25%;">
-          <div class="crit-label">
-            <span class="crit-name">Technical Execution</span>
-            <span class="crit-weight">25%</span>
-          </div>
-          <div class="crit-bar"><div class="crit-fill"></div></div>
-        </li>
-        <li style="--fill: 20%;">
-          <div class="crit-label">
-            <span class="crit-name">Theme Fit, Early-Web Spirit</span>
-            <span class="crit-weight">20%</span>
-          </div>
-          <div class="crit-bar"><div class="crit-fill"></div></div>
-        </li>
-        <li style="--fill: 15%;">
-          <div class="crit-label">
-            <span class="crit-name">Responsiveness and Polish</span>
-            <span class="crit-weight">15%</span>
-          </div>
-          <div class="crit-bar"><div class="crit-fill"></div></div>
-        </li>
-        <li style="--fill: 10%;">
-          <div class="crit-label">
-            <span class="crit-name">README and Submission Clarity</span>
-            <span class="crit-weight">10%</span>
-          </div>
-          <div class="crit-bar"><div class="crit-fill"></div></div>
-        </li>
+      <h3>Judging criteria</h3>
+      <p>Weights suggested hain — organizers approve kar lein:</p>
+      <ul id="judging-list">
+        <li>Design and creativity — 30%</li>
+        <li>Technical execution — 25%</li>
+        <li>Theme fit, early-web spirit — 20%</li>
+        <li>Responsiveness and polish — 15%</li>
+        <li>README and submission clarity — 10%</li>
       </ul>
-    </section>
-
-    
-    <section class="container reveal" id="timeline" style="padding-top: var(--space-xl);">
-      <div class="section-header">
-        <p class="section-label"><span class="num" aria-hidden="true">03</span> Schedule</p>
-        <h2>Timeline &amp; Prizes</h2>
-      </div>
-
-      <div class="timeline reveal">
-        <div class="timeline-item">
-          <span class="time">17 Oct 2026 · 17:17 IST</span>
-          <h4>Kickoff</h4>
-          <p>Brief reveal, repos initialize, 48 hours of building begins.</p>
-        </div>
-        <div class="timeline-item">
-          <span class="time">19 Oct 2026 · 17:17 IST</span>
-          <h4>Submission Close</h4>
-          <p>48 ghante poore. Submissions band. Judging starts.</p>
-        </div>
-      </div>
-
-      <h3 style="margin-top: var(--space-xl);">Prize Pool — $400</h3>
-      <div class="prize-highlight reveal">
-        <div class="prize-cell">
-          <p class="place">1st Place</p>
-          <p class="amount">$160</p>
-        </div>
-        <div class="prize-cell">
-          <p class="place">2nd Place</p>
-          <p class="amount">$120</p>
-        </div>
-        <div class="prize-cell">
-          <p class="place">3rd Place</p>
-          <p class="amount">$80</p>
-        </div>
-        <div class="prize-cell">
-          <p class="place">4th Place</p>
-          <p class="amount">$40</p>
-        </div>
-      </div>
-    </section>
-
-    
-    <section class="container reveal" id="facts" style="padding-top: var(--space-xl);">
-      <div class="section-header">
-        <p class="section-label"><span class="num" aria-hidden="true">04</span> Details</p>
-        <h2>Event Facts</h2>
-      </div>
-
-      <div class="card reveal">
+      <h3>Timeline and prizes</h3>
+      <ul>
+        <li><strong>Kickoff:</strong> 17 October 2026, 17:17 IST — brief reveal, repos initialize, building begins</li>
+        <li><strong>Close:</strong> 19 October 2026, 17:17 IST — 48 hours</li>
+        <li><strong>Prize pool:</strong> $400 total — 1st $160, 2nd $120, 3rd $80, 4th $40</li>
+      </ul>
+      <h2>Event facts</h2>
+      <div class="card">
         <ul class="facts">
-          <li><span class="k">Event</span><span class="v">Baby&rsquo;s First Website — haX.baby</span></li>
-          <li><span class="k">Sprint</span><span class="v">17 Oct 2026, 17:17 IST → 19 Oct 2026, 17:17 IST (48 ghante)</span></li>
-          <li><span class="k">Entry</span><span class="v">Online, free — solo ya team of 2–3</span></li>
+          <li><span class="k">Event</span><span class="v">Baby&rsquo;s First Website &mdash; haX.baby</span></li>
+          <li><span class="k">Sprint</span><span class="v">17 October 2026, 17:17 IST &rarr; 19 October 2026, 17:17 IST (48 ghante)</span></li>
+          <li><span class="k">Entry</span><span class="v">Online, free &mdash; solo ya team of 2&ndash;3</span></li>
           <li><span class="k">Stack</span><span class="v">Jo web stack tumhe comfortable lage (HTML/CSS se lekar modern frameworks tak)</span></li>
           <li><span class="k">Theme</span><span class="v">Early-web creativity paired with modern web development</span></li>
           <li><span class="k">Submissions</span><span class="v">Kickoff ke exact time pe open, sprint ke end pe close</span></li>
-          <li><span class="k">Prize Pool</span><span class="v">$400 — 1st $160, 2nd $120, 3rd $80, 4th $40</span></li>
+          <li><span class="k">Prize pool</span><span class="v">$400 — 1st $160, 2nd $120, 3rd $80, 4th $40</span></li>
           <li><span class="k">Kickoff</span><span class="v">&ldquo;The secret challenge brief is revealed to everyone. Repos initialize, and 48 hours of building begins.&rdquo;</span></li>
         </ul>
       </div>
-    </section>
-
-    
-    <section class="container reveal" id="links" style="padding-top: var(--space-xl);">
-      <div class="section-header">
-        <p class="section-label"><span class="num" aria-hidden="true">05</span> Connect</p>
-        <h2>Links</h2>
-      </div>
-
-      <div class="links-grid reveal">
-        <a href="https://unstop.com/p/babys-first-website-hackathon-hax-baby-1758510" target="_blank" rel="noopener" class="link-card">
-          <div class="link-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-          </div>
-          <div class="link-text">
-            <h4>Unstop Listing</h4>
-            <p>Official event page</p>
-          </div>
-        </a>
-        <a href="https://discord.gg/qpDtChdxPn" target="_blank" rel="noopener" class="link-card">
-          <div class="link-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-          </div>
-          <div class="link-text">
-            <h4>Discord</h4>
-            <p>Join the community</p>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    
-    <section class="container reveal" id="organizer" style="padding-top: var(--space-xl);">
-      <div class="section-header">
-        <p class="section-label"><span class="num" aria-hidden="true">06</span> Note</p>
-        <h2>For Organizers</h2>
-      </div>
+      <h2>Links</h2>
+      <ul>
+        <li><a href="https://unstop.com/p/babys-first-website-hackathon-hax-baby-1758510" target="_blank" rel="noopener">Event listing on Unstop</a></li>
+        <li><a href="https://discord.gg/qpDtChdxPn" target="_blank" rel="noopener">Discord</a></li>
+      </ul>
+      <h2>Note for organizers</h2>
       <p>Official brief agar tumhare paas hai (repo/DB/Unstop listing), to ya upar paste kar do, ya <code>brief.txt</code> me daalkar <code>node set-brief.mjs</code> chalao — <code>baby-problem.html</code> update ho jayega. Ye page plain HTML hai, isme seedha edit kar lo.</p>
+      <p class="footer">haX.baby &middot; Baby&rsquo;s First Website &middot; plain problem-statement page</p>
     </section>
   </main>
-
-  
   <footer class="footer">
     <div class="container footer-inner">
-      <p class="footer-brand">Orbiter<span>X</span></p>
-      <p><span id="year"></span> Orbiter X · haX.baby · Built for Baby&rsquo;s First Website hackathon</p>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="index.html">Home</a>
-        <a href="hackathon.html">Hackathon</a>
-        <a href="team.html">Team</a>
-      </nav>
+      <div class="footer-brand">Orbiter<span class="accent">X</span></div>
+      <p id="year"></p>
+      <div class="footer-links"><a href="index.html">Home</a><a href="hackathon.html">Hackathon</a><a href="team.html">Team</a></div>
     </div>
   </footer>
-
-  <script>
-/* Starfield */
-(function() {
-  const canvas = document.getElementById('stars');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let stars = [], width, height;
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function resize() {
-    width = canvas.width = canvas.offsetWidth;
-    height = canvas.height = canvas.offsetHeight;
-    stars = [];
-    const count = Math.min(Math.floor((width * height) / 5000), 180);
-    for (let i = 0; i < count; i++) {
-      stars.push({
-        x: Math.random() * width, y: Math.random() * height,
-        r: Math.random() * 1.2 + 0.2, alpha: Math.random(),
-        speed: Math.random() * 0.4 + 0.05, twinkle: Math.random() * 0.02 + 0.005
-      });
-    }
-  }
-  function draw() {
-    ctx.clearRect(0, 0, width, height);
-    for (const s of stars) {
-      s.alpha += s.twinkle;
-      const op = 0.3 + Math.abs(Math.sin(s.alpha)) * 0.7;
-      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(200,220,210,${op})`; ctx.fill();
-      if (!reduced) { s.y -= s.speed; if (s.y < 0) { s.y = height; s.x = Math.random() * width; } }
-    }
-    requestAnimationFrame(draw);
-  }
-  window.addEventListener('resize', resize); resize(); draw();
-})();
-
-/* Scroll reveal */
-(function() {
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  reveals.forEach(el => observer.observe(el));
-})();
-
-/* Judging bars animate on scroll */
-(function() {
-  const list = document.getElementById('judging-list');
-  if (!list) return;
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        list.querySelectorAll('li').forEach(li => li.classList.add('visible'));
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-  observer.observe(list);
-})();
-
-/* Header shadow */
-(function() {
-  const header = document.getElementById('site-header');
-  if (!header) return;
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => { header.classList.toggle('scrolled', window.scrollY > 20); ticking = false; });
-      ticking = true;
-    }
-  });
-})();
-
-/* Mobile nav */
-(function() {
-  const toggle = document.getElementById('nav-toggle');
-  const nav = document.getElementById('nav-links');
-  if (!toggle || !nav) return;
-  const hamburger = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
-  const closeX = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
-
-  toggle.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', open);
-    toggle.innerHTML = open ? closeX : hamburger;
-  });
-  nav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); toggle.innerHTML = hamburger; });
-  });
-})();
-
-/* Year */
-document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script src="script.js" defer></script>
 </body>
 </html>
-
