@@ -24,7 +24,10 @@
       <span>ORBIT-X</span>
     </a>
 
-    <div class="nav-mascot" aria-hidden="true"><span class="tiny-bat">♥</span><span class="bat-body">●</span><span class="sparkle">✦</span></div>
+    <div class="nav-mascot" aria-hidden="true">
+      <img class="nav-bat" src="Assets/img/icons/bat-mascot.svg" alt="" width="54" height="39" />
+      <img class="nav-sparkle" src="Assets/img/icons/sparkle-yellow.svg" alt="" width="17" height="17" />
+    </div>
 
     <nav class="nav-links" aria-label="Main navigation">
       <a class="active" href="#home">Home</a>
@@ -45,25 +48,48 @@
       </div>
     </div>
 
-    <div class="hero-art" aria-label="Two friends ready for a magical adventure">
-      <div class="art-glow"></div>
-      <img src="orbit-characters.png" alt="Two cute friends in yellow and lavender streetwear" />
-      <span class="art-star star-one">✦</span><span class="art-star star-two">✦</span><span class="art-star star-three">✧</span>
+    <div class="hero-art">
+      <div class="art-glow" aria-hidden="true"></div>
+      <div class="hero-stage" data-hero-stage>
+        <video class="hero-video" src="Assets/video/TogetherComeRightToLeft_optimized.mp4"
+               poster="Assets/img/hero-characters-poster.jpg"
+               muted playsinline preload="metadata" disablepictureinpicture aria-hidden="true"></video>
+        <img class="hero-still" src="Assets/img/TogetherNoBg.png"
+             alt="Two cute friends in yellow and lavender streetwear standing together"
+             width="444" height="562" />
+      </div>
+      <span class="art-star star-one" aria-hidden="true"><img src="Assets/img/icons/sparkle-lavender.svg" alt="" /></span>
+      <span class="art-star star-two" aria-hidden="true"><img src="Assets/img/icons/sparkle-pink.svg" alt="" /></span>
+      <span class="art-star star-three" aria-hidden="true"><img src="Assets/img/icons/sparkle-yellow.svg" alt="" /></span>
     </div>
+    <noscript><style>.hero-video{display:none}.hero-still{opacity:1;visibility:visible}</style></noscript>
 
-    <span class="floating-star s1" aria-hidden="true">✦</span>
-    <span class="floating-star s2" aria-hidden="true">✧</span>
-    <span class="floating-star s3" aria-hidden="true">✦</span>
-    <span class="lightning lightning-left" aria-hidden="true">ϟ</span>
-    <span class="lightning lightning-right" aria-hidden="true">ϟ</span>
-    <span class="spider spider-left" aria-hidden="true">🕷</span>
-    <span class="spider spider-right" aria-hidden="true">🕷</span>
+    <img class="hero-deco hero-web web-left" src="Assets/img/icons/spider-web-corner.svg" alt="" aria-hidden="true" />
+    <img class="hero-deco hero-web web-right" src="Assets/img/icons/spider-web-corner.svg" alt="" aria-hidden="true" />
+
+    <span class="hanging-spider hanging-spider-left" aria-hidden="true">
+      <span class="hanging-spider-swing">
+        <img src="Assets/img/icons/spider-cute.svg" alt="" />
+      </span>
+    </span>
+    <span class="hanging-spider hanging-spider-right" aria-hidden="true">
+      <span class="hanging-spider-swing">
+        <img src="Assets/img/icons/spider-cute.svg" alt="" />
+      </span>
+    </span>
+
+    <img class="hero-deco hero-lightning lightning-left" src="Assets/img/icons/lightning-lavender.svg" alt="" aria-hidden="true" />
+    <img class="hero-deco hero-lightning lightning-right" src="Assets/img/icons/lightning-yellow.svg" alt="" aria-hidden="true" />
+
+    <img class="hero-deco floating-sparkle s1" src="Assets/img/icons/sparkle-lavender.svg" alt="" aria-hidden="true" />
+    <img class="hero-deco floating-sparkle s2" src="Assets/img/icons/sparkle-pink.svg" alt="" aria-hidden="true" />
+    <img class="hero-deco floating-sparkle s3" src="Assets/img/icons/sparkle-yellow.svg" alt="" aria-hidden="true" />
 
     <div class="bottom-clouds" aria-hidden="true">
       <div class="cloud cloud-a"></div><div class="cloud cloud-b"></div><div class="cloud cloud-c"></div><div class="cloud cloud-d"></div>
     </div>
-    <div class="halloween-corner halloween-left" aria-hidden="true"><span class="pumpkin">🎃</span><span class="ghost">👻</span></div>
-    <div class="halloween-corner halloween-right" aria-hidden="true"><span class="ghost">👻</span><span class="pumpkin">🎃</span></div>
+    <img class="hero-deco halloween-char ghost-char" src="Assets/img/icons/ghost-cute.svg" alt="" aria-hidden="true" />
+    <img class="hero-deco halloween-char pumpkin-char" src="Assets/img/icons/pumpkin-cute.svg" alt="" aria-hidden="true" />
   </main>
 
   <section id="about" class="below-section">
