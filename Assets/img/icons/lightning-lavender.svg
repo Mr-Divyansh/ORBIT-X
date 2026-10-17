@@ -1,3 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 64" aria-hidden="true">
-  <path d="M25.5 3 L10 35 L19 35 L14.5 61 L32 27 L22.5 27 Z" fill="#cfdfff" stroke="#a8c4f2" stroke-width="2.5" stroke-linejoin="round" />
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 88" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="boltFill" x1="12" y1="8" x2="50" y2="76" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E9DEFF"/>
+      <stop offset="0.5" stop-color="#C9B4FF"/>
+      <stop offset="1" stop-color="#A9C9FF"/>
+    </linearGradient>
+    <linearGradient id="boltEdge" x1="8" y1="10" x2="52" y2="80" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B99AEF"/>
+      <stop offset="1" stop-color="#8EB3F1"/>
+    </linearGradient>
+    <filter id="boltGlow" x="-50%" y="-35%" width="200%" height="180%">
+      <feGaussianBlur stdDeviation="3" />
+    </filter>
+  </defs>
+
+  <path
+    d="M36 5 L10 46 Q8 50 13 50 H27 L21 79 Q20 84 24 81 L54 37 Q57 33 52 33 H38 L43 8 Q44 3 40 4 Z"
+    fill="#BCA2FF"
+    opacity="0.35"
+    filter="url(#boltGlow)"
+  />
+
+  <path
+    d="M36 5 L10 46 Q8 50 13 50 H27 L21 79 Q20 84 24 81 L54 37 Q57 33 52 33 H38 L43 8 Q44 3 40 4 Z"
+    fill="url(#boltFill)"
+    stroke="url(#boltEdge)"
+    stroke-width="3"
+    stroke-linejoin="round"
+  />
+
+  <path
+    d="M35 14 L17 43 H32 L27 67 L47 39 H33 Z"
+    fill="#FFF9FF"
+    opacity="0.65"
+  />
 </svg>

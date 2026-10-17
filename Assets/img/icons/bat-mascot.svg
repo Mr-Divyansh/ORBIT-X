@@ -1,17 +1,114 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 52" fill="none" aria-hidden="true">
-  <path d="M21 23 C14 15 7 13 3 17 C7 19 7.5 23 6.5 27 C11.5 25 16.5 27.5 21 31.5 Z" fill="#9b7dc8" stroke="#6c53a0" stroke-width="1.6" stroke-linejoin="round" />
-  <path d="M51 23 C58 15 65 13 69 17 C65 19 64.5 23 65.5 27 C60.5 25 55.5 27.5 51 31.5 Z" fill="#9b7dc8" stroke="#6c53a0" stroke-width="1.6" stroke-linejoin="round" />
-  <path d="M27 18.5 L24.5 10 L32.5 14.5 Z" fill="#a78ad9" stroke="#6c53a0" stroke-width="1.6" stroke-linejoin="round" />
-  <path d="M45 18.5 L47.5 10 L39.5 14.5 Z" fill="#a78ad9" stroke="#6c53a0" stroke-width="1.6" stroke-linejoin="round" />
-  <circle cx="36" cy="28.5" r="14" fill="#a78ad9" stroke="#6c53a0" stroke-width="1.8" />
-  <ellipse cx="30.5" cy="19.5" rx="5.5" ry="2.8" fill="#ffffff" opacity="0.35" />
-  <circle cx="31" cy="27" r="2.4" fill="#3b2a56" />
-  <circle cx="41" cy="27" r="2.4" fill="#3b2a56" />
-  <circle cx="31.9" cy="26.1" r="0.85" fill="#ffffff" />
-  <circle cx="41.9" cy="26.1" r="0.85" fill="#ffffff" />
-  <path d="M33.2 32.5 Q36 35 38.8 32.5" stroke="#3b2a56" stroke-width="1.5" stroke-linecap="round" fill="none" />
-  <path d="M33.8 33 L34.5 36.2 L35.3 33 Z" fill="#ffffff" stroke="#d9cbee" stroke-width="0.5" stroke-linejoin="round" />
-  <path d="M36.8 33 L37.5 36.2 L38.3 33 Z" fill="#ffffff" stroke="#d9cbee" stroke-width="0.5" stroke-linejoin="round" />
-  <ellipse cx="26.2" cy="31.8" rx="2.6" ry="1.6" fill="#f6c6de" opacity="0.85" />
-  <ellipse cx="45.8" cy="31.8" rx="2.6" ry="1.6" fill="#f6c6de" opacity="0.85" />
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 120 88"
+     fill="none"
+     aria-hidden="true">
+
+  <defs>
+    <linearGradient id="batBody" x1="0" y1="0" x2="0.9" y2="1">
+      <stop offset="0%" stop-color="#c5a7f2"/>
+      <stop offset="100%" stop-color="#9470cc"/>
+    </linearGradient>
+
+    <linearGradient id="batWing" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0%" stop-color="#c5a4ef"/>
+      <stop offset="100%" stop-color="#8c6abf"/>
+    </linearGradient>
+
+    <linearGradient id="batEar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c9adf3"/>
+      <stop offset="100%" stop-color="#9674ce"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Wings -->
+  <g stroke="#7656a8" stroke-width="2.5"
+     stroke-linejoin="round" stroke-linecap="round">
+
+    <path d="M43 37
+      C31 20 17 14 5 23
+      C11 28 12 34 10 41
+      C19 39 25 45 31 54
+      C35 49 39 46 46 45Z"
+      fill="url(#batWing)"/>
+
+    <path d="M77 37
+      C89 20 103 14 115 23
+      C109 28 108 34 110 41
+      C101 39 95 45 89 54
+      C85 49 81 46 74 45Z"
+      fill="url(#batWing)"/>
+
+    <!-- Wing membrane details -->
+    <path d="M13 27 Q27 29 39 44"
+      stroke="#dfc9fa" stroke-width="2" opacity=".8"/>
+
+    <path d="M107 27 Q93 29 81 44"
+      stroke="#dfc9fa" stroke-width="2" opacity=".8"/>
+  </g>
+
+  <!-- Ears -->
+  <path d="M43 25 L37 6 Q49 10 55 23Z"
+        fill="url(#batEar)"
+        stroke="#7656a8" stroke-width="2.5"
+        stroke-linejoin="round"/>
+
+  <path d="M77 25 L83 6 Q71 10 65 23Z"
+        fill="url(#batEar)"
+        stroke="#7656a8" stroke-width="2.5"
+        stroke-linejoin="round"/>
+
+  <!-- Inner ears -->
+  <path d="M43 18 L42 12 L49 20Z" fill="#edc6e8"/>
+  <path d="M77 18 L78 12 L71 20Z" fill="#edc6e8"/>
+
+  <!-- Chubby head -->
+  <path d="M60 17
+    C43 17 32 29 33 46
+    C34 63 44 75 60 77
+    C76 75 86 63 87 46
+    C88 29 77 17 60 17Z"
+    fill="url(#batBody)"
+    stroke="#7656a8" stroke-width="2.8"/>
+
+  <!-- Soft forehead highlight -->
+  <ellipse cx="48" cy="29" rx="9" ry="4.5"
+           fill="#ffffff" opacity=".35"
+           transform="rotate(-22 48 29)"/>
+
+  <!-- Eyes -->
+  <ellipse cx="49" cy="44" rx="6.5" ry="8"
+           fill="#38264f"/>
+
+  <ellipse cx="71" cy="44" rx="6.5" ry="8"
+           fill="#38264f"/>
+
+  <circle cx="51" cy="41.5" r="2.4" fill="#ffffff"/>
+  <circle cx="73" cy="41.5" r="2.4" fill="#ffffff"/>
+
+  <circle cx="47" cy="46" r="1.1" fill="#d9c2ff"/>
+  <circle cx="69" cy="46" r="1.1" fill="#d9c2ff"/>
+
+  <!-- Tiny nose -->
+  <path d="M57 52 Q60 49 63 52 L60 55Z"
+        fill="#7656a8"/>
+
+  <!-- Cute vampire smile -->
+  <path d="M49 57 Q60 65 71 57"
+        stroke="#38264f" stroke-width="2.5"
+        stroke-linecap="round"/>
+
+  <path d="M51 58 L54 65 L57 60Z"
+        fill="#fff8ff"/>
+
+  <path d="M69 58 L66 65 L63 60Z"
+        fill="#fff8ff"/>
+
+  <!-- Blush -->
+  <ellipse cx="40" cy="55" rx="5.5" ry="3.5"
+           fill="#f6b9df" opacity=".85"/>
+
+  <ellipse cx="80" cy="55" rx="5.5" ry="3.5"
+           fill="#f6b9df" opacity=".85"/>
+
 </svg>

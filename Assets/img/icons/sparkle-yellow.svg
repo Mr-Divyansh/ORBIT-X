@@ -1,3 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true">
-  <path d="M24 2 C25.2 13.4 34.6 22.8 46 24 C34.6 25.2 25.2 34.6 24 46 C22.8 34.6 13.4 25.2 2 24 C13.4 22.8 22.8 13.4 24 2 Z" fill="#f4d17d" />
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 48 48"
+     fill="none"
+     aria-hidden="true">
+  <defs>
+    <linearGradient id="goldSparkle"
+      x1="8" y1="5" x2="40" y2="43"
+      gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF0B8"/>
+      <stop offset=".5" stop-color="#F4D17D"/>
+      <stop offset="1" stop-color="#E9AD58"/>
+    </linearGradient>
+
+    <filter id="goldSparkleGlow"
+      x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+
+  <!-- Soft golden glow -->
+  <path
+    d="M24 3 C25.2 13.4 34.6 22.8 45 24
+       C34.6 25.2 25.2 34.6 24 45
+       C22.8 34.6 13.4 25.2 3 24
+       C13.4 22.8 22.8 13.4 24 3 Z"
+    fill="#F4D17D"
+    opacity=".5"
+    filter="url(#goldSparkleGlow)"
+  />
+
+  <!-- Main sparkle -->
+  <path
+    d="M24 3 C25.2 13.4 34.6 22.8 45 24
+       C34.6 25.2 25.2 34.6 24 45
+       C22.8 34.6 13.4 25.2 3 24
+       C13.4 22.8 22.8 13.4 24 3 Z"
+    fill="url(#goldSparkle)"
+  />
+
+  <!-- Gentle highlight -->
+  <path
+    d="M24 10 C25.1 19 29 22.9 38 24
+       C29 25.1 25.1 29 24 38
+       C22.9 29 19 25.1 10 24
+       C19 22.9 22.9 19 24 10 Z"
+    fill="#FFF9E8"
+    opacity=".32"
+  />
 </svg>

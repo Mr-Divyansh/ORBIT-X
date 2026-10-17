@@ -1,8 +1,61 @@
+
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-  <g stroke="#c9b2ec" stroke-width="1.7" stroke-linecap="round" opacity="0.85">
-    <path d="M0 0 L112 0 M0 0 L106.5 34.6 M0 0 L90.6 65.8 M0 0 L65.8 90.6 M0 0 L34.6 106.5 M0 0 L0 112" />
-    <path d="M36 0 Q28.4 4.5 34.2 11.1 Q25.7 13.1 29.1 21.2 Q20.4 20.4 21.2 29.1 Q13.1 25.7 11.1 34.2 Q4.5 28.4 0 36" />
-    <path d="M66 0 Q52.1 8.2 62.8 20.3 Q47 23.9 53.4 38.8 Q37.3 37.3 38.8 53.4 Q23.9 47 20.3 62.8 Q8.2 52.1 0 66" />
-    <path d="M96 0 Q75.9 12 91.3 29.7 Q68.4 34.8 77.7 56.4 Q54.3 54.3 56.4 77.7 Q34.8 68.4 29.7 91.3 Q12 75.9 0 96" />
+  <defs>
+    <linearGradient id="orbitWebGradient" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E4D4FF"/>
+      <stop offset="0.55" stop-color="#B99AE8"/>
+      <stop offset="1" stop-color="#9270C7"/>
+    </linearGradient>
+    <filter id="orbitWebGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g stroke="url(#orbitWebGradient)" stroke-width="1.35"
+     stroke-linecap="round" stroke-linejoin="round"
+     opacity="0.82" filter="url(#orbitWebGlow)">
+
+    <!-- Radial threads -->
+    <path d="M0 0 L116 0"/>
+    <path d="M0 0 L112 36.4"/>
+    <path d="M0 0 L93.7 68.1"/>
+    <path d="M0 0 L68.1 93.7"/>
+    <path d="M0 0 L36.4 112"/>
+    <path d="M0 0 L0 116"/>
+
+    <!-- Inner curved web -->
+    <path d="M29 0
+      Q24 4 30 10
+      Q22 12 25 19
+      Q17 18 18 26
+      Q11 23 9 30
+      Q4 25 0 29"/>
+
+    <!-- Middle curved web -->
+    <path d="M58 0
+      Q47 7 56 17
+      Q43 21 49 33
+      Q36 32 33 44
+      Q21 40 17 53
+      Q8 47 0 58"/>
+
+    <!-- Outer curved web -->
+    <path d="M88 0
+      Q71 10 84 25
+      Q64 30 72 48
+      Q53 47 48 66
+      Q30 60 25 80
+      Q10 70 0 88"/>
+
+    <!-- Outer corner accent -->
+    <path d="M0 0 Q5 1 7 6" stroke="#F4D17D" stroke-width="1.6" opacity="0.8"/>
   </g>
+
+  <!-- Tiny decorative sparkle -->
+  <path d="M103 22 Q105 29 112 31 Q105 33 103 40 Q101 33 94 31 Q101 29 103 22Z"
+        fill="#F4D17D" opacity="0.9"/>
 </svg>
