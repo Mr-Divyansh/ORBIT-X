@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fffaf5" />
+  <title>ORBIT-X — Two Friends, One Magical World</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-frame" aria-hidden="true"></div>
+
+  <header class="navbar">
+    <a class="brand" href="#home" aria-label="Orbit-X home">
+      <svg class="brand-planet" viewBox="0 0 76 58" aria-hidden="true">
+        <ellipse cx="36" cy="29" rx="30" ry="11" transform="rotate(-28 36 29)" fill="none" stroke="currentColor" stroke-width="4" />
+        <circle cx="34" cy="28" r="15" fill="#bca0ef" />
+        <path d="M22 18c5-7 13-9 20-7" fill="none" stroke="#fff8ff" stroke-width="4" stroke-linecap="round" />
+        <path d="M59 9l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#f8d889" />
+      </svg>
+      <span>ORBIT-X</span>
+    </a>
+
+    <div class="nav-mascot" aria-hidden="true"><span class="tiny-bat">♥</span><span class="bat-body">●</span><span class="sparkle">✦</span></div>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a class="active" href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#story">Story Mode</a>
+    </nav>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  </header>
+
+  <main id="home" class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">A LITTLE MAGIC, A BIG ADVENTURE</p>
+      <h1>Two Friends.<br /><span>One Magical</span><br />World.</h1>
+      <p class="description">Step into a world filled with mystery, unexpected adventures, and unforgettable stories. Your journey begins with us.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#about">Explore Our World <span aria-hidden="true">→</span></a>
+        <a class="button button-secondary" href="#story">Discover Our Story</a>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-label="Two friends ready for a magical adventure">
+      <div class="art-glow"></div>
+      <img src="orbit-characters.png" alt="Two cute friends in yellow and lavender streetwear" />
+      <span class="art-star star-one">✦</span><span class="art-star star-two">✦</span><span class="art-star star-three">✧</span>
+    </div>
+
+    <span class="floating-star s1" aria-hidden="true">✦</span>
+    <span class="floating-star s2" aria-hidden="true">✧</span>
+    <span class="floating-star s3" aria-hidden="true">✦</span>
+    <span class="lightning lightning-left" aria-hidden="true">ϟ</span>
+    <span class="lightning lightning-right" aria-hidden="true">ϟ</span>
+    <span class="spider spider-left" aria-hidden="true">🕷</span>
+    <span class="spider spider-right" aria-hidden="true">🕷</span>
+
+    <div class="bottom-clouds" aria-hidden="true">
+      <div class="cloud cloud-a"></div><div class="cloud cloud-b"></div><div class="cloud cloud-c"></div><div class="cloud cloud-d"></div>
+    </div>
+    <div class="halloween-corner halloween-left" aria-hidden="true"><span class="pumpkin">🎃</span><span class="ghost">👻</span></div>
+    <div class="halloween-corner halloween-right" aria-hidden="true"><span class="ghost">👻</span><span class="pumpkin">🎃</span></div>
+  </main>
+
+  <section id="about" class="below-section">
+    <p class="section-kicker">WELCOME TO ORBIT-X</p>
+    <h2>Every great adventure starts with a friend.</h2>
+    <p>Explore new worlds, uncover little mysteries, and make stories worth remembering.</p>
+  </section>
+  <section id="story" class="below-section story-section">
+    <p class="section-kicker">STORY MODE</p>
+    <h2>Your next chapter starts here.</h2>
+    <p>Two friends. Countless possibilities. One magical journey.</p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
