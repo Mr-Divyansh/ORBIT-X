@@ -13,6 +13,14 @@
   --shadow-strong: rgba(142, 104, 205, 0.28);
 }
 
+/* Registered so the hanging-thread keyframes can interpolate --swing as an
+   angle (instead of snapping). Baseline sway composes with cursor --gust. */
+@property --swing {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 0deg;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -51,13 +59,10 @@ img {
   max-width: 100%;
 }
 
+/* The homepage reference shows a clean, borderless hero, so this hook renders
+   nothing. Kept (not deleted) in case layout code references it. */
 .page-frame {
-  position: fixed;
-  inset: 102px 3.25% 0;
-  border: 1px solid var(--line);
-  border-bottom: 0;
-  pointer-events: none;
-  z-index: 5;
+  display: none;
 }
 
 .navbar {
@@ -139,14 +144,16 @@ img {
   transition: color 0.2s ease;
 }
 
+/* Slim separators between nav items, matching the light "|" dividers in the
+   homepage reference. Shared hairline color so they never read as a border. */
 .nav-links a + a::before {
   content: "";
   position: absolute;
   left: 0;
   top: 50%;
-  width: 1.5px;
-  height: 25px;
-  background: #39274e;
+  width: 1px;
+  height: 22px;
+  background: var(--line);
   transform: translateY(-50%);
 }
 
@@ -170,6 +177,13 @@ img {
   color: var(--ink);
 }
 
+/* Keyboard focus stays visible even though the underline was removed. */
+.nav-links a:focus-visible {
+  outline: 3px solid rgba(152, 113, 221, 0.5);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
 .menu-toggle {
   display: none;
   padding: 8px;
@@ -186,6 +200,12 @@ img {
   margin: 5px 0;
   background: var(--ink);
   border-radius: 2px;
+}
+
+/* Keep the hamburger keyboard-operable: visible focus, no extra border. */
+.menu-toggle:focus-visible {
+  outline: 3px solid rgba(152, 113, 221, 0.5);
+  outline-offset: 4px;
 }
 
 .hero {
@@ -327,6 +347,14 @@ h1 span {
   position: relative;
   width: 100%;
   height: 100%;
+  /* Cursor-driven wind targets below: tiny lean/translate away from the
+     cursor, smoothed in script.js. Defaults to rest pose. */
+  --wind-x: 0px;
+  --wind-y: 0px;
+  --wind-rot: 0deg;
+  transform: translate(var(--wind-x), var(--wind-y)) rotate(var(--wind-rot));
+  transform-origin: 50% 78%;
+  will-change: transform;
 }
 
 .hero-video {
@@ -339,7 +367,10 @@ h1 span {
   /* Feather only the bottom edge into the cream page; the sides and top hold the characters. */
   -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 7%);
   mask-image: linear-gradient(to top, transparent 0%, #000 7%);
-  transition: opacity 0.22s ease, visibility 0s linear 0.22s;
+  /* Seamless right-to-left video exit: a slightly longer ease-out crossfade
+     avoids the abrupt cut/jump at the final frame. Driven once by the
+     'ended' handler in script.js (is-settled), never by cursor movement. */
+  transition: opacity 0.38s ease-out, visibility 0s linear 0.38s;
 }
 
 .hero-still {
@@ -354,7 +385,8 @@ h1 span {
   filter: drop-shadow(0 18px 16px rgba(107, 81, 153, 0.1));
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.22s ease, visibility 0s linear 0.22s;
+  /* Matches the video fade so the still lands with no flash or doubling. */
+  transition: opacity 0.38s ease-out, visibility 0s linear 0.38s;
 }
 
 .hero-stage.is-settled .hero-video {
@@ -365,7 +397,7 @@ h1 span {
 .hero-stage.is-settled .hero-still {
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.22s ease, visibility 0s;
+  transition: opacity 0.38s ease-out, visibility 0s;
 }
 
 .hero-web {
@@ -501,6 +533,11 @@ h1 span {
   display: block;
   padding-top: 120px;
   transform-origin: 50% 0;
+  /* Support point stays fixed; only this swing arm + spider below can rotate.
+     --swing is the gentle baseline sway, --gust is the cursor-wind push. */
+  --swing: 0deg;
+  --gust: 0deg;
+  transform: rotate(calc(var(--swing) + var(--gust)));
   animation: thread-sway 7s ease-in-out 2.3s infinite;
 }
 
@@ -519,6 +556,10 @@ h1 span {
   display: block;
   width: 100%;
   height: auto;
+  /* Spider body vibrates a touch after the thread moves; the thin line
+     above stays visually anchored at the top. */
+  transform-origin: 50% 0;
+  animation: swing-settle 3.4s ease-in-out infinite;
 }
 
 .hanging-spider-right .hanging-spider-swing {
@@ -653,6 +694,107 @@ h1 span {
   }
 }
 
+/* Two flying bats share the supplied bat-mascot.svg (actual project asset).
+   Each bat drifts along its own looping path through open hero bands — never
+   over the copy or character faces — with different scales and timing so the
+   pair never reads as duplicated. transform-box keeps each img centered. */
+.flying-bat {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.flying-bat img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+.bat-a {
+  left: 6%;
+  top: 6%;
+  width: clamp(34px, 4vw, 54px);
+  animation: bat-drift-a 16s ease-in-out infinite;
+}
+
+.bat-a img {
+  animation: bat-flap 0.52s ease-in-out infinite;
+}
+
+.bat-b {
+  right: 5%;
+  top: 10%;
+  width: clamp(26px, 3vw, 38px);
+  animation: bat-drift-b 21s ease-in-out 1.6s infinite;
+}
+
+.bat-b img {
+  animation: bat-flap 0.62s ease-in-out 0.3s infinite reverse;
+}
+
+/* Cross-hero drift: side bands and upper third only, so bats stay clear of
+   the CTA row and the Together faces. Small rotate = banking into turns. */
+@keyframes bat-drift-a {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(-6deg);
+  }
+
+  22% {
+    transform: translate(26vw, 7vh) rotate(6deg);
+  }
+
+  48% {
+    transform: translate(52vw, 2vh) rotate(-4deg);
+  }
+
+  74% {
+    transform: translate(24vw, 12vh) rotate(8deg);
+  }
+}
+
+@keyframes bat-drift-b {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(5deg);
+  }
+
+  26% {
+    transform: translate(-22vw, 8vh) rotate(-7deg);
+  }
+
+  52% {
+    transform: translate(-44vw, 3vh) rotate(4deg);
+  }
+
+  78% {
+    transform: translate(-20vw, 13vh) rotate(-5deg);
+  }
+}
+
+/* Wing-flap illusion for a flat SVG: quick squash-and-tilt on the img only,
+   so it never fights the wrapper's drift path transform above. */
+@keyframes bat-flap {
+  0%,
+  100% {
+    transform: scaleY(1) scaleX(1) rotate(-4deg);
+  }
+
+  50% {
+    transform: scaleY(0.72) scaleX(1.08) rotate(4deg);
+  }
+}
+
+/* Hidden tab: freeze the flying-bat loops in place (no CPU burn, no jump on
+   return because play-state resumes mid-keyframe). Toggled by script.js. */
+.hero.is-hidden-tab .flying-bat,
+.hero.is-hidden-tab .flying-bat img {
+  animation-play-state: paused;
+}
+
 @keyframes twinkle {
   0%,
   100% {
@@ -691,13 +833,31 @@ h1 span {
 }
 
 @keyframes thread-sway {
+  /* Drives --swing (not transform) so the keyframes compose with the
+     cursor-gust rotation instead of overwriting it. */
   0%,
   100% {
-    transform: rotate(-1.4deg);
+    --swing: -1.4deg;
   }
 
   50% {
-    transform: rotate(1.4deg);
+    --swing: 1.4deg;
+  }
+}
+
+@keyframes swing-settle {
+  /* Small flexible-string vibration layered on the spider image only. */
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  30% {
+    transform: rotate(2.2deg);
+  }
+
+  60% {
+    transform: rotate(-1.2deg);
   }
 }
 
@@ -757,14 +917,23 @@ h1 span {
     left: 16px;
   }
 
-  .nav-links a:hover::after,
-  .nav-links a.active::after {
-    width: calc(100% - 32px);
-  }
+  /* No underline pill: Home/active is color-only (see base nav rules). */
 
   .hero {
     padding-left: 5%;
     padding-right: 5%;
+  }
+
+  /* Tablets keep the two-column read but narrower, so copy and the Together
+     stage never overlap; decorations shrink rather than crowd the text. */
+  .bat-a {
+    width: 42px;
+    animation-duration: 19s;
+  }
+
+  .bat-b {
+    width: 32px;
+    animation-duration: 25s;
   }
 
   .hero-copy {
@@ -791,9 +960,7 @@ h1 span {
 }
 
 @media (max-width: 700px) {
-  .page-frame {
-    inset: 76px 3% 0;
-  }
+  /* .page-frame stays hidden on small screens too (no outline box). */
 
   .navbar {
     height: 77px;
@@ -852,10 +1019,7 @@ h1 span {
     bottom: 5px;
   }
 
-  .nav-links a.active::after,
-  .nav-links a:hover::after {
-    width: 45px;
-  }
+  /* No underline pill: Home/active is color-only (see base nav rules). */
 
   .hero {
     display: flex;
@@ -963,6 +1127,57 @@ h1 span {
     display: none;
   }
 
+  /* Small screens: bats fly a tighter, lower loop near the top so they stay
+     inside the hero and never cover the stacked copy or character faces.
+     One loop still hidden from AT; motion still JS/CSS transform-only. */
+  .flying-bat {
+    opacity: 0.92;
+  }
+
+  .bat-a {
+    left: 4%;
+    top: 4%;
+    width: 36px;
+    animation: bat-drift-mobile-a 14s ease-in-out infinite;
+  }
+
+  .bat-b {
+    right: 5%;
+    top: 7%;
+    width: 28px;
+    animation: bat-drift-mobile-b 18s ease-in-out 1.2s infinite;
+  }
+
+  @keyframes bat-drift-mobile-a {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(-6deg);
+    }
+
+    30% {
+      transform: translate(38vw, 5vh) rotate(6deg);
+    }
+
+    60% {
+      transform: translate(64vw, 2vh) rotate(-4deg);
+    }
+  }
+
+  @keyframes bat-drift-mobile-b {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(5deg);
+    }
+
+    35% {
+      transform: translate(-34vw, 6vh) rotate(-6deg);
+    }
+
+    68% {
+      transform: translate(-60vw, 2vh) rotate(4deg);
+    }
+  }
+
   .hero-web {
     width: 92px;
   }
@@ -1024,9 +1239,290 @@ h1 span {
     display: none;
   }
 
+  /* Reduced motion: still image rests with no wind offset; bats stay parked
+     and visible (no looping drift/flap from keyframes or JS). */
+  .hero-stage {
+    --wind-x: 0px;
+    --wind-y: 0px;
+    --wind-rot: 0deg;
+    transform: none;
+  }
+
+  .hanging-spider-swing {
+    --gust: 0deg;
+  }
+
+  .flying-bat,
+  .flying-bat img {
+    animation: none !important;
+  }
+
+  .bat-a,
+  .bat-b {
+    opacity: 0.9;
+  }
+
   .hero-still {
     opacity: 1;
     visibility: visible;
     transform: none;
+  }
+}
+
+/* ================= STORY MODE ================= */
+.story-wrap {
+  position: relative;
+  z-index: 1;
+  padding: 110px 20px 120px;
+  background: var(--paper-mist);
+}
+
+.story-inner {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.story-head {
+  margin-bottom: 52px;
+  text-align: center;
+}
+
+.story-head .section-kicker {
+  margin: 0 0 6px;
+  color: #9774cf;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.story-head h2 {
+  max-width: 760px;
+  margin: 12px auto;
+  font-size: clamp(30px, 4vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+}
+
+.story-lead {
+  max-width: 560px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: clamp(16px, 1.6vw, 19px);
+  font-weight: 600;
+}
+
+/* --- brief cards --- */
+.duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.duo-card {
+  padding: 28px 28px 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 6px solid var(--purple);
+  border-radius: 26px;
+  box-shadow: 0 14px 34px var(--shadow-soft);
+}
+
+.duo-divyansh {
+  border-top-color: #f8d889;
+}
+
+.duo-tag {
+  display: inline-block;
+  padding: 4px 14px;
+  color: var(--purple-deep);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--paper-mist);
+  border-radius: 999px;
+}
+
+.duo-card h3 {
+  margin: 12px 0 8px;
+  font-size: 34px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.duo-card p {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.duo-facts {
+  margin: 0 0 14px;
+  padding-left: 20px;
+  color: var(--ink-soft);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.duo-facts li {
+  margin-bottom: 4px;
+}
+
+.duo-card .duo-quote {
+  margin: 0;
+  color: var(--purple-strong);
+  font-size: 17px;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.duo-more {
+  margin: 22px 0 64px;
+  padding: 18px 24px;
+  color: var(--ink-soft);
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  background: rgba(255, 250, 245, 0.8);
+  border: 2px dashed rgba(130, 104, 170, 0.4);
+  border-radius: 20px;
+}
+
+/* --- full story timeline --- */
+.story-title-main {
+  margin: 0 0 34px;
+  font-size: clamp(26px, 3.2vw, 38px);
+  letter-spacing: -1px;
+  text-align: center;
+}
+
+.scenes {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.scenes::before {
+  content: "";
+  position: absolute;
+  left: 23px;
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  background: linear-gradient(#cdb8f2, #e7dcff);
+  border-radius: 3px;
+}
+
+.scene {
+  position: relative;
+  margin: 0 0 24px 68px;
+  padding: 22px 26px 18px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: 0 10px 26px var(--shadow-soft);
+}
+
+.scene-no {
+  position: absolute;
+  left: -68px;
+  top: 16px;
+  display: grid;
+  place-items: center;
+  width: 49px;
+  height: 49px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 900;
+  background: linear-gradient(110deg, #a27ee5, #8d65cf);
+  border: 4px solid var(--paper-mist);
+  border-radius: 50%;
+}
+
+.scene h4 {
+  margin: 0 0 10px;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+}
+
+.scene p {
+  margin: 0 0 10px;
+  color: var(--ink-soft);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.scene p:last-child {
+  margin-bottom: 4px;
+}
+
+.story-end {
+  width: fit-content;
+  margin: 38px auto 0;
+  padding: 10px 26px;
+  color: var(--purple-deep);
+  font-size: 17px;
+  font-weight: 800;
+  background: #fff;
+  border: 2px solid #cdb8f2;
+  border-radius: 999px;
+}
+
+/* fade-up on scroll (pure CSS, ignored by older browsers) */
+@supports (animation-timeline: view()) {
+  .duo-card,
+  .scene {
+    animation: story-rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 45%;
+  }
+}
+
+@keyframes story-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .story-wrap {
+    padding: 72px 16px 90px;
+  }
+
+  .duo {
+    grid-template-columns: 1fr;
+  }
+
+  .duo-more {
+    margin-bottom: 48px;
+  }
+
+  .scenes::before {
+    left: 17px;
+  }
+
+  .scene {
+    margin-left: 50px;
+    padding: 18px 18px 14px;
+  }
+
+  .scene-no {
+    left: -50px;
+    width: 38px;
+    height: 38px;
+    font-size: 12px;
+  }
+
+  .scene p {
+    font-size: 16px;
   }
 }
