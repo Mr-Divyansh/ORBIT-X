@@ -1437,7 +1437,7 @@ h1.typing-done .typing-line:last-child::after {
   border-radius: 24px 46px 24px 46px;
 }
 
-.storybook__visual > img:not(.storybook__dream-character):not(.storybook__dream-ghost) {
+.storybook__visual > img:not(.storybook__dream-ghost) {
   position: relative;
   z-index: 1;
   display: block;
@@ -1449,15 +1449,99 @@ h1.typing-done .typing-line:last-child::after {
 
 .storybook__visual--friends {
   background:
-    radial-gradient(ellipse at 50% 73%, rgba(254, 225, 166, 0.88), transparent 38%),
+    radial-gradient(ellipse at 50% 60%, rgba(254, 225, 166, 0.88), transparent 38%),
     linear-gradient(145deg, #fff5df, #e7ddff 57%, #d9edff);
 }
 
-.storybook__visual--friends > img {
-  width: 86% !important;
-  height: 88% !important;
-  object-fit: contain !important;
-  filter: drop-shadow(0 15px 14px rgba(70, 56, 102, 0.17));
+.storybook__friend-orbit {
+  position: absolute;
+  z-index: 1;
+  top: 13%;
+  left: 50%;
+  width: 35%;
+  height: 70%;
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  border-radius: 50%;
+  box-shadow: 0 0 22px rgba(255, 255, 255, 0.38), inset 0 0 18px rgba(255, 255, 255, 0.3);
+  transform: translateX(-50%) rotate(32deg);
+}
+
+.storybook__friend-orbit--two {
+  width: 64%;
+  height: 45%;
+  border-color: rgba(179, 153, 224, 0.55);
+  transform: translateX(-50%) rotate(-18deg);
+}
+
+.storybook__friend-light {
+  position: absolute;
+  z-index: 2;
+  top: 35%;
+  display: grid;
+  place-items: center;
+  width: clamp(76px, 11vw, 126px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.46);
+  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.16), 0 15px 34px rgba(108, 85, 154, 0.12);
+  backdrop-filter: blur(5px);
+  animation: storybook-friend-glow 5s ease-in-out infinite;
+}
+
+.storybook__friend-light img {
+  display: block;
+  width: 42%;
+  height: 42%;
+  filter: drop-shadow(0 0 14px rgba(255, 235, 175, 0.95));
+}
+
+.storybook__friend-light--abhay {
+  left: 19%;
+  background: radial-gradient(circle, rgba(255, 239, 194, 0.96), rgba(255, 226, 156, 0.44) 67%, rgba(255, 255, 255, 0.45));
+}
+
+.storybook__friend-light--divyansh {
+  right: 19%;
+  top: 27%;
+  animation-delay: -2.5s;
+  background: radial-gradient(circle, rgba(236, 227, 255, 0.96), rgba(194, 178, 244, 0.46) 67%, rgba(255, 255, 255, 0.45));
+}
+
+.storybook__friend-bridge {
+  position: absolute;
+  z-index: 3;
+  top: 49%;
+  left: 50%;
+  color: #fff8e4;
+  font-size: 27px;
+  text-shadow: 0 0 16px #a990d4;
+  transform: translate(-50%, -50%);
+  animation: storybook-twinkle 3.7s ease-in-out infinite;
+}
+
+.storybook__friend-name {
+  position: absolute;
+  z-index: 2;
+  top: 67%;
+  color: #625572;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 900;
+  letter-spacing: 0.8px;
+}
+
+.storybook__friend-name--abhay {
+  left: 13%;
+}
+
+.storybook__friend-name--divyansh {
+  right: 11%;
+}
+
+.storybook__friend-name i {
+  color: #b493de;
+  font-style: normal;
 }
 
 .storybook__visual-glow {
@@ -1490,7 +1574,104 @@ h1.typing-done .typing-line:last-child::after {
 }
 
 .storybook__visual--halloween {
-  background: #51416f;
+  background:
+    radial-gradient(ellipse at 51% 80%, rgba(255, 185, 104, 0.58), transparent 32%),
+    linear-gradient(180deg, #383258 0%, #665384 58%, #d49d92 100%);
+}
+
+.storybook__halloween-moon {
+  position: absolute;
+  top: 12%;
+  right: 22%;
+  z-index: 0;
+  width: 64px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #fff0c7;
+  box-shadow: 0 0 20px rgba(255, 238, 192, 0.72), 0 0 58px rgba(255, 216, 154, 0.45);
+}
+
+.storybook__halloween-house {
+  position: absolute;
+  z-index: 0;
+  bottom: 16%;
+  width: 26%;
+  height: 39%;
+  border: 1px solid rgba(255, 223, 192, 0.28);
+  border-radius: 7px 7px 0 0;
+  background:
+    linear-gradient(135deg, transparent 48%, rgba(50, 41, 75, 0.94) 49%) 0 0 / 50% 30%,
+    linear-gradient(225deg, transparent 48%, rgba(50, 41, 75, 0.94) 49%) 100% 0 / 50% 30%,
+    linear-gradient(180deg, #584870, #39314f);
+  box-shadow: 0 13px 28px rgba(33, 26, 56, 0.24);
+}
+
+.storybook__halloween-house::before {
+  position: absolute;
+  right: 21%;
+  bottom: 12%;
+  left: 21%;
+  height: 28%;
+  content: "";
+  border: 2px solid rgba(255, 226, 166, 0.52);
+  border-radius: 14px 14px 0 0;
+  background: linear-gradient(180deg, rgba(255, 213, 137, 0.68), rgba(255, 179, 110, 0.32));
+  box-shadow: 0 0 22px rgba(255, 185, 111, 0.32);
+}
+
+.storybook__halloween-house--one {
+  left: 8%;
+}
+
+.storybook__halloween-house--two {
+  right: 8%;
+  bottom: 19%;
+  width: 22%;
+  height: 33%;
+  opacity: 0.82;
+}
+
+.storybook__visual--halloween .storybook__visual-caption {
+  color: #fff7ec;
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(58, 46, 79, 0.62);
+}
+
+.storybook__scene-decor {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  pointer-events: none;
+}
+
+.storybook__scene-decor img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.storybook__scene-decor--bat {
+  top: 11%;
+  right: 10%;
+  width: clamp(45px, 6vw, 68px);
+  filter: drop-shadow(0 5px 8px rgba(25, 18, 48, 0.18));
+  animation: storybook-bat-drift 8s ease-in-out infinite;
+}
+
+.storybook__scene-decor--pumpkin {
+  right: 8%;
+  bottom: 13%;
+  width: clamp(54px, 6.5vw, 76px);
+  filter: drop-shadow(0 0 15px rgba(255, 179, 68, 0.75));
+  animation: storybook-pumpkin-bob 5s ease-in-out infinite;
+}
+
+.storybook__scene-decor--spark {
+  top: 20%;
+  left: 12%;
+  width: 23px;
+  filter: drop-shadow(0 0 8px rgba(255, 231, 163, 0.9));
+  animation: storybook-twinkle 3s ease-in-out infinite;
 }
 
 .storybook__visual--halloween::after,
@@ -1553,28 +1734,6 @@ h1.typing-done .typing-line:last-child::after {
   background: rgba(207, 226, 255, 0.54);
 }
 
-.storybook__dream-character {
-  position: absolute;
-  z-index: 1;
-  bottom: 7%;
-  width: 42%;
-  height: 78%;
-  object-fit: contain;
-  object-position: center bottom;
-  filter: drop-shadow(0 13px 13px rgba(26, 22, 62, 0.35));
-  animation: storybook-character-drift 6.5s ease-in-out infinite;
-}
-
-.storybook__dream-character--abhay {
-  left: 7%;
-}
-
-.storybook__dream-character--divyansh {
-  right: 5%;
-  width: 50%;
-  animation-delay: -3.25s;
-}
-
 .storybook__dream-ghost {
   position: absolute;
   z-index: 2;
@@ -1608,7 +1767,147 @@ h1.typing-done .typing-line:last-child::after {
 }
 
 .storybook__visual--wonder {
-  background: #34305d;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(216, 198, 255, 0.95), transparent 37%),
+    radial-gradient(ellipse at 49% 49%, rgba(153, 121, 222, 0.5), transparent 48%),
+    linear-gradient(155deg, #282649 0%, #4e477f 58%, #8b7db5 100%);
+}
+
+.storybook__dream-gadget {
+  position: absolute;
+  z-index: 1;
+  bottom: 17%;
+  display: block;
+  filter: drop-shadow(0 0 17px rgba(255, 232, 163, 0.72));
+}
+
+.storybook__dream-gadget--lantern {
+  left: 24%;
+  width: 37px;
+  height: 66px;
+  border: 2px solid #f8d98e;
+  border-radius: 13px 13px 8px 8px;
+  background: linear-gradient(180deg, rgba(255, 243, 189, 0.98), rgba(255, 184, 89, 0.76));
+  box-shadow: inset 0 0 17px rgba(255, 255, 228, 0.95), 0 0 22px rgba(255, 217, 131, 0.78);
+  animation: storybook-lantern-pulse 3.4s ease-in-out infinite;
+}
+
+.storybook__lantern-handle {
+  position: absolute;
+  top: -17px;
+  left: 6px;
+  width: 21px;
+  height: 19px;
+  border: 2px solid #f8d98e;
+  border-bottom: 0;
+  border-radius: 12px 12px 0 0;
+}
+
+.storybook__lantern-cage {
+  position: absolute;
+  inset: 9px 5px;
+  border-right: 1px solid rgba(172, 111, 67, 0.52);
+  border-left: 1px solid rgba(172, 111, 67, 0.52);
+}
+
+.storybook__lantern-flame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 23px;
+  border-radius: 50% 50% 45% 45%;
+  background: #fff9d7;
+  box-shadow: 0 0 14px 5px rgba(255, 246, 190, 0.9);
+  transform: translate(-50%, -50%);
+}
+
+.storybook__dream-gadget--wand {
+  right: 24%;
+  bottom: 21%;
+  width: 8px;
+  height: 84px;
+  border: 1px solid rgba(239, 231, 255, 0.8);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f0e9ff, #a78ce0 50%, #6c5caa);
+  box-shadow: 0 0 14px rgba(205, 191, 255, 0.8);
+  rotate: 22deg;
+}
+
+.storybook__wand-star {
+  position: absolute;
+  top: -20px;
+  left: -9px;
+  color: #fff4bf;
+  font-size: 26px;
+  text-shadow: 0 0 13px rgba(255, 238, 175, 0.96);
+  animation: storybook-twinkle 3s ease-in-out infinite;
+}
+
+.storybook__visual--wonder .storybook__dream-ghost {
+  top: 23%;
+  right: 31%;
+  width: 38px;
+  height: 44px;
+}
+
+.storybook__portal {
+  position: absolute;
+  z-index: 0;
+  top: 10%;
+  left: 50%;
+  width: 47%;
+  height: 88%;
+  border: 1px solid rgba(255, 237, 196, 0.9);
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255, 238, 194, 0.24), rgba(199, 178, 255, 0.13) 48%, transparent 72%);
+  box-shadow:
+    0 0 0 8px rgba(199, 178, 255, 0.09),
+    0 0 34px rgba(255, 233, 183, 0.62),
+    inset 0 0 30px rgba(255, 233, 183, 0.42);
+  transform: translateX(-50%);
+  animation: storybook-portal-breathe 5s ease-in-out infinite;
+}
+
+.storybook__portal::before,
+.storybook__portal::after {
+  position: absolute;
+  inset: 7%;
+  content: "";
+  border: 1px solid rgba(221, 208, 255, 0.75);
+  border-radius: 50%;
+  box-shadow: 0 0 17px rgba(208, 191, 255, 0.52);
+}
+
+.storybook__portal::after {
+  inset: -7%;
+  border-color: rgba(255, 232, 163, 0.35);
+  border-style: dashed;
+  animation: storybook-portal-turn 36s linear infinite;
+}
+
+.storybook__path-spark {
+  position: absolute;
+  z-index: 3;
+  top: 18%;
+  color: #d8c5ff;
+  font-size: 25px;
+  pointer-events: none;
+  text-shadow: 0 0 14px rgba(212, 192, 255, 0.9);
+  animation: storybook-path-glide 4s ease-in-out infinite;
+}
+
+.storybook__path-spark--one {
+  left: 44%;
+}
+
+.storybook__path-spark--two {
+  top: auto;
+  right: 8%;
+  bottom: 20%;
+  color: #ffe8a3;
+  font-size: 18px;
+  animation-delay: -2s;
 }
 
 .storybook__copy {
@@ -1655,65 +1954,362 @@ h1.typing-done .typing-line:last-child::after {
   margin-bottom: 0;
 }
 
-.storybook__ending {
+.storybook__finale {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-height: clamp(430px, 47vw, 570px);
+  margin: clamp(84px, 10vw, 138px) -24px 0;
+  margin-bottom: calc(-1 * clamp(76px, 9vw, 122px));
+  padding: 82px 24px 65px;
+  overflow: hidden;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 49%, rgba(255, 247, 221, 0.94) 0%, rgba(255, 233, 199, 0.62) 21%, transparent 51%),
+    radial-gradient(ellipse at 17% 76%, rgba(207, 226, 255, 0.92), transparent 40%),
+    radial-gradient(ellipse at 85% 76%, rgba(220, 207, 255, 0.88), transparent 41%),
+    linear-gradient(180deg, #f6f0ff 0%, #eeeaff 43%, #e8eaff 68%, #fff8f2 100%);
+}
+
+.storybook__finale::before {
+  position: absolute;
+  z-index: -1;
+  right: -10%;
+  bottom: -42%;
+  left: -10%;
+  height: 75%;
+  content: "";
+  border-radius: 50% 50% 0 0 / 25% 25% 0 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 246, 217, 0.92), transparent 42%),
+    linear-gradient(180deg, rgba(215, 206, 248, 0.78), rgba(233, 235, 255, 0.96));
+  box-shadow: 0 -24px 64px rgba(216, 205, 246, 0.28);
+}
+
+.storybook__finale::after {
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 36%;
+  content: "";
+  background: linear-gradient(180deg, transparent, rgba(255, 248, 242, 0.88));
+  pointer-events: none;
+}
+
+.storybook__finale-content {
+  position: relative;
+  z-index: 4;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: clamp(76px, 9vw, 118px) auto 0;
-  text-align: center;
+  width: min(100%, 760px);
+  margin: auto;
 }
 
-.storybook__ending-sparkle {
+.storybook__finale-kicker {
+  margin-bottom: 13px;
+  color: #756299;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.storybook__finale-sparkle {
   display: grid;
   place-items: center;
-  width: 46px;
-  height: 46px;
-  margin-bottom: 15px;
-  color: #8b70bd;
+  width: 47px;
+  height: 47px;
+  margin-bottom: 16px;
+  color: #876db5;
   font-size: 25px;
-  border: 1px solid rgba(171, 146, 214, 0.45);
+  border: 1px solid rgba(171, 146, 214, 0.55);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 0 30px rgba(194, 172, 233, 0.45);
-  animation: storybook-twinkle 3.5s ease-in-out infinite;
+  background: rgba(255, 255, 255, 0.67);
+  box-shadow: 0 0 33px rgba(194, 172, 233, 0.52);
+  animation: storybook-twinkle 4s ease-in-out infinite;
 }
 
-.storybook__ending p {
-  margin: 0 0 18px;
-  color: #4c4265;
-  font-size: clamp(21px, 3vw, 31px);
+.storybook__finale-content > p {
+  margin: 0 auto 27px;
+  color: #403853;
+  font-size: clamp(30px, 5vw, 58px);
   font-weight: 900;
-  line-height: 1.3;
-  letter-spacing: -0.5px;
+  line-height: 1.12;
+  letter-spacing: -1.8px;
+  text-wrap: balance;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.75);
 }
 
-.storybook__ending a {
+.storybook__finale-break {
+  display: none;
+}
+
+.storybook__finale-cta {
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  min-height: 48px;
-  padding: 0 21px;
-  color: #6849a3;
-  font-size: 14px;
+  gap: 12px;
+  min-width: 248px;
+  min-height: 58px;
+  padding: 0 22px;
+  overflow: hidden;
+  color: #fff;
+  font-size: 15px;
   font-weight: 900;
   text-decoration: none;
-  border: 1px solid rgba(141, 101, 207, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.76);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: 0 7px 20px rgba(91, 58, 133, 0.08);
-  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
+  background: linear-gradient(110deg, #9d7dde, #8463c4 55%, #a985db);
+  box-shadow: 0 10px 22px rgba(101, 72, 163, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.46);
+  transition: transform 260ms cubic-bezier(0.2, 0.75, 0.25, 1), box-shadow 260ms ease, filter 260ms ease;
 }
 
-.storybook__ending a:hover {
-  transform: translateY(-2px);
-  background: #fff;
-  box-shadow: 0 11px 24px rgba(91, 58, 133, 0.16);
+.storybook__finale-cta::before {
+  position: absolute;
+  z-index: -1;
+  top: -50%;
+  bottom: -50%;
+  left: -45%;
+  width: 28%;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.38), transparent);
+  rotate: 18deg;
+  transition: left 550ms cubic-bezier(0.2, 0.75, 0.25, 1);
 }
 
-.storybook__ending a:focus-visible {
-  outline: 3px solid rgba(152, 113, 221, 0.55);
-  outline-offset: 4px;
+.storybook__finale-cta-icon {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+}
+
+.storybook__finale-cta-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 5px rgba(255, 237, 176, 0.8));
+  transition: transform 260ms ease;
+}
+
+.storybook__finale-cta-arrow {
+  display: inline-block;
+  font-size: 20px;
+  line-height: 1;
+  transition: transform 260ms ease;
+}
+
+.storybook__finale-cta:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.08);
+  box-shadow: 0 15px 30px rgba(101, 72, 163, 0.3), 0 0 24px rgba(255, 235, 190, 0.62);
+}
+
+.storybook__finale-cta:hover::before {
+  left: 125%;
+}
+
+.storybook__finale-cta:hover .storybook__finale-cta-icon img {
+  transform: rotate(20deg) scale(1.12);
+}
+
+.storybook__finale-cta:hover .storybook__finale-cta-arrow {
+  transform: translateX(4px);
+}
+
+.storybook__finale-cta:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.storybook__finale-cta:focus-visible {
+  outline: 3px solid #6548a3;
+  outline-offset: 5px;
+}
+
+.storybook__finale-footnote {
+  margin-top: 17px;
+  color: #625b76;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.storybook__finale-moon {
+  position: absolute;
+  top: 9%;
+  left: 50%;
+  width: clamp(82px, 10vw, 128px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(255, 240, 196, 0.74);
+  box-shadow: 0 0 34px rgba(255, 232, 163, 0.58), 0 0 104px rgba(255, 232, 163, 0.43);
+  transform: translateX(-50%);
+  animation: storybook-finale-glow 7s ease-in-out infinite;
+}
+
+.storybook__finale-cloud {
+  position: absolute;
+  z-index: 1;
+  bottom: 5%;
+  width: 32%;
+  height: 21%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  filter: blur(26px);
+  animation: storybook-cloud-drift 13s ease-in-out infinite alternate;
+}
+
+.storybook__finale-cloud--one {
+  left: -5%;
+}
+
+.storybook__finale-cloud--two {
+  right: -5%;
+  bottom: 9%;
+  background: rgba(220, 207, 255, 0.66);
+  animation-delay: -6s;
+}
+
+.storybook__finale-trail {
+  position: absolute;
+  z-index: 2;
+  top: 54%;
+  left: 50%;
+  width: min(690px, 66%);
+  height: 100px;
+  border-top: 1px solid rgba(255, 247, 220, 0.95);
+  border-radius: 50%;
+  opacity: 0.75;
+  filter: drop-shadow(0 0 8px rgba(255, 229, 166, 0.9));
+  transform: translate(-50%, -50%) rotate(-4deg);
+}
+
+.storybook__finale-trail::before,
+.storybook__finale-trail::after {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  content: "";
+  border-radius: 50%;
+  background: #fff7d9;
+  box-shadow: 0 0 15px 4px rgba(255, 233, 174, 0.82);
+  animation: storybook-trail-travel 8s ease-in-out infinite;
+}
+
+.storybook__finale-trail::after {
+  animation-delay: -4s;
+  scale: 0.68;
+}
+
+.storybook__finale-spark {
+  position: absolute;
+  z-index: 3;
+  display: block;
+  width: 25px;
+  height: 25px;
+  animation: storybook-finale-spark-drift 6s ease-in-out infinite;
+}
+
+.storybook__finale-spark img,
+.storybook__finale-ghost img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.storybook__finale-spark--one {
+  top: 26%;
+  left: 26%;
+  filter: drop-shadow(0 0 10px rgba(255, 232, 163, 0.92));
+}
+
+.storybook__finale-spark--two {
+  top: 30%;
+  right: 24%;
+  width: 19px;
+  height: 19px;
+  animation-delay: -3.2s;
+}
+
+.storybook__finale-ghost {
+  position: absolute;
+  z-index: 3;
+  top: 17%;
+  right: 10%;
+  width: clamp(42px, 5vw, 62px);
+  filter: drop-shadow(0 0 15px rgba(179, 185, 255, 0.7));
+  animation: storybook-ghost-drift 5s ease-in-out infinite;
+}
+
+.storybook__finale-bat,
+.storybook__finale-pumpkin {
+  position: absolute;
+  z-index: 3;
+  display: block;
+  pointer-events: none;
+}
+
+.storybook__finale-bat img,
+.storybook__finale-pumpkin img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.storybook.has-scene-reveals .storybook__finale:not(.is-visible) .storybook__finale-content > * {
+  opacity: 0;
+  translate: 0 14px;
+}
+
+.storybook__finale.is-visible .storybook__finale-content > * {
+  opacity: 1;
+  translate: 0 0;
+  transition: opacity 720ms ease, translate 720ms cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.storybook__finale.is-visible .storybook__finale-content > :nth-child(1) { transition-delay: 100ms; }
+.storybook__finale.is-visible .storybook__finale-content > :nth-child(2) { transition-delay: 220ms; }
+.storybook__finale.is-visible .storybook__finale-content > :nth-child(3) { transition-delay: 370ms; }
+.storybook__finale.is-visible .storybook__finale-content > :nth-child(4) { transition-delay: 540ms; }
+.storybook__finale.is-visible .storybook__finale-content > :nth-child(5) { transition-delay: 640ms; }
+.storybook.has-scene-reveals .storybook__finale:not(.is-visible) .storybook__finale-spark,
+.storybook.has-scene-reveals .storybook__finale:not(.is-visible) .storybook__finale-ghost,
+.storybook.has-scene-reveals .storybook__finale:not(.is-visible) .storybook__finale-bat,
+.storybook.has-scene-reveals .storybook__finale:not(.is-visible) .storybook__finale-pumpkin {
+  opacity: 0;
+}
+
+.storybook__finale.is-visible .storybook__finale-spark,
+.storybook__finale.is-visible .storybook__finale-ghost,
+.storybook__finale.is-visible .storybook__finale-bat,
+.storybook__finale.is-visible .storybook__finale-pumpkin {
+  opacity: 1;
+  transition: opacity 900ms ease 250ms;
+}
+
+.storybook__finale-bat {
+  top: 20%;
+  left: 12%;
+  width: clamp(54px, 7vw, 88px);
+  opacity: 0.83;
+  filter: drop-shadow(0 4px 10px rgba(105, 83, 150, 0.24));
+  animation: storybook-bat-drift 9s ease-in-out infinite;
+}
+
+.storybook__finale-pumpkin {
+  right: 9%;
+  bottom: 8%;
+  width: clamp(66px, 8vw, 104px);
+  filter: drop-shadow(0 0 19px rgba(255, 176, 91, 0.65));
+  animation: storybook-pumpkin-bob 5.5s ease-in-out infinite;
 }
 
 .storybook__decoration {
@@ -1799,11 +2395,41 @@ h1.typing-done .typing-line:last-child::after {
   transition-delay: 210ms;
 }
 
-@keyframes storybook-character-drift {
-  0%,
-  100% { translate: 0 0; }
-  50% { translate: 0 -8px; }
+.storybook.has-scene-reveals .storybook__scene:not(.is-visible) .storybook__visual {
+  opacity: 0;
+  transform: scale(0.965) translateX(-18px);
 }
+
+.storybook.has-scene-reveals .storybook__scene:nth-child(even):not(.is-visible) .storybook__visual {
+  transform: scale(0.965) translateX(18px);
+}
+
+.storybook__scene .storybook__visual {
+  opacity: 1;
+  transform: none;
+  transition: opacity 850ms ease 100ms, transform 850ms cubic-bezier(0.2, 0.75, 0.25, 1) 100ms;
+}
+
+.storybook__scene .storybook__copy > * {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.storybook.has-scene-reveals .storybook__scene:not(.is-visible) .storybook__copy > * {
+  opacity: 0;
+  translate: 0 12px;
+}
+
+.storybook__scene.is-visible .storybook__copy > * {
+  opacity: 1;
+  translate: 0 0;
+  transition: opacity 650ms ease, translate 650ms cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.storybook__scene.is-visible .storybook__copy > :nth-child(1) { transition-delay: 220ms; }
+.storybook__scene.is-visible .storybook__copy > :nth-child(2) { transition-delay: 340ms; }
+.storybook__scene.is-visible .storybook__copy > :nth-child(3) { transition-delay: 470ms; }
+.storybook__scene.is-visible .storybook__copy > :nth-child(4) { transition-delay: 590ms; }
 
 @keyframes storybook-ghost-drift {
   0%,
@@ -1829,13 +2455,80 @@ h1.typing-done .typing-line:last-child::after {
   50% { opacity: 1; scale: 1.1; }
 }
 
+@keyframes storybook-portal-breathe {
+  0%,
+  100% { opacity: 0.75; scale: 0.97 1; }
+  50% { opacity: 1; scale: 1.03 1.02; }
+}
+
+@keyframes storybook-portal-turn {
+  to { rotate: 1turn; }
+}
+
+@keyframes storybook-path-glide {
+  0%,
+  100% { translate: 0 5px; opacity: 0.35; }
+  50% { translate: 13px -8px; opacity: 1; }
+}
+
+@keyframes storybook-finale-glow {
+  0%,
+  100% { box-shadow: 0 0 34px rgba(255, 232, 163, 0.58), 0 0 104px rgba(255, 232, 163, 0.43); }
+  50% { box-shadow: 0 0 45px rgba(255, 239, 192, 0.76), 0 0 128px rgba(255, 232, 163, 0.54); }
+}
+
+@keyframes storybook-cloud-drift {
+  from { translate: -9px 0; }
+  to { translate: 12px -8px; }
+}
+
+@keyframes storybook-trail-travel {
+  0% { left: 0; opacity: 0; }
+  18% { opacity: 1; }
+  82% { opacity: 1; }
+  100% { left: calc(100% - 8px); opacity: 0; }
+}
+
+@keyframes storybook-finale-spark-drift {
+  0%,
+  100% { translate: 0 0; rotate: 0deg; }
+  50% { translate: 8px -12px; rotate: 12deg; }
+}
+
+@keyframes storybook-scroll-parallax {
+  from { translate: 0 20px; }
+  to { translate: 0 -20px; }
+}
+
+@supports (animation-timeline: view()) {
+  .storybook__scene-decor--spark {
+    animation-name: storybook-twinkle, storybook-scroll-parallax;
+    animation-duration: 3s, 1s;
+    animation-timing-function: ease-in-out, linear;
+    animation-iteration-count: infinite, 1;
+    animation-fill-mode: none, both;
+    animation-timeline: auto, view();
+    animation-range: normal, entry 0% exit 100%;
+  }
+
+  .storybook__finale-moon {
+    animation-name: storybook-finale-glow, storybook-scroll-parallax;
+    animation-duration: 7s, 1s;
+    animation-timing-function: ease-in-out, linear;
+    animation-iteration-count: infinite, 1;
+    animation-fill-mode: none, both;
+    animation-timeline: auto, view();
+    animation-range: normal, entry 0% exit 100%;
+  }
+}
+
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .storybook__visual:hover {
     transform: translateY(-5px);
     box-shadow: 0 30px 64px rgba(66, 51, 101, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.82);
   }
 
-  .storybook__visual:hover > img:not(.storybook__dream-character):not(.storybook__dream-ghost) {
+  .storybook__visual:hover > img:not(.storybook__dream-ghost) {
     transform: scale(1.035);
   }
 }
@@ -1916,18 +2609,43 @@ h1.typing-done .typing-line:last-child::after {
     border-radius: 18px 32px 18px 32px;
   }
 
-  .storybook__visual--friends > img {
-    width: 80% !important;
-    height: 88% !important;
+  .storybook__friend-light {
+    width: clamp(68px, 18vw, 104px);
   }
 
-  .storybook__dream-character {
-    width: 41%;
-    height: 75%;
+  .storybook__friend-light--abhay {
+    left: 16%;
   }
 
-  .storybook__dream-character--divyansh {
-    width: 50%;
+  .storybook__friend-light--divyansh {
+    right: 16%;
+  }
+
+  .storybook__friend-name {
+    font-size: 8px;
+    letter-spacing: 0.45px;
+  }
+
+  .storybook__halloween-moon {
+    width: 48px;
+  }
+
+  .storybook__scene-decor--pumpkin {
+    right: 6%;
+    bottom: 15%;
+    width: 59px;
+  }
+
+  .storybook__dream-gadget--lantern {
+    left: 22%;
+    bottom: 16%;
+    scale: 0.86;
+  }
+
+  .storybook__dream-gadget--wand {
+    right: 22%;
+    bottom: 20%;
+    scale: 0.88;
   }
 
   .storybook__dream-ghost {
@@ -1965,7 +2683,8 @@ h1.typing-done .typing-line:last-child::after {
 
   .storybook__decoration--ghost,
   .storybook__decoration--pumpkin,
-  .storybook__decoration--star-two {
+  .storybook__decoration--star-two,
+  .storybook__finale-bat {
     display: none;
   }
 
@@ -1975,8 +2694,67 @@ h1.typing-done .typing-line:last-child::after {
     width: 17px;
   }
 
-  .storybook__ending {
-    margin-top: 68px;
+  .storybook__path-spark {
+    display: none;
+  }
+
+  .storybook__finale {
+    min-height: 480px;
+    margin: 78px -18px -78px;
+    padding: 68px 18px 112px;
+  }
+
+  .storybook__finale-content {
+    width: min(100%, 420px);
+  }
+
+  .storybook__finale-content > p {
+    max-width: 390px;
+    margin-bottom: 21px;
+    font-size: clamp(30px, 8.5vw, 42px);
+    letter-spacing: -1px;
+  }
+
+  .storybook__finale-break {
+    display: initial;
+  }
+
+  .storybook__finale-moon {
+    top: 7%;
+    width: 86px;
+  }
+
+  .storybook__finale-trail {
+    top: 48%;
+    width: 88%;
+  }
+
+  .storybook__finale-pumpkin {
+    right: 8%;
+    bottom: 3%;
+    width: 78px;
+  }
+
+  .storybook__finale-ghost {
+    top: 13%;
+    right: 8%;
+    width: 40px;
+  }
+
+  .storybook__finale-spark--one {
+    top: 27%;
+    left: 9%;
+  }
+
+  .storybook__finale-spark--two {
+    top: 30%;
+    right: 9%;
+  }
+
+  .storybook__finale-footnote {
+    max-width: 250px;
+    font-size: 11px;
+    line-height: 1.5;
   }
 }
 
@@ -1992,5 +2770,24 @@ h1.typing-done .typing-line:last-child::after {
   .storybook.has-scene-reveals .story-reveal:not(.is-visible) {
     opacity: 1;
     translate: none;
+  }
+
+  .storybook.has-scene-reveals .storybook__scene:not(.is-visible) .storybook__visual,
+  .storybook.has-scene-reveals .storybook__scene:nth-child(even):not(.is-visible) .storybook__visual {
+    opacity: 1;
+    transform: none;
+  }
+
+  .storybook.has-scene-reveals .storybook__scene:not(.is-visible) .storybook__copy > *,
+  .storybook.has-scene-reveals .storybook__finale:not(.is-visible) .storybook__finale-content > * {
+    opacity: 1;
+    translate: none;
+  }
+
+  .storybook.has-scene-reveals .storybook__finale:not(.is-visible) .storybook__finale-spark,
+  .storybook.has-scene-reveals .storybook__finale:not(.is-visible) .storybook__finale-ghost,
+  .storybook.has-scene-reveals .storybook__finale:not(.is-visible) .storybook__finale-bat,
+  .storybook.has-scene-reveals .storybook__finale:not(.is-visible) .storybook__finale-pumpkin {
+    opacity: 1;
   }
 }

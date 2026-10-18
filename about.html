@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fffaf5" />
+    <meta
+      name="description"
+      content="Meet Abhay and Divyansh, the ORBIT-X friends who use a magical lamp and wand to help children feel safe in their dreams."
+    />
+    <title>Meet the Magic | ORBIT-X</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/about new page.css" />
+    <script src="js/about-script.js" defer></script>
+  </head>
+  <body>
+    <div class="page-frame" aria-hidden="true"></div>
+    <header class="navbar">
+      <a class="brand" href="index.html#home" aria-label="ORBIT-X home">
+        <svg class="brand-planet" viewBox="0 0 76 58" aria-hidden="true">
+          <ellipse
+            cx="36"
+            cy="29"
+            rx="30"
+            ry="11"
+            transform="rotate(-28 36 29)"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="4"
+          />
+          <circle cx="34" cy="28" r="15" fill="#bca0ef" />
+          <path
+            d="M22 18c5-7 13-9 20-7"
+            fill="none"
+            stroke="#fff8ff"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+          <path
+            d="m59 9 2 5 5 2-5 2-2 5-2-5-5-2 5-2z"
+            fill="#f8d889"
+          />
+        </svg>
+        <span>ORBIT-X</span>
+      </a>
+      <div class="nav-mascot" aria-hidden="true">
+        <img
+          class="nav-sparkle"
+          src="Assets/img/icons/sparkle-yellow.svg"
+          alt=""
+          width="34"
+          height="34"
+        />
+      </div>
+      <nav class="nav-links" id="primary-navigation" aria-label="Main navigation">
+        <a href="index.html#home">Home</a>
+        <a class="active" href="about.html" aria-current="page">About</a>
+        <a href="Exploration.html">Exploration</a>
+        <a href="stories/index.html">Stories</a>
+      </nav>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-controls="primary-navigation"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <main class="about-page" id="home">
+      <section class="about-hero shell" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="section-kicker">A LITTLE MAGIC AFTER DARK</p>
+          <h1 id="hero-title" class="hero-title">
+            <span class="hero-title-line hero-title-line-one">Not every</span>
+            <span class="hero-title-line hero-title-line-two">ghost is here</span>
+            <span class="hero-title-line hero-title-line-three">to scare.</span>
+          </h1>
+          <p class="hero-lede">
+            Some magic is mischievous. Some magic protects. And some helps
+            little dreamers find their way back to the light.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary hero-primary-button" href="#duo">
+              <span>Meet the dream team</span>
+              <span class="hero-button-icon" aria-hidden="true">↓</span>
+            </a>
+            <a class="hero-text-link" href="#gadgets">
+              Discover their gadgets <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <p class="hero-note">
+            <img src="Assets/img/icons/sparkle-lavender.svg" alt="" />
+            Two friends. Three magical missions.
+          </p>
+        </div>
+
+        <div class="hero-stage" aria-label="Abhay and Divyansh, ready for a magical adventure">
+          <span class="hero-orbit hero-orbit-one" aria-hidden="true"></span>
+          <span class="hero-orbit hero-orbit-two" aria-hidden="true"></span>
+          <span class="hero-moon" aria-hidden="true"></span>
+          <button
+            class="character-swap hero-character hero-character-abhay"
+            type="button"
+            data-character-swap
+            data-character-name="Abhay"
+            data-gadget-name="magical lantern"
+            aria-label="Abhay. Hover or activate to see his magical lantern."
+            aria-pressed="false"
+          >
+            <img
+              class="swap-image swap-image-solo"
+              src="Assets/img/abhay bg solo.png"
+              alt="Abhay in his yellow and black outfit"
+              width="500"
+              height="650"
+              fetchpriority="high"
+            />
+            <img
+              class="swap-image swap-image-gadget"
+              src="Assets/img/solo gadget abhay.png"
+              alt="Abhay holding his magical lantern"
+              width="444"
+              height="615"
+              aria-hidden="true"
+              fetchpriority="high"
+            />
+          </button>
+          <button
+            class="character-swap hero-character hero-character-divyansh"
+            type="button"
+            data-character-swap
+            data-character-name="Divyansh"
+            data-gadget-name="magical twisted wand"
+            aria-label="Divyansh. Hover or activate to see his magical twisted wand."
+            aria-pressed="false"
+          >
+            <img
+              class="swap-image swap-image-solo"
+              src="Assets/img/DivyanshSolo.png"
+              alt="Divyansh in his white and black outfit"
+              width="500"
+              height="650"
+              fetchpriority="high"
+            />
+            <img
+              class="swap-image swap-image-gadget"
+              src="Assets/img/solo gadget divyansh.png"
+              alt="Divyansh holding his magical twisted wand"
+              width="500"
+              height="700"
+              aria-hidden="true"
+              fetchpriority="high"
+            />
+          </button>
+          <img
+            class="hero-decoration hero-bat hero-bat-one"
+            src="Assets/img/icons/bat trans.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <img
+            class="hero-decoration hero-bat hero-bat-two"
+            src="Assets/img/icons/bat trans.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <img
+            class="hero-decoration hero-ghost"
+            src="Assets/img/icons/ghost trans.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <img
+            class="hero-decoration hero-pumpkin"
+            src="Assets/img/icons/pumpkin trans.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <span class="hero-caption">THE KEEPERS OF DREAMLAND</span>
+          <span class="hero-tag hero-tag-lantern">
+            <img src="Assets/img/icons/sparkle-yellow.svg" alt="" />
+            Lantern of discovery
+          </span>
+          <span class="hero-tag hero-tag-wand">
+            <img src="Assets/img/icons/sparkle-lavender.svg" alt="" />
+            Wand of purification
+          </span>
+        </div>
+        <img
+          class="about-web about-web-left"
+          src="Assets/img/icons/spider-web-corner.svg"
+          alt=""
+          aria-hidden="true"
+        />
+        <img
+          class="about-web about-web-right"
+          src="Assets/img/icons/spider-web-corner.svg"
+          alt=""
+          aria-hidden="true"
+        />
+        <span class="hanging-spider hanging-spider-left" aria-hidden="true">
+          <span class="hanging-spider-swing">
+            <img src="Assets/img/icons/spider-cute.svg" alt="" />
+          </span>
+        </span>
+        <span class="hanging-spider hanging-spider-right" aria-hidden="true">
+          <span class="hanging-spider-swing">
+            <img src="Assets/img/icons/spider-cute.svg" alt="" />
+          </span>
+        </span>
+        <a class="scroll-cue" href="#duo">
+          <span aria-hidden="true">↓</span> SCROLL TO DISCOVER
+        </a>
+      </section>
+
+      <div class="about-intro shell reveal">
+        <span class="intro-sparkle" aria-hidden="true">✧</span>
+        <p>
+          Every Halloween has a little mischief.
+          <strong>Every child deserves a little magic.</strong>
+        </p>
+        <img src="Assets/img/icons/ghost-cute.svg" alt="" aria-hidden="true" />
+      </div>
+
+      <section class="about-section shell" id="duo" aria-labelledby="duo-title">
+        <header class="section-heading reveal">
+          <p class="section-kicker">THE FRIENDS BEHIND THE MAGIC</p>
+          <h2 id="duo-title">Meet the <span>otherworldly</span> duo.</h2>
+          <p>
+            Different powers. One very important promise: no child should have
+            to face their fears alone.
+          </p>
+        </header>
+
+        <div class="character-grid">
+          <article class="character-card abhay-card reveal">
+            <div class="character-art">
+              <span class="character-halo" aria-hidden="true"></span>
+              <button
+                class="character-swap character-portrait"
+                type="button"
+                data-character-swap
+                data-character-name="Abhay"
+                data-gadget-name="magical lantern"
+                aria-label="Abhay, the brave Ghost Seeker. Hover or activate to see his magical lantern."
+                aria-pressed="false"
+              >
+                <img
+                  class="swap-image swap-image-solo"
+                  src="Assets/img/abhay bg solo.png"
+                  alt="Abhay, the brave Ghost Seeker"
+                  width="500"
+                  height="650"
+                  loading="lazy"
+                />
+                <img
+                  class="swap-image swap-image-gadget"
+                  src="Assets/img/solo gadget abhay.png"
+                  alt="Abhay holding his magical lantern"
+                  width="444"
+                  height="615"
+                  aria-hidden="true"
+                  loading="lazy"
+                />
+              </button>
+              <img
+                class="character-sparkle"
+                src="Assets/img/icons/sparkle-yellow.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <span class="character-role">THE LIGHT FINDER</span>
+            </div>
+            <div class="character-copy">
+              <p class="character-number">01 / THE DETECTOR</p>
+              <h3>Abhay <span aria-hidden="true">✦</span></h3>
+              <p class="character-quote">“If it’s hiding in the shadows, I’ll find it.”</p>
+              <p>
+                Curious, brave, and always ready to investigate, Abhay uses his
+                magical lamp to reveal hidden ghosts and light the way through
+                the unknown.
+              </p>
+              <div class="character-traits" aria-label="Abhay's qualities">
+                <span>✧ Curious</span>
+                <span>☼ Brave</span>
+                <span>✦ Watchful</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="character-card divyansh-card reveal">
+            <div class="character-art">
+              <span class="character-halo" aria-hidden="true"></span>
+              <button
+                class="character-swap character-portrait"
+                type="button"
+                data-character-swap
+                data-character-name="Divyansh"
+                data-gadget-name="magical twisted wand"
+                aria-label="Divyansh, the gentle Dream Guardian. Hover or activate to see his magical twisted wand."
+                aria-pressed="false"
+              >
+                <img
+                  class="swap-image swap-image-solo"
+                  src="Assets/img/DivyanshSolo.png"
+                  alt="Divyansh, the gentle Dream Guardian"
+                  width="500"
+                  height="650"
+                  loading="lazy"
+                />
+                <img
+                  class="swap-image swap-image-gadget"
+                  src="Assets/img/solo gadget divyansh.png"
+                  alt="Divyansh holding his magical twisted wand"
+                  width="500"
+                  height="700"
+                  aria-hidden="true"
+                  loading="lazy"
+                />
+              </button>
+              <img
+                class="character-sparkle"
+                src="Assets/img/icons/sparkle-lavender.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <span class="character-role">THE DREAM GUARDIAN</span>
+            </div>
+            <div class="character-copy">
+              <p class="character-number">02 / THE PURIFIER</p>
+              <h3>Divyansh <span aria-hidden="true">✧</span></h3>
+              <p class="character-quote">“Even a scary dream can find its light.”</p>
+              <p>
+                Calm, clever, and compassionate, Divyansh channels gentle magic
+                through his twisted wand to purify restless ghosts and guide
+                children out of frightening dreams.
+              </p>
+              <div class="character-traits" aria-label="Divyansh's qualities">
+                <span>✧ Thoughtful</span>
+                <span>☾ Steady</span>
+                <span>✦ Kind</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="mission-section" id="missions" aria-labelledby="missions-title">
+        <div class="shell">
+          <header class="section-heading section-heading-centered reveal">
+            <p class="section-kicker">THREE MISSIONS. ONE BIG HEART.</p>
+            <h2 id="missions-title">
+              Spooky when needed.<br />
+              <span>Gentle where it matters.</span>
+            </h2>
+            <p>
+              Their magic has three jobs—and every one begins with caring about
+              children.
+            </p>
+          </header>
+
+          <div class="mission-grid">
+            <article class="mission-card reveal">
+              <div class="mission-visual">
+                <img
+                  src="Assets/img/HalloweenHelpers.jpeg"
+                  alt="Abhay and Divyansh on a softly glowing Halloween street"
+                  width="1024"
+                  height="575"
+                  loading="lazy"
+                />
+                <span class="mission-icon mission-icon-pumpkin" aria-hidden="true">
+                  <img src="Assets/img/icons/pumpkin-cute.svg" alt="" />
+                </span>
+              </div>
+              <p class="mission-number">MISSION 01</p>
+              <h3>A little Halloween mischief</h3>
+              <p>
+                When someone forgets to share treats with children, the friends
+                play a harmless magical trick—a reminder that Halloween is
+                about kindness and fun.
+              </p>
+              <span class="mission-motto">TRICK WITH A HEART</span>
+            </article>
+
+            <article class="mission-card reveal">
+              <div class="mission-visual">
+                <img
+                  src="Assets/img/SpiritPurification.jpeg"
+                  alt="The friends using magical light and a wand to purify a ghost"
+                  width="1024"
+                  height="575"
+                  loading="lazy"
+                />
+                <span class="mission-icon mission-icon-ghost" aria-hidden="true">
+                  <img src="Assets/img/icons/ghost-cute.svg" alt="" />
+                </span>
+              </div>
+              <p class="mission-number">MISSION 02</p>
+              <h3>Make restless ghosts friendly</h3>
+              <p>
+                Abhay’s lamp finds hidden spirits. Divyansh’s wand gently
+                purifies them and helps bring a little peace back to the night.
+              </p>
+              <span class="mission-motto">LIGHT OVER FEAR</span>
+            </article>
+
+            <article class="mission-card reveal">
+              <div class="mission-visual">
+                <img
+                  src="Assets/img/NightmarePprotector.jpeg"
+                  alt="Abhay and Divyansh setting out to help a child through a nightmare"
+                  width="1024"
+                  height="575"
+                  loading="lazy"
+                />
+                <span class="mission-icon mission-icon-dream" aria-hidden="true">
+                  <img src="Assets/img/icons/sparkle-lavender.svg" alt="" />
+                </span>
+              </div>
+              <p class="mission-number">MISSION 03</p>
+              <h3>Rescue little dreamers</h3>
+              <p>
+                When a child’s dream turns frightening, the duo helps them find
+                courage, comfort, and a safe way back to peaceful sleep.
+              </p>
+              <span class="mission-motto">DREAMS, MADE SAFER</span>
+            </article>
+          </div>
+          <img
+            class="mission-decoration mission-bat"
+            src="Assets/img/icons/bat trans.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <img
+            class="mission-decoration mission-ghost"
+            src="Assets/img/icons/ghost trans.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <img
+            class="mission-decoration mission-pumpkin"
+            src="Assets/img/icons/pumpkin trans.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <img
+            class="mission-decoration mission-spider"
+            src="Assets/img/icons/spider-cute.svg"
+            alt=""
+            aria-hidden="true"
+          />
+          <img
+            class="mission-decoration mission-web"
+            src="Assets/img/icons/spider-web-corner.svg"
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+      </section>
+
+      <section class="about-section gadget-section shell" id="gadgets" aria-labelledby="gadgets-title">
+        <img
+          class="gadget-decoration gadget-ghost-decoration"
+          src="Assets/img/icons/ghost trans.png"
+          alt=""
+          aria-hidden="true"
+        />
+        <img
+          class="gadget-decoration gadget-pumpkin-decoration"
+          src="Assets/img/icons/pumpkin trans.png"
+          alt=""
+          aria-hidden="true"
+        />
+        <img
+          class="gadget-web gadget-web-left"
+          src="Assets/img/icons/spider-web-corner.svg"
+          alt=""
+          aria-hidden="true"
+        />
+        <header class="section-heading reveal">
+          <p class="section-kicker">A LITTLE TOOLBOX OF WONDER</p>
+          <h2 id="gadgets-title">Magic has its <span>instruments.</span></h2>
+          <p>
+            Each gadget has its own purpose. Together, they turn a scary
+            unknown into a gentle path forward.
+          </p>
+        </header>
+
+        <div class="gadget-grid">
+          <article class="gadget-card gadget-card-lantern reveal">
+            <div class="gadget-art">
+              <span class="gadget-aura" aria-hidden="true"></span>
+              <span class="gadget-orbit" aria-hidden="true"></span>
+              <img
+                src="Assets/img/solo gadget abhay.png"
+                alt="Abhay holding the warm, glowing Ghostlight Lantern"
+                width="600"
+                height="700"
+                loading="lazy"
+              />
+              <img
+                class="gadget-ghost"
+                src="Assets/img/icons/ghost-cute.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </div>
+            <div class="gadget-copy">
+              <p class="gadget-number">01 · REVEAL &amp; FIND THE WAY</p>
+              <h3>The Ghostlight Lantern</h3>
+              <p>
+                Abhay’s lantern sees what ordinary eyes cannot. Its golden
+                light reveals hidden ghosts, shows when magic is near, and
+                lights a path through shadowy places.
+              </p>
+              <ul>
+                <li>Reveals spirits hiding from view</li>
+                <li>Lights uncertain paths</li>
+                <li>Helps the friends understand what needs help</li>
+              </ul>
+              <span class="gadget-signature">
+                <img src="Assets/img/icons/sparkle-yellow.svg" alt="" />
+                Abhay’s signature gadget
+              </span>
+            </div>
+          </article>
+
+          <article class="gadget-card gadget-card-wand reveal">
+            <div class="gadget-art">
+              <span class="gadget-aura" aria-hidden="true"></span>
+              <span class="gadget-orbit" aria-hidden="true"></span>
+              <img
+                src="Assets/img/solo gadget divyansh.png"
+                alt="Divyansh holding his magical twisted purification wand"
+                width="600"
+                height="700"
+                loading="lazy"
+              />
+              <img
+                class="gadget-sparkle"
+                src="Assets/img/icons/sparkle-lavender.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </div>
+            <div class="gadget-copy">
+              <p class="gadget-number">02 · PURIFY &amp; GUIDE</p>
+              <h3>The Dreamweaver Wand</h3>
+              <p>
+                Divyansh’s twisted wand focuses calm, caring magic. It purifies
+                troubled ghosts and helps open a safe route through a child’s
+                dream world.
+              </p>
+              <ul>
+                <li>Turns restless spirits gentle and friendly</li>
+                <li>Guides the friends through dream journeys</li>
+                <li>Helps little dreamers meet fear with courage</li>
+              </ul>
+              <span class="gadget-signature">
+                <img src="Assets/img/icons/sparkle-lavender.svg" alt="" />
+                Divyansh’s signature gadget
+              </span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="promise-section shell reveal" aria-labelledby="promise-title">
+        <div class="promise-art">
+          <img
+            src="Assets/img/TogetherNoBg.png"
+            alt="Abhay and Divyansh sharing a magical moment together"
+            width="640"
+            height="480"
+            loading="lazy"
+          />
+          <img
+            class="promise-pumpkin"
+            src="Assets/img/icons/pumpkin-cute.svg"
+            alt=""
+            aria-hidden="true"
+          />
+          <img
+            class="promise-ghost"
+            src="Assets/img/icons/ghost trans.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <img
+            class="promise-bat"
+            src="Assets/img/icons/bat trans.png"
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+        <div class="promise-copy">
+          <p class="section-kicker">THE PROMISE OF ORBIT-X</p>
+          <h2 id="promise-title">
+            Because every child deserves a <span>dream without fear.</span>
+          </h2>
+          <p>
+            One lamp to find the way. One wand to make it safe. Two friends who
+            never leave a little dreamer behind.
+          </p>
+          <a class="button button-primary" href="stories/index.html">
+            Explore their stories <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="about-footer">
+      <a class="brand" href="index.html#home" aria-label="ORBIT-X home">
+        <svg class="brand-planet" viewBox="0 0 76 58" aria-hidden="true">
+          <ellipse
+            cx="36"
+            cy="29"
+            rx="30"
+            ry="11"
+            transform="rotate(-28 36 29)"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="4"
+          />
+          <circle cx="34" cy="28" r="15" fill="#bca0ef" />
+          <path
+            d="M22 18c5-7 13-9 20-7"
+            fill="none"
+            stroke="#fff8ff"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+          <path
+            d="m59 9 2 5 5 2-5 2-2 5-2-5-5-2 5-2z"
+            fill="#f8d889"
+          />
+        </svg>
+        <span>ORBIT-X</span>
+      </a>
+      <p>Two friends. One magical universe.</p>
+      <a href="index.html#about">Back to the homepage <span aria-hidden="true">↑</span></a>
+    </footer>
+  </body>
+</html>
