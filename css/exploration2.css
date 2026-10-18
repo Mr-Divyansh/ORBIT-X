@@ -84,6 +84,21 @@
 .story-art > img:first-child { width: clamp(90px, 12vw, 150px); height: auto; object-fit: contain; filter: drop-shadow(0 12px 18px rgba(40, 27, 61, .25)); transition: transform 260ms ease; }
 .story-card:hover .story-art > img:first-child { transform: translateY(-6px) scale(1.05); }
 .story-sparkle { position: absolute; top: 16px; right: 18px; animation: exp-twinkle 2.6s ease-in-out infinite; }
+
+/* --- story card artwork: full-bleed cover --- */
+.story-art > img.story-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: none;
+}
+.story-card:hover .story-art > img.story-photo {
+  transform: scale(1.06);
+}
+.story-sparkle { z-index: 2; }
 .story-body { display: flex; flex-direction: column; gap: 10px; padding: 22px 24px 24px; flex: 1; }
 .story-no { font-size: 11px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; color: var(--purple-deep); background: var(--paper-mist); padding: 6px 12px; border-radius: 999px; width: fit-content; }
 .story-body h3 { margin: 2px 0 0; font-size: 22px; letter-spacing: -.5px; line-height: 1.18; }
@@ -119,6 +134,3 @@
   .project-card:hover, .story-card:hover, .exp-hero-art img, .exp-intro-friends img, .story-sparkle { transform: none !important; translate: none !important; }
   .story-read:hover, .button:hover, .project-action:hover { transform: none !important; }
 }
-
-
-
