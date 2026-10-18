@@ -947,7 +947,7 @@
 /* Magical closing footer */
 
 .orbit-footer {
-  --footer-ink: var(--about-text);
+  --footer-ink: var(--about-text, #39364F);
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -1172,10 +1172,13 @@
   text-decoration: none;
 }
 
-.orbit-footer__logo svg {
+.orbit-footer__logo-img {
   width: 48px;
-  height: 38px;
-  color: #8c6cc8;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid rgba(140, 108, 200, 0.35);
+  box-shadow: 0 6px 14px rgba(101, 72, 163, 0.22);
 }
 
 .orbit-footer__logo span {
