@@ -40,11 +40,33 @@
 .exp-intro-friends img:first-child { animation: exp-float 5s ease-in-out infinite; }
 .exp-intro-friends img:last-child { animation: exp-float 5s ease-in-out infinite 1.2s; }
 
-/* --- photo treatment for real artwork --- */
-.project-photo { object-fit: cover; width: 100%; height: 100%; }
-.project-visual { aspect-ratio: 16 / 9; }
-.project-visual .project-image { max-width: 76%; max-height: 88%; object-fit: contain; }
-.project-visual .project-photo { max-width: none; max-height: none; border-radius: 0; }
+/* --- photo treatment for real artwork: full-bleed cover --- */
+.project-photo {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.project-visual {
+  aspect-ratio: 16 / 9;
+  padding: 0;
+}
+.project-visual .project-image {
+  max-width: 76%;
+  max-height: 88%;
+  object-fit: contain;
+}
+.project-visual .project-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0;
+  filter: none;
+}
 
 /* --- Stories section --- */
 .exp-stories { margin-top: clamp(56px, 8vw, 96px); }
