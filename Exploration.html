@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/exploration.css" />
+  <link rel="stylesheet" href="css/exploration2.css" />
 </head>
 <body>
   <div class="page-frame" aria-hidden="true"></div>
@@ -34,6 +35,27 @@
     <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
   </header>
   <section class="exploration-page" aria-labelledby="exp-title">
+    <section class="exp-hero" aria-labelledby="exp-hero-title">
+      <div class="exp-hero-copy">
+        <p class="section-kicker">EXPLORATION</p>
+        <h1 id="exp-hero-title">Step Into Our <span class="accent">Magical World</span></h1>
+        <p class="exp-hero-sub">Two friends, three missions, endless stories — kindness on Halloween night, rescues inside dreams, and friendly ghosts finding peace.</p>
+        <div class="exp-hero-actions">
+          <a class="button button-primary" href="#projects">View My Projects <span aria-hidden="true">→</span></a>
+          <a class="button button-secondary" href="#stories">Read Stories</a>
+        </div>
+        <ul class="exp-hero-stats" aria-label="Exploration highlights">
+          <li><strong>3</strong><span>Missions</span></li>
+          <li><strong>3</strong><span>Stories</span></li>
+          <li><strong>2</strong><span>Friends</span></li>
+        </ul>
+      </div>
+      <figure class="exp-hero-art">
+        <div class="exp-hero-glow" aria-hidden="true"></div>
+        <img src="Assets/img/HalloweenHelpers.jpeg" alt="Abhay and Divyansh on a Halloween street with pumpkins, friendly ghosts, a lantern and a magic staff" width="640" height="360" fetchpriority="high" />
+        <figcaption>Halloween night — our friends light the way.</figcaption>
+      </figure>
+    </section>
     <img class="exp-deco exp-web exp-web-left" src="Assets/img/icons/spider-web-corner.svg" alt="" aria-hidden="true" />
     <img class="exp-deco exp-web exp-web-right" src="Assets/img/icons/spider-web-corner.svg" alt="" aria-hidden="true" />
     <span class="exp-deco exp-spider" aria-hidden="true"><span class="exp-spider-swing"><img src="Assets/img/icons/spider-cute.svg" alt="" /></span></span>
@@ -44,55 +66,108 @@
     <span class="exp-deco exp-sparkle exp-sparkle-two" aria-hidden="true"><img src="Assets/img/icons/sparkle-yellow.svg" alt="" /></span>
     <img class="exp-deco exp-pumpkin" src="Assets/img/icons/pumpkin trans.png" alt="" aria-hidden="true" />
     <div class="exploration-container">
-      <header class="exp-heading">
-        <p class="section-kicker">EXPLORATION</p>
-        <h1 id="exp-title">My <span class="accent">Projects</span></h1>
-        <p class="exp-subtitle">Missions and adventures of our two friends — small acts of kindness, dream rescues, and friendly ghost tales.</p>
-      </header>
-      <div class="projects-grid">
-        <article class="project-card project-halloween">
+      <section class="exp-intro" aria-labelledby="exp-title">
+        <div class="exp-intro-friends" aria-label="Meet the friends">
+          <img src="Assets/img/DivyanshSolo.png" alt="Divyansh, the idea-guy storyteller in white and black" width="120" height="140" loading="lazy" />
+          <img src="Assets/img/AbhaySolo.png" alt="Abhay, the curious explorer in yellow and black hoodie" width="120" height="140" loading="lazy" />
+        </div>
+        <header class="exp-heading">
+          <p class="section-kicker">MY PROJECTS</p>
+          <h2 id="exp-title">My <span class="accent">Projects</span></h2>
+          <p class="exp-subtitle">Missions and adventures of our two friends — small acts of kindness, dream rescues, and friendly ghost tales.</p>
+        </header>
+      </section>
+      <div class="projects-grid" id="projects">
+        <article class="project-card project-halloween" data-project="halloween">
           <div class="project-visual">
             <div class="project-halo" aria-hidden="true"></div>
-            <img class="project-image" src="Assets/img/icons/pumpkin trans.png" alt="Friendly pumpkin for Halloween Helpers" width="240" height="170" />
+            <img class="project-image project-photo" src="Assets/img/HalloweenHelpers.jpeg" alt="Abhay and Divyansh on a Halloween street with pumpkins and friendly ghosts" width="400" height="225" loading="lazy" />
             <img class="mini mini-one" src="Assets/img/icons/sparkle-yellow.svg" alt="" aria-hidden="true" />
           </div>
           <div class="project-body">
             <div class="project-meta"><span class="project-no">01</span><span class="project-tag">Kindness Mission</span></div>
-            <h2>Halloween Helpers</h2>
+            <h3>Halloween Helpers</h3>
             <p>Every child deserves a little Halloween magic. Help us bring costumes, treats, and kindness to those left out.</p>
             <ul class="project-points"><li>Costumes for kids who cannot afford one</li><li>Treats for streets that get skipped</li><li>Standing with bullied or excluded kids</li></ul>
-            <span class="project-action">Explore Project <span aria-hidden="true">→</span></span>
+            <button class="project-action" type="button" data-open-project="halloween">View More Details <span aria-hidden="true">→</span></button>
           </div>
         </article>
-        <article class="project-card project-dream">
+        <article class="project-card project-dream" data-project="dream">
           <div class="project-visual">
             <div class="project-halo" aria-hidden="true"></div>
-            <img class="project-image" src="Assets/img/TogetherNoBg.png" alt="The two friends as dream guardians" width="240" height="170" />
+            <img class="project-image" src="Assets/img/TogetherNoBg.png" alt="The two friends as dream guardians" width="240" height="170" loading="lazy" />
             <img class="mini mini-one" src="Assets/img/icons/sparkle-lavender.svg" alt="" aria-hidden="true" />
           </div>
           <div class="project-body">
             <div class="project-meta"><span class="project-no">02</span><span class="project-tag">Hexa Baby Universe</span></div>
-            <h2>Hexa Baby: Dream Guardians</h2>
+            <h3>Hexa Baby: Dream Guardians</h3>
             <p>When nightmares trap little dreamers, our guardians step inside to guide them out and help turn fear into happier dreams.</p>
             <ul class="project-points"><li>Enter nightmares through star portals</li><li>Guide kids out of scary dream worlds</li><li>Replace fear with safe, cozy dreams</li></ul>
-            <span class="project-action">Discover Mission <span aria-hidden="true">→</span></span>
+            <button class="project-action" type="button" data-open-project="dream">View More Details <span aria-hidden="true">→</span></button>
           </div>
         </article>
-        <article class="project-card project-ghost">
+        <article class="project-card project-ghost" data-project="ghost">
           <div class="project-visual">
             <div class="project-halo" aria-hidden="true"></div>
-            <img class="project-image" src="Assets/img/icons/ghost trans.png" alt="Friendly wandering ghost" width="240" height="170" />
+            <img class="project-image" src="Assets/img/icons/ghost trans.png" alt="Friendly wandering ghost" width="240" height="170" loading="lazy" />
             <img class="mini mini-one" src="Assets/img/icons/sparkle-pink.svg" alt="" aria-hidden="true" />
           </div>
           <div class="project-body">
             <div class="project-meta"><span class="project-no">03</span><span class="project-tag">Spirit Mission</span></div>
-            <h2>Ghost Catchers: Spirit Purification</h2>
+            <h3>Ghost Catchers: Spirit Purification</h3>
             <p>Track down wandering spirits, capture them with magical tools, and purify their energy to help them finally find peace.</p>
             <ul class="project-points"><li>Find ghosts stuck between worlds</li><li>Capture gently — never to harm</li><li>Purify and release them peacefully</li></ul>
-            <span class="project-action">Explore Project <span aria-hidden="true">→</span></span>
+            <button class="project-action" type="button" data-open-project="ghost">View More Details <span aria-hidden="true">→</span></button>
           </div>
         </article>
       </div>
+
+      <section class="exp-stories" id="stories" aria-labelledby="stories-title">
+        <header class="exp-heading">
+          <p class="section-kicker">STORIES</p>
+          <h2 id="stories-title">Tales From Our <span class="accent">Little Universe</span></h2>
+          <p class="exp-subtitle">Three bedtime-sized adventures written for our world — pick one and enter Story Mode.</p>
+        </header>
+        <div class="stories-grid">
+          <article class="story-card story-lantern">
+            <div class="story-art" aria-hidden="true">
+              <img src="Assets/img/icons/pumpkin trans.png" alt="" width="150" height="120" loading="lazy" />
+              <img class="story-sparkle" src="Assets/img/icons/sparkle-yellow.svg" alt="" width="26" height="26" loading="lazy" />
+            </div>
+            <div class="story-body">
+              <span class="story-no">Story 01</span>
+              <h3>The Halloween Lantern</h3>
+              <p>Abhay and Divyansh set out on Halloween night to light a lantern for every doorstep that has gone dark.</p>
+              <button class="story-read" type="button" data-open-story="lantern">Enter Story Mode <span aria-hidden="true">→</span></button>
+            </div>
+          </article>
+          <article class="story-card story-dream">
+            <div class="story-art" aria-hidden="true">
+              <img src="Assets/img/TogetherNoBg.png" alt="" width="150" height="120" loading="lazy" />
+              <img class="story-sparkle" src="Assets/img/icons/sparkle-lavender.svg" alt="" width="26" height="26" loading="lazy" />
+            </div>
+            <div class="story-body">
+              <span class="story-no">Story 02</span>
+              <h3>The Dream Beyond the Shadows</h3>
+              <p>A little dreamer stops sleeping, so the guardians slip through a star portal to bring the light back.</p>
+              <button class="story-read" type="button" data-open-story="shadows">Enter Story Mode <span aria-hidden="true">→</span></button>
+            </div>
+          </article>
+          <article class="story-card story-ghost">
+            <div class="story-art" aria-hidden="true">
+              <img src="Assets/img/icons/ghost trans.png" alt="" width="150" height="120" loading="lazy" />
+              <img class="story-sparkle" src="Assets/img/icons/sparkle-pink.svg" alt="" width="26" height="26" loading="lazy" />
+            </div>
+            <div class="story-body">
+              <span class="story-no">Story 03</span>
+              <h3>The Last Wandering Ghost</h3>
+              <p>One ghost has wandered the old town for a hundred years — and two friends decide to help him rest.</p>
+              <button class="story-read" type="button" data-open-story="wandering">Enter Story Mode <span aria-hidden="true">→</span></button>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <footer class="exp-ending">
         <h2>Two Friends. Endless Missions.</h2>
         <p>More stories and games are coming soon — for now, these three adventures are our world.</p>
@@ -100,6 +175,43 @@
       </footer>
     </div>
   </section>
+
+  <dialog class="exp-dialog project-dialog" id="project-dialog" aria-labelledby="project-dialog-title">
+    <form method="dialog" class="dialog-close-form"><button class="dialog-close" aria-label="Close project details" value="close">✕</button></form>
+    <div class="dialog-scroll">
+      <div class="project-dialog-hero"><img id="project-dialog-image" src="" alt="" width="640" height="360" /></div>
+      <div class="dialog-meta"><span class="project-no" id="project-dialog-no">01</span><span class="project-tag" id="project-dialog-tag"></span></div>
+      <h2 id="project-dialog-title"></h2>
+      <section class="dialog-block"><h3>Mission</h3><p id="project-dialog-mission"></p></section>
+      <section class="dialog-block"><h3>Characters</h3><ul id="project-dialog-characters"></ul></section>
+      <section class="dialog-block"><h3>Objective</h3><p id="project-dialog-objective"></p></section>
+      <section class="dialog-block"><h3>Challenges</h3><ul id="project-dialog-challenges"></ul></section>
+      <button class="button button-primary dialog-back" type="button" data-close-dialog>← Back to Projects</button>
+    </div>
+  </dialog>
+
+  <dialog class="exp-dialog story-dialog" id="story-dialog" aria-labelledby="story-dialog-title">
+    <form method="dialog" class="dialog-close-form"><button class="dialog-close" aria-label="Close story" value="close">✕</button></form>
+    <div class="reader-topbar">
+      <div class="reader-titles"><span class="story-no" id="reader-story-no"></span><h2 id="story-dialog-title"></h2></div>
+      <div class="reader-progress" role="progressbar" aria-valuemin="1" aria-valuemax="1" aria-valuenow="1" aria-label="Reading progress">
+        <span class="reader-progress-bar" id="reader-progress-bar"></span>
+      </div>
+      <span class="reader-count" id="reader-count" aria-live="polite"></span>
+    </div>
+    <div class="reader-scene" id="reader-scene">
+      <img class="reader-art" id="reader-art" src="" alt="" width="640" height="300" />
+      <p class="scene-kicker" id="scene-kicker"></p>
+      <div class="scene-text" id="scene-text"></div>
+    </div>
+    <nav class="reader-nav" aria-label="Story scene navigation">
+      <button class="button button-secondary" id="scene-prev" type="button">← Previous</button>
+      <div class="scene-dots" id="scene-dots" aria-label="Jump to scene"></div>
+      <button class="button button-primary" id="scene-next" type="button">Next →</button>
+    </nav>
+    <p class="reader-hint">Tip: use ← and → keys to turn pages. Esc closes the story.</p>
+  </dialog>
+
   <script src="js/script.js"></script>
 </body>
 </html>
