@@ -1,11 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fffaf5" />
+  <title>ORBIT-X — Exploration: My Projects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/exploration.css" />
 </head>
 <body>
-<h1>Yaaa work</h1>
+  <div class="page-frame" aria-hidden="true"></div>
+  <header class="navbar">
+    <a class="brand" href="index.html#home" aria-label="Orbit-X home">
+      <svg class="brand-planet" viewBox="0 0 76 58" aria-hidden="true">
+        <ellipse cx="36" cy="29" rx="30" ry="11" transform="rotate(-28 36 29)" fill="none" stroke="currentColor" stroke-width="4" />
+        <circle cx="34" cy="28" r="15" fill="#bca0ef" />
+        <path d="M22 18c5-7 13-9 20-7" fill="none" stroke="#fff8ff" stroke-width="4" stroke-linecap="round" />
+        <path d="M59 9l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#f8d889" />
+      </svg>
+      <span>ORBIT-X</span>
+    </a>
+    <div class="nav-mascot" aria-hidden="true">
+      <img class="nav-sparkle" src="Assets/img/icons/sparkle-yellow.svg" alt="" width="17" height="17" />
+    </div>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a class="active" href="Exploration.html" aria-current="page">Exploration</a>
+    </nav>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  </header>
+  <section class="exploration-page" aria-labelledby="exp-title">
+    <img class="exp-deco exp-web exp-web-left" src="Assets/img/icons/spider-web-corner.svg" alt="" aria-hidden="true" />
+    <img class="exp-deco exp-web exp-web-right" src="Assets/img/icons/spider-web-corner.svg" alt="" aria-hidden="true" />
+    <span class="exp-deco exp-spider" aria-hidden="true"><span class="exp-spider-swing"><img src="Assets/img/icons/spider-cute.svg" alt="" /></span></span>
+    <img class="exp-deco exp-ghost" src="Assets/img/icons/ghost trans.png" alt="" aria-hidden="true" />
+    <div class="exp-deco exp-bat exp-bat-left" aria-hidden="true"><img src="Assets/img/icons/bat trans.png" alt="" /></div>
+    <div class="exp-deco exp-bat exp-bat-right" aria-hidden="true"><img src="Assets/img/icons/bat trans.png" alt="" /></div>
+    <span class="exp-deco exp-sparkle exp-sparkle-one" aria-hidden="true"><img src="Assets/img/icons/sparkle-lavender.svg" alt="" /></span>
+    <span class="exp-deco exp-sparkle exp-sparkle-two" aria-hidden="true"><img src="Assets/img/icons/sparkle-yellow.svg" alt="" /></span>
+    <img class="exp-deco exp-pumpkin" src="Assets/img/icons/pumpkin trans.png" alt="" aria-hidden="true" />
+    <div class="exploration-container">
+      <header class="exp-heading">
+        <p class="section-kicker">EXPLORATION</p>
+        <h1 id="exp-title">My <span class="accent">Projects</span></h1>
+        <p class="exp-subtitle">Missions and adventures of our two friends — small acts of kindness, dream rescues, and friendly ghost tales.</p>
+      </header>
+      <div class="projects-grid">
+        <article class="project-card project-halloween">
+          <div class="project-visual">
+            <div class="project-halo" aria-hidden="true"></div>
+            <img class="project-image" src="Assets/img/icons/pumpkin trans.png" alt="Friendly pumpkin for Halloween Helpers" width="240" height="170" />
+            <img class="mini mini-one" src="Assets/img/icons/sparkle-yellow.svg" alt="" aria-hidden="true" />
+          </div>
+          <div class="project-body">
+            <div class="project-meta"><span class="project-no">01</span><span class="project-tag">Kindness Mission</span></div>
+            <h2>Halloween Helpers</h2>
+            <p>Every child deserves a little Halloween magic. Help us bring costumes, treats, and kindness to those left out.</p>
+            <ul class="project-points"><li>Costumes for kids who cannot afford one</li><li>Treats for streets that get skipped</li><li>Standing with bullied or excluded kids</li></ul>
+            <span class="project-action">Explore Project <span aria-hidden="true">→</span></span>
+          </div>
+        </article>
+        <article class="project-card project-dream">
+          <div class="project-visual">
+            <div class="project-halo" aria-hidden="true"></div>
+            <img class="project-image" src="Assets/img/TogetherNoBg.png" alt="The two friends as dream guardians" width="240" height="170" />
+            <img class="mini mini-one" src="Assets/img/icons/sparkle-lavender.svg" alt="" aria-hidden="true" />
+          </div>
+          <div class="project-body">
+            <div class="project-meta"><span class="project-no">02</span><span class="project-tag">Hexa Baby Universe</span></div>
+            <h2>Hexa Baby: Dream Guardians</h2>
+            <p>When nightmares trap little dreamers, our guardians step inside to guide them out and help turn fear into happier dreams.</p>
+            <ul class="project-points"><li>Enter nightmares through star portals</li><li>Guide kids out of scary dream worlds</li><li>Replace fear with safe, cozy dreams</li></ul>
+            <span class="project-action">Discover Mission <span aria-hidden="true">→</span></span>
+          </div>
+        </article>
+        <article class="project-card project-ghost">
+          <div class="project-visual">
+            <div class="project-halo" aria-hidden="true"></div>
+            <img class="project-image" src="Assets/img/icons/ghost trans.png" alt="Friendly wandering ghost" width="240" height="170" />
+            <img class="mini mini-one" src="Assets/img/icons/sparkle-pink.svg" alt="" aria-hidden="true" />
+          </div>
+          <div class="project-body">
+            <div class="project-meta"><span class="project-no">03</span><span class="project-tag">Spirit Mission</span></div>
+            <h2>Ghost Catchers: Spirit Purification</h2>
+            <p>Track down wandering spirits, capture them with magical tools, and purify their energy to help them finally find peace.</p>
+            <ul class="project-points"><li>Find ghosts stuck between worlds</li><li>Capture gently — never to harm</li><li>Purify and release them peacefully</li></ul>
+            <span class="project-action">Explore Project <span aria-hidden="true">→</span></span>
+          </div>
+        </article>
+      </div>
+      <footer class="exp-ending">
+        <h2>Two Friends. Endless Missions.</h2>
+        <p>More stories and games are coming soon — for now, these three adventures are our world.</p>
+        <a href="index.html#home" class="back-home-button"><span aria-hidden="true">✦</span> Back to Home</a>
+      </footer>
+    </div>
+  </section>
+  <script src="js/script.js"></script>
 </body>
 </html>
