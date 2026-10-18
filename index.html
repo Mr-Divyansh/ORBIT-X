@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="Assets/img/solo gadget abhay.png" />
+  <link rel="preload" as="image" href="Assets/img/solo gadget divyansh.png" />
   <link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" href="css/about.css" />
 
@@ -112,9 +114,18 @@
       <img src="Assets/img/icons/spider-cute.svg" alt="" />
     </span>
   </span>
-  <img class="about-ghost" src="Assets/img/icons/ghost trans.png" alt="" aria-hidden="true" />
   <img class="about-lightning about-lightning-left" src="Assets/img/icons/lightning-lavender.svg" alt="" aria-hidden="true" />
   <img class="about-lightning about-lightning-right" src="Assets/img/icons/lightning-yellow.svg" alt="" aria-hidden="true" />
+  <div class="about-side-decorations" aria-hidden="true">
+    <span class="side-haunt side-bat side-bat-left side-bat-one"><img src="Assets/img/icons/bat trans.png" alt="" /></span>
+    <span class="side-haunt side-bat side-bat-right side-bat-two"><img src="Assets/img/icons/bat trans.png" alt="" /></span>
+    <span class="side-haunt side-bat side-bat-left side-bat-three"><img src="Assets/img/icons/bat trans.png" alt="" /></span>
+    <span class="side-haunt side-bat side-bat-right side-bat-four"><img src="Assets/img/icons/bat trans.png" alt="" /></span>
+    <span class="side-haunt side-ghost side-ghost-left side-ghost-one"><img src="Assets/img/icons/ghost-cute.svg" alt="" /></span>
+    <span class="side-haunt side-ghost side-ghost-right side-ghost-two"><img src="Assets/img/icons/ghost-cute.svg" alt="" /></span>
+    <span class="side-haunt side-pumpkin side-pumpkin-left side-pumpkin-one"><img src="Assets/img/icons/pumpkin trans.png" alt="" /></span>
+    <span class="side-haunt side-pumpkin side-pumpkin-right side-pumpkin-two"><img src="Assets/img/icons/pumpkin trans.png" alt="" /></span>
+  </div>
   <span class="about-sparkle about-sparkle-one" aria-hidden="true">
     <img src="Assets/img/icons/sparkle-lavender.svg" alt="" />
   </span>
@@ -124,45 +135,79 @@
   <span class="about-sparkle about-sparkle-three" aria-hidden="true">
     <img src="Assets/img/icons/sparkle-yellow.svg" alt="" />
   </span>
-  <div class="about-bat about-bat-left" aria-hidden="true">
-    <img src="Assets/img/icons/bat trans.png" alt="" />
-  </div>
-  <div class="about-bat about-bat-right" aria-hidden="true">
-    <img src="Assets/img/icons/bat trans.png" alt="" />
-  </div>
-
   <div class="about-container">
 
-    <!-- Page heading -->
-    <header class="about-heading">
-      <h1>Meet the Two Behind ORBIT-X</h1>
-      <p>Two personalities. Two perspectives. One magical journey.</p>
-    </header>
+    <div class="about-opening about-reveal">
+      <header class="about-heading">
+        <span class="about-eyebrow">A LITTLE MAGIC AFTER DARK</span>
+        <h1>Meet the Ghost Purificators</h1>
+        <p>Two best friends. Two magical gadgets. One mission to protect children's dreams.</p>
+      </header>
+
+      <div class="opening-art" aria-label="Abhay and Divyansh explore a magical library">
+        <img src="Assets/img/one.jpeg" alt="Abhay and Divyansh discovering a magical library together" />
+        <span class="opening-mist opening-mist-one" aria-hidden="true"></span>
+        <span class="opening-mist opening-mist-two" aria-hidden="true"></span>
+        <span class="opening-star opening-star-one" aria-hidden="true"></span>
+        <span class="opening-star opening-star-two" aria-hidden="true"></span>
+        <span class="opening-ghost" aria-hidden="true">
+          <img src="Assets/img/icons/ghost-cute.svg" alt="" />
+        </span>
+        <span class="opening-caption">A new adventure is calling</span>
+      </div>
+    </div>
 
     <!-- ABHAY: Character LEFT, details RIGHT -->
-    <article class="character-card abhay-card">
+    <article class="character-card abhay-card about-reveal">
 
-      <div class="character-visual">
+      <div
+        class="character-visual"
+        data-character-image
+        data-character-name="Abhay"
+        data-gadget-label="magical lamp"
+        role="button"
+        tabindex="0"
+        aria-pressed="false"
+        aria-label="Abhay, activate to see his magical lamp"
+      >
         <div class="character-halo"></div>
         <img
           src="Assets/img/abhay bg solo.png"
           alt="Abhay wearing his yellow and black hoodie"
-          class="character-image"
+          class="character-image character-image-solo"
+        />
+        <img
+          src="Assets/img/solo gadget abhay.png"
+          alt="Abhay holding his magical ghost-detecting lamp"
+          class="character-image character-image-gadget"
+          aria-hidden="true"
         />
       </div>
 
       <div class="character-info">
         <span class="character-label abhay-label">
-          THE CURIOUS EXPLORER
+          THE GHOST SEEKER
         </span>
 
-        <h2>Hey, I'm Abhay!</h2>
+        <h2>ABHAY</h2>
+        <h3>The Ghost Seeker</h3>
 
         <p>
-          I'm a curious explorer who loves turning ideas into
-          something real. I enjoy experimenting, solving problems,
-          and discovering creative ways to bring our world to life.
+          Brave, curious, and always ready to explore, Abhay uses his
+          magical lamp to reveal ghosts hiding in the shadows. Its warm
+          light helps the friends see invisible spirits and understand
+          when they need a little help.
         </p>
+
+        <div class="gadget-callout lamp-callout">
+          <span class="gadget-art lamp-art" aria-hidden="true">
+            <span class="lamp-beam"></span>
+            <span class="lamp-ghost"><img src="Assets/img/icons/ghost-cute.svg" alt="" /></span>
+            <span class="lamp-handle"></span>
+            <span class="lamp-glass"></span>
+          </span>
+          <span class="gadget-copy"><span>Signature gadget</span><strong>Ghost-Detecting Lamp</strong></span>
+        </div>
       </div>
 
       <span class="card-sparkle sparkle-one" aria-hidden="true">
@@ -171,7 +216,7 @@
     </article>
 
     <!-- Better Together divider -->
-    <div class="together-divider">
+    <div class="together-divider about-reveal">
       <span class="divider-line"></span>
       <div class="together-content">
         <span class="heart-icon">♥</span>
@@ -182,29 +227,55 @@
     </div>
 
     <!-- DIVYANSH: details LEFT, character RIGHT -->
-    <article class="character-card divyansh-card">
+    <article class="character-card divyansh-card about-reveal">
 
       <div class="character-info">
         <span class="character-label divyansh-label">
-          THE CREATIVE COMPANION
+          THE GHOST PURIFIER
         </span>
 
-        <h2>Hey, I'm Divyansh!</h2>
+        <h2>DIVYANSH</h2>
+        <h3>The Ghost Purifier</h3>
 
         <p>
-          I'm a creative thinker who loves exploring fresh ideas
-          and imagining new possibilities. I enjoy adding creative
-          touches and helping transform our shared vision into
-          something special.
+          Clever, calm, and strategic, Divyansh channels gentle magic
+          through his purification stick to turn troubled ghosts into
+          friendly spirits. It can also open a portal into a child's
+          dream, so he and Abhay can guide them out of a nightmare.
         </p>
+
+        <div class="gadget-callout staff-callout">
+          <span class="gadget-art staff-art" aria-hidden="true">
+            <span class="dream-portal"></span>
+            <span class="staff-spark staff-spark-one"></span>
+            <span class="staff-spark staff-spark-two"></span>
+            <span class="magic-staff"></span>
+          </span>
+          <span class="gadget-copy"><span>Signature gadget</span><strong>Dream &amp; Purification Stick</strong></span>
+        </div>
       </div>
 
-      <div class="character-visual">
+      <div
+        class="character-visual"
+        data-character-image
+        data-character-name="Divyansh"
+        data-gadget-label="magical staff"
+        role="button"
+        tabindex="0"
+        aria-pressed="false"
+        aria-label="Divyansh, activate to see his magical staff"
+      >
         <div class="character-halo"></div>
         <img
           src="Assets/img/DivyanshSolo.png"
           alt="Divyansh wearing his white and black outfit"
-          class="character-image"
+          class="character-image character-image-solo"
+        />
+        <img
+          src="Assets/img/solo gadget divyansh.png"
+          alt="Divyansh holding his magical purification staff"
+          class="character-image character-image-gadget"
+          aria-hidden="true"
         />
       </div>
 
@@ -212,6 +283,55 @@
         <img src="Assets/img/icons/sparkle-lavender.svg" alt="" />
       </span>
     </article>
+
+    <section class="teamwork-reveal about-reveal" aria-labelledby="teamwork-title">
+      <div class="teamwork-copy">
+        <span class="teamwork-eyebrow">BETTER TOGETHER</span>
+        <h2 id="teamwork-title">Different Powers. One Unbreakable Friendship.</h2>
+        <p>
+          When Abhay's golden light meets Divyansh's lavender magic,
+          even the spookiest night can become a safe, sparkling adventure.
+          Side by side, they turn Halloween frights and nightmares into
+          moments of courage, kindness, and wonder.
+        </p>
+        <div class="team-magic" aria-hidden="true">
+          <span class="team-magic-gold"></span>
+          <span class="team-magic-blue"></span>
+          <img src="Assets/img/icons/ghost-cute.svg" alt="" />
+        </div>
+      </div>
+      <figure class="teamwork-art">
+        <img src="Assets/img/two.png" alt="Abhay and Divyansh stand together under the Halloween moon with their magical gadgets" />
+        <figcaption>Two friends, one little bit of magic</figcaption>
+      </figure>
+    </section>
+
+    <section class="mission-section about-reveal" aria-labelledby="mission-title">
+      <header class="mission-heading">
+        <span class="teamwork-eyebrow">TWO MISSIONS, ONE KIND HEART</span>
+        <h2 id="mission-title">A little fright. A lot of hope.</h2>
+      </header>
+      <div class="mission-grid">
+        <article class="mission-card halloween-mission">
+          <span class="mission-icon" aria-hidden="true">
+            <img src="Assets/img/icons/pumpkin-cute.svg" alt="" />
+          </span>
+          <div>
+            <h3>Halloween Treat Protectors</h3>
+            <p>They playfully surprise anyone who forgets to share Halloween treats with children—just enough spooky fun to make kindness memorable.</p>
+          </div>
+        </article>
+        <article class="mission-card dream-mission">
+          <span class="mission-icon" aria-hidden="true">
+            <img src="Assets/img/icons/ghost-cute.svg" alt="" />
+          </span>
+          <div>
+            <h3>Guardians of Dreams</h3>
+            <p>They enter mysterious dream worlds, help children face their fears, and guide them from bad dreams toward safe, peaceful adventures.</p>
+          </div>
+        </article>
+      </div>
+    </section>
 
     <!-- Closing banner -->
     <footer class="about-ending">

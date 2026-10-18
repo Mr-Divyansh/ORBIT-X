@@ -15,6 +15,48 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
   });
 });
 
+document.querySelectorAll('[data-character-image]').forEach((visual) => {
+  const soloImage = visual.querySelector('.character-image-solo');
+  const gadgetImage = visual.querySelector('.character-image-gadget');
+  const hoverAvailable = window.matchMedia('(hover: hover)');
+  const setGadgetVisible = (visible) => {
+    visual.classList.toggle('is-gadget-visible', visible);
+    visual.setAttribute('aria-pressed', String(visible));
+    soloImage.setAttribute('aria-hidden', String(visible));
+    gadgetImage.setAttribute('aria-hidden', String(!visible));
+    visual.setAttribute(
+      'aria-label',
+      `${visual.dataset.characterName}${visible ? ` with ${visual.dataset.gadgetLabel}` : `, activate to show ${visual.dataset.gadgetLabel}`}`
+    );
+  };
+
+  if (hoverAvailable.matches) {
+    visual.addEventListener('pointerenter', (event) => {
+      if (event.pointerType !== 'touch') setGadgetVisible(true);
+    });
+    visual.addEventListener('pointerleave', (event) => {
+      if (event.pointerType !== 'touch') setGadgetVisible(false);
+    });
+  }
+
+  visual.addEventListener('click', (event) => {
+    if (event.detail === 0) return;
+
+    if (event.pointerType === 'touch' || !hoverAvailable.matches) {
+      setGadgetVisible(!visual.classList.contains('is-gadget-visible'));
+    } else {
+      setGadgetVisible(true);
+    }
+  });
+
+  visual.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      setGadgetVisible(!visual.classList.contains('is-gadget-visible'));
+    }
+  });
+});
+
 (function initHeroEntrance() {
   const stage = document.querySelector('[data-hero-stage]');
   if (!stage) return;
