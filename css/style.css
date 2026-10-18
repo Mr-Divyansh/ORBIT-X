@@ -13,8 +13,6 @@
   --shadow-strong: rgba(142, 104, 205, 0.28);
 }
 
-/* Registered so the hanging-thread keyframes can interpolate --swing as an
-   angle (instead of snapping). Baseline sway composes with cursor --gust. */
 @property --swing {
   syntax: '<angle>';
   inherits: true;
