@@ -239,6 +239,11 @@ h1 {
   letter-spacing: -3.2px;
 }
 
+.hero h1 {
+  min-height: 3.1em;
+  margin-bottom: 30px;
+}
+
 /* Headline typing: typed text inherits the h1 ink color (original look);
    ONLY .typing-accent gets the purple gradient. Lines stay as normal
    inline flow so wrapping matches the original headline exactly. */
@@ -925,11 +930,11 @@ h1.typing-done .typing-line:last-child::after {
 @keyframes pumpkin-bob {
   0%,
   100% {
-    transform: translateY(0) rotate(-1.5deg);
+    transform: translateY(0) rotate(-9deg);
   }
 
   50% {
-    transform: translateY(-3px) rotate(1.5deg);
+    transform: translateY(-3px) rotate(-13deg);
   }
 }
 
@@ -1086,6 +1091,10 @@ h1.typing-done .typing-line:last-child::after {
     font-size: clamp(44px, 11.6vw, 68px);
     line-height: 1.02;
     letter-spacing: -2.5px;
+  }
+
+  .hero h1 {
+    margin-bottom: 24px;
   }
 
   .description {
