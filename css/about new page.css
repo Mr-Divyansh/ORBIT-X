@@ -371,6 +371,7 @@
 
 .hero-character {
   position: absolute;
+  z-index: 2;
   bottom: 10%;
   width: 46%;
   height: 93%;
@@ -434,42 +435,43 @@
 
 .hero-decoration {
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   height: auto;
   pointer-events: none;
 }
 
 .hero-bat {
-  width: 104px;
-  filter: drop-shadow(0 4px 8px rgba(74, 57, 105, 0.2));
+  width: 208px;
+  opacity: 0.82;
+  filter: drop-shadow(0 8px 16px rgba(74, 57, 105, 0.2));
   animation: bat-glide 8s ease-in-out infinite;
 }
 
 .hero-bat-one {
-  top: 22%;
-  left: 6%;
+  top: 19%;
+  left: -11%;
 }
 
 .hero-bat-two {
-  right: 8%;
-  bottom: 23%;
-  width: 72px;
+  right: -9%;
+  bottom: 19%;
+  width: 144px;
   animation-delay: -3.8s;
   animation-direction: reverse;
 }
 
 .hero-ghost {
   top: 36%;
-  right: 2%;
-  width: 106px;
+  right: -11%;
+  width: 212px;
   animation: ghost-float 6.5s ease-in-out infinite;
   filter: drop-shadow(0 0 11px rgba(180, 164, 240, 0.7));
 }
 
 .hero-pumpkin {
   bottom: 13%;
-  left: 3%;
-  width: 112px;
+  left: -10%;
+  width: 224px;
   animation: pumpkin-bob 5s ease-in-out infinite;
   filter: drop-shadow(0 0 11px rgba(255, 168, 65, 0.53));
 }
@@ -520,7 +522,7 @@
   position: absolute;
   z-index: 1;
   top: 0;
-  width: clamp(86px, 12vw, 145px);
+  width: clamp(180px, 17vw, 240px);
   height: auto;
   opacity: 0.75;
   pointer-events: none;
@@ -528,11 +530,11 @@
 }
 
 .about-web-left {
-  left: max(-24px, calc((1180px - 100vw) / 2));
+  left: calc(50% - 50vw + 8px);
 }
 
 .about-web-right {
-  right: max(-24px, calc((1180px - 100vw) / 2));
+  right: calc(50% - 50vw + 8px);
   transform: scaleX(-1);
   animation-delay: -3s;
 }
@@ -965,7 +967,7 @@
 .mission-decoration {
   position: absolute;
   z-index: 0;
-  width: 68px;
+  width: 136px;
   height: auto;
   opacity: 0.6;
   pointer-events: none;
@@ -974,14 +976,14 @@
 .mission-bat {
   top: 8%;
   right: 0;
-  width: 104px;
+  width: 208px;
   animation: bat-glide 10s ease-in-out infinite;
 }
 
 .mission-ghost {
   bottom: 1%;
   left: -12px;
-  width: 106px;
+  width: 212px;
   animation: ghost-float 7s ease-in-out infinite;
   filter: drop-shadow(0 0 10px rgba(161, 147, 218, 0.55));
 }
@@ -989,21 +991,21 @@
 .mission-pumpkin {
   right: 3%;
   bottom: 0;
-  width: 112px;
+  width: 224px;
   animation: pumpkin-bob 6.5s ease-in-out infinite;
 }
 
 .mission-spider {
   top: 15%;
   left: 1%;
-  width: 42px;
+  width: 84px;
   animation: spider-sway 6s ease-in-out infinite;
 }
 
 .mission-web {
   top: 0;
   left: 0;
-  width: 108px;
+  width: 216px;
   opacity: 0.48;
   animation: web-shimmer 7s ease-in-out infinite;
 }
@@ -1022,7 +1024,7 @@
 }
 
 .gadget-decoration {
-  width: 100px;
+  width: 200px;
   opacity: 0.82;
 }
 
@@ -1035,19 +1037,26 @@
 .gadget-pumpkin-decoration {
   right: -39px;
   bottom: 4%;
-  width: 112px;
+  width: 224px;
   animation: pumpkin-bob 6s ease-in-out infinite;
 }
 
 .gadget-web {
   top: 2%;
   left: -35px;
-  width: 120px;
+  width: 240px;
   opacity: 0.62;
   animation: web-shimmer 6s ease-in-out infinite;
 }
 
+.gadget-section > .section-heading {
+  position: relative;
+  z-index: 1;
+}
+
 .gadget-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   gap: 26px;
 }
@@ -1244,7 +1253,7 @@
   min-width: 0;
   display: grid;
   aspect-ratio: 1.2;
-  overflow: hidden;
+  overflow: visible;
   border: 7px solid rgba(255, 255, 255, 0.88);
   border-radius: 30px;
   background:
@@ -1281,21 +1290,21 @@
 .promise-pumpkin,
 .promise-ghost {
   position: absolute;
-  width: 106px;
+  width: 212px;
   height: auto;
   pointer-events: none;
 }
 
 .promise-pumpkin {
-  right: -18px;
-  bottom: -21px;
+  right: -50px;
+  bottom: -48px;
   filter: drop-shadow(0 0 10px rgba(255, 171, 63, 0.48));
   animation: pumpkin-bob 4.8s ease-in-out infinite;
 }
 
 .promise-ghost {
-  top: -23px;
-  left: -20px;
+  top: -48px;
+  left: -50px;
   filter: drop-shadow(0 0 11px rgba(174, 157, 236, 0.6));
   animation: ghost-float 5.6s ease-in-out infinite;
 }
@@ -1304,7 +1313,7 @@
   position: absolute;
   right: 7%;
   top: 7%;
-  width: 104px;
+  width: 208px;
   height: auto;
   pointer-events: none;
   animation: bat-glide 9s ease-in-out infinite;
@@ -1713,9 +1722,16 @@
     margin-inline: auto;
   }
 
-  .gadget-decoration,
+  .gadget-decoration {
+    width: 120px;
+  }
+
+  .gadget-pumpkin-decoration {
+    width: 140px;
+  }
+
   .gadget-web {
-    display: none;
+    width: 100px;
   }
 }
 
@@ -1770,20 +1786,21 @@
   }
 
   .hero-bat {
-    width: 72px;
+    width: 144px;
   }
 
   .hero-bat-two {
-    width: 52px;
+    width: 104px;
   }
 
   .hero-ghost {
-    right: 1%;
-    width: 76px;
+    right: -13%;
+    width: 152px;
   }
 
   .hero-pumpkin {
-    width: 80px;
+    left: -12%;
+    width: 160px;
   }
 
   .hero-moon {
@@ -1830,16 +1847,16 @@
   }
 
   .about-web {
-    width: 62px;
+    width: 120px;
     opacity: 0.52;
   }
 
   .about-web-left {
-    left: -13px;
+    left: calc(50% - 50vw + 8px);
   }
 
   .about-web-right {
-    right: -13px;
+    right: calc(50% - 50vw + 8px);
   }
 
   .hanging-spider {
@@ -1859,16 +1876,16 @@
   }
 
   .mission-decoration {
-    width: 70px;
-    opacity: 0.35;
+    width: 140px;
+    opacity: 0.45;
   }
 
   .mission-spider {
-    width: 30px;
+    width: 60px;
   }
 
   .mission-web {
-    width: 62px;
+    width: 124px;
   }
 
   .about-intro {
@@ -1959,12 +1976,12 @@
 
   .promise-pumpkin,
   .promise-ghost {
-    width: 42px;
-    height: 42px;
+    width: 120px;
+    height: auto;
   }
 
   .promise-bat {
-    width: 65px;
+    width: 130px;
   }
 
   .about-footer {
