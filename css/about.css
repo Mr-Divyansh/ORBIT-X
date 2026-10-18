@@ -2081,11 +2081,11 @@
   }
 
   .about-web-left {
-    left: -9px;
+    left: 0;
   }
 
   .about-web-right {
-    right: -9px;
+    right: 0;
   }
 
   .about-side-decorations {

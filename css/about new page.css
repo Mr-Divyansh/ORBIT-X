@@ -433,6 +433,14 @@
   animation-delay: -4.1s;
 }
 
+.hero-character-divyansh .swap-image-gadget {
+  inset: auto auto 0 -25%;
+  width: 150%;
+  height: 150%;
+  max-width: none;
+  object-position: center bottom;
+}
+
 .hero-decoration {
   position: absolute;
   z-index: 1;
@@ -448,8 +456,8 @@
 }
 
 .hero-bat-one {
-  top: 19%;
-  left: -11%;
+  top: 24%;
+  left: -5%;
 }
 
 .hero-bat-two {
@@ -461,16 +469,18 @@
 }
 
 .hero-ghost {
-  top: 36%;
-  right: -11%;
+  top: 40%;
+  right: -7%;
   width: 212px;
   animation: ghost-float 6.5s ease-in-out infinite;
   filter: drop-shadow(0 0 11px rgba(180, 164, 240, 0.7));
 }
 
 .hero-pumpkin {
-  bottom: 13%;
-  left: -10%;
+  z-index: 3;
+  right: -9%;
+  bottom: 8%;
+  left: auto;
   width: 224px;
   animation: pumpkin-bob 5s ease-in-out infinite;
   filter: drop-shadow(0 0 11px rgba(255, 168, 65, 0.53));
@@ -996,15 +1006,15 @@
 }
 
 .mission-spider {
-  top: 15%;
-  left: 1%;
-  width: 84px;
+  top: 23%;
+  left: 4%;
+  width: 42px;
   animation: spider-sway 6s ease-in-out infinite;
 }
 
 .mission-web {
   top: 0;
-  left: 0;
+  left: calc(50% - 50vw + 8px);
   width: 216px;
   opacity: 0.48;
   animation: web-shimmer 7s ease-in-out infinite;
@@ -1024,6 +1034,7 @@
 }
 
 .gadget-decoration {
+  z-index: 2;
   width: 200px;
   opacity: 0.82;
 }
@@ -1035,18 +1046,31 @@
 }
 
 .gadget-pumpkin-decoration {
-  right: -39px;
-  bottom: 4%;
-  width: 224px;
+  right: clamp(-86px, -6vw, -28px);
+  bottom: 2%;
+  z-index: 3;
+  width: clamp(130px, 13vw, 184px);
   animation: pumpkin-bob 6s ease-in-out infinite;
 }
 
 .gadget-web {
   top: 2%;
-  left: -35px;
+  left: calc(50% - 50vw + 8px);
   width: 240px;
   opacity: 0.62;
   animation: web-shimmer 6s ease-in-out infinite;
+}
+
+.gadget-spider {
+  position: absolute;
+  z-index: 1;
+  top: 26px;
+  left: 82px;
+  width: 36px;
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 3px 6px rgba(83, 65, 113, 0.16));
+  animation: spider-sway 6s ease-in-out infinite;
 }
 
 .gadget-section > .section-heading {
@@ -1727,11 +1751,19 @@
   }
 
   .gadget-pumpkin-decoration {
-    width: 140px;
+    right: -22px;
+    bottom: 1%;
+    width: 126px;
   }
 
   .gadget-web {
     width: 100px;
+  }
+
+  .gadget-spider {
+    top: 20px;
+    left: 62px;
+    width: 30px;
   }
 }
 
@@ -1799,7 +1831,8 @@
   }
 
   .hero-pumpkin {
-    left: -12%;
+    right: -10%;
+    left: auto;
     width: 160px;
   }
 
@@ -1881,7 +1914,9 @@
   }
 
   .mission-spider {
-    width: 60px;
+    top: 22%;
+    left: 2%;
+    width: 34px;
   }
 
   .mission-web {
@@ -1976,7 +2011,7 @@
 
   .promise-pumpkin,
   .promise-ghost {
-    width: 120px;
+    width: 96px;
     height: auto;
   }
 
