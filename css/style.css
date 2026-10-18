@@ -151,25 +151,23 @@ img {
 }
 
 .nav-links a::after {
+  /* Kept as an always-hidden hook so future underline styles have one place
+     to live. Never sized here: the Home underline is intentionally removed. */
   content: "";
   position: absolute;
   left: 25px;
   bottom: 2px;
   width: 0;
-  height: 4px;
+  height: 0;
   border-radius: 10px;
-  background: #b995ef;
-  transition: width 0.25s ease;
+  background: transparent;
 }
 
+/* Active Home item: the task explicitly removes the underline pill,
+   so Home is marked only by ink color (no ::after bar anywhere). */
 .nav-links a:hover,
 .nav-links a.active {
   color: var(--ink);
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
-  width: calc(100% - 50px);
 }
 
 .menu-toggle {
