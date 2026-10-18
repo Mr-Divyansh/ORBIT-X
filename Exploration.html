@@ -31,6 +31,7 @@
       <a href="index.html">Home</a>
       <a href="index.html#about">About</a>
       <a class="active" href="Exploration.html" aria-current="page">Exploration</a>
+      <a href="stories/index.html">Stories</a>
     </nav>
     <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
   </header>
@@ -78,7 +79,7 @@
         </header>
       </section>
       <div class="projects-grid" id="projects">
-        <article class="project-card project-halloween" data-project="halloween">
+        <article class="project-card project-halloween">
           <div class="project-visual">
             <div class="project-halo" aria-hidden="true"></div>
             <img class="project-image project-photo" src="Assets/img/HalloweenHelpers.jpeg" alt="Abhay and Divyansh on a Halloween street with pumpkins and friendly ghosts" width="400" height="225" loading="lazy" />
@@ -89,10 +90,10 @@
             <h3>Halloween Helpers</h3>
             <p>Every child deserves a little Halloween magic. Help us bring costumes, treats, and kindness to those left out.</p>
             <ul class="project-points"><li>Costumes for kids who cannot afford one</li><li>Treats for streets that get skipped</li><li>Standing with bullied or excluded kids</li></ul>
-            <button class="project-action" type="button" data-open-project="halloween">View More Details <span aria-hidden="true">→</span></button>
+            <a class="project-action" href="projects/halloween-helpers.html">Open Project Page <span aria-hidden="true">→</span></a>
           </div>
         </article>
-        <article class="project-card project-dream" data-project="dream">
+        <article class="project-card project-dream">
           <div class="project-visual">
             <div class="project-halo" aria-hidden="true"></div>
             <img class="project-image" src="Assets/img/TogetherNoBg.png" alt="The two friends as dream guardians" width="240" height="170" loading="lazy" />
@@ -103,10 +104,10 @@
             <h3>Hexa Baby: Dream Guardians</h3>
             <p>When nightmares trap little dreamers, our guardians step inside to guide them out and help turn fear into happier dreams.</p>
             <ul class="project-points"><li>Enter nightmares through star portals</li><li>Guide kids out of scary dream worlds</li><li>Replace fear with safe, cozy dreams</li></ul>
-            <button class="project-action" type="button" data-open-project="dream">View More Details <span aria-hidden="true">→</span></button>
+            <a class="project-action" href="projects/dream-guardians.html">Open Project Page <span aria-hidden="true">→</span></a>
           </div>
         </article>
-        <article class="project-card project-ghost" data-project="ghost">
+        <article class="project-card project-ghost">
           <div class="project-visual">
             <div class="project-halo" aria-hidden="true"></div>
             <img class="project-image" src="Assets/img/icons/ghost trans.png" alt="Friendly wandering ghost" width="240" height="170" loading="lazy" />
@@ -117,7 +118,7 @@
             <h3>Ghost Catchers: Spirit Purification</h3>
             <p>Track down wandering spirits, capture them with magical tools, and purify their energy to help them finally find peace.</p>
             <ul class="project-points"><li>Find ghosts stuck between worlds</li><li>Capture gently — never to harm</li><li>Purify and release them peacefully</li></ul>
-            <button class="project-action" type="button" data-open-project="ghost">View More Details <span aria-hidden="true">→</span></button>
+            <a class="project-action" href="projects/ghost-catchers.html">Open Project Page <span aria-hidden="true">→</span></a>
           </div>
         </article>
       </div>
@@ -138,7 +139,7 @@
               <span class="story-no">Story 01</span>
               <h3>The Halloween Lantern</h3>
               <p>Abhay and Divyansh set out on Halloween night to light a lantern for every doorstep that has gone dark.</p>
-              <button class="story-read" type="button" data-open-story="lantern">Enter Story Mode <span aria-hidden="true">→</span></button>
+              <a class="story-read" href="stories/halloween-lantern.html">Enter Story Mode <span aria-hidden="true">→</span></a>
             </div>
           </article>
           <article class="story-card story-dream">
@@ -150,7 +151,7 @@
               <span class="story-no">Story 02</span>
               <h3>The Dream Beyond the Shadows</h3>
               <p>A little dreamer stops sleeping, so the guardians slip through a star portal to bring the light back.</p>
-              <button class="story-read" type="button" data-open-story="shadows">Enter Story Mode <span aria-hidden="true">→</span></button>
+              <a class="story-read" href="stories/dream-beyond-shadows.html">Enter Story Mode <span aria-hidden="true">→</span></a>
             </div>
           </article>
           <article class="story-card story-ghost">
@@ -162,9 +163,12 @@
               <span class="story-no">Story 03</span>
               <h3>The Last Wandering Ghost</h3>
               <p>One ghost has wandered the old town for a hundred years — and two friends decide to help him rest.</p>
-              <button class="story-read" type="button" data-open-story="wandering">Enter Story Mode <span aria-hidden="true">→</span></button>
+              <a class="story-read" href="stories/last-wandering-ghost.html">Enter Story Mode <span aria-hidden="true">→</span></a>
             </div>
           </article>
+        </div>
+        <div class="stories-all">
+          <a class="button button-primary" href="stories/index.html">View All Stories <span aria-hidden="true">→</span></a>
         </div>
       </section>
 
@@ -175,42 +179,6 @@
       </footer>
     </div>
   </section>
-
-  <dialog class="exp-dialog project-dialog" id="project-dialog" aria-labelledby="project-dialog-title">
-    <form method="dialog" class="dialog-close-form"><button class="dialog-close" aria-label="Close project details" value="close">✕</button></form>
-    <div class="dialog-scroll">
-      <div class="project-dialog-hero"><img id="project-dialog-image" src="" alt="" width="640" height="360" /></div>
-      <div class="dialog-meta"><span class="project-no" id="project-dialog-no">01</span><span class="project-tag" id="project-dialog-tag"></span></div>
-      <h2 id="project-dialog-title"></h2>
-      <section class="dialog-block"><h3>Mission</h3><p id="project-dialog-mission"></p></section>
-      <section class="dialog-block"><h3>Characters</h3><ul id="project-dialog-characters"></ul></section>
-      <section class="dialog-block"><h3>Objective</h3><p id="project-dialog-objective"></p></section>
-      <section class="dialog-block"><h3>Challenges</h3><ul id="project-dialog-challenges"></ul></section>
-      <button class="button button-primary dialog-back" type="button" data-close-dialog>← Back to Projects</button>
-    </div>
-  </dialog>
-
-  <dialog class="exp-dialog story-dialog" id="story-dialog" aria-labelledby="story-dialog-title">
-    <form method="dialog" class="dialog-close-form"><button class="dialog-close" aria-label="Close story" value="close">✕</button></form>
-    <div class="reader-topbar">
-      <div class="reader-titles"><span class="story-no" id="reader-story-no"></span><h2 id="story-dialog-title"></h2></div>
-      <div class="reader-progress" role="progressbar" aria-valuemin="1" aria-valuemax="1" aria-valuenow="1" aria-label="Reading progress">
-        <span class="reader-progress-bar" id="reader-progress-bar"></span>
-      </div>
-      <span class="reader-count" id="reader-count" aria-live="polite"></span>
-    </div>
-    <div class="reader-scene" id="reader-scene">
-      <img class="reader-art" id="reader-art" src="" alt="" width="640" height="300" />
-      <p class="scene-kicker" id="scene-kicker"></p>
-      <div class="scene-text" id="scene-text"></div>
-    </div>
-    <nav class="reader-nav" aria-label="Story scene navigation">
-      <button class="button button-secondary" id="scene-prev" type="button">← Previous</button>
-      <div class="scene-dots" id="scene-dots" aria-label="Jump to scene"></div>
-      <button class="button button-primary" id="scene-next" type="button">Next →</button>
-    </nav>
-    <p class="reader-hint">Tip: use ← and → keys to turn pages. Esc closes the story.</p>
-  </dialog>
 
   <script src="js/script.js"></script>
 </body>
