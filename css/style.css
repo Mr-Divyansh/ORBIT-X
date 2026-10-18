@@ -70,7 +70,7 @@ img {
   align-items: center;
   justify-content: space-between;
   gap: 26px;
-  height: 103px;
+  min-height: 136px;
   padding: 0 6.8%;
   border-bottom: 1px solid var(--line);
   background: rgba(255, 250, 245, 0.92);
@@ -94,8 +94,8 @@ img {
 }
 
 .brand-planet {
-  width: 72px;
-  height: 58px;
+  width: 144px;
+  height: auto;
   color: #8c6cc8;
 }
 
@@ -111,9 +111,9 @@ img {
 }
 
 .nav-sparkle {
-  width: 17px;
-  height: 17px;
-  margin-top: -17px;
+  width: 34px;
+  height: 34px;
+  margin-top: -34px;
   animation: twinkle 3s ease-in-out infinite;
 }
 
@@ -920,7 +920,8 @@ h1.typing-done .typing-line:last-child::after {
   }
 
   .brand-planet {
-    width: 54px;
+    width: 108px;
+    height: auto;
   }
 
   .nav-links a {
@@ -977,13 +978,13 @@ h1.typing-done .typing-line:last-child::after {
   /* .page-frame stays hidden on small screens too (no outline box). */
 
   .navbar {
-    height: 77px;
+    min-height: 100px;
     padding: 0 5%;
   }
 
   .brand-planet {
-    width: 48px;
-    height: 43px;
+    width: 96px;
+    height: auto;
   }
 
   .brand span {
@@ -1003,7 +1004,7 @@ h1.typing-done .typing-line:last-child::after {
 
   .nav-links {
     position: absolute;
-    top: 68px;
+    top: calc(100% - 8px);
     right: 4%;
     display: none;
     flex-direction: column;
@@ -1076,6 +1077,8 @@ h1.typing-done .typing-line:last-child::after {
   }
 
   .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
     gap: 12px;
     margin: 0;
   }
@@ -1084,6 +1087,10 @@ h1.typing-done .typing-line:last-child::after {
     min-height: 51px;
     padding: 0 18px;
     font-size: 14px;
+  }
+
+  .hero-actions .button {
+    width: min(100%, 360px);
   }
 
   .button-primary span {
