@@ -731,7 +731,7 @@ h1.typing-done .typing-line:last-child::after {
   }
 }
 
-/* Two flying bats share the supplied bat-mascot.svg (actual project asset).
+/* Two flying bats share the supplied bat PNG (actual project asset).
    Each bat drifts along its own looping path through open hero bands — never
    over the copy or character faces — with different scales and timing so the
    pair never reads as duplicated. transform-box keeps each img centered. */
