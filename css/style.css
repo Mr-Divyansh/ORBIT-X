@@ -99,6 +99,15 @@ img {
   color: #8c6cc8;
 }
 
+.brand-logo-img {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
 .nav-mascot {
   position: absolute;
   left: 50%;
