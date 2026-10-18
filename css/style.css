@@ -1294,260 +1294,703 @@ h1.typing-done .typing-line:last-child::after {
   }
 }
 
-/* ================= STORY MODE ================= */
-.story-wrap {
+/* ================= OUR STORYBOOK ================= */
+.storybook {
+  --storybook-ink: #39364F;
+  --storybook-muted: #716987;
+  --storybook-lilac: #DCCFFF;
+  --storybook-blue: #CFE2FF;
+  --storybook-yellow: #FFE8A3;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(76px, 9vw, 128px) 24px clamp(78px, 9vw, 122px);
+  color: var(--storybook-ink);
+  background:
+    radial-gradient(ellipse at 4% 30%, rgba(207, 226, 255, 0.42), transparent 27%),
+    radial-gradient(ellipse at 95% 64%, rgba(220, 207, 255, 0.48), transparent 28%),
+    linear-gradient(180deg, #fffaf5 0%, #f7f2ff 46%, #fff8f2 100%);
+}
+
+.storybook *,
+.storybook *::before,
+.storybook *::after {
+  box-sizing: border-box;
+}
+
+.storybook__inner {
   position: relative;
   z-index: 1;
-  padding: 110px 20px 120px;
-  background: var(--paper-mist);
+  width: min(100%, 1120px);
+  margin-inline: auto;
 }
 
-.story-inner {
-  max-width: 920px;
-  margin: 0 auto;
-}
-
-.story-head {
-  margin-bottom: 52px;
+.storybook__heading {
+  max-width: 770px;
+  margin: 0 auto clamp(60px, 8vw, 104px);
   text-align: center;
 }
 
-.story-head .section-kicker {
-  margin: 0 0 6px;
-  color: #9774cf;
-  font-size: 13px;
+.storybook__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 14px;
+  color: #8164b4;
+  font-size: 11px;
   font-weight: 900;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
 }
 
-.story-head h2 {
-  max-width: 760px;
-  margin: 12px auto;
-  font-size: clamp(30px, 4vw, 52px);
-  line-height: 1.1;
-  letter-spacing: -1.5px;
-}
-
-.story-lead {
-  max-width: 560px;
-  margin: 0 auto;
-  color: var(--muted);
-  font-size: clamp(16px, 1.6vw, 19px);
-  font-weight: 600;
-}
-
-/* --- brief cards --- */
-.duo {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
-}
-
-.duo-card {
-  padding: 28px 28px 24px;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-top: 6px solid var(--purple);
-  border-radius: 26px;
-  box-shadow: 0 14px 34px var(--shadow-soft);
-}
-
-.duo-divyansh {
-  border-top-color: #f8d889;
-}
-
-.duo-tag {
-  display: inline-block;
-  padding: 4px 14px;
-  color: var(--purple-deep);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  background: var(--paper-mist);
-  border-radius: 999px;
-}
-
-.duo-card h3 {
-  margin: 12px 0 8px;
-  font-size: 34px;
-  line-height: 1;
-  letter-spacing: -1px;
-}
-
-.duo-card p {
-  margin: 0 0 12px;
-  color: var(--muted);
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.duo-facts {
-  margin: 0 0 14px;
-  padding-left: 20px;
-  color: var(--ink-soft);
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.duo-facts li {
-  margin-bottom: 4px;
-}
-
-.duo-card .duo-quote {
-  margin: 0;
-  color: var(--purple-strong);
-  font-size: 17px;
-  font-weight: 800;
-  font-style: italic;
-}
-
-.duo-more {
-  margin: 22px 0 64px;
-  padding: 18px 24px;
-  color: var(--ink-soft);
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  background: rgba(255, 250, 245, 0.8);
-  border: 2px dashed rgba(130, 104, 170, 0.4);
-  border-radius: 20px;
-}
-
-/* --- full story timeline --- */
-.story-title-main {
-  margin: 0 0 34px;
-  font-size: clamp(26px, 3.2vw, 38px);
-  letter-spacing: -1px;
-  text-align: center;
-}
-
-.scenes {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.scenes::before {
+.storybook__eyebrow::before,
+.storybook__eyebrow::after {
+  width: 21px;
+  height: 1px;
   content: "";
-  position: absolute;
-  left: 23px;
-  top: 10px;
-  bottom: 10px;
-  width: 3px;
-  background: linear-gradient(#cdb8f2, #e7dcff);
-  border-radius: 3px;
+  background: currentColor;
+  opacity: 0.5;
 }
 
-.scene {
-  position: relative;
-  margin: 0 0 24px 68px;
-  padding: 22px 26px 18px;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  box-shadow: 0 10px 26px var(--shadow-soft);
-}
-
-.scene-no {
-  position: absolute;
-  left: -68px;
-  top: 16px;
-  display: grid;
-  place-items: center;
-  width: 49px;
-  height: 49px;
-  color: #fff;
-  font-size: 15px;
+.storybook__heading h2 {
+  margin: 0 0 17px;
+  font-size: clamp(36px, 5vw, 62px);
   font-weight: 900;
-  background: linear-gradient(110deg, #a27ee5, #8d65cf);
-  border: 4px solid var(--paper-mist);
-  border-radius: 50%;
+  line-height: 1.06;
+  letter-spacing: -2px;
 }
 
-.scene h4 {
-  margin: 0 0 10px;
-  font-size: 22px;
-  letter-spacing: -0.5px;
-}
-
-.scene p {
-  margin: 0 0 10px;
-  color: var(--ink-soft);
-  font-size: 17px;
-  font-weight: 500;
+.storybook__heading > p {
+  max-width: 590px;
+  margin: 0 auto;
+  color: var(--storybook-muted);
+  font-size: clamp(16px, 1.7vw, 19px);
+  font-weight: 600;
   line-height: 1.65;
 }
 
-.scene p:last-child {
-  margin-bottom: 4px;
+.storybook__journey {
+  position: relative;
+  display: grid;
+  gap: clamp(72px, 9vw, 118px);
 }
 
-.story-end {
-  width: fit-content;
-  margin: 38px auto 0;
-  padding: 10px 26px;
-  color: var(--purple-deep);
-  font-size: 17px;
-  font-weight: 800;
-  background: #fff;
-  border: 2px solid #cdb8f2;
+.storybook__journey::before {
+  position: absolute;
+  top: 4%;
+  bottom: 4%;
+  left: 50%;
+  width: 2px;
+  content: "";
+  background: linear-gradient(180deg, transparent, rgba(169, 143, 218, 0.48) 12%, rgba(169, 143, 218, 0.48) 88%, transparent);
+  transform: translateX(-50%);
+}
+
+.storybook__scene {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.03fr) minmax(0, 0.97fr);
+  align-items: center;
+  gap: clamp(42px, 7vw, 94px);
+}
+
+.storybook__scene::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  content: "";
+  border: 4px solid #fffaf5;
+  border-radius: 50%;
+  background: #ad91de;
+  box-shadow: 0 0 0 5px rgba(194, 172, 233, 0.24), 0 0 20px rgba(152, 113, 221, 0.44);
+  transform: translate(-50%, -50%);
+}
+
+.storybook__scene:nth-child(even) .storybook__visual {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.storybook__scene:nth-child(even) .storybook__copy {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.storybook__visual {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1.18;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.86);
+  border-radius: 46px 24px 46px 24px;
+  background: linear-gradient(140deg, #f7ecff, #dbe8ff 58%, #fff0d1);
+  box-shadow: 0 24px 56px rgba(66, 51, 101, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.76);
+  transition: transform 500ms cubic-bezier(0.2, 0.75, 0.25, 1), box-shadow 500ms ease;
+}
+
+.storybook__scene:nth-child(even) .storybook__visual {
+  border-radius: 24px 46px 24px 46px;
+}
+
+.storybook__visual > img:not(.storybook__dream-character):not(.storybook__dream-ghost) {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.storybook__visual--friends {
+  background:
+    radial-gradient(ellipse at 50% 73%, rgba(254, 225, 166, 0.88), transparent 38%),
+    linear-gradient(145deg, #fff5df, #e7ddff 57%, #d9edff);
+}
+
+.storybook__visual--friends > img {
+  width: 86% !important;
+  height: 88% !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 15px 14px rgba(70, 56, 102, 0.17));
+}
+
+.storybook__visual-glow {
+  position: absolute;
+  z-index: 0;
+  width: 64%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(255, 232, 163, 0.78);
+  filter: blur(26px);
+}
+
+.storybook__visual-caption {
+  position: absolute;
+  z-index: 2;
+  right: 18px;
+  bottom: 16px;
+  max-width: calc(100% - 36px);
+  padding: 8px 13px;
+  color: #514768;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: 999px;
+  background: rgba(255, 250, 245, 0.84);
+  box-shadow: 0 5px 18px rgba(45, 35, 71, 0.12);
+  backdrop-filter: blur(8px);
 }
 
-/* fade-up on scroll (pure CSS, ignored by older browsers) */
-@supports (animation-timeline: view()) {
-  .duo-card,
-  .scene {
-    animation: story-rise linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 45%;
+.storybook__visual--halloween {
+  background: #51416f;
+}
+
+.storybook__visual--halloween::after,
+.storybook__visual--wonder::after {
+  position: absolute;
+  z-index: 1;
+  inset: 42% 0 0;
+  content: "";
+  background: linear-gradient(transparent, rgba(27, 22, 55, 0.3));
+  pointer-events: none;
+}
+
+.storybook__visual--dream {
+  background:
+    radial-gradient(ellipse at 50% 84%, rgba(203, 186, 255, 0.8), transparent 39%),
+    radial-gradient(ellipse at 48% 44%, rgba(81, 94, 178, 0.64), transparent 48%),
+    linear-gradient(155deg, #252449 0%, #554c92 58%, #9a82c7 100%);
+}
+
+.storybook__dream-moon {
+  position: absolute;
+  top: 11%;
+  left: 16%;
+  width: 55px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #fff2c8;
+  box-shadow: 0 0 23px rgba(255, 232, 163, 0.76), 0 0 70px rgba(255, 232, 163, 0.34);
+}
+
+.storybook__dream-moon::after {
+  position: absolute;
+  top: -7px;
+  left: 17px;
+  width: 53px;
+  aspect-ratio: 1;
+  content: "";
+  border-radius: 50%;
+  background: #3d3b72;
+}
+
+.storybook__dream-cloud {
+  position: absolute;
+  z-index: 0;
+  bottom: 5%;
+  width: 58%;
+  height: 22%;
+  border-radius: 50%;
+  background: rgba(220, 207, 255, 0.5);
+  filter: blur(20px);
+}
+
+.storybook__dream-cloud--one {
+  left: -8%;
+}
+
+.storybook__dream-cloud--two {
+  right: -9%;
+  bottom: 1%;
+  background: rgba(207, 226, 255, 0.54);
+}
+
+.storybook__dream-character {
+  position: absolute;
+  z-index: 1;
+  bottom: 7%;
+  width: 42%;
+  height: 78%;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 13px 13px rgba(26, 22, 62, 0.35));
+  animation: storybook-character-drift 6.5s ease-in-out infinite;
+}
+
+.storybook__dream-character--abhay {
+  left: 7%;
+}
+
+.storybook__dream-character--divyansh {
+  right: 5%;
+  width: 50%;
+  animation-delay: -3.25s;
+}
+
+.storybook__dream-ghost {
+  position: absolute;
+  z-index: 2;
+  top: 22%;
+  right: 20%;
+  width: 48px;
+  height: 54px;
+  filter: drop-shadow(0 0 13px rgba(204, 220, 255, 0.9));
+  animation: storybook-ghost-drift 4s ease-in-out infinite;
+}
+
+.storybook__dream-star {
+  position: absolute;
+  z-index: 2;
+  color: #fff0b6;
+  text-shadow: 0 0 13px rgba(255, 240, 182, 0.9);
+  animation: storybook-twinkle 3.2s ease-in-out infinite;
+}
+
+.storybook__dream-star--one {
+  top: 23%;
+  left: 45%;
+  font-size: 22px;
+}
+
+.storybook__dream-star--two {
+  top: 14%;
+  right: 12%;
+  font-size: 17px;
+  animation-delay: -1.5s;
+}
+
+.storybook__visual--wonder {
+  background: #34305d;
+}
+
+.storybook__copy {
+  position: relative;
+  max-width: 455px;
+  padding: 16px 0;
+}
+
+.storybook__scene-number {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  color: #8164b4;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.7px;
+}
+
+.storybook__scene-number span {
+  color: #d2a542;
+  font-size: 15px;
+  animation: storybook-twinkle 3s ease-in-out infinite;
+}
+
+.storybook__copy h3 {
+  margin: 0 0 16px;
+  color: var(--storybook-ink);
+  font-size: clamp(27px, 3vw, 39px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+.storybook__copy p {
+  margin: 0 0 13px;
+  color: var(--storybook-muted);
+  font-size: clamp(15px, 1.4vw, 17px);
+  font-weight: 600;
+  line-height: 1.75;
+}
+
+.storybook__copy p:last-child {
+  margin-bottom: 0;
+}
+
+.storybook__ending {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: clamp(76px, 9vw, 118px) auto 0;
+  text-align: center;
+}
+
+.storybook__ending-sparkle {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 15px;
+  color: #8b70bd;
+  font-size: 25px;
+  border: 1px solid rgba(171, 146, 214, 0.45);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 30px rgba(194, 172, 233, 0.45);
+  animation: storybook-twinkle 3.5s ease-in-out infinite;
+}
+
+.storybook__ending p {
+  margin: 0 0 18px;
+  color: #4c4265;
+  font-size: clamp(21px, 3vw, 31px);
+  font-weight: 900;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+
+.storybook__ending a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 21px;
+  color: #6849a3;
+  font-size: 14px;
+  font-weight: 900;
+  text-decoration: none;
+  border: 1px solid rgba(141, 101, 207, 0.4);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 7px 20px rgba(91, 58, 133, 0.08);
+  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
+}
+
+.storybook__ending a:hover {
+  transform: translateY(-2px);
+  background: #fff;
+  box-shadow: 0 11px 24px rgba(91, 58, 133, 0.16);
+}
+
+.storybook__ending a:focus-visible {
+  outline: 3px solid rgba(152, 113, 221, 0.55);
+  outline-offset: 4px;
+}
+
+.storybook__decoration {
+  position: absolute;
+  z-index: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.storybook__decoration img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.storybook__decoration--bat {
+  top: 13%;
+  left: 2.5%;
+  width: clamp(44px, 5vw, 72px);
+  opacity: 0.66;
+  animation: storybook-bat-drift 10s ease-in-out infinite;
+}
+
+.storybook__decoration--ghost {
+  top: 45%;
+  right: 3%;
+  width: clamp(38px, 4vw, 54px);
+  opacity: 0.63;
+  filter: drop-shadow(0 0 11px rgba(184, 166, 255, 0.6));
+  animation: storybook-ghost-drift 5s ease-in-out infinite;
+}
+
+.storybook__decoration--pumpkin {
+  right: 2.5%;
+  bottom: 12%;
+  width: clamp(48px, 5vw, 68px);
+  opacity: 0.6;
+  filter: drop-shadow(0 0 12px rgba(255, 170, 62, 0.42));
+  animation: storybook-pumpkin-bob 5.5s ease-in-out infinite;
+}
+
+.storybook__decoration--star {
+  width: 22px;
+  opacity: 0.7;
+  animation: storybook-twinkle 3.4s ease-in-out infinite;
+}
+
+.storybook__decoration--star-one {
+  top: 27%;
+  right: 8%;
+}
+
+.storybook__decoration--star-two {
+  bottom: 34%;
+  left: 5%;
+  width: 18px;
+  animation-delay: -1.4s;
+}
+
+.storybook.has-scene-reveals .story-reveal:not(.is-visible) {
+  opacity: 0;
+  translate: 0 24px;
+}
+
+.storybook .story-reveal {
+  transition: opacity 720ms ease, translate 720ms cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.storybook .story-reveal.is-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.storybook__scene:nth-child(2) {
+  transition-delay: 90ms;
+}
+
+.storybook__scene:nth-child(3) {
+  transition-delay: 150ms;
+}
+
+.storybook__scene:nth-child(4) {
+  transition-delay: 210ms;
+}
+
+@keyframes storybook-character-drift {
+  0%,
+  100% { translate: 0 0; }
+  50% { translate: 0 -8px; }
+}
+
+@keyframes storybook-ghost-drift {
+  0%,
+  100% { translate: 0 0; rotate: -5deg; }
+  50% { translate: 7px -13px; rotate: 5deg; }
+}
+
+@keyframes storybook-bat-drift {
+  0%,
+  100% { translate: 0 0; rotate: -4deg; }
+  50% { translate: 16px -9px; rotate: 5deg; }
+}
+
+@keyframes storybook-pumpkin-bob {
+  0%,
+  100% { translate: 0 0; rotate: -3deg; }
+  50% { translate: 4px -8px; rotate: 3deg; }
+}
+
+@keyframes storybook-twinkle {
+  0%,
+  100% { opacity: 0.68; scale: 0.92; }
+  50% { opacity: 1; scale: 1.1; }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .storybook__visual:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 64px rgba(66, 51, 101, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  }
+
+  .storybook__visual:hover > img:not(.storybook__dream-character):not(.storybook__dream-ghost) {
+    transform: scale(1.035);
   }
 }
 
-@keyframes story-rise {
-  from {
-    opacity: 0;
-    transform: translateY(28px);
+@media (max-width: 800px) {
+  .storybook {
+    padding-inline: 20px;
   }
 
-  to {
+  .storybook__scene {
+    gap: 38px;
+  }
+
+  .storybook__visual {
+    aspect-ratio: 1.02;
+  }
+
+  .storybook__copy h3 {
+    font-size: clamp(25px, 3.6vw, 34px);
+  }
+
+  .storybook__copy p {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+}
+
+@media (max-width: 640px) {
+  .storybook {
+    padding: 72px 18px 78px;
+  }
+
+  .storybook__heading {
+    margin-bottom: 54px;
+  }
+
+  .storybook__heading h2 {
+    font-size: clamp(34px, 9vw, 45px);
+    letter-spacing: -1.2px;
+  }
+
+  .storybook__journey {
+    gap: 54px;
+  }
+
+  .storybook__journey::before {
+    left: 9px;
+    opacity: 0.5;
+  }
+
+  .storybook__scene,
+  .storybook__scene:nth-child(even) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    padding-left: 24px;
+  }
+
+  .storybook__scene::after {
+    top: 27px;
+    left: 9px;
+    width: 12px;
+    height: 12px;
+    border-width: 3px;
+  }
+
+  .storybook__scene:nth-child(even) .storybook__visual,
+  .storybook__scene:nth-child(even) .storybook__copy {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .storybook__visual {
+    aspect-ratio: 1.12;
+    border-radius: 32px 18px 32px 18px;
+  }
+
+  .storybook__scene:nth-child(even) .storybook__visual {
+    border-radius: 18px 32px 18px 32px;
+  }
+
+  .storybook__visual--friends > img {
+    width: 80% !important;
+    height: 88% !important;
+  }
+
+  .storybook__dream-character {
+    width: 41%;
+    height: 75%;
+  }
+
+  .storybook__dream-character--divyansh {
+    width: 50%;
+  }
+
+  .storybook__dream-ghost {
+    right: 17%;
+    width: 40px;
+    height: 46px;
+  }
+
+  .storybook__copy {
+    max-width: none;
+    padding: 0 2px 0 0;
+  }
+
+  .storybook__scene-number {
+    margin-bottom: 10px;
+  }
+
+  .storybook__copy h3 {
+    margin-bottom: 11px;
+    font-size: clamp(25px, 7vw, 32px);
+  }
+
+  .storybook__copy p {
+    font-size: 15px;
+    line-height: 1.68;
+  }
+
+  .storybook__decoration--bat {
+    top: 5%;
+    left: auto;
+    right: 3%;
+    width: 42px;
+    opacity: 0.38;
+  }
+
+  .storybook__decoration--ghost,
+  .storybook__decoration--pumpkin,
+  .storybook__decoration--star-two {
+    display: none;
+  }
+
+  .storybook__decoration--star-one {
+    top: 25%;
+    right: 3%;
+    width: 17px;
+  }
+
+  .storybook__ending {
+    margin-top: 68px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .storybook *,
+  .storybook *::before,
+  .storybook *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .storybook.has-scene-reveals .story-reveal:not(.is-visible) {
     opacity: 1;
-    transform: none;
-  }
-}
-
-@media (max-width: 700px) {
-  .story-wrap {
-    padding: 72px 16px 90px;
-  }
-
-  .duo {
-    grid-template-columns: 1fr;
-  }
-
-  .duo-more {
-    margin-bottom: 48px;
-  }
-
-  .scenes::before {
-    left: 17px;
-  }
-
-  .scene {
-    margin-left: 50px;
-    padding: 18px 18px 14px;
-  }
-
-  .scene-no {
-    left: -50px;
-    width: 38px;
-    height: 38px;
-    font-size: 12px;
-  }
-
-  .scene p {
-    font-size: 16px;
+    translate: none;
   }
 }
