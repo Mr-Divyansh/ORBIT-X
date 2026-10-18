@@ -226,3 +226,96 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
   document.addEventListener('visibilitychange', sync);
   sync();
 })();
+
+(function initHeadlineTyping() {
+  // Fast, smooth headline typing: buffered per-line batches keep paints cheap,
+  // rAF-aligned appends avoid caret jitter, and short line gaps keep the run
+  // under ~1s. Full text stays readable for AT + no-JS (aria-label on the h1
+  // plus static fallback markup), and reduced-motion skips typing entirely.
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const headline = document.querySelector('h1');
+  const typingLines = document.querySelectorAll('[data-typing-text]');
+  if (!headline || typingLines.length === 0) return;
+
+  // Reduced motion (or mid-run toggle): show everything instantly, no caret.
+  const showAll = () => {
+    typingLines.forEach((line) => {
+      line.textContent = line.dataset.typingText || line.textContent;
+      line.classList.remove('typing-active');
+    });
+    headline.classList.remove('typing-done');
+  };
+
+  if (reduceMotion.matches) return;
+
+  const START_DELAY = 180; // ms before the first character lands
+  const CHAR_DELAY = 26; // ms per character batch (~3x faster than before)
+  const CHARS_PER_TICK = 1;
+  const LINE_GAP = 90; // pause between lines, keeps rhythm but stays quick
+  let cancelled = false;
+
+  if (typeof reduceMotion.addEventListener === 'function') {
+    reduceMotion.addEventListener('change', (event) => {
+      if (event.matches) {
+        cancelled = true;
+        showAll();
+      }
+    });
+  }
+
+  // Visibility + bfcache returns: reveal instantly instead of replaying or
+  // leaving a half-typed headline.
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) cancelled = true;
+  });
+  window.addEventListener('pageshow', () => {
+    if (cancelled) showAll();
+  });
+
+  const wait = (ms) =>
+    new Promise((resolve) => {
+      window.setTimeout(resolve, ms);
+    });
+
+  // rAF gate: batches the next append with the compositor tick so caret and
+  // text advance together with no visible stutter.
+  const nextFrame = () =>
+    new Promise((resolve) => {
+      window.requestAnimationFrame(() => resolve());
+    });
+
+  const typeHeadline = async () => {
+    await wait(START_DELAY);
+
+    typingLines.forEach((line) => {
+      line.textContent = '';
+    });
+
+    for (const line of typingLines) {
+      if (cancelled || document.hidden) {
+        showAll();
+        return;
+      }
+      line.classList.add('typing-active');
+      const fullText = line.dataset.typingText || '';
+
+      for (let index = 0; index < fullText.length; index += CHARS_PER_TICK) {
+        if (cancelled || document.hidden) {
+          showAll();
+          return;
+        }
+        await nextFrame();
+        line.textContent += fullText.slice(index, index + CHARS_PER_TICK);
+        await wait(CHAR_DELAY);
+      }
+
+      line.classList.remove('typing-active');
+      await wait(LINE_GAP);
+    }
+
+    // Done: park a steady caret on the final line (no blink loop burn).
+    headline.classList.add('typing-done');
+  };
+
+  typeHeadline();
+})();

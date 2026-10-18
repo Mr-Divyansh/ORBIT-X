@@ -239,11 +239,48 @@ h1 {
   letter-spacing: -3.2px;
 }
 
-h1 span {
+/* Headline typing: typed text inherits the h1 ink color (original look);
+   ONLY .typing-accent gets the purple gradient. Lines stay as normal
+   inline flow so wrapping matches the original headline exactly. */
+h1 .typing-line {
+  position: relative;
+  color: inherit;
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+}
+
+h1 .typing-accent {
   background: linear-gradient(100deg, #9b7de0 8%, #7651b7 95%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.typing-active::after {
+  position: absolute;
+  top: 0.08em;
+  right: -0.1em;
+  height: 0.85em;
+  border-right: 3px solid var(--purple-deep);
+  content: "";
+  animation: typing-caret 0.8s steps(1, end) infinite;
+}
+
+h1.typing-done .typing-line:last-child::after {
+  position: absolute;
+  top: 0.08em;
+  right: -0.1em;
+  height: 0.85em;
+  border-right: 3px solid var(--purple-deep);
+  content: "";
+  opacity: 0.9;
+}
+
+@keyframes typing-caret {
+  50% {
+    opacity: 0;
+  }
 }
 
 .description {
