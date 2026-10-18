@@ -114,8 +114,8 @@
   position: absolute;
   top: 49%;
   right: 4%;
-  z-index: 1;
-  width: clamp(34px, 4vw, 52px);
+  z-index: 3;
+  width: clamp(240px, 26vw, 340px);
   pointer-events: none;
   animation: about-ghost-float 5.5s ease-in-out 1s infinite;
 }
@@ -182,7 +182,7 @@
 .about-bat {
   position: absolute;
   z-index: 2;
-  width: clamp(34px, 4vw, 52px);
+  width: clamp(192px, 18vw, 256px);
   pointer-events: none;
   animation: about-bat-float 5s ease-in-out infinite;
 }
@@ -202,7 +202,7 @@
 .about-bat-right {
   top: 67%;
   right: 1.5%;
-  width: clamp(28px, 3vw, 40px);
+  width: clamp(156px, 14vw, 208px);
   animation-delay: -2.5s;
 }
 
@@ -253,6 +253,7 @@
 
 .character-visual {
   position: relative;
+  z-index: 1;
   height: 235px;
   min-width: 0;
   display: flex;
@@ -281,6 +282,8 @@
   height: 100%;
   object-fit: contain;
   object-position: center bottom;
+  transform: scale(1.8);
+  transform-origin: center;
   filter: drop-shadow(0 5px 3px rgba(57, 54, 79, 0.10));
 }
 
@@ -392,9 +395,10 @@
 .about-ending {
   position: relative;
   isolation: isolate;
-  min-height: 145px;
+  overflow: hidden;
+  min-height: 220px;
   margin-top: 48px;
-  padding: 26px 90px;
+  padding: 58px clamp(190px, 22vw, 250px) 28px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -406,13 +410,17 @@
 }
 
 .about-ending h2 {
+  position: relative;
+  z-index: 1;
   margin: 0;
-  max-width: 650px;
+  max-width: 500px;
   font-size: clamp(22px, 3vw, 32px);
   line-height: 1.3;
 }
 
 .back-home-button {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -429,6 +437,26 @@
   transition: background 180ms ease, transform 180ms ease;
 }
 
+.ending-pumpkin {
+  position: absolute;
+  top: 50%;
+  z-index: 0;
+  width: clamp(224px, 28vw, 336px);
+  height: auto;
+  pointer-events: none;
+  transform: translateY(-50%);
+  animation: about-float 5s ease-in-out infinite;
+}
+
+.ending-pumpkin-left {
+  left: 10px;
+}
+
+.ending-pumpkin-right {
+  right: 10px;
+  animation-delay: -2.5s;
+}
+
 .back-home-button:hover {
   background: #FFFFFF;
   transform: translateY(-2px);
@@ -436,32 +464,13 @@
 
 .ending-decoration {
   position: absolute;
-  top: -20px;
-  left: 22px;
+  top: 10px;
+  left: 50%;
   color: #D8B55B;
-  font-size: 42px;
+  font-size: 34px;
   pointer-events: none;
+  transform: translateX(-50%);
   animation: about-float 4.5s ease-in-out infinite;
-}
-
-.pumpkin {
-  position: absolute;
-  z-index: 2;
-  bottom: -9px;
-  width: 94px;
-  height: 94px;
-  object-fit: contain;
-  pointer-events: none;
-  animation: about-float 5s ease-in-out infinite;
-}
-
-.pumpkin-left {
-  left: -12px;
-}
-
-.pumpkin-right {
-  right: -12px;
-  animation-delay: -2.5s;
 }
 
 @keyframes about-web-glow {
@@ -571,18 +580,21 @@
     padding: 6px 10px;
   }
 
-  .pumpkin {
-    width: 76px;
-    height: 76px;
-  }
-
   .about-spider {
     left: 7%;
   }
 
   .about-ghost {
     right: 2%;
-    width: 34px;
+    width: 220px;
+  }
+
+  .character-image {
+    transform: scale(1.65);
+  }
+
+  .together-divider {
+    margin-block: 38px;
   }
 }
 
@@ -638,7 +650,43 @@
   .about-ghost {
     top: 52%;
     right: 1%;
-    width: 27px;
+    width: 200px;
+  }
+
+  .about-ending {
+    min-height: 210px;
+    padding: 56px 66px 26px;
+  }
+
+  .about-ending h2 {
+    max-width: 100%;
+    font-size: 20px;
+  }
+
+  .ending-pumpkin {
+    width: 112px;
+  }
+
+  .ending-pumpkin-left {
+    left: 0;
+  }
+
+  .ending-pumpkin-right {
+    right: 0;
+  }
+
+  .ending-decoration {
+    top: 8px;
+    left: 50%;
+    font-size: 28px;
+  }
+
+  .character-image {
+    transform: scale(1.8);
+  }
+
+  .together-divider {
+    margin-block: 34px;
   }
 
   .about-lightning {
@@ -731,14 +779,6 @@
     font-size: 26px;
   }
 
-  .about-ending {
-    min-height: 145px;
-    margin-top: 38px;
-    padding: 26px 48px;
-    gap: 14px;
-    border-radius: 24px;
-  }
-
   .about-ending h2 {
     font-size: 23px;
     line-height: 1.3;
@@ -750,24 +790,6 @@
     padding: 10px 18px;
   }
 
-  .ending-decoration {
-    left: 10px;
-    font-size: 30px;
-  }
-
-  .pumpkin {
-    width: 61px;
-    height: 61px;
-    bottom: -5px;
-  }
-
-  .pumpkin-left {
-    left: -7px;
-  }
-
-  .pumpkin-right {
-    right: -7px;
-  }
 }
 
 /* Very narrow phones */
@@ -779,6 +801,14 @@
 
   .about-heading h1 {
     font-size: 28px;
+  }
+
+  .about-ending {
+    padding-inline: 52px;
+  }
+
+  .ending-pumpkin {
+    width: 84px;
   }
 
   .character-card,
@@ -806,18 +836,10 @@
     padding: 4px 5px;
   }
 
-  .about-ending {
-    padding-inline: 35px;
-  }
-
   .about-ending h2 {
     font-size: 20px;
   }
 
-  .pumpkin {
-    width: 48px;
-    height: 48px;
-  }
 }
 
 /* Accessibility */
