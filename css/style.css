@@ -13,8 +13,6 @@
   --shadow-strong: rgba(142, 104, 205, 0.28);
 }
 
-/* Registered so the hanging-thread keyframes can interpolate --swing as an
-   angle (instead of snapping). Baseline sway composes with cursor --gust. */
 @property --swing {
   syntax: '<angle>';
   inherits: true;
@@ -110,12 +108,6 @@ img {
   gap: 7px;
   pointer-events: none;
   transform: translate(-50%, -50%);
-}
-
-.nav-bat {
-  width: 54px;
-  height: 39px;
-  animation: bat-enter 0.7s ease-out 0.4s both, bat-float 5s ease-in-out infinite;
 }
 
 .nav-sparkle {
@@ -237,6 +229,11 @@ h1 {
   font-weight: 900;
   line-height: 1.03;
   letter-spacing: -3.2px;
+}
+
+.hero h1 {
+  min-height: 3.1em;
+  margin-bottom: 30px;
 }
 
 /* Headline typing: typed text inherits the h1 ink color (original look);
@@ -650,22 +647,22 @@ h1.typing-done .typing-line:last-child::after {
 
 .halloween-char {
   position: absolute;
-  z-index: 4;
+  z-index: 2;
   bottom: 120px;
   filter: drop-shadow(0 4px 4px rgba(102, 75, 131, 0.08));
 }
 
 .ghost-char {
   left: 1.2%;
-  width: 62px;
-  height: 70px;
+  width: 124px;
+  height: auto;
   animation: ghost-float 5.5s ease-in-out 1.3s infinite;
 }
 
 .pumpkin-char {
   right: 1.4%;
-  width: 66px;
-  height: 59px;
+  width: 132px;
+  height: auto;
   animation: pumpkin-bob 6.5s ease-in-out 1.8s infinite;
 }
 
@@ -711,33 +708,13 @@ h1.typing-done .typing-line:last-child::after {
     transform: translateY(-9px);
   }
 }
-@keyframes bat-float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-@keyframes bat-enter {
-  0% {
-    transform: translateY(16px);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
 /* Two flying bats share the supplied bat PNG (actual project asset).
    Each bat drifts along its own looping path through open hero bands — never
    over the copy or character faces — with different scales and timing so the
    pair never reads as duplicated. transform-box keeps each img centered. */
 .flying-bat {
   position: absolute;
-  z-index: 3;
+  z-index: 2;
   pointer-events: none;
   will-change: transform, opacity;
 }
@@ -753,7 +730,7 @@ h1.typing-done .typing-line:last-child::after {
 .bat-a {
   left: 6%;
   top: 6%;
-  width: clamp(34px, 4vw, 54px);
+  width: clamp(84px, 8vw, 108px);
   animation: bat-drift-a 16s ease-in-out infinite;
 }
 
@@ -764,7 +741,7 @@ h1.typing-done .typing-line:last-child::after {
 .bat-b {
   right: 5%;
   top: 10%;
-  width: clamp(26px, 3vw, 38px);
+  width: clamp(64px, 6vw, 76px);
   animation: bat-drift-b 21s ease-in-out 1.6s infinite;
 }
 
@@ -925,11 +902,11 @@ h1.typing-done .typing-line:last-child::after {
 @keyframes pumpkin-bob {
   0%,
   100% {
-    transform: translateY(0) rotate(-1.5deg);
+    transform: translateY(0) rotate(-9deg);
   }
 
   50% {
-    transform: translateY(-3px) rotate(1.5deg);
+    transform: translateY(-3px) rotate(-13deg);
   }
 }
 
@@ -964,12 +941,12 @@ h1.typing-done .typing-line:last-child::after {
   /* Tablets keep the two-column read but narrower, so copy and the Together
      stage never overlap; decorations shrink rather than crowd the text. */
   .bat-a {
-    width: 42px;
+    width: 84px;
     animation-duration: 19s;
   }
 
   .bat-b {
-    width: 32px;
+    width: 64px;
     animation-duration: 25s;
   }
 
@@ -1088,6 +1065,10 @@ h1.typing-done .typing-line:last-child::after {
     letter-spacing: -2.5px;
   }
 
+  .hero h1 {
+    margin-bottom: 24px;
+  }
+
   .description {
     max-width: 500px;
     margin: 0 0 22px 2px;
@@ -1174,14 +1155,14 @@ h1.typing-done .typing-line:last-child::after {
   .bat-a {
     left: 4%;
     top: 4%;
-    width: 36px;
+    width: 72px;
     animation: bat-drift-mobile-a 14s ease-in-out infinite;
   }
 
   .bat-b {
     right: 5%;
     top: 7%;
-    width: 28px;
+    width: 56px;
     animation: bat-drift-mobile-b 18s ease-in-out 1.2s infinite;
   }
 
@@ -1241,16 +1222,16 @@ h1.typing-done .typing-line:last-child::after {
 
   .ghost-char {
     left: 0;
-    bottom: 98px;
-    width: 45px;
-    height: 51px;
+    bottom: 24px;
+    width: 90px;
+    height: auto;
   }
 
   .pumpkin-char {
     right: 0;
-    bottom: 98px;
-    width: 48px;
-    height: 43px;
+    bottom: 24px;
+    width: 96px;
+    height: auto;
   }
 
   .below-section {
