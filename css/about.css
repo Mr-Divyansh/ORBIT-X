@@ -1,5 +1,5 @@
 .about-page {
-  --about-cream: #FFF8F2;
+  --about-cream: #F4F2F7; /* soft lavender-gray About base, distinct from the warm hero */
   --about-text: #39364F;
   --about-yellow: #FFE8A3;
   --about-lavender: #DCCFFF;
@@ -11,7 +11,11 @@
   isolation: isolate;
   overflow: hidden;
   padding: 42px 24px 30px;
-  background: var(--about-cream);
+  background:
+    radial-gradient(72% 46% at 50% 0%, rgba(214, 201, 255, 0.45), transparent 70%),
+    radial-gradient(60% 38% at 8% 100%, rgba(255, 249, 244, 0.95), transparent 74%),
+    radial-gradient(60% 38% at 92% 100%, rgba(255, 243, 233, 0.85), transparent 74%),
+    linear-gradient(180deg, #F7F5FA 0%, var(--about-cream) 45%, #F3F0F7 100%);
   color: var(--about-text);
   font-family: inherit;
 }
@@ -769,6 +773,9 @@
   border-radius: 0 0 5px 5px;
 }
 
+/* Lantern state: OFF by default; the beam, ghost, and glow light up only while the
+   gadget view is active (.is-gadget-on on the card, mirrored from the image swap). */
+
 .lamp-glass {
   position: absolute;
   left: 15px;
@@ -776,10 +783,18 @@
   z-index: 2;
   width: 19px;
   height: 21px;
-  border: 2px solid #A87525;
+  border: 2px solid #8A7444;
   border-radius: 7px 7px 4px 4px;
+  background: linear-gradient(#F6EFDB, #DFC792);
+  box-shadow: none;
+  transition: background 450ms ease, border-color 450ms ease, box-shadow 450ms ease;
+}
+
+.character-card.is-gadget-on .lamp-glass,
+.character-card:has(.character-visual.is-gadget-visible) .lamp-glass {
+  border-color: #A87525;
   background: linear-gradient(#FFF6B7, #FFC94E);
-  box-shadow: 0 0 12px rgba(255, 204, 77, 0.8);
+  box-shadow: 0 0 12px rgba(255, 204, 77, 0.85), 0 0 26px rgba(255, 190, 60, 0.4);
   animation: lamp-pulse 2.8s ease-in-out infinite;
 }
 
@@ -802,34 +817,102 @@
   bottom: -3px;
 }
 
+/* Soft tapered beam anchored to the lantern's light-emitting top: the glass cap
+   centre sits at ~24px from the left and ~9px from the top of the 70x50 art box,
+   so the beam pivots from that exact point (transform-origin at its own base). */
+
 .lamp-beam {
   position: absolute;
-  top: 10px;
-  left: 29px;
+  left: 6px; /* 24px anchor x minus half of the 36px width */
+  bottom: 41px; /* 50px box height minus the 9px anchor y */
   z-index: 1;
-  width: 37px;
-  height: 35px;
-  clip-path: polygon(0 32%, 100% 0, 100% 100%, 0 66%);
-  background: linear-gradient(90deg, rgba(255, 215, 111, 0.78), rgba(255, 244, 191, 0.04));
-  transform-origin: left center;
+  width: 36px;
+  height: 34px;
+  clip-path: polygon(42% 100%, 58% 100%, 96% 2%, 4% 2%);
+  background: linear-gradient(0deg, rgba(255, 216, 116, 0.85), rgba(255, 243, 190, 0.3) 68%, rgba(255, 250, 222, 0));
+  filter: blur(0.6px) drop-shadow(0 0 7px rgba(255, 212, 100, 0.75));
+  transform-origin: 50% 100%;
+  transform: rotate(78deg); /* tip lands where the ghost floats, up-right of the lantern */
+  opacity: 0;
+  transition: opacity 450ms ease;
+  pointer-events: none;
+}
+
+.character-card.is-gadget-on .lamp-beam,
+.character-card:has(.character-visual.is-gadget-visible) .lamp-beam {
+  opacity: 0.85;
   animation: lamp-beam-pulse 2.8s ease-in-out infinite;
 }
 
+/* Ghost stays hidden while the lamp is OFF and fades in only inside the lit beam */
+
 .lamp-ghost {
   position: absolute;
-  top: 2px;
-  right: 1px;
+  top: -6px;
+  right: 0;
   z-index: 0;
-  width: 20px;
+  width: 19px;
   opacity: 0;
+  transform: translate(-5px, 6px) scale(0.8);
+  transform-origin: 50% 90%;
   filter: drop-shadow(0 0 8px rgba(255, 250, 213, 0.95));
-  animation: lamp-ghost-reveal 5s ease-in-out 0.7s infinite;
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.character-card.is-gadget-on .lamp-ghost,
+.character-card:has(.character-visual.is-gadget-visible) .lamp-ghost {
+  opacity: 1;
+  transform: none;
+  transition-delay: 120ms; /* ghost emerges just after the light switches on */
 }
 
 .lamp-ghost img {
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* Tiny golden sparks drifting along the beam while the lamp is lit */
+
+.lamp-art::before,
+.lamp-art::after {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  background: #FFEAA8;
+  box-shadow: 0 0 6px 2px rgba(255, 226, 130, 0.8);
+  opacity: 0;
+  transition: opacity 500ms ease;
+  content: "";
+  pointer-events: none;
+}
+
+.lamp-art::before {
+  left: 38px;
+  top: 3px;
+  width: 3px;
+  height: 3px;
+}
+
+.lamp-art::after {
+  left: 50px;
+  top: 0;
+  width: 2px;
+  height: 2px;
+  transition-delay: 180ms;
+}
+
+.character-card.is-gadget-on .lamp-art::before,
+.character-card.is-gadget-on .lamp-art::after,
+.character-card:has(.character-visual.is-gadget-visible) .lamp-art::before,
+.character-card:has(.character-visual.is-gadget-visible) .lamp-art::after {
+  opacity: 0.95;
+  animation: lamp-spark-drift 2.6s ease-in-out infinite;
+}
+
+.character-card.is-gadget-on .lamp-art::after,
+.character-card:has(.character-visual.is-gadget-visible) .lamp-art::after {
+  animation-delay: -1.3s;
 }
 
 .magic-staff {
@@ -869,10 +952,14 @@
   height: 7px;
 }
 
+/* Dream portal circle recentred on the purification stick's own axis (the stick's
+   centre sits at ~32.5px / ~25.5px inside the 70x50 art box) so the circle, stick,
+   and its glowing gem end stay aligned at every breakpoint. */
+
 .dream-portal {
   position: absolute;
-  top: 4px;
-  right: 3px;
+  top: 5.5px;
+  left: 12.5px;
   width: 40px;
   height: 40px;
   border: 2px solid rgba(152, 129, 226, 0.7);
@@ -912,8 +999,8 @@
 }
 
 .staff-spark-two {
-  bottom: 9px;
-  left: 17px;
+  bottom: 5px;
+  left: 21px;
   animation-delay: -1s;
 }
 
@@ -1868,33 +1955,29 @@
 
 @keyframes lamp-beam-pulse {
   0%,
-  28%,
   100% {
-    opacity: 0.18;
-    scale: 0.8 0.72;
+    opacity: 0.6;
   }
 
-  40%,
-  75% {
-    opacity: 0.9;
-    scale: 1;
+  50% {
+    opacity: 0.95;
   }
 }
 
-@keyframes lamp-ghost-reveal {
+@keyframes lamp-spark-drift {
   0%,
-  30%,
   100% {
-    opacity: 0;
-    translate: -7px 3px;
-    scale: 0.72;
+    opacity: 0.15;
+    translate: 0 4px;
   }
 
-  43%,
-  76% {
-    opacity: 1;
-    translate: 0 0;
-    scale: 1;
+  45% {
+    opacity: 0.95;
+  }
+
+  80% {
+    opacity: 0.2;
+    translate: 7px -10px;
   }
 }
 
@@ -2230,10 +2313,10 @@
   }
 
   .gadget-art {
-    flex-basis: 56px;
-    width: 56px;
-    height: 44px;
-    scale: 0.88;
+    flex-basis: 70px;
+    width: 70px;
+    height: 50px;
+    scale: 0.85; /* keep the intrinsic 70x50 art geometry intact; only scale it down */
     transform-origin: left center;
   }
 
@@ -2405,9 +2488,11 @@
   }
 
   .gadget-art {
-    flex-basis: 50px;
-    width: 50px;
-    scale: 0.84;
+    flex-basis: 70px;
+    width: 70px;
+    height: 50px;
+    scale: 0.78; /* intrinsic art geometry preserved; scaled uniformly on narrow phones */
+    transform-origin: left center;
   }
 
   .gadget-copy strong {
@@ -2441,8 +2526,7 @@
     translate: none;
   }
 
-  .opening-ghost,
-  .lamp-ghost {
+  .opening-ghost {
     opacity: 1;
   }
 
