@@ -166,8 +166,8 @@
 }
 
 .about-page .button {
-  min-height: 54px;
-  padding: 0 23px;
+  min-height: 46px;
+  padding: 11px 22px;
   border-radius: 999px;
   font-weight: 900;
   transition:
@@ -206,24 +206,33 @@
 .hero-primary-button {
   position: relative;
   overflow: visible !important;
+  gap: 9px;
+  min-height: 46px;
+  padding: 11px 18px 11px 20px;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  background: linear-gradient(115deg, #a487dc, #7657ac 72%, #65489b);
+  box-shadow:
+    0 6px 16px rgba(119, 83, 169, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
-.hero-primary-button::before {
-  position: absolute;
-  z-index: -1;
-  inset: -5px;
-  border: 1px solid rgba(160, 134, 211, 0.34);
-  border-radius: inherit;
-  content: "";
-  transition:
-    inset 250ms ease,
-    opacity 250ms ease;
-  opacity: 0.7;
+.hero-primary-button:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 26px rgba(119, 83, 169, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
-.hero-primary-button:hover::before {
-  inset: -8px;
-  opacity: 1;
+.hero-primary-button:active {
+  transform: translateY(-1px);
+}
+
+.hero-primary-button:focus-visible {
+  outline: 3px solid rgba(132, 104, 189, 0.65);
+  outline-offset: 4px;
 }
 
 .hero-button-icon {
@@ -430,6 +439,42 @@
 
 .hero-character-divyansh .swap-image {
   animation-delay: -4.1s;
+}
+
+/* Refined hero hover: subtle lift + gentle scale + soft glow, no clipping. */
+@media (hover: hover) and (pointer: fine) {
+  .hero-character {
+    transform: translateY(0);
+    transition:
+      transform 320ms cubic-bezier(0.2, 0.75, 0.25, 1),
+      filter 320ms ease;
+    will-change: transform, filter;
+  }
+
+  .hero-character:hover,
+  .hero-character:focus-visible {
+    transform: translateY(-6px) scale(1.03);
+    filter:
+      drop-shadow(0 18px 14px rgba(62, 47, 85, 0.18))
+      drop-shadow(0 0 22px rgba(160, 134, 211, 0.45));
+  }
+
+  .hero-character:active {
+    transform: translateY(-3px) scale(1.015);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-character {
+    transition: none;
+    transform: none;
+  }
+  .hero-character:hover,
+  .hero-character:focus-visible {
+    transform: none;
+    filter:
+      drop-shadow(0 10px 9px rgba(62, 47, 85, 0.13));
+  }
 }
 
 .hero-character-divyansh .swap-image-gadget {
@@ -1264,11 +1309,39 @@
 }
 
 .promise-section {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
   align-items: center;
   gap: clamp(34px, 6vw, 80px);
-  padding-bottom: 120px;
+  padding: clamp(88px, 11vw, 132px) 0 clamp(72px, 9vw, 112px);
+  background:
+    radial-gradient(ellipse at 30% 22%, rgba(220, 207, 255, 0.55), transparent 55%),
+    radial-gradient(ellipse at 78% 78%, rgba(255, 232, 163, 0.30), transparent 50%),
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.95), transparent 45%),
+    linear-gradient(178deg, #f3eeff 0%, #fbf8ff 38%, #fffaf2 100%);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.promise-section::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 22% 18%, rgba(214, 196, 248, 0.42), transparent 50%),
+    radial-gradient(ellipse at 82% 84%, rgba(255, 214, 232, 0.28), transparent 48%);
+  pointer-events: none;
+}
+
+.promise-section::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 18% 28%, rgba(255, 255, 255, 0.7), transparent 22%),
+    radial-gradient(circle at 72% 72%, rgba(255, 255, 255, 0.6), transparent 20%);
+  pointer-events: none;
 }
 
 .promise-art {
@@ -1659,9 +1732,24 @@
   }
 
   .hero-character {
-    width: 44%;
-    height: 255px;
-    bottom: 6%;
+    height: clamp(190px, 30vw, 230px);
+    bottom: 5%;
+  }
+
+  .hero-character-abhay {
+    left: 6%;
+  }
+
+  .hero-character-divyansh {
+    right: 6%;
+  }
+
+  .hero-character-divyansh .swap-image-gadget {
+    inset: auto auto 0 -18%;
+    width: 140%;
+    height: 140%;
+    max-width: none;
+    object-position: center bottom;
   }
 
   .hero-tag-lantern {
@@ -1732,7 +1820,7 @@
   .promise-section {
     grid-template-columns: 1fr;
     gap: 44px;
-    padding-bottom: 90px;
+    padding: clamp(64px, 9vw, 92px) 0 clamp(56px, 8vw, 80px);
   }
 
   .promise-art {
@@ -1812,8 +1900,7 @@
 
   .hero-character {
     bottom: 5%;
-    width: 47%;
-    height: 255px;
+    height: clamp(170px, 28vw, 210px);
   }
 
   .hero-bat {
