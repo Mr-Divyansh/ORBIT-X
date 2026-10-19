@@ -273,14 +273,12 @@ h1 .typing-accent {
   animation: typing-caret 0.8s steps(1, end) infinite;
 }
 
+/* Resting state: no caret or cursor is left behind once typing finishes.
+   The completed headline reads as plain text (kept for backwards
+   compatibility if script.js ever adds .typing-done). */
 h1.typing-done .typing-line:last-child::after {
-  position: absolute;
-  top: 0.08em;
-  right: -0.1em;
-  height: 0.85em;
-  border-right: 3px solid var(--purple-deep);
-  content: "";
-  opacity: 0.9;
+  content: none;
+  display: none;
 }
 
 @keyframes typing-caret {
@@ -304,6 +302,41 @@ h1.typing-done .typing-line:last-child::after {
   align-items: center;
   gap: 24px;
   margin-left: 2px;
+}
+
+/* Entrance choreography: subtle fade-and-rise for copy blocks and art.
+   Staggered so the headline leads, then description, actions, and artwork.
+   Runs once on load; transform/opacity only, no layout shift. */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-copy > * {
+  animation: hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-copy > :nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.hero-copy > :nth-child(3) {
+  animation-delay: 0.18s;
+}
+
+.hero-copy > :nth-child(4) {
+  animation-delay: 0.28s;
+}
+
+.hero-art {
+  animation: hero-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
 }
 
 .button {
@@ -740,7 +773,7 @@ h1.typing-done .typing-line:last-child::after {
   left: 6%;
   top: 6%;
   width: clamp(84px, 8vw, 108px);
-  animation: bat-drift-a 16s ease-in-out infinite;
+  animation: bat-drift-a 17s ease-in-out -2s infinite;
 }
 
 .bat-a img {
@@ -751,7 +784,7 @@ h1.typing-done .typing-line:last-child::after {
   right: 5%;
   top: 10%;
   width: clamp(64px, 6vw, 76px);
-  animation: bat-drift-b 21s ease-in-out 1.6s infinite;
+  animation: bat-drift-b 23s ease-in-out -9s infinite;
 }
 
 .bat-b img {
@@ -759,42 +792,44 @@ h1.typing-done .typing-line:last-child::after {
 }
 
 /* Cross-hero drift: side bands and upper third only, so bats stay clear of
-   the CTA row and the Together faces. Small rotate = banking into turns. */
+   the CTA row and the Together faces. Small rotate = banking into turns.
+   Gentle local float: bats bob vertically with tiny drift/rotation so they
+   never cross the headline or characters and loop seamlessly. */
 @keyframes bat-drift-a {
   0%,
   100% {
-    transform: translate(0, 0) rotate(-6deg);
+    transform: translate(0, 0) rotate(-3deg);
   }
 
-  22% {
-    transform: translate(26vw, 7vh) rotate(6deg);
+  25% {
+    transform: translate(3vw, -14px) rotate(2deg);
   }
 
-  48% {
-    transform: translate(52vw, 2vh) rotate(-4deg);
+  50% {
+    transform: translate(6vw, 0) rotate(-2deg);
   }
 
-  74% {
-    transform: translate(24vw, 12vh) rotate(8deg);
+  75% {
+    transform: translate(3vw, 14px) rotate(3deg);
   }
 }
 
 @keyframes bat-drift-b {
   0%,
   100% {
-    transform: translate(0, 0) rotate(5deg);
+    transform: translate(0, 0) rotate(3deg);
   }
 
-  26% {
-    transform: translate(-22vw, 8vh) rotate(-7deg);
+  30% {
+    transform: translate(-2.5vw, 12px) rotate(-2deg);
   }
 
-  52% {
-    transform: translate(-44vw, 3vh) rotate(4deg);
+  55% {
+    transform: translate(-5vw, 0) rotate(2deg);
   }
 
-  78% {
-    transform: translate(-20vw, 13vh) rotate(-5deg);
+  80% {
+    transform: translate(-2.5vw, -12px) rotate(-3deg);
   }
 }
 
@@ -1280,6 +1315,11 @@ h1.typing-done .typing-line:last-child::after {
     --wind-y: 0px;
     --wind-rot: 0deg;
     transform: none;
+  }
+
+  .hero-copy > *,
+  .hero-art {
+    animation: none;
   }
 
   .hanging-spider-swing {

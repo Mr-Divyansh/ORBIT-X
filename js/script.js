@@ -169,10 +169,11 @@ document.querySelectorAll('[data-character-image]').forEach((visual) => {
 })();
 
 (function initCursorWind() {
-  // Gentle breeze: the character stage and hanging threads lean slightly
-  // AWAY from the cursor while it is near, then spring back to rest.
-  // Transform-only (CSS vars consumed by .hero-stage / .hanging-spider-swing);
-  // never touches the entrance state, so it cannot restart the video.
+  // Per-spider cursor breeze: each hanging thread leans slightly AWAY from
+  // the cursor while it is inside that spider's nearby zone, then springs
+  // back to rest. Transform-only (CSS var --gust consumed by
+  // .hanging-spider-swing); the character stage gets its own tiny lean.
+  // Never touches the entrance state, so it cannot restart the video.
   const hero = document.querySelector('.hero');
   const stage = document.querySelector('[data-hero-stage]');
   if (!hero || !stage) return;
@@ -181,25 +182,37 @@ document.querySelectorAll('[data-character-image]').forEach((visual) => {
   // Reduced motion: leave every offset at rest and attach no listeners.
   if (reduceMotion.matches) return;
 
-  const swings = Array.from(document.querySelectorAll('.hanging-spider-swing'));
+  const hoverFine = window.matchMedia('(hover: hover) and (pointer: fine)');
+  // Touch / no-hover devices: preserve the static decoration, no listeners.
+  if (!hoverFine.matches) return;
 
-  // Two smoothed phases: the character body follows quickly, threads trail
-  // with a slower lerp so strings feel flexible instead of rigid.
+  const spiderEls = Array.from(document.querySelectorAll('.hanging-spider'));
+  const swings = Array.from(document.querySelectorAll('.hanging-spider-swing'));
+  const spiders = spiderEls.map((el) => {
+    const swing = el.querySelector('.hanging-spider-swing');
+    return { el, swing, r: 0, v: 0, target: 0 };
+  });
+
+  // Two smoothed phases: the character body follows quickly, threads use a
+  // per-spider spring so strings feel flexible instead of rigid.
   const body = { x: 0, y: 0, r: 0 };
-  const thread = { r: 0 };
-  const target = { x: 0, y: 0, r: 0, gust: 0 };
+  const target = { x: 0, y: 0, r: 0 };
 
   // Caps keep the effect subtle and prevent any jump of the whole hero.
-  const MAX_X = 10; // px of stage lean
-  const MAX_Y = 6;
-  const MAX_R = 1.2; // deg of stage tilt
-  const MAX_GUST = 3; // deg of thread push
+  const MAX_X = 8; // px of stage lean
+  const MAX_Y = 5;
+  const MAX_R = 1; // deg of stage tilt
+  const MAX_GUST = 4; // deg of per-spider thread push
+  const RADIUS = 280; // px interaction zone around each spider
   const IDLE_MS = 1200; // cursor quiet this long -> ease back to rest
 
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
   let lastMove = 0;
   let pointer = null;
+  let prevX = 0;
+  let prevY = 0;
+  let hasPrev = false;
   let rafId = 0;
   let running = false;
 
@@ -212,37 +225,44 @@ document.querySelectorAll('[data-character-image]').forEach((visual) => {
       target.x = 0;
       target.y = 0;
       target.r = 0;
-      target.gust = 0;
+      spiders.forEach((s) => { s.target = 0; });
     }
 
-    // Fast follow for bodies, slow trail for threads (spring-like lag).
+    // Fast follow for bodies, spring-damped trail for each thread.
     body.x += (target.x - body.x) * 0.08;
     body.y += (target.y - body.y) * 0.08;
     body.r += (target.r - body.r) * 0.08;
-    thread.r += (target.gust - thread.r) * 0.045;
+    spiders.forEach((s) => {
+      // Spring toward target: stiffness + damping = natural wobble that
+      // overshoots slightly then settles instead of snapping.
+      s.v += (s.target - s.r) * 0.022;
+      s.v *= 0.9;
+      s.r += s.v;
+      if (s.swing) s.swing.style.setProperty('--gust', s.r.toFixed(3) + 'deg');
+    });
 
     stage.style.setProperty('--wind-x', body.x.toFixed(2) + 'px');
     stage.style.setProperty('--wind-y', body.y.toFixed(2) + 'px');
     stage.style.setProperty('--wind-rot', body.r.toFixed(3) + 'deg');
-    const gust = thread.r.toFixed(3) + 'deg';
-    swings.forEach((swing) => swing.style.setProperty('--gust', gust));
 
-    const settled =
+    const bodySettled =
       Math.abs(body.x) < 0.05 &&
       Math.abs(body.y) < 0.05 &&
       Math.abs(body.r) < 0.02 &&
-      Math.abs(thread.r) < 0.02 &&
       target.x === 0 &&
       target.y === 0 &&
-      target.r === 0 &&
-      target.gust === 0;
+      target.r === 0;
+    const spidersSettled = spiders.every(
+      (s) => Math.abs(s.r) < 0.02 && Math.abs(s.v) < 0.02 && s.target === 0
+    );
 
-    if (settled) {
+    if (bodySettled && spidersSettled) {
       // Snap exactly to rest so no sub-pixel drift lingers.
       stage.style.setProperty('--wind-x', '0px');
       stage.style.setProperty('--wind-y', '0px');
       stage.style.setProperty('--wind-rot', '0deg');
       swings.forEach((swing) => swing.style.setProperty('--gust', '0deg'));
+      spiders.forEach((s) => { s.r = 0; s.v = 0; });
       running = false;
       rafId = 0;
       return;
@@ -259,10 +279,12 @@ document.querySelectorAll('[data-character-image]').forEach((visual) => {
   };
 
   // Pointer position is sampled here; all DOM writes happen inside tick.
-  hero.addEventListener(
-    'pointermove',
-    (event) => {
+  // Each spider reacts only to its own nearby zone: proximity + horizontal
+  // movement direction set a small push AWAY from the cursor. Spiders never
+  // chase or follow - the sign is negated so they lean away, capped subtly.
+  const onPointerMove = (event) => {
       if (document.hidden) return;
+      if (event.pointerType === 'touch') return;
       const rect = stage.getBoundingClientRect();
       if (rect.width === 0 || rect.height === 0) return;
       const centerX = rect.left + rect.width / 2;
@@ -276,38 +298,77 @@ document.querySelectorAll('[data-character-image]').forEach((visual) => {
       target.x = -clamp(dx, -1, 1) * MAX_X * influence;
       target.y = -clamp(dy, -1, 1) * MAX_Y * influence * 0.6;
       target.r = -clamp(dx, -1, 1) * MAX_R * influence;
-      target.gust = -clamp(dx, -1, 1) * MAX_GUST * influence;
+
+      const vx = hasPrev ? event.clientX - prevX : 0;
+      const vy = hasPrev ? event.clientY - prevY : 0;
+      prevX = event.clientX;
+      prevY = event.clientY;
+      hasPrev = true;
+      const speed = Math.min(24, Math.hypot(vx, vy));
+      const wobble = 1 + speed / 24;
+
+      spiders.forEach((s) => {
+        if (!s.el) return;
+        const r = s.el.getBoundingClientRect();
+        const sx = r.left + r.width / 2;
+        const sy = r.top + r.height * 0.35;
+        const sdx = event.clientX - sx;
+        const sdy = event.clientY - sy;
+        const dist = Math.hypot(sdx, sdy);
+        if (dist > RADIUS) {
+          s.target = 0;
+          return;
+        }
+        const near = 1 - dist / RADIUS;
+        // Away from cursor: cursor right of spider pushes spider left (and
+        // vice versa). Vertical movement adds a touch of directional wobble.
+        const dir = sdx === 0 ? 0 : -(sdx / Math.max(40, Math.abs(sdx)));
+        const dirY = sdy === 0 ? 0 : -(sdy / Math.max(60, Math.abs(sdy)));
+        const push = clamp(dir * near * wobble + dirY * near * 0.35, -1, 1);
+        s.target = push * MAX_GUST * (0.35 + 0.65 * near);
+      });
 
       pointer = { x: event.clientX, y: event.clientY };
       lastMove = performance.now();
       kick();
-    },
-    { passive: true }
-  );
+  };
+  hero.addEventListener('pointermove', onPointerMove, { passive: true });
 
   // Leaving the hero eases everything home instead of snapping.
-  hero.addEventListener(
-    'pointerleave',
-    () => {
+  const onPointerLeave = () => {
       pointer = null;
+      hasPrev = false;
       target.x = 0;
       target.y = 0;
       target.r = 0;
-      target.gust = 0;
+      spiders.forEach((s) => { s.target = 0; });
       kick();
-    },
-    { passive: true }
-  );
+  };
+  hero.addEventListener('pointerleave', onPointerLeave, { passive: true });
 
   // Hidden tab: stop the loop; CSS play-state pause (see .is-hidden-tab)
   // freezes the bats mid-keyframe so nothing jumps on return.
-  document.addEventListener('visibilitychange', () => {
+  const onVisibility = () => {
     if (document.hidden) {
       if (rafId) window.cancelAnimationFrame(rafId);
       running = false;
       rafId = 0;
     }
-  });
+  };
+  document.addEventListener('visibilitychange', onVisibility);
+  // Cleanup hooks for SPA-style unload: no leaked listeners or frames.
+  window.addEventListener(
+    'pagehide',
+    () => {
+      hero.removeEventListener('pointermove', onPointerMove);
+      hero.removeEventListener('pointerleave', onPointerLeave);
+      document.removeEventListener('visibilitychange', onVisibility);
+      if (rafId) window.cancelAnimationFrame(rafId);
+      running = false;
+      rafId = 0;
+    },
+    { once: true }
+  );
 })();
 
 (function initDecorVisibilityPause() {
@@ -330,6 +391,8 @@ document.querySelectorAll('[data-character-image]').forEach((visual) => {
   const typingLines = document.querySelectorAll('[data-typing-text]');
   if (!headline || typingLines.length === 0) return;
 
+  if (headline.dataset.typingInit === '1') return;
+  headline.dataset.typingInit = '1';
   // Reduced motion (or mid-run toggle): show everything instantly, no caret.
   const showAll = () => {
     typingLines.forEach((line) => {
@@ -406,8 +469,8 @@ document.querySelectorAll('[data-character-image]').forEach((visual) => {
       await wait(LINE_GAP);
     }
 
-    // Done: park a steady caret on the final line (no blink loop burn).
-    headline.classList.add('typing-done');
+    // Done: resting state is plain text - no caret or cursor left behind.
+    headline.classList.remove('typing-done');
   };
 
   typeHeadline();
