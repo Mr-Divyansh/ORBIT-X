@@ -391,6 +391,10 @@ document.querySelectorAll('[data-character-image]').forEach((visual) => {
 })();
 
 (function initBatFlight() {
+  // Fear + buddy-rescue flight: single authoritative rAF loop owns every bat.
+  // Each bat has pos/vel/heading/cruise/frightTimer/state (roaming|fleeing|
+  // rescuing). Cursor proximity triggers a 2s fast escape away from the
+  // cursor; 3s sustained pursuit of one bat calls the others to its vicinity.
   var hero = document.querySelector('.hero');
   if (!hero) return;
   var rm = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -399,87 +403,220 @@ document.querySelectorAll('[data-character-image]').forEach((visual) => {
   var els = Array.prototype.slice.call(hero.querySelectorAll('.flying-bat'));
   if (!els.length) return;
   function cl(v, a, b) { return Math.min(b, Math.max(a, v)); }
+  function len(x, y) { return Math.hypot(x, y) || 1; }
   var bats = els.map(function (el, i) {
     var k = el.getAttribute('data-bat') || 'a';
-    var cfg = { hx: 0.12, hy: 0.16, ax: 46, ay: 22, sx: 0.42, sy: 0.61, px: 0, py: 1.3, rt: 5 };
-    if (k === 'b') cfg = { hx: 0.86, hy: 0.2, ax: 52, ay: 26, sx: 0.35, sy: 0.53, px: 2.4, py: 4.1, rt: 6 };
-    if (k === 'c') cfg = { hx: 0.5, hy: 0.1, ax: 60, ay: 20, sx: 0.48, sy: 0.67, px: 4.4, py: 2.2, rt: 5 };
-    return { el: el, hx: cfg.hx, hy: cfg.hy, ax: cfg.ax, ay: cfg.ay, sx: cfg.sx, sy: cfg.sy, px: cfg.px, py: cfg.py, rt: cfg.rt, fx: 0, fy: 0, vx: 0, vy: 0, cool: 0, seed: (i + 1) * 2.13, cx: 0, cy: 0, act: false, homeX: 0, homeY: 0, x: 0, y: 0, rot: 0 };
+    var cfg = { hx: 0.12, hy: 0.16, ax: 46, ay: 22, sx: 0.42, sy: 0.61, px: 0, py: 1.3, rt: 6, cruise: 58 };
+    if (k === 'b') cfg = { hx: 0.86, hy: 0.2, ax: 52, ay: 26, sx: 0.35, sy: 0.53, px: 2.4, py: 4.1, rt: 6, cruise: 64 };
+    if (k === 'c') cfg = { hx: 0.5, hy: 0.1, ax: 60, ay: 20, sx: 0.48, sy: 0.67, px: 4.4, py: 2.2, rt: 6, cruise: 52 };
+    return { el: el, kind: k, hx: cfg.hx, hy: cfg.hy, ax: cfg.ax, ay: cfg.ay, sx: cfg.sx, sy: cfg.sy, px: cfg.px, py: cfg.py, rt: cfg.rt, cruise: cfg.cruise, x: 0, y: 0, vx: 0, vy: 0, heading: 0, state: 'roaming', frightUntil: 0, fleeDx: 0, fleeDy: 0, fleeCool: 0, seed: (i + 1) * 2.13, homeX: 0, homeY: 0, rot: 0 };
   });
-  var RADIUS = 190, COOL = 700, PUSH = 95, EDGE = 30;
+  var RADIUS = 190, FLEE_MULT = 1.75, FRIGHT_MS = 2000, FLEE_COOL = 500;
+  var PURSUE_MS = 3000, SWITCH_STABLE_MS = 350, PURSUE_LOST_MS = 900, RESCUE_END_MS = 1500;
+  var EDGE = 30, PUSH_SEP = 70;
   var rect = null;
   function measure() { rect = hero.getBoundingClientRect(); }
   measure();
+  // Pursuit tracking: sustained chase of ONE bat, noise-tolerant.
+  var pursuit = { target: null, time: 0, lastSeen: 0, stable: null, stableSince: 0 };
+  var rescue = { active: false, target: null };
+  var cursor = { x: 0, y: 0, vx: 0, vy: 0, speed: 0, inside: false, lastMove: 0 };
   var raf = 0, run = false, lastT = 0;
   function kick() {
     if (!run && !document.hidden) { run = true; lastT = performance.now(); raf = window.requestAnimationFrame(tick); }
   }
+  function visibleBats() { return bats.filter(function (b) { return b.el.offsetParent !== null; }); }
+  function batCenter(b) {
+    return { x: b.homeX + b.x + b.el.offsetWidth / 2, y: b.homeY + b.y + b.el.offsetHeight / 2 };
+  }
+  function setRescuers(target) {
+    var others = visibleBats().filter(function (b) { return b !== target; });
+    others.forEach(function (b, idx) {
+      if (b.state !== 'fleeing') b.state = 'rescuing';
+      b.rescueSide = idx === 0 ? -1 : 1;
+    });
+  }
+  function releaseRescuers() {
+    bats.forEach(function (b) { if (b.state === 'rescuing') b.state = 'roaming'; });
+  }
+  function pickFleeDir(b, cx, cy, t) {
+    var c = batCenter(b);
+    var dx = c.x - cx, dy = c.y - cy;
+    var d = len(dx, dy);
+    dx /= d; dy /= d;
+    var ux = dx + Math.sin(t * 3.1 + b.seed) * 0.35;
+    var uy = dy + Math.cos(t * 2.6 + b.seed * 1.7) * 0.35;
+    var ul = len(ux, uy);
+    ux /= ul; uy /= ul;
+    var W = rect ? rect.width : 800, H = rect ? rect.height : 500;
+    var margin = 90;
+    if (c.x < margin && ux < -0.15) { ux = Math.abs(ux) * 0.7; uy += 0.4; }
+    if (c.x > W - margin && ux > 0.15) { ux = -Math.abs(ux) * 0.7; uy -= 0.4; }
+    if (c.y < margin && uy < -0.15) { uy = Math.abs(uy) * 0.7; }
+    if (c.y > H - margin && uy > 0.15) { uy = -Math.abs(uy) * 0.7; }
+    var l2 = len(ux, uy);
+    return { x: ux / l2, y: uy / l2 };
+  }
+  function triggerFlee(b, now, t) {
+    if (now < b.fleeCool) return;
+    var dir = pickFleeDir(b, cursor.x, cursor.y, t);
+    b.fleeDx = dir.x; b.fleeDy = dir.y;
+    b.state = 'fleeing';
+    b.frightUntil = now + FRIGHT_MS;
+    b.fleeCool = now + FLEE_COOL;
+  }
+  //TICK2
+  function updatePursuit(now) {
+    var vis = visibleBats();
+    var nearest = null, nearestD = Infinity;
+    for (var pi = 0; pi < vis.length; pi++) {
+      var cc = batCenter(vis[pi]);
+      var dNow = len(cc.x - cursor.x, cc.y - cursor.y);
+      var closing = false;
+      if (dNow < RADIUS * 1.1) {
+        var dot = (cc.x - cursor.x) * cursor.vx + (cc.y - cursor.y) * cursor.vy;
+        closing = dot > 0 || cursor.speed < 60 || dNow < RADIUS * 0.55;
+      }
+      if (closing && dNow < nearestD) { nearestD = dNow; nearest = vis[pi]; }
+    }
+    if (!cursor.inside || !canFlee) nearest = null;
+    if (nearest) {
+      if (pursuit.stable !== nearest) { pursuit.stable = nearest; pursuit.stableSince = now; }
+      var cand = (now - pursuit.stableSince >= SWITCH_STABLE_MS) ? pursuit.stable : pursuit.target;
+      if (cand && cand !== pursuit.target) {
+        pursuit.target = cand; pursuit.time = 0;
+        if (rescue.active) { rescue.active = false; rescue.target = null; releaseRescuers(); }
+      } else if (!pursuit.target) { pursuit.target = nearest; pursuit.time = 0; }
+      if (pursuit.target === nearest || pursuit.target === pursuit.stable) {
+        pursuit.time += tickDt * 1000; pursuit.lastSeen = now;
+      }
+      if (pursuit.target && pursuit.time >= PURSUE_MS && !rescue.active) {
+        rescue.active = true; rescue.target = pursuit.target;
+        setRescuers(pursuit.target);
+      }
+      if (rescue.active && rescue.target !== pursuit.target) {
+        rescue.target = pursuit.target; setRescuers(pursuit.target);
+      }
+    } else {
+      pursuit.stable = null;
+      if (pursuit.target && now - pursuit.lastSeen > PURSUE_LOST_MS) {
+        pursuit.time = 0;
+        if (rescue.active && now - pursuit.lastSeen > RESCUE_END_MS) {
+          rescue.active = false; rescue.target = null; releaseRescuers();
+        }
+      }
+    }
+  }
+  var tickDt = 0.016;
   function tick(now) {
     var dt = cl((now - lastT) / 1000, 0.008, 0.05);
-    lastT = now;
+    lastT = now; tickDt = dt;
     var t = now / 1000;
     if (!rect || rect.width === 0) measure();
     var W = rect ? rect.width : 800, H = rect ? rect.height : 500;
+    updatePursuit(now);
     for (var i = 0; i < bats.length; i++) {
       var b = bats[i];
       if (b.el.offsetParent === null) continue;
-      var roamX = Math.sin(t * b.sx + b.px) * b.ax + Math.sin(t * b.sx * 0.37 + b.py) * b.ax * 0.25;
-      var roamY = Math.sin(t * b.sy + b.py) * b.ay + Math.cos(t * b.sx * 0.43 + b.px) * b.ay * 0.3;
-      if (b.act && canFlee && now >= b.cool) {
-        var dx = (b.homeX + b.x) - b.cx, dy = (b.homeY + b.y) - b.cy;
-        var dist = Math.hypot(dx, dy) || 1;
-        if (dist < RADIUS) {
-          var near = 1 - dist / RADIUS;
-          var ux = dx / dist + Math.sin(t * 3.1 + b.seed) * 0.35;
-          var uy = dy / dist + Math.cos(t * 2.6 + b.seed * 1.7) * 0.35;
-          var ul = Math.hypot(ux, uy) || 1;
-          var burst = PUSH * (0.45 + 0.55 * near);
-          b.vx += (ux / ul) * burst * 3.07 * dt;
-          b.vy += (uy / ul) * burst * 3.07 * dt;
-          b.cool = now + COOL;
-        } else { b.act = false; }
-      }
-      b.vx += (-b.fx * 2.4 - b.vx * 3.4) * dt;
-      b.vy += (-b.fy * 2.4 - b.vy * 3.4) * dt;
-      b.fx = cl(b.fx + b.vx * dt * 21, -PUSH * 1.3, PUSH * 1.3);
-      b.fy = cl(b.fy + b.vy * dt * 21, -PUSH, PUSH);
       b.homeX = W * b.hx; b.homeY = H * b.hy;
-      var x = roamX + b.fx, y = roamY + b.fy;
+      var inFright = now < b.frightUntil;
+      if (b.state === 'fleeing' && !inFright) {
+        b.state = (rescue.active && b !== rescue.target) ? 'rescuing' : 'roaming';
+      }
+      var speed = b.cruise, tx = 0, ty = 0;
+      if (b.state === 'fleeing' && canFlee) {
+        speed = b.cruise * FLEE_MULT;
+        tx = b.fleeDx * speed; ty = b.fleeDy * speed;
+        var c0 = batCenter(b);
+        var dc = len(c0.x - cursor.x, c0.y - cursor.y);
+        if (cursor.inside && dc < RADIUS * 0.8 && now >= b.fleeCool) triggerFlee(b, now, t);
+      } else if (b.state === 'rescuing' && rescue.active && rescue.target) {
+        var tc = batCenter(rescue.target);
+        var sc = batCenter(b);
+        var side = (b.rescueSide || 1);
+        var gx = tc.x + side * 85, gy = tc.y - 55 - (i % 2) * 30;
+        var rxx = gx - sc.x, ryy = gy - sc.y;
+        var rd = len(rxx, ryy);
+        var want = rescue.target.cruise * FLEE_MULT * 0.95;
+        speed = want;
+        if (rd > 12) { tx = (rxx / rd) * want; ty = (ryy / rd) * want; }
+        else { tx = Math.cos(t * b.sx + b.px) * b.cruise * 0.5; ty = Math.sin(t * b.sy + b.px) * b.cruise * 0.4; }
+        for (var j = 0; j < bats.length; j++) {
+          if (j === i) continue;
+          var oc = batCenter(bats[j]);
+          var sx = sc.x - oc.x, sy = sc.y - oc.y;
+          var sd = Math.hypot(sx, sy);
+          if (sd > 0.1 && sd < PUSH_SEP) { tx += (sx / sd) * 60; ty += (sy / sd) * 60; }
+        }
+      } else {
+        b.state = 'roaming';
+        var roamX = Math.sin(t * b.sx + b.px) * b.ax + Math.sin(t * b.sx * 0.37 + b.py) * b.ax * 0.25;
+        var roamY = Math.sin(t * b.sy + b.py) * b.ay + Math.cos(t * b.sx * 0.43 + b.px) * b.ay * 0.3;
+        var desX = b.homeX + roamX, desY = b.homeY + roamY;
+        var curX = b.homeX + b.x, curY = b.homeY + b.y;
+        tx = cl((desX - curX) * 2.2, -b.cruise * 1.2, b.cruise * 1.2);
+        ty = cl((desY - curY) * 2.2, -b.cruise * 1.2, b.cruise * 1.2);
+        var sp0 = len(tx, ty);
+        if (sp0 < b.cruise * 0.5) {
+          tx += Math.cos(t * b.sx + b.px) * b.cruise * 0.35;
+          ty += Math.sin(t * b.sy + b.px) * b.cruise * 0.3;
+        }
+        if (pursuit.target === b && cursor.inside && canFlee && now >= b.fleeCool) {
+          var cb = batCenter(b);
+          if (len(cb.x - cursor.x, cb.y - cursor.y) < RADIUS) triggerFlee(b, now, t);
+        }
+      }
+      var want2 = (b.state === 'fleeing' || b.state === 'rescuing') ? b.cruise * FLEE_MULT : b.cruise * 1.25;
+      var tw = len(tx, ty);
+      if (tw > want2) { tx = (tx / tw) * want2; ty = (ty / tw) * want2; }
+      var blend = b.state === 'roaming' ? 2.6 : 4.2;
+      b.vx += (tx - b.vx) * Math.min(1, blend * dt);
+      b.vy += (ty - b.vy) * Math.min(1, blend * dt);
+      var nx = b.x + b.vx * dt, ny = b.y + b.vy * dt;
       var minX = -b.homeX + EDGE, maxX = W - b.homeX - b.el.offsetWidth - EDGE;
       var minY = -b.homeY + EDGE * 0.5, maxY = H - b.homeY - b.el.offsetHeight - EDGE;
-      if (x < minX) { x = minX; b.vx = Math.abs(b.vx) * 0.4; }
-      if (x > maxX) { x = maxX; b.vx = -Math.abs(b.vx) * 0.4; }
-      if (y < minY) { y = minY; b.vy = Math.abs(b.vy) * 0.4; }
-      if (y > maxY) { y = maxY; b.vy = -Math.abs(b.vy) * 0.4; }
-      var vxi = (x - b.x) / Math.max(dt, 0.008);
+      if (nx < minX || nx > maxX) {
+        var ex = nx < minX ? b.homeX - 200 : b.homeX + W + 200;
+        var nd = pickFleeDir(b, ex, b.homeY + b.y, t);
+        var sp = Math.max(len(b.vx, b.vy), b.cruise);
+        b.vx = nd.x * sp * 0.7;
+        nx = cl(nx, minX, maxX);
+      }
+      if (ny < minY || ny > maxY) {
+        ny = cl(ny, minY, maxY);
+        b.vy = (ny === minY ? Math.abs(b.vy) : -Math.abs(b.vy)) * 0.5;
+      }
+      b.heading = Math.atan2(b.vy, b.vx);
+      var vxi = (nx - b.x) / Math.max(dt, 0.008);
       var tr = cl(vxi * 0.02, -b.rt, b.rt) + Math.sin(t * b.sy + b.px) * 2;
       b.rot += (tr - b.rot) * 0.08;
-      b.x = x; b.y = y;
-      b.el.style.setProperty('--bat-x', x.toFixed(1) + 'px');
-      b.el.style.setProperty('--bat-y', y.toFixed(1) + 'px');
+      b.x = nx; b.y = ny;
+      b.el.style.setProperty('--bat-x', nx.toFixed(1) + 'px');
+      b.el.style.setProperty('--bat-y', ny.toFixed(1) + 'px');
       b.el.style.setProperty('--bat-rot', b.rot.toFixed(2) + 'deg');
     }
     if (!document.hidden) { raf = window.requestAnimationFrame(tick); }
     else { run = false; raf = 0; }
   }
+  var prevCX = 0, prevCY = 0, prevCT = 0, hasCPrev = false;
   function onMove(e) {
     if (document.hidden || e.pointerType === 'touch' || !canFlee) return;
     if (!rect) measure();
+    var now = performance.now();
     var rx = e.clientX - rect.left, ry = e.clientY - rect.top;
-    for (var i = 0; i < bats.length; i++) {
-      var b = bats[i];
-      if (b.el.offsetParent === null) continue;
-      var bx = (b.homeX || 0) + b.x + b.el.offsetWidth / 2;
-      var by = (b.homeY || 0) + b.y + b.el.offsetHeight / 2;
-      var d = Math.hypot(bx - rx, by - ry);
-      if (d < RADIUS) { b.cx = rx; b.cy = ry; b.act = true; }
-      else if (d > RADIUS * 1.4) { b.act = false; }
-      else { b.cx = rx; b.cy = ry; }
-    }
+    var dtc = hasCPrev ? Math.max(8, now - prevCT) / 1000 : 0.016;
+    var cvx = hasCPrev ? (rx - prevCX) / dtc : 0;
+    var cvy = hasCPrev ? (ry - prevCY) / dtc : 0;
+    prevCX = rx; prevCY = ry; prevCT = now; hasCPrev = true;
+    cursor.x = rx; cursor.y = ry;
+    cursor.vx = cvx; cursor.vy = cvy;
+    cursor.speed = Math.hypot(cvx, cvy);
+    cursor.inside = true; cursor.lastMove = now;
     kick();
   }
   function onLeave() {
-    for (var i = 0; i < bats.length; i++) bats[i].act = false;
+    cursor.inside = false; hasCPrev = false;
+    pursuit.stable = null;
   }
   hero.addEventListener('pointermove', onMove, { passive: true });
   hero.addEventListener('pointerleave', onLeave, { passive: true });
