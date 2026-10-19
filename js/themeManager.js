@@ -1,7 +1,7 @@
 // ============================================================================
 // ORBIT-X Theme Manager
-// Light ON / Light OFF toggle with localStorage persistence.
-// Uses CSS variables for consistent theming across all pages.
+// Light ON / Light OFF toggle. ALWAYS starts in Light Mode on every page
+// load — the toggle is session-only and never persists across loads.
 // ============================================================================
 
 const THEME_KEY = 'orbitx-theme';
@@ -10,7 +10,7 @@ const THEME_VALUES = { light: 'light', dark: 'dark' };
 
 class ThemeManager {
   constructor() {
-    this.currentTheme = this._loadTheme();
+    this.currentTheme = THEME_VALUES.light;
     this.toggleBtn = null;
     this.iconEl = null;
     this.labelEl = null;
@@ -21,41 +21,32 @@ class ThemeManager {
     if (this.isInitialized) return;
     this.isInitialized = true;
 
-    // Apply saved theme on load
-    this.applyTheme(this.currentTheme, false);
-
-    // Listen for system preference changes (only if no saved preference)
-    if (!localStorage.getItem(THEME_KEY)) {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      mediaQuery.addEventListener('change', (e) => {
-        if (!localStorage.getItem(THEME_KEY)) {
-          this.applyTheme(e.matches ? THEME_VALUES.dark : THEME_VALUES.light, false);
-        }
-      });
-    }
+    // FRESH LOAD = LIGHT MODE, always. Wipe any stale saved preference or
+    // OS-driven state first so nothing can override the light default.
+    this._clearSavedTheme();
+    this.applyTheme(THEME_VALUES.light, false);
   }
 
-  _loadTheme() {
+  _clearSavedTheme() {
+    // Remove the obsolete persisted preference (localStorage + sessionStorage)
+    // so a previous Dark Mode choice can never leak into a fresh page load.
+    // NOTE: no cookie was ever used for theme; nothing to clear there.
     try {
-      const saved = localStorage.getItem(THEME_KEY);
-      if (saved && Object.values(THEME_VALUES).includes(saved)) {
-        return saved;
-      }
+      localStorage.removeItem(THEME_KEY);
     } catch (e) { /* ignore */ }
-    // No saved preference: respect the operating system's color scheme.
     try {
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return THEME_VALUES.dark;
-      }
+      sessionStorage.removeItem(THEME_KEY);
     } catch (e) { /* ignore */ }
-    // Default: light mode (original ORBIT-X appearance)
-    return THEME_VALUES.light;
+    try {
+      document.documentElement.removeAttribute(THEME_ATTR);
+    } catch (e) { /* ignore */ }
+    // NOTE: system prefers-color-scheme is intentionally IGNORED — the
+    // requirement is Light Mode on every fresh load, no exceptions.
   }
 
-  _saveTheme(theme) {
-    try {
-      localStorage.setItem(THEME_KEY, theme);
-    } catch (e) { /* ignore */ }
+  _saveTheme() {
+    // Session-only by design: never persist the theme. Kept as a no-op hook
+    // so applyTheme(theme, persist) keeps its signature.
   }
 
   applyTheme(theme, persist = true) {

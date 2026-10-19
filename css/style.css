@@ -92,8 +92,11 @@ img {
   align-items: center;
   justify-content: space-between;
   gap: 26px;
-  min-height: 76px;
-  padding: 6px 5%;
+  /* Compacted ~24% (76px -> 58px): trims the empty band above/below the
+     links so the hero gets the vertical space. Logo capped by max-height
+     so the wide artwork can't stretch the bar back open. */
+  min-height: 58px;
+  padding: 4px 5%;
   border-bottom: 1px solid var(--line);
   background: var(--bg-navbar);
   backdrop-filter: blur(8px);
@@ -117,7 +120,10 @@ img {
 }
 
 .brand-logo-img {
-  width: 138px;
+  width: 112px;
+  /* Cap the rendered height: Logo.png is a 1024x1024 banner with large
+     transparent padding, so without this the image box inflates the bar. */
+  max-height: 46px;
   height: auto;
   flex-shrink: 0;
   object-fit: contain;
@@ -152,7 +158,7 @@ img {
   position: relative;
   display: inline-flex;
   align-items: center;
-  padding: 8px 25px;
+  padding: 6px 25px;
   color: var(--ink-soft);
   font-size: clamp(15px, 1.55vw, 23px);
   font-weight: 600;
@@ -229,7 +235,7 @@ img {
   position: relative;
   display: flex;
   align-items: center;
-  min-height: calc(100svh - 87px);
+  min-height: calc(100svh - 68px);
   padding: 60px 6.9% 125px;
   overflow: hidden;
   isolation: isolate;
@@ -1101,6 +1107,7 @@ h1.typing-done .typing-line:last-child::after {
 
   .brand-logo-img {
     width: 130px;
+    max-height: 48px;
   }
 
   .nav-links a {
@@ -1159,13 +1166,14 @@ h1.typing-done .typing-line:last-child::after {
   /* .page-frame stays hidden on small screens too (no outline box). */
 
   .navbar {
-    /* Slimmer than the original 100px so desktop shrinking can win cleanly. */
-    min-height: 88px;
+    /* Compacted to match the slimmer desktop bar (was 88px). */
+    min-height: 56px;
     padding: 4px 5%;
   }
 
   .brand-logo-img {
     width: 88px;
+    max-height: 40px;
   }
 
   .nav-mascot {
@@ -3000,18 +3008,19 @@ h1.typing-done .typing-line:last-child::after {
 
 /* ===== Navbar: reduced breadth + responsive mobile menu (ORBIT-X) ===== */
 @media (max-width: 900px) {
-  .navbar { min-height: 72px; padding: 4px 4%; gap: 14px; }
-  .brand-logo-img { width: 122px; }
+  .navbar { min-height: 56px; padding: 4px 4%; gap: 14px; }
+  .brand-logo-img { width: 104px; max-height: 44px; }
 }
 @media (max-width: 700px) {
-  .navbar { min-height: 64px; padding: 4px 16px; gap: 10px; }
-  .brand-logo-img { width: 100px; height: auto; }
+  .navbar { min-height: 52px; padding: 4px 16px; gap: 10px; }
+  .brand-logo-img { width: 92px; max-height: 40px; height: auto; }
   .nav-mascot { display: none; }
   .menu-toggle { display: block; position: relative; z-index: 20; }
   .nav-links {
     position: absolute;
     left: 0; right: 0;
-    top: 70px;
+    /* Anchored to the compacted bar so the dropdown sits flush below it. */
+    top: calc(100% + 4px);
     flex-direction: column;
     align-items: stretch;
     background: var(--bg-navbar);
@@ -3192,7 +3201,7 @@ h1.typing-done .typing-line:last-child::after {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 14px;
+  padding: 6px 14px;
   background: var(--paper-mist);
   border: 1px solid var(--line);
   border-radius: 10px;

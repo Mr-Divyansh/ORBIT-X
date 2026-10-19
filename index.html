@@ -12,14 +12,14 @@
   <link rel="preload" as="image" href="Assets/img/solo gadget abhay.png" />
   <link rel="preload" as="image" href="Assets/img/solo gadget divyansh.png" />
   <script>
-    /* ORBIT-X: restore the saved theme BEFORE first paint so dark-mode
-       visitors never see a light-theme flash. Mirrors js/themeManager.js. */
+    /* ORBIT-X: ALWAYS start in Light Mode. Clear any stale saved/OS
+       theme BEFORE first paint so the page never flashes dark.
+       Mirrors js/themeManager.js (session-only toggle, no persistence). */
     (function () {
       try {
-        var t = localStorage.getItem('orbitx-theme');
-        if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        }
+        localStorage.removeItem('orbitx-theme');
+        sessionStorage.removeItem('orbitx-theme');
+        document.documentElement.removeAttribute('data-theme');
       } catch (e) { /* ignore */ }
     })();
   </script>
