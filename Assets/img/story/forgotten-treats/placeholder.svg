@@ -1,0 +1,27 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff3e0"/>
+      <stop offset="50%" stop-color="#f3e8ff"/>
+      <stop offset="100%" stop-color="#e0f2fe"/>
+    </linearGradient>
+    <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e0862f"/>
+      <stop offset="100%" stop-color="#8d65cf"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g stroke="url(#stroke)" stroke-width="4" fill="none" opacity=".4">
+    <circle cx="1400" cy="160" r="120"/>
+    <circle cx="200" cy="720" r="90"/>
+    <path d="M200 150 C400 60, 600 240, 800 150 C1000 60, 1200 240, 1400 150"/>
+    <path d="M200 750 C400 660, 600 840, 800 750 C1000 660, 1200 840, 1400 750"/>
+  </g>
+  <text x="50%" y="48%" text-anchor="middle" font-family="Nunito, sans-serif" font-size="54" font-weight="900" fill="#4b3383" letter-spacing="6">ORBIT-X</text>
+  <text x="50%" y="56%" text-anchor="middle" font-family="Nunito, sans-serif" font-size="28" font-weight="800" fill="#7a3d09" letter-spacing="14">IMAGE PLACEHOLDER</text>
+  <text id="label" x="50%" y="64%" text-anchor="middle" font-family="Nunito, sans-serif" font-size="22" font-weight="700" fill="#4b3383" letter-spacing="8"></text>
+  <script type="text/ecmascript"><![CDATA[
+    var t = document.getElementById('label');
+    try { var p = new URL(location.href).searchParams.get('label'); if(p) t.textContent = p.toUpperCase(); } catch(e){}
+  ]]></script>
+</svg>
