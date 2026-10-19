@@ -33,7 +33,8 @@
 }
 
 .navbar {
-  min-height: 92px;
+  /* Matches the compacted shared navbar in style.css (loads before this file). */
+  min-height: 76px;
 }
 
 .navbar .brand-planet {
@@ -1711,7 +1712,7 @@
 
 @media (max-width: 760px) {
   .navbar {
-    min-height: 78px;
+    min-height: 68px;
   }
 
   .navbar .brand-planet {

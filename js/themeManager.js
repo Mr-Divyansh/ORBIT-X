@@ -74,7 +74,7 @@ class ThemeManager {
     try {
       const meta = document.querySelector('meta[name="theme-color"]');
       if (meta) {
-        meta.setAttribute('content', theme === THEME_VALUES.dark ? '#171522' : '#fffaf5');
+        meta.setAttribute('content', theme === THEME_VALUES.dark ? '#191624' : '#fffaf5');
       }
     } catch (e) { /* ignore */ }
 

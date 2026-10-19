@@ -22,8 +22,16 @@
   --btn2-bg: rgba(255, 250, 245, 0.68);
   --btn2-border: #7857aa;
   --btn2-hover: #ffffff;
+  --btn2-ink-hover: #49356e;
+  --btn2-border-hover: #7857aa;
   --text-heading: #392D66;
   --text-caption: #514768;
+
+  /* Homepage hero heading. Lines 1+3 are solid ink; the middle line is a
+     clipped gradient. Dark theme re-points all three below. */
+  --hero-line: #281a3b;
+  --hero-accent-from: #9b7de0;
+  --hero-accent-to: #7651b7;
   color-scheme: light;
 }
 
@@ -84,8 +92,8 @@ img {
   align-items: center;
   justify-content: space-between;
   gap: 26px;
-  min-height: 92px;
-  padding: 0 5%;
+  min-height: 76px;
+  padding: 6px 5%;
   border-bottom: 1px solid var(--line);
   background: var(--bg-navbar);
   backdrop-filter: blur(8px);
@@ -109,7 +117,7 @@ img {
 }
 
 .brand-logo-img {
-  width: 160px;
+  width: 138px;
   height: auto;
   flex-shrink: 0;
   object-fit: contain;
@@ -144,7 +152,7 @@ img {
   position: relative;
   display: inline-flex;
   align-items: center;
-  padding: 12px 25px;
+  padding: 8px 25px;
   color: var(--ink-soft);
   font-size: clamp(15px, 1.55vw, 23px);
   font-weight: 600;
@@ -221,7 +229,7 @@ img {
   position: relative;
   display: flex;
   align-items: center;
-  min-height: calc(100svh - 103px);
+  min-height: calc(100svh - 87px);
   padding: 60px 6.9% 125px;
   overflow: hidden;
   isolation: isolate;
@@ -241,7 +249,7 @@ img {
 
 h1 {
   margin: 0 0 24px;
-  color: #281a3b;
+  color: var(--hero-line);
   font-size: clamp(45px, 5.5vw, 86px);
   font-weight: 900;
   line-height: 1.03;
@@ -265,7 +273,8 @@ h1 .typing-line {
 }
 
 h1 .typing-accent {
-  background: linear-gradient(100deg, #9b7de0 8%, #7651b7 95%);
+  /* Theme-aware: brightened stops in dark mode (see --hero-accent-*). */
+  background: linear-gradient(100deg, var(--hero-accent-from) 8%, var(--hero-accent-to) 95%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -376,12 +385,17 @@ h1.typing-done .typing-line:last-child::after {
 
 .button-primary {
   color: #fff;
-  background: linear-gradient(110deg, #a27ee5, #8d65cf);
+  /* Theme-aware: tokens brighten in dark mode for contrast on night surfaces. */
+  background: linear-gradient(110deg, var(--purple), var(--purple-deep));
   box-shadow: 0 8px 20px rgba(142, 104, 205, 0.14);
 }
 
 .button-primary:hover {
   box-shadow: 0 12px 28px var(--shadow-strong);
+}
+
+.button-primary:active {
+  transform: translateY(-1px);
 }
 
 .button-primary span {
@@ -393,10 +407,22 @@ h1.typing-done .typing-line:last-child::after {
   color: var(--btn2-ink);
   background: var(--btn2-bg);
   border: 2px solid var(--btn2-border);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .button-secondary:hover {
+  color: var(--btn2-ink-hover, var(--btn2-ink));
   background: var(--btn2-hover);
+  border-color: var(--btn2-border-hover, var(--btn2-border));
+}
+
+.button-secondary:active {
+  transform: translateY(-1px);
 }
 
 .hero-art {
@@ -1066,7 +1092,7 @@ h1.typing-done .typing-line:last-child::after {
 
 @media (max-width: 1000px) {
   .navbar {
-    padding: 0 4%;
+    padding: 4px 4%;
   }
 
   .brand {
@@ -1133,8 +1159,9 @@ h1.typing-done .typing-line:last-child::after {
   /* .page-frame stays hidden on small screens too (no outline box). */
 
   .navbar {
-    min-height: 100px;
-    padding: 0 5%;
+    /* Slimmer than the original 100px so desktop shrinking can win cleanly. */
+    min-height: 88px;
+    padding: 4px 5%;
   }
 
   .brand-logo-img {
@@ -2973,12 +3000,12 @@ h1.typing-done .typing-line:last-child::after {
 
 /* ===== Navbar: reduced breadth + responsive mobile menu (ORBIT-X) ===== */
 @media (max-width: 900px) {
-  .navbar { min-height: 84px; padding: 0 4%; gap: 14px; }
-  .brand-logo-img { width: 140px; }
+  .navbar { min-height: 72px; padding: 4px 4%; gap: 14px; }
+  .brand-logo-img { width: 122px; }
 }
 @media (max-width: 700px) {
-  .navbar { min-height: 70px; padding: 0 16px; gap: 10px; }
-  .brand-logo-img { width: 110px; height: auto; }
+  .navbar { min-height: 64px; padding: 4px 16px; gap: 10px; }
+  .brand-logo-img { width: 100px; height: auto; }
   .nav-mascot { display: none; }
   .menu-toggle { display: block; position: relative; z-index: 20; }
   .nav-links {
@@ -3024,26 +3051,37 @@ h1.typing-done .typing-line:last-child::after {
   /* Accents: ORBIT-X purple family, brightened for dark surfaces */
   --purple: #A984F5;
   --purple-strong: #C9B3FF;
-  --purple-deep: #A984F5;
+  --purple-deep: #B794F7;
 
-  /* Surfaces: night-violet ladder (page > tinted section > card) */
-  --paper: #171522;
+  /* Surfaces: night-violet ladder (page > tinted section > card).
+     Page base matches the spec's #191624 with the existing #171522 kept for
+     the gradient end-stop harmony. */
+  --paper: #191624;
   --paper-rose: #1b1729;
-  --paper-mist: #211d30;
+  --paper-mist: #221e31;
   --surface: #211d30;
   --surface-2: rgba(33, 29, 48, 0.72);
-  --bg-navbar: rgba(41, 37, 54, 0.94);
+  --bg-navbar: #292536;
 
   /* Lines & shadows */
-  --line: rgba(122, 106, 152, 0.45);
+  --line: #443954;
   --shadow-soft: rgba(0, 0, 0, 0.45);
   --shadow-strong: rgba(0, 0, 0, 0.6);
 
   /* Secondary button ("ghost") */
-  --btn2-ink: #C5BCD9;
+  --btn2-ink: #D1C8E5;
   --btn2-bg: rgba(38, 34, 54, 0.8);
   --btn2-border: #8B6FD4;
-  --btn2-hover: #2E2842;
+  --btn2-hover: #322b47;
+  --btn2-ink-hover: #F8F5FF;
+  --btn2-border-hover: #C9B3FF;
+
+  /* Homepage hero heading: white lines, lavender gradient middle line,
+     soft lavender-white supporting paragraph. */
+  --hero-line: #F8F5FF;
+  --hero-accent-from: #C9B3FF;
+  --hero-accent-to: #A984F5;
+  --hero-desc: #D1C8E5;
 
   /* Misc text roles */
   --text-heading: #F0EAFF;
@@ -3063,7 +3101,7 @@ h1.typing-done .typing-line:last-child::after {
   background:
     radial-gradient(ellipse at 77% 65%, rgba(94, 70, 158, 0.34), transparent 29%),
     radial-gradient(ellipse at 8% 79%, rgba(48, 68, 120, 0.32), transparent 24%),
-    linear-gradient(120deg, #171522 0%, #1b1729 54%, #171522 100%);
+    linear-gradient(120deg, #191624 0%, #1e192b 54%, #191624 100%);
 }
 
 /* ---- Shared chrome ---- */
@@ -3089,9 +3127,12 @@ h1.typing-done .typing-line:last-child::after {
 }
 
 /* ---- Homepage hero ---- */
-[data-theme="dark"] .hero-copy .eyebrow,
+/* White heading lines + lavender gradient middle line come from the
+   --hero-* tokens, tokenized so no hardcoded ink survives in dark mode.
+   The supporting paragraph is soft lavender-white (#D1C8E5) on purpose —
+   bright enough for contrast, calm enough not to fight the heading. */
 [data-theme="dark"] .hero-copy .description {
-  color: var(--ink-soft);
+  color: var(--hero-desc);
 }
 
 [data-theme="dark"] .eyebrow {
