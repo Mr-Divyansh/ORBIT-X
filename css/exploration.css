@@ -28,8 +28,8 @@
 .exp-heading h1 .accent { background: linear-gradient(100deg, #9b7de0 8%, #7651b7 95%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .exp-subtitle { margin: 0 auto; max-width: 560px; color: var(--muted); font-size: clamp(15px, 1.7vw, 19px); font-weight: 600; line-height: 1.6; }
 .projects-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; align-items: stretch; }
-.project-card { display: flex; flex-direction: column; overflow: hidden; background: #fff; border: 1.5px solid rgba(130, 104, 170, 0.45); border-top: 6px solid var(--purple); border-radius: 26px; box-shadow: 0 14px 34px var(--shadow-soft); transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
-.project-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px var(--shadow-strong); border-color: rgba(152, 113, 221, 0.65); }
+.project-card { display: flex; flex-direction: column; overflow: hidden; background: #fff; border: 2px solid rgba(130, 104, 170, 0.55); border-top: 7px solid var(--purple); border-radius: 26px; box-shadow: 0 14px 34px var(--shadow-soft); transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
+.project-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px var(--shadow-strong); border-color: rgba(152, 113, 221, 0.8); }
 .project-card:focus-within { outline: 3px solid rgba(152,113,221,.5); outline-offset: 3px; }
 .project-halloween { border-top-color: #f0a35e; }
 .project-dream { border-top-color: #8d65cf; }
