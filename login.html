@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fdf8f2" />
+  <title>ORBIT-X | Welcome Back</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <main class="login-scene">
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+    <div class="moon-glow" aria-hidden="true"></div>
+
+    <!-- Replace each URL below with your own asset link. Transparent PNG/WebP works best. -->
+    <img class="decor web web-left" src="Assets/img/icons/spider-web-corner.svg" alt="" aria-hidden="true" />
+    <img class="decor web web-right" src="Assets/img/icons/spider-web-corner.svg" alt="" aria-hidden="true" />
+    <img class="decor spider float-slow" src="Assets/img/icons/spider-cute.svg" alt="" aria-hidden="true" />
+    <img class="decor bat bat-one" src="Assets/img/icons/bat trans.png" alt="" aria-hidden="true" />
+    <img class="decor bat bat-two" src="Assets/img/icons/bat trans.png" alt="" aria-hidden="true" />
+    <img class="decor bat bat-three" src="Assets/img/icons/bat trans.png" alt="" aria-hidden="true" />
+    <img class="decor ghost ghost-one float-slow" src="Assets/img/icons/ghost trans.png" alt="" aria-hidden="true" />
+    <img class="decor ghost ghost-two float-slow" src="Assets/img/icons/ghost trans.png" alt="" aria-hidden="true" />
+    <img class="decor pumpkin pumpkin-left" src="Assets/img/icons/pumpkin trans.png" alt="" aria-hidden="true" />
+    <img class="decor pumpkin pumpkin-right" src="Assets/img/icons/pumpkin trans.png" alt="" aria-hidden="true" />
+    <img class="decor lantern lantern-left" src="Assets/img/icons/lantern trans.png" alt="" aria-hidden="true" />
+    <img class="decor lantern lantern-right" src="Assets/img/icons/lantern trans.png" alt="" aria-hidden="true" />
+
+    <span class="star star-one" aria-hidden="true">✦</span>
+    <span class="star star-two" aria-hidden="true">✧</span>
+    <span class="star star-three" aria-hidden="true">✦</span>
+    <span class="star star-four" aria-hidden="true">✧</span>
+    <span class="sparkle sparkle-one" aria-hidden="true"></span>
+    <span class="sparkle sparkle-two" aria-hidden="true"></span>
+    <span class="sparkle sparkle-three" aria-hidden="true"></span>
+
+    <section class="login-card" aria-labelledby="welcome-title">
+      <div class="card-inner">
+        <a class="brand" href="#" aria-label="ORBIT-X home">
+          <span class="brand-mark" aria-hidden="true">✦</span>
+          <span>ORBIT-X</span>
+        </a>
+
+        <div class="heading-block">
+          <h1 id="welcome-title">Welcome Back!</h1>
+          <p>Your next magical adventure awaits.</p>
+        </div>
+
+        <form id="login-form" novalidate>
+          <label class="field">
+            <span class="field-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4.5 7 7.5 6 7.5-6"/></svg>
+            </span>
+            <span class="sr-only">Email address</span>
+            <input id="email" name="email" type="email" placeholder="Email Address" autocomplete="email" required />
+          </label>
+
+          <label class="field password-field">
+            <span class="field-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="4.5" y="10" width="15" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14v2"/></svg>
+            </span>
+            <span class="sr-only">Password</span>
+            <input id="password" name="password" type="password" placeholder="Password" autocomplete="current-password" required />
+            <button class="toggle-password" type="button" aria-label="Show password" aria-pressed="false">
+              <svg class="eye-icon" viewBox="0 0 24 24"><path d="M2.5 12s3.3-6 9.5-6 9.5 6 9.5 6-3.3 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/><path class="eye-slash" d="m4 4 16 16"/></svg>
+            </button>
+          </label>
+
+          <div class="form-options">
+            <label class="remember"><input type="checkbox" name="remember" /> <span>Remember me</span></label>
+            <a href="#forgot-password" class="text-link" id="forgot-link">Forgot password?</a>
+          </div>
+
+          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+          <button class="primary-button" type="submit"><span>Log In</span><span class="button-shine" aria-hidden="true"></span></button>
+        </form>
+
+        <div class="separator"><span></span><b>OR</b><span></span></div>
+        <button class="google-button" type="button" id="google-button">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5Z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.74 7.18l7.73 6C44.43 38.05 46.98 31.97 46.98 24.55Z"/><path fill="#FBBC05" d="M10.53 28.59A14.4 14.4 0 0 1 9.75 24c0-1.59.27-3.13.76-4.59l-7.98-6.19A23.9 23.9 0 0 0 0 24c0 3.87.93 7.52 2.56 10.78l7.97-6.19Z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.9-5.8l-7.73-6c-2.14 1.44-4.89 2.3-8.17 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48Z"/></svg>
+          <span>Continue with Google</span>
+        </button>
+        <p class="signup-line">New to ORBIT-X? <a href="#create-account" class="text-link" id="signup-link">Create an account</a></p>
+      </div>
+    </section>
+    <p class="scene-caption" aria-hidden="true">A little magic is waiting for you ✨</p>
+  </main>
+  <script src="login.js"></script>
+</body>
+</html>
