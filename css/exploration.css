@@ -73,3 +73,19 @@
 @media (max-width: 960px) { .projects-grid { grid-template-columns: minmax(0, 560px); justify-content: center; } .exp-ghost { width: 112px; top: 500px; } .exp-bat { width: 62px; } .exp-bat-left { top: 820px; } .exp-bat-right { top: 650px; } .exp-pumpkin { width: 82px; } }
 @media (max-width: 560px) { .exploration-page { padding: 40px 14px 28px; } .exp-web { width: 68px; } .exp-spider { left: 18%; width: 23px; } .exp-spider-swing { padding-top: 52px; } .exp-ghost { width: 76px; top: 490px; right: 0; } .exp-bat { width: 42px; } .exp-bat-left { top: 820px; left: 0; } .exp-bat-right { top: 980px; right: 0; } .exp-pumpkin { display: block; width: 62px; bottom: 36px; left: 0; } .project-body h2 { font-size: 21px; } .project-body > p { font-size: 14.5px; } }
 @media (prefers-reduced-motion: reduce) { .exploration-page *, .exploration-page *::before, .exploration-page *::after { animation: none !important; transition: none !important; } .project-card:hover, .project-card:hover .project-image, .back-home-button:hover { transform: none !important; } }
+
+.project-deco, .story-deco { position: absolute; z-index: 3; width: clamp(38px, 5vw, 52px); height: auto; pointer-events: none; filter: drop-shadow(0 4px 8px rgba(57,38,81,.2)); animation: exp-float 6s ease-in-out infinite; }
+.project-deco-pumpkin { left: 10px; bottom: 8px; }
+.project-deco-bat { right: 12px; bottom: 8px; width: clamp(44px, 5.5vw, 64px); animation-delay: -.9s; }
+.project-deco-ghost { right: 10px; bottom: 8px; }
+.project-deco-web { top: 0; left: 0; width: clamp(54px, 7vw, 76px); opacity: .68; filter: none; animation: none; }
+.story-deco-pumpkin { right: 12px; bottom: 10px; }
+.story-deco-bat { left: 12px; bottom: 10px; width: clamp(42px, 5vw, 56px); animation-delay: -1.2s; }
+.story-deco-ghost { right: 12px; bottom: 10px; }
+.story-deco-web { top: 0; left: 0; width: clamp(54px, 7vw, 76px); opacity: .68; filter: none; animation: none; }
+
+@media (max-width: 560px) {
+  .project-deco, .story-deco { width: 38px; }
+  .project-deco-bat, .story-deco-bat { width: 44px; }
+  .project-deco-web, .story-deco-web { width: 56px; }
+}

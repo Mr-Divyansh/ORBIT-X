@@ -18,7 +18,7 @@
   <div class="page-frame" aria-hidden="true"></div>
 
   <header class="navbar">
-    <a class="brand" href="#home" aria-label="Orbit-X home">
+    <a class="brand" href="index.html" aria-label="Orbit-X home">
       <img src="Assets/img/Logo.png" alt="ORBIT-X logo" class="brand-logo-img" width="40" height="40" loading="eager" />
       <svg class="brand-planet" viewBox="0 0 76 58" aria-hidden="true">
         <ellipse cx="36" cy="29" rx="30" ry="11" transform="rotate(-28 36 29)" fill="none" stroke="currentColor" stroke-width="4" />
@@ -34,9 +34,9 @@
     </div>
 
     <nav class="nav-links" aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="index.html#about">About</a>
-      <a class="active" href="Exploration.html" aria-current="page">Exploration</a>
+      <a class="active" href="index.html" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="Exploration.html">Exploration</a>
       <a href="stories/index.html">Stories</a>
     </nav>
     <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -90,11 +90,14 @@
     <img class="hero-deco floating-sparkle s2" src="Assets/img/icons/sparkle-pink.svg" alt="" aria-hidden="true" />
     <img class="hero-deco floating-sparkle s3" src="Assets/img/icons/sparkle-yellow.svg" alt="" aria-hidden="true" />
 
-    <!-- Two independently flying bats. They reuse the supplied bat PNG
+    <!-- Three independently flying bats. They reuse the supplied bat PNG
          (actual project asset); the skeleton/lantern/music-box references are
-         style inspiration only and must never replace the Together characters. -->
-    <div class="flying-bat bat-a" aria-hidden="true"><img src="Assets/img/icons/bat trans.png" alt="" width="52" height="38" /></div>
-    <div class="flying-bat bat-b" aria-hidden="true"><img src="Assets/img/icons/bat trans.png" alt="" width="36" height="26" /></div>
+         style inspiration only and must never replace the Together characters.
+         Desktop shows 3 (JS flight AI drives them); mobile CSS hides bat-c
+         so exactly 2 remain. -->
+    <div class="flying-bat bat-a" data-bat="a" aria-hidden="true"><img src="Assets/img/icons/bat trans.png" alt="" width="52" height="38" /></div>
+    <div class="flying-bat bat-b" data-bat="b" aria-hidden="true"><img src="Assets/img/icons/bat trans.png" alt="" width="36" height="26" /></div>
+    <div class="flying-bat bat-c" data-bat="c" aria-hidden="true"><img src="Assets/img/icons/bat trans.png" alt="" width="60" height="44" /></div>
 
     <div class="bottom-clouds" aria-hidden="true">
       <div class="cloud cloud-a"></div><div class="cloud cloud-b"></div><div class="cloud cloud-c"></div><div class="cloud cloud-d"></div>

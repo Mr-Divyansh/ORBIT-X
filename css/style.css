@@ -273,14 +273,12 @@ h1 .typing-accent {
   animation: typing-caret 0.8s steps(1, end) infinite;
 }
 
+/* Resting state: no caret or cursor is left behind once typing finishes.
+   The completed headline reads as plain text (kept for backwards
+   compatibility if script.js ever adds .typing-done). */
 h1.typing-done .typing-line:last-child::after {
-  position: absolute;
-  top: 0.08em;
-  right: -0.1em;
-  height: 0.85em;
-  border-right: 3px solid var(--purple-deep);
-  content: "";
-  opacity: 0.9;
+  content: none;
+  display: none;
 }
 
 @keyframes typing-caret {
@@ -304,6 +302,41 @@ h1.typing-done .typing-line:last-child::after {
   align-items: center;
   gap: 24px;
   margin-left: 2px;
+}
+
+/* Entrance choreography: subtle fade-and-rise for copy blocks and art.
+   Staggered so the headline leads, then description, actions, and artwork.
+   Runs once on load; transform/opacity only, no layout shift. */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-copy > * {
+  animation: hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-copy > :nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.hero-copy > :nth-child(3) {
+  animation-delay: 0.18s;
+}
+
+.hero-copy > :nth-child(4) {
+  animation-delay: 0.28s;
+}
+
+.hero-art {
+  animation: hero-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
 }
 
 .button {
@@ -717,15 +750,17 @@ h1.typing-done .typing-line:last-child::after {
     transform: translateY(-9px);
   }
 }
-/* Two flying bats share the supplied bat PNG (actual project asset).
-   Each bat drifts along its own looping path through open hero bands — never
-   over the copy or character faces — with different scales and timing so the
-   pair never reads as duplicated. transform-box keeps each img centered. */
+/* Three flying bats share the supplied bat PNG (actual project asset).
+   JS flight AI (script.js initBatFlight) drives each wrapper's position with
+   --bat-x/--bat-y/--bat-rot; CSS only sizes/places the home anchor and keeps
+   the wing-flap on the img. Sizes: a=small, b=medium, c=slightly larger.
+   All three stay in open hero bands — never over copy or character faces. */
 .flying-bat {
   position: absolute;
   z-index: 2;
   pointer-events: none;
   will-change: transform, opacity;
+  transform: translate(var(--bat-x, 0px), var(--bat-y, 0px)) rotate(var(--bat-rot, 0deg));
 }
 
 .flying-bat img {
@@ -739,8 +774,7 @@ h1.typing-done .typing-line:last-child::after {
 .bat-a {
   left: 6%;
   top: 6%;
-  width: clamp(84px, 8vw, 108px);
-  animation: bat-drift-a 16s ease-in-out infinite;
+  width: clamp(64px, 6vw, 84px);
 }
 
 .bat-a img {
@@ -750,56 +784,28 @@ h1.typing-done .typing-line:last-child::after {
 .bat-b {
   right: 5%;
   top: 10%;
-  width: clamp(64px, 6vw, 76px);
-  animation: bat-drift-b 21s ease-in-out 1.6s infinite;
+  width: clamp(76px, 7vw, 96px);
 }
 
 .bat-b img {
   animation: bat-flap 0.62s ease-in-out 0.3s infinite reverse;
 }
 
-/* Cross-hero drift: side bands and upper third only, so bats stay clear of
-   the CTA row and the Together faces. Small rotate = banking into turns. */
-@keyframes bat-drift-a {
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(-6deg);
-  }
-
-  22% {
-    transform: translate(26vw, 7vh) rotate(6deg);
-  }
-
-  48% {
-    transform: translate(52vw, 2vh) rotate(-4deg);
-  }
-
-  74% {
-    transform: translate(24vw, 12vh) rotate(8deg);
-  }
+.bat-c {
+  left: 44%;
+  top: 4%;
+  width: clamp(88px, 8vw, 112px);
 }
 
-@keyframes bat-drift-b {
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(5deg);
-  }
-
-  26% {
-    transform: translate(-22vw, 8vh) rotate(-7deg);
-  }
-
-  52% {
-    transform: translate(-44vw, 3vh) rotate(4deg);
-  }
-
-  78% {
-    transform: translate(-20vw, 13vh) rotate(-5deg);
-  }
+.bat-c img {
+  animation: bat-flap 0.57s ease-in-out 0.15s infinite;
 }
 
-/* Wing-flap illusion for a flat SVG: quick squash-and-tilt on the img only,
-   so it never fights the wrapper's drift path transform above. */
+/* JS-driven flight: wrappers hold position vars, no drift keyframes.
+   bat-flap stays on the img so wing motion never fights flight position. */
+
+/* Wing-flap illusion for a flat PNG: quick squash-and-tilt on the img only,
+   so it never fights the wrapper's JS flight transform above. */
 @keyframes bat-flap {
   0%,
   100% {
@@ -951,13 +957,15 @@ h1.typing-done .typing-line:last-child::after {
   /* Tablets keep the two-column read but narrower, so copy and the Together
      stage never overlap; decorations shrink rather than crowd the text. */
   .bat-a {
-    width: 84px;
-    animation-duration: 19s;
+    width: 72px;
   }
 
   .bat-b {
-    width: 64px;
-    animation-duration: 25s;
+    width: 56px;
+  }
+
+  .bat-c {
+    width: 84px;
   }
 
   .hero-copy {
@@ -1161,9 +1169,10 @@ h1.typing-done .typing-line:last-child::after {
     display: none;
   }
 
-  /* Small screens: bats fly a tighter, lower loop near the top so they stay
-     inside the hero and never cover the stacked copy or character faces.
-     One loop still hidden from AT; motion still JS/CSS transform-only. */
+  /* Small screens: JS flight roams a tighter, lower loop near the top so bats
+     stay inside the hero and never cover stacked copy or character faces.
+     Exactly 2 bats on mobile: bat-c hidden (display only, JS skips hidden).
+     Motion still JS/CSS transform-only. */
   .flying-bat {
     opacity: 0.92;
   }
@@ -1171,45 +1180,17 @@ h1.typing-done .typing-line:last-child::after {
   .bat-a {
     left: 4%;
     top: 4%;
-    width: 72px;
-    animation: bat-drift-mobile-a 14s ease-in-out infinite;
+    width: 60px;
   }
 
   .bat-b {
     right: 5%;
     top: 7%;
-    width: 56px;
-    animation: bat-drift-mobile-b 18s ease-in-out 1.2s infinite;
+    width: 48px;
   }
 
-  @keyframes bat-drift-mobile-a {
-    0%,
-    100% {
-      transform: translate(0, 0) rotate(-6deg);
-    }
-
-    30% {
-      transform: translate(38vw, 5vh) rotate(6deg);
-    }
-
-    60% {
-      transform: translate(64vw, 2vh) rotate(-4deg);
-    }
-  }
-
-  @keyframes bat-drift-mobile-b {
-    0%,
-    100% {
-      transform: translate(0, 0) rotate(5deg);
-    }
-
-    35% {
-      transform: translate(-34vw, 6vh) rotate(-6deg);
-    }
-
-    68% {
-      transform: translate(-60vw, 2vh) rotate(4deg);
-    }
+  .bat-c {
+    display: none;
   }
 
   .hero-web {
@@ -1282,6 +1263,11 @@ h1.typing-done .typing-line:last-child::after {
     transform: none;
   }
 
+  .hero-copy > *,
+  .hero-art {
+    animation: none;
+  }
+
   .hanging-spider-swing {
     --gust: 0deg;
   }
@@ -1291,8 +1277,16 @@ h1.typing-done .typing-line:last-child::after {
     animation: none !important;
   }
 
+  .flying-bat {
+    --bat-x: 0px;
+    --bat-y: 0px;
+    --bat-rot: 0deg;
+    transform: none;
+  }
+
   .bat-a,
-  .bat-b {
+  .bat-b,
+  .bat-c {
     opacity: 0.9;
   }
 
