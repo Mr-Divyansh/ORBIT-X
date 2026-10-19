@@ -20,9 +20,11 @@ if (menuToggle && navLinks) {
 document.querySelectorAll('[data-character-image]').forEach((visual) => {
   const soloImage = visual.querySelector('.character-image-solo');
   const gadgetImage = visual.querySelector('.character-image-gadget');
+  const gadgetCard = visual.closest('.character-card');
   const hoverAvailable = window.matchMedia('(hover: hover)');
   const setGadgetVisible = (visible) => {
     visual.classList.toggle('is-gadget-visible', visible);
+    if (gadgetCard) gadgetCard.classList.toggle('is-gadget-on', visible);
     visual.setAttribute('aria-pressed', String(visible));
     soloImage.setAttribute('aria-hidden', String(visible));
     gadgetImage.setAttribute('aria-hidden', String(!visible));
