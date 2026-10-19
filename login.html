@@ -8,6 +8,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    /* ORBIT-X: restore the saved theme BEFORE first paint so dark-mode
+       visitors never see a light-theme flash. Mirrors js/themeManager.js. */
+    (function () {
+      try {
+        var t = localStorage.getItem('orbitx-theme');
+        if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
   <link rel="stylesheet" href="css/login.css" />
 </head>
 <body>
@@ -27,8 +39,6 @@
     <img class="decor ghost ghost-two float-slow" src="Assets/img/icons/ghost trans.png" alt="" aria-hidden="true" />
     <img class="decor pumpkin pumpkin-left" src="Assets/img/icons/pumpkin trans.png" alt="" aria-hidden="true" />
     <img class="decor pumpkin pumpkin-right" src="Assets/img/icons/pumpkin trans.png" alt="" aria-hidden="true" />
-    <img class="decor lantern lantern-left" src="Assets/img/icons/lantern trans.png" alt="" aria-hidden="true" />
-    <img class="decor lantern lantern-right" src="Assets/img/icons/lantern trans.png" alt="" aria-hidden="true" />
 
     <span class="star star-one" aria-hidden="true">✦</span>
     <span class="star star-two" aria-hidden="true">✧</span>
@@ -89,6 +99,9 @@
     </section>
     <p class="scene-caption" aria-hidden="true">A little magic is waiting for you ✨</p>
   </main>
+  <script src="js/themeManager.js" defer></script>
+  <script src="js/audioManager.js" defer></script>
+  <script src="js/script.js"></script>
   <script src="login.js"></script>
 </body>
 </html>

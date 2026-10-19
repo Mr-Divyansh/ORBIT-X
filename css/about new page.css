@@ -2711,3 +2711,97 @@
     translate: none;
   }
 }
+/* ==========================================================================
+   ORBIT-X - Dark theme overrides (About page).
+   Driven by [data-theme="dark"] on <html>; page tokens are re-pointed so
+   every rule that uses var(--about-*) switches automatically. Decorative
+   light sources (halos, sparkles, stars) keep their light fills.
+   ========================================================================== */
+
+[data-theme="dark"] .about-page {
+  --about-cream: #1a1727;
+  --about-ink: #F7F2FF;
+  --about-muted: #A79DC0;
+  --about-lavender: #6d5a9e;
+  --about-lilac: #2a2440;
+  --about-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .about-page h2 span { color: var(--purple-strong); }
+[data-theme="dark"] .section-kicker { color: var(--purple-strong); }
+[data-theme="dark"] .hero-copy .hero-title-line-two { color: var(--purple); }
+[data-theme="dark"] .hero-text-link { color: var(--ink-soft); }
+[data-theme="dark"] .hero-text-link span { color: var(--purple-strong); }
+[data-theme="dark"] .hero-note { color: var(--muted); }
+[data-theme="dark"] .hero-caption { color: var(--muted); }
+[data-theme="dark"] .scroll-cue { color: var(--muted); }
+
+[data-theme="dark"] .hero-tag {
+  color: var(--ink-soft);
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .character-card {
+  background: var(--surface);
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .character-role { color: var(--ink-soft); }
+[data-theme="dark"] .mission-number { color: var(--purple); }
+[data-theme="dark"] .character-quote { color: var(--ink-soft); }
+
+[data-theme="dark"] .character-traits span {
+  background: var(--surface-2);
+  color: var(--ink-soft);
+}
+
+[data-theme="dark"] .mission-motto { color: var(--muted); }
+
+[data-theme="dark"] .mission-card {
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .gadget-copy ul { color: var(--ink-soft); }
+
+[data-theme="dark"] .gadget-signature {
+  background: var(--surface-2);
+  border-color: var(--line);
+  color: var(--muted);
+}
+
+[data-theme="dark"] .about-footer {
+  background: var(--bg-navbar);
+  border-top-color: var(--line);
+}
+
+[data-theme="dark"] .about-footer p { color: var(--muted); }
+[data-theme="dark"] .about-footer > a:last-child { color: var(--purple-strong); }
+
+[data-theme="dark"] .orbit-footer {
+  --footer-ink: var(--ink);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(62, 52, 96, 0.5), transparent 55%),
+    linear-gradient(180deg, #1b1729 0%, #171426 55%, #1a1628 100%);
+  border-top-color: var(--line);
+}
+
+[data-theme="dark"] .orbit-footer__cta {
+  background: var(--surface-2);
+  border-color: var(--line);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .orbit-footer__eyebrow { color: var(--purple-strong); }
+[data-theme="dark"] .orbit-footer__cta h2 { color: var(--ink); }
+[data-theme="dark"] .orbit-footer__cta p,
+[data-theme="dark"] .orbit-footer__nav a { color: var(--ink-soft); }
+[data-theme="dark"] .orbit-footer__tagline { color: var(--purple-strong); }
+[data-theme="dark"] .orbit-footer__description,
+[data-theme="dark"] .orbit-footer__connect p { color: var(--ink-soft); }
+[data-theme="dark"] .orbit-footer__friends span { color: var(--muted); }
+[data-theme="dark"] .orbit-footer__nav h3 { color: var(--ink); }
+[data-theme="dark"] .orbit-footer__nav a:hover { color: var(--purple-strong); }
+[data-theme="dark"] .orbit-footer__bottom p { color: var(--muted); }
+[data-theme="dark"] .orbit-footer__bottom-star { color: var(--purple); }

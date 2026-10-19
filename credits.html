@@ -3,178 +3,478 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fffaf5">
   <title>ORBIT-X — Credits</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    /* ORBIT-X: restore the saved theme BEFORE first paint so dark-mode
+       visitors never see a light-theme flash. Mirrors js/themeManager.js. */
+    (function () {
+      try {
+        var t = localStorage.getItem('orbitx-theme');
+        if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/about.css">
   <style>
-    /* ===== ORBIT-X — Credits page (internal styles) ===== */
-    :root {
-      --ink: #281b3d;
-      --ink-soft: #30234d;
-      --muted: #716787;
-      --purple: #9871dd;
-      --purple-strong: #8d65cf;
-      --paper: #fffaf5;
-      --line: rgba(130, 104, 170, 0.22);
-      --shadow-soft: rgba(91, 58, 133, 0.12);
-      --shadow-strong: rgba(142, 104, 205, 0.28);
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--paper);
-      font-family: "Nunito", sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
+    /* ===== ORBIT-X — Credits page (local layout only; all colors come
+         from the shared css/style.css theme tokens, so the page follows
+         light/dark automatically). ===== */
+
     .credits-hero {
-      padding: 64px 20px 44px;
+      padding: clamp(48px, 7vw, 88px) 20px clamp(36px, 5vw, 56px);
       text-align: center;
       background:
         radial-gradient(ellipse at 80% 20%, rgba(152, 113, 221, 0.16), transparent 45%),
         radial-gradient(ellipse at 20% 80%, rgba(209, 228, 255, 0.14), transparent 45%);
     }
-    .credits-hero h1 {
-      font-size: clamp(28px, 5vw, 44px);
-      font-weight: 800;
-      color: var(--ink);
-      margin: 0 0 10px;
-      letter-spacing: -0.5px;
-    }
-    .credits-tagline {
-      color: var(--purple);
-      font-weight: 800;
-      font-size: clamp(14px, 2vw, 18px);
+
+    .credits-eyebrow {
+      display: inline-block;
       margin: 0 0 12px;
+      color: var(--purple);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      letter-spacing: 2px;
     }
-    .credits-intro {
-      color: var(--muted);
-      font-size: clamp(15px, 1.6vw, 19px);
-      line-height: 1.75;
-      max-width: 680px;
-      margin: 0 auto 26px;
-    }
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 20px 70px;
-    }
-    .credits-section {
-      margin: 42px 0;
-      padding: 30px 26px;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.7);
-      box-shadow: 0 8px 24px var(--shadow-soft);
-    }
-    .credits-section h2 {
-      font-size: clamp(21px, 3vw, 27px);
-      font-weight: 800;
-      color: var(--ink);
+
+    .credits-hero h1 {
       margin: 0 0 14px;
+      color: var(--ink);
+      font-size: clamp(30px, 5vw, 46px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.12;
+    }
+
+    .credits-hero h1 .accent {
+      background: linear-gradient(100deg, var(--purple) 8%, var(--purple-strong) 95%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .credits-intro {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(15px, 1.6vw, 18px);
+      font-weight: 600;
+      line-height: 1.75;
+    }
+
+    .credits-main {
+      width: min(1080px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 8px 0 84px;
+    }
+
+    .credits-section { margin: 46px 0 0; }
+
+    .credits-section > h2 {
       display: flex;
       align-items: center;
       gap: 10px;
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: clamp(21px, 3vw, 28px);
+      font-weight: 900;
+      letter-spacing: -0.5px;
     }
-    .credits-section p {
+
+    .credits-section > p {
+      max-width: 760px;
+      margin: 0 0 18px;
       color: var(--ink-soft);
-      font-size: clamp(15px, 1.5vw, 18px);
-      margin: 0 0 10px;
+      font-size: clamp(15px, 1.5vw, 17px);
+      font-weight: 600;
+      line-height: 1.7;
     }
-    .credits-section ul {
-      color: var(--ink-soft);
-      font-size: clamp(15px, 1.5vw, 18px);
-      line-height: 1.9;
+
+    .credits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr));
+      gap: 18px;
+    }
+
+    .credit-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 22px 22px 20px;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 8px 24px var(--shadow-soft);
+      transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+    }
+
+    .credit-card:hover,
+    .credit-card:focus-within {
+      transform: translateY(-3px);
+      border-color: var(--purple);
+      box-shadow: 0 14px 32px var(--shadow-strong);
+    }
+
+    .credit-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 9px;
       margin: 0;
-      padding-left: 22px;
+      color: var(--ink);
+      font-size: 17px;
+      font-weight: 800;
     }
-    .credits-section li { margin: 6px 0; }
-    .credits-section strong { color: var(--ink); }
-    .credits-footer {
-      padding: 42px 20px 30px;
-      text-align: center;
-      color: var(--muted);
-      font-size: clamp(14px, 1.4vw, 17px);
-      border-top: 1px solid var(--line);
+
+    .credit-card .role {
+      margin: 0;
+      color: var(--purple-strong);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
     }
-    .credits-footer p { margin: 6px 0; }
-    .credits-back {
+
+    .credit-card p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 14.5px;
+      font-weight: 600;
+      line-height: 1.65;
+    }
+
+    .credit-card .credit-link {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      margin-top: 14px;
+      gap: 6px;
+      width: fit-content;
+      margin-top: auto;
+      padding-top: 6px;
       color: var(--purple);
-      font-weight: 700;
-      font-size: 15px;
-      transition: color 0.2s ease;
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: color 160ms ease;
     }
-    .credits-back:hover { color: var(--purple-strong); }
+
+    .credit-card .credit-link:hover,
+    .credit-card .credit-link:focus-visible {
+      color: var(--purple-strong);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .credit-card .credit-link:focus-visible {
+      outline: 3px solid rgba(152, 113, 221, 0.5);
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+
+    .credit-card--placeholder { border-style: dashed; box-shadow: none; }
+    .credit-card--placeholder p { color: var(--muted); font-style: italic; }
+
+    .credit-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 4px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .credit-chips li {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 14px;
+      background: var(--paper-mist);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink-soft);
+      font-size: 13.5px;
+      font-weight: 700;
+      transition: border-color 160ms ease, color 160ms ease;
+    }
+
+    .credit-chips li:hover { border-color: var(--purple); color: var(--ink); }
+
+    .credit-chips a {
+      color: var(--purple);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .credit-chips a:hover,
+    .credit-chips a:focus-visible {
+      color: var(--purple-strong);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .credits-note {
+      display: block;
+      margin-top: 14px;
+      padding: 14px 18px;
+      background: var(--surface-2);
+      border: 1px dashed var(--line);
+      border-radius: 14px;
+      color: var(--muted);
+      font-size: 13.5px;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
     @media (max-width: 640px) {
-      .credits-section { padding: 22px 18px; margin: 32px 0; }
-      .credits-hero { padding: 48px 16px 32px; }
-      main { padding: 0 16px 56px; }
-      .credits-intro { max-width: 100%; }
+      .credits-main { width: calc(100% - 32px); padding-bottom: 64px; }
+      .credit-card { padding: 18px 16px; }
+      .credits-section { margin-top: 36px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .credit-card { transition: none; }
+      .credit-card:hover { transform: none; }
     }
   </style>
 </head>
 <body>
 
-  <header class="credits-hero">
-    <h1>ORBIT-X — Credits</h1>
-    <p class="credits-tagline">Made with imagination ✨</p>
-    <p class="credits-intro">Every story has a team behind it. Meet the people, tools, and creative efforts that brought our interactive storytelling experience to life.</p>
+  <!-- Shared ORBIT-X navigation (same component as every other page;
+       js/script.js builds the right-side drawer from these links). -->
+  <header class="navbar">
+    <a class="brand" href="index.html" aria-label="Orbit-X home">
+      <img src="Assets/img/Logo.png" alt="ORBIT-X logo" class="brand-logo-img" width="40" height="40" loading="eager" />
+      <svg class="brand-planet" viewBox="0 0 76 58" aria-hidden="true">
+        <ellipse cx="36" cy="29" rx="30" ry="11" transform="rotate(-28 36 29)" fill="none" stroke="currentColor" stroke-width="4" />
+        <circle cx="34" cy="28" r="15" fill="#bca0ef" />
+        <path d="M22 18c5-7 13-9 20-7" fill="none" stroke="#fff8ff" stroke-width="4" stroke-linecap="round" />
+        <path d="M59 9l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#f8d889" />
+      </svg>
+      <span>ORBIT-X</span>
+    </a>
+
+    <div class="nav-mascot" aria-hidden="true">
+      <img class="nav-sparkle" src="Assets/img/icons/sparkle-yellow.svg" alt="" width="17" height="17" />
+    </div>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="Exploration.html">Exploration</a>
+      <a href="Story.html">Stories</a>
+      <a class="active" href="credits.html" aria-current="page">Credits</a>
+      <a href="login.html">Login</a>
+    </nav>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    <button class="theme-toggle" aria-label="Switch to Dark Mode" aria-pressed="false">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-label">Dark</span>
+    </button>
   </header>
 
-  <main>
+  <header class="credits-hero">
+    <p class="credits-eyebrow">ORBIT-X Credits</p>
+    <h1>Made With Imagination, <span class="accent">Guided by Magic</span></h1>
+    <p class="credits-intro">Every story has a team behind it. Meet the people, artwork, sounds, and tools that brought our interactive Halloween storytelling universe to life — and thank you for travelling with us.</p>
+  </header>
 
+  <main class="credits-main">
+
+    <!-- 1. Team -->
     <section class="credits-section" id="team">
-      <h2>🚀 Our Team</h2>
-      <ul>
-        <li><strong>ORBIT-X</strong> — Creative Team</li>
-        <li><strong>D Web Studio</strong> — Development and Design</li>
-        <li><strong>Story Creators</strong> — Creative Writing and Narrative</li>
-        <li><strong>Design Team</strong> — Visual Design and User Experience</li>
-      </ul>
+      <h2>🚀 The ORBIT-X Team</h2>
+      <p>Two friends, one magical universe — built with curiosity, late nights, and a shared love for storytelling.</p>
+      <div class="credits-grid">
+        <article class="credit-card">
+          <p class="role">Project Creator</p>
+          <h3>Divyansh</h3>
+          <p>Creator of ORBIT-X — concept, development, and everything in between. One half of the two-friends universe.</p>
+          <a class="credit-link" href="https://github.com/Mr-Divyansh/ORBIT-X" target="_blank" rel="noopener noreferrer">GitHub · Mr-Divyansh <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="credit-card">
+          <p class="role">Creative Team</p>
+          <h3>Abhay</h3>
+          <p>The other half of the friendship at the heart of ORBIT-X — co-creator of the world, its characters, and its spooky-night adventures.</p>
+          <span class="credit-link">Links coming soon ✦</span>
+        </article>
+        <article class="credit-card">
+          <p class="role">Studio</p>
+          <h3>D Web Studio</h3>
+          <p>Development and design of the ORBIT-X web experience.</p>
+        </article>
+        <article class="credit-card credit-card--placeholder">
+          <p class="role">Placeholder</p>
+          <h3>[Add Team Member]</h3>
+          <p>Add any additional contributors, roles, and links here so they can be credited properly.</p>
+        </article>
+      </div>
     </section>
 
+    <!-- 2. Stories & writing -->
+    <section class="credits-section" id="stories">
+      <h2>📜 Stories &amp; Writing</h2>
+      <p>Four interactive adventures written and brought to life inside the ORBIT-X universe — scroll-driven scenes, spooky nights, and a little bit of magic.</p>
+      <ul class="credit-chips">
+        <li><a href="projects/halloween-helpers.html">Project 01 · Halloween Helpers</a></li>
+        <li><a href="projects/dream-guardians.html">Project 02 · Hexa Baby: Dream Guardians</a></li>
+        <li><a href="projects/ghost-catchers.html">Project 03 · Ghost Catchers: Spirit Purification</a></li>
+        <li><a href="Story.html">The Night of Forgotten Treats</a></li>
+      </ul>
+      <span class="credits-note">✍️ Story authors and writers: individual names are not listed in the project yet — add them here (e.g. “Story by [Name]”) so every writer gets credit.</span>
+    </section>
+
+    <!-- 3. Character artwork & illustrations -->
+    <section class="credits-section" id="artwork">
+      <h2>🎨 Character Artwork &amp; Illustrations</h2>
+      <p>The friends, gadgets, and creatures of ORBIT-X are brought to life with original character artwork created for this project.</p>
+      <ul class="credit-chips">
+        <li>Abhay — character art <span class="role" style="letter-spacing:0;text-transform:none;font-weight:600;">(Assets/img/abhay*, solo gadget)</span></li>
+        <li>Divyansh — character art <span class="role" style="letter-spacing:0;text-transform:none;font-weight:600;">(Assets/img/divyansh*, solo gadget)</span></li>
+        <li>Story scene illustrations <span aria-hidden="true">✦</span> Assets/img/story/*.svg</li>
+        <li>Cute icon set <span aria-hidden="true">✦</span> bat, ghost, pumpkin, spider, sparkles (SVG)</li>
+      </ul>
+      <span class="credits-note">🖼️ Individual illustrators: if specific artwork was made by someone else, list their name and a link here.</span>
+    </section>
+
+    <!-- 4. Backgrounds & visual assets -->
+    <section class="credits-section" id="backgrounds">
+      <h2>🌌 Backgrounds &amp; Visual Assets</h2>
+      <p>Scenes, posters, and environment art used across the homepage, Exploration, Stories, and project pages.</p>
+      <ul class="credit-chips">
+        <li>HomePage.jpeg — homepage artwork</li>
+        <li>scene 1 / 3 / 5 / 6.png — storybook scenes</li>
+        <li>last scene.png · two.png — finale artwork</li>
+        <li>hero-characters-poster.jpg · Together.jpeg · TogetherNoBg.png</li>
+        <li>TheHalloweenLantern.png · TheDreamBeyondTheShadows.png · TheLastWanderingGhost.png</li>
+        <li>Logo.png / Logo.jpeg — ORBIT-X brand mark</li>
+      </ul>
+      <span class="credits-note">Owned by the ORBIT-X project. If any background was adapted from a stock or creative-commons source, replace this note with the exact source and license.</span>
+    </section>
+
+    <!-- 5. Music & sound effects -->
+    <section class="credits-section" id="audio">
+      <h2>🎧 Music &amp; Sound Effects</h2>
+      <p>Seventeen ambient tracks power the ORBIT-X atmosphere — background music, night-time ambience, UI clicks, and magical scene transitions.</p>
+      <ul class="credit-chips">
+        <li>Music library: <a href="https://www.soundhelix.com" target="_blank" rel="noopener noreferrer">SoundHelix Songs <span aria-hidden="true">↗</span></a> — royalty-free, released for free use (CC0) by SoundHelix</li>
+        <li>17 tracks stored locally in <code>Assets/audio/</code> (music · ambience · ui · interactions · transitions)</li>
+        <li>Full track list &amp; licenses: <a href="Assets/audio/manifest.json">manifest.json</a> · <a href="Assets/audio/README.md">README.md</a></li>
+        <li>Playback engine: custom <code>js/audioManager.js</code> (no external audio library)</li>
+      </ul>
+      <span class="credits-note">🔊 The bundled songs are full-length recordings. For production, consider trimming them into short loops (e.g. with ffmpeg).</span>
+    </section>
+
+    <!-- 6. Fonts, icons, libraries & tools -->
     <section class="credits-section" id="tools">
-      <h2>🛠️ Tools &amp; Technology</h2>
-      <ul>
-        <li><strong>HTML5</strong> — Website structure</li>
-        <li><strong>CSS3</strong> — Styling, animations, and visual design</li>
-        <li><strong>JavaScript</strong> — Interactive elements and scroll-based storytelling</li>
-        <li><strong>AI Tools</strong> — Creative brainstorming, coding assistance, and asset development</li>
+      <h2>🛠️ Fonts, Icons, Libraries &amp; Tools</h2>
+      <p>ORBIT-X is a hand-crafted static website — plain HTML, CSS, and JavaScript with no front-end framework.</p>
+      <ul class="credit-chips">
+        <li><a href="https://fonts.google.com/specimen/Nunito" target="_blank" rel="noopener noreferrer">Nunito <span aria-hidden="true">↗</span></a> — headings &amp; body text (SIL Open Font License, via Google Fonts)</li>
+        <li><a href="https://fonts.google.com/specimen/DM+Sans" target="_blank" rel="noopener noreferrer">DM Sans <span aria-hidden="true">↗</span></a> — login page (SIL Open Font License, via Google Fonts)</li>
+        <li>Original SVG icon set — bats, ghosts, pumpkins, spiders, sparkles</li>
+        <li>HTML5 · CSS3 (custom properties, grid, scroll-driven animations) · vanilla JavaScript</li>
+        <li>Node.js scripts in <code>tools/</code> for asset-manifest generation</li>
+        <li><a href="https://github.com/Mr-Divyansh/ORBIT-X" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a> — source hosting</li>
       </ul>
+      <span class="credits-note">💻 Your development environment (editor, AI assistants, design tools) — add the specific tools you used here.</span>
     </section>
 
-    <section class="credits-section" id="story-assets">
-      <h2>🎭 Story &amp; Assets</h2>
-      <p>Our interactive storytelling experience combines imagination, characters, visual design, and web technology to create an engaging journey.</p>
-      <p>Character artwork, illustrations, and other media are credited to their respective creators and sources. Original work remains with its respective creators.</p>
-    </section>
-
+    <!-- 7. Special acknowledgements -->
     <section class="credits-section" id="thanks">
       <h2>💜 Special Thanks</h2>
       <p>A heartfelt thank you to everyone who inspired, supported, and contributed to this project. This experience was built through creativity, collaboration, experimentation, and a passion for storytelling.</p>
+      <p>And thank <strong>you</strong> — the wanderers, dreamers, and ghost-seekers who made it this far. The night is always friendlier with a lantern in hand and a friend beside you.</p>
+      <span class="credits-note">🌟 Friends, family, teachers, and testers who helped shape ORBIT-X: add their names here so nobody is forgotten.</span>
     </section>
 
+    <!-- 8. Our vision -->
     <section class="credits-section" id="vision">
       <h2>🌌 Our Vision</h2>
-      <p>To make storytelling more immersive, interactive, and memorable by bringing stories to life through scrolling animations and digital experiences.</p>
+      <p>To make storytelling more immersive, interactive, and memorable by bringing stories to life through scrolling animations, digital experiences, and a little bit of Halloween magic.</p>
     </section>
+
 
   </main>
 
-  <footer class="credits-footer">
-    <p>Built with curiosity, creativity, and a little bit of magic.</p>
-    <p>© 2026 ORBIT-X. All rights reserved.</p>
-    <a href="index.html" class="credits-back"><span aria-hidden="true">←</span> Back to Home</a>
+  <!-- Shared ORBIT-X footer (same component the other pages use). -->
+  <footer class="orbit-footer" id="site-footer" aria-labelledby="footer-title">
+    <div class="orbit-footer__decor" aria-hidden="true">
+      <span class="orbit-footer__bat orbit-footer__bat--one"><img src="Assets/img/icons/bat trans.png" alt="" loading="lazy" /></span>
+      <span class="orbit-footer__bat orbit-footer__bat--two"><img src="Assets/img/icons/bat trans.png" alt="" loading="lazy" /></span>
+      <span class="orbit-footer__ghost orbit-footer__ghost--one"><img src="Assets/img/icons/ghost-cute.svg" alt="" loading="lazy" /></span>
+      <span class="orbit-footer__ghost orbit-footer__ghost--two"><img src="Assets/img/icons/ghost-cute.svg" alt="" loading="lazy" /></span>
+      <span class="orbit-footer__pumpkin orbit-footer__pumpkin--left"><img src="Assets/img/icons/pumpkin trans.png" alt="" loading="lazy" /></span>
+      <span class="orbit-footer__pumpkin orbit-footer__pumpkin--right"><img src="Assets/img/icons/pumpkin trans.png" alt="" loading="lazy" /></span>
+      <span class="orbit-footer__spark orbit-footer__spark--one"><img src="Assets/img/icons/sparkle-yellow.svg" alt="" loading="lazy" /></span>
+      <span class="orbit-footer__spark orbit-footer__spark--two"><img src="Assets/img/icons/sparkle-lavender.svg" alt="" loading="lazy" /></span>
+    </div>
+
+    <div class="orbit-footer__inner">
+      <section class="orbit-footer__cta" aria-labelledby="footer-title">
+        <span class="orbit-footer__eyebrow">OUR NEXT CHAPTER STARTS HERE</span>
+        <h2 id="footer-title">Ready for Your Next Magical Adventure?</h2>
+        <p>Step into the ORBIT-X universe and discover what happens when friendship meets a little Halloween magic.</p>
+        <a class="button button-primary orbit-footer__cta-button" href="Exploration.html">
+          Explore Our Universe <span aria-hidden="true">→</span>
+        </a>
+      </section>
+
+      <div class="orbit-footer__main">
+        <section class="orbit-footer__brand" aria-label="About ORBIT-X">
+          <a class="orbit-footer__logo" href="index.html#home" aria-label="ORBIT-X home">
+            <img src="Assets/img/Logo.png" alt="ORBIT-X logo" class="orbit-footer__logo-img" />
+          </a>
+          <p class="orbit-footer__tagline">Two Friends. One Magical Universe.</p>
+          <p class="orbit-footer__description">Meet Abhay and Divyansh — Halloween Helpers and Ghost Purificators who turn spooky nights into magical adventures and guide children safely out of their nightmares.</p>
+          <div class="orbit-footer__friends" aria-label="Abhay and Divyansh">
+            <img src="Assets/img/abhay bg solo.png" alt="Abhay in his yellow hoodie" loading="lazy" width="444" height="562" />
+            <img src="Assets/img/divyansh solo.png" alt="Divyansh in his black and white outfit" loading="lazy" width="444" height="562" />
+            <span aria-hidden="true">✦ &nbsp; best friends, always &nbsp; ✦</span>
+          </div>
+        </section>
+
+        <nav class="orbit-footer__nav" aria-label="Explore">
+          <h3>Explore</h3>
+          <a href="index.html#home">Home</a>
+          <a href="index.html#about">About Us</a>
+          <a href="index.html#story">Our Story</a>
+          <a href="index.html#character-abhay">Characters</a>
+        </nav>
+
+        <nav class="orbit-footer__nav" aria-label="The ORBIT-X Universe">
+          <h3>The ORBIT-X Universe</h3>
+          <a href="projects/halloween-helpers.html">Halloween Helpers</a>
+          <a href="projects/ghost-catchers.html">Ghost Purificators</a>
+          <a href="index.html#gadget-lamp">Magical Gadgets</a>
+          <a href="Story.html">Dream Adventures</a>
+        </nav>
+
+        <nav class="orbit-footer__nav orbit-footer__connect" aria-label="Connect">
+          <h3>Connect</h3>
+          <a href="https://github.com/Mr-Divyansh/ORBIT-X" target="_blank" rel="noopener noreferrer">
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
+          <p>Follow the magic, explore the stories, and come along for the next adventure.</p>
+        </nav>
+      </div>
+
+      <div class="orbit-footer__bottom">
+        <p>© <span data-current-year></span> ORBIT-X. All rights reserved.</p>
+        <span class="orbit-footer__bottom-star" aria-hidden="true">✦</span>
+        <p>Made with magic and friendship</p>
+      </div>
+    </div>
   </footer>
 
+  <script src="js/themeManager.js" defer></script>
+  <script src="js/audioManager.js" defer></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

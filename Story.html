@@ -22,6 +22,18 @@
     rel="stylesheet">
 
   <!-- Base Styles -->
+  <script>
+    /* ORBIT-X: restore the saved theme BEFORE first paint so dark-mode
+       visitors never see a light-theme flash. Mirrors js/themeManager.js. */
+    (function () {
+      try {
+        var t = localStorage.getItem('orbitx-theme');
+        if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/exploration.css" />
   <link rel="stylesheet" href="css/exploration2.css" />
@@ -64,6 +76,10 @@
       <span></span>
       <span></span>
       <span></span>
+    </button>
+    <button class="theme-toggle" aria-label="Switch to Dark Mode" aria-pressed="false">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-label">Dark</span>
     </button>
   </header>
 
@@ -419,6 +435,9 @@
     </div>
   </footer>
 
+  <script src="js/themeManager.js" defer></script>
+  <script src="js/audioManager.js" defer></script>
+  <script src="js/script.js"></script>
   <script src="js/forgotten-treats.js"></script>
 </body>
 

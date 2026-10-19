@@ -71,14 +71,14 @@
   font-weight: 800;
   color: var(--t-ink-accent, var(--purple-deep));
   text-decoration: none;
-  background: rgba(255, 255, 255, .8);
+  background: var(--surface-2);
   border: 1.5px solid var(--t-line, var(--line));
   border-radius: 999px;
   transition: background 180ms ease, transform 180ms ease;
 }
 
 .back-pill:hover {
-  background: #fff;
+  background: var(--surface);
   transform: translateX(-3px);
 }
 
@@ -199,7 +199,7 @@
 .detail-figure.is-contain img.figure-img {
   object-fit: contain;
   padding: clamp(18px, 3vw, 34px);
-  background: linear-gradient(140deg, var(--t-soft), #ffffff 75%);
+  background: linear-gradient(140deg, var(--t-soft), var(--surface) 75%);
 }
 
 .detail-figure figcaption {
@@ -224,7 +224,7 @@
   text-align: center;
   border-radius: 26px;
   border: 3px dashed var(--t-line);
-  background: linear-gradient(140deg, var(--t-soft), #ffffff 80%);
+  background: linear-gradient(140deg, var(--t-soft), var(--surface) 80%);
   box-shadow: 0 22px 54px var(--shadow-soft);
   overflow: hidden;
 }
@@ -312,7 +312,7 @@
 .brief-card {
   position: relative;
   padding: clamp(22px, 3vw, 30px);
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 24px;
   box-shadow: 0 14px 34px var(--shadow-soft);
@@ -358,7 +358,7 @@
   flex-direction: column;
   gap: 12px;
   padding: 24px 22px;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 24px;
   box-shadow: 0 14px 34px var(--shadow-soft);
@@ -376,7 +376,7 @@
   width: 74px;
   height: 74px;
   border-radius: 22px;
-  background: linear-gradient(140deg, var(--t-soft), #fff);
+  background: linear-gradient(140deg, var(--t-soft), var(--surface));
   border: 2px solid var(--t-line);
   font-size: 30px;
   font-weight: 900;
@@ -428,14 +428,14 @@
   gap: 18px;
   align-items: start;
   padding: 20px 22px;
-  background: rgba(255, 255, 255, .82);
+  background: var(--surface-2);
   border: 1px solid var(--line);
   border-radius: 20px;
   transition: background 180ms ease, transform 180ms ease;
 }
 
 .challenge-list li:hover {
-  background: #fff;
+  background: var(--surface);
   transform: translateX(4px);
 }
 
@@ -510,7 +510,7 @@
   top: 24px;
   padding: 24px;
   border-radius: 24px;
-  background: linear-gradient(150deg, var(--t-soft), #fff 85%);
+  background: linear-gradient(150deg, var(--t-soft), var(--surface) 85%);
   border: 1.5px solid var(--t-line);
 }
 
@@ -554,7 +554,7 @@
   padding: 24px;
   text-decoration: none;
   color: inherit;
-  background: #fff;
+  background: var(--surface);
   border: 1.5px solid var(--line);
   border-radius: 24px;
   box-shadow: 0 14px 34px var(--shadow-soft);
@@ -681,7 +681,7 @@
   letter-spacing: 1.1px;
   text-transform: uppercase;
   color: var(--t-accent-deep);
-  background: #fff;
+  background: var(--surface);
   border: 1.5px solid var(--t-line);
   border-radius: 999px;
 }
@@ -872,7 +872,7 @@
   padding: 16px 20px;
   text-decoration: none;
   color: inherit;
-  background: #fff;
+  background: var(--surface);
   border: 1.5px solid var(--line);
   border-radius: 20px;
   box-shadow: 0 10px 26px var(--shadow-soft);
@@ -919,7 +919,7 @@
   gap: clamp(20px, 3vw, 36px);
   align-items: center;
   padding: clamp(20px, 3vw, 30px);
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-top: 6px solid var(--lib-accent, var(--purple));
   border-radius: 28px;
@@ -1153,3 +1153,28 @@
     transform: none !important;
   }
 }
+
+/* ==========================================================================
+   ORBIT-X - Dark theme overrides (project pages + Stories library).
+   Per-story accent tokens are re-pointed for dark surfaces; card surfaces
+   and text already use var(...) from css/style.css.
+   ========================================================================== */
+
+[data-theme="dark"] .theme-halloween {
+  --t-ink-accent: #ffd9a8;
+  --t-soft: rgba(84, 52, 24, 0.35);
+  --t-line: rgba(250, 183, 94, 0.35);
+}
+
+[data-theme="dark"] .theme-dream {
+  --t-ink-accent: #d9c8ff;
+  --t-soft: rgba(66, 52, 104, 0.4);
+  --t-line: rgba(169, 132, 245, 0.35);
+}
+
+[data-theme="dark"] .theme-ghost {
+  --t-ink-accent: #bfe3f5;
+  --t-soft: rgba(38, 66, 84, 0.4);
+  --t-line: rgba(96, 170, 205, 0.35);
+}
+

@@ -1,21 +1,180 @@
+// ============================================================================
+// ORBIT-X — Navigation Drawer (right-side slide-in)
+// ============================================================================
+
 const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 
-if (menuToggle && navLinks) {
-  menuToggle.addEventListener('click', () => {
-    const isOpen = navLinks.classList.toggle('open');
-    menuToggle.setAttribute('aria-expanded', String(isOpen));
-  });
+let drawerBackdrop = document.querySelector('.nav-drawer-backdrop');
+let drawer = document.querySelector('.nav-drawer');
 
-  document.querySelectorAll('.nav-links a').forEach((link) => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      document.querySelectorAll('.nav-links a').forEach((item) => item.classList.remove('active'));
-      link.classList.add('active');
+function ensureDrawerElements() {
+  if (!drawerBackdrop) {
+    drawerBackdrop = document.createElement('div');
+    drawerBackdrop.className = 'nav-drawer-backdrop';
+    drawerBackdrop.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(drawerBackdrop);
+  }
+  if (!drawer) {
+    drawer = document.createElement('div');
+    drawer.className = 'nav-drawer';
+    drawer.setAttribute('role', 'navigation');
+    drawer.setAttribute('aria-label', 'Main navigation drawer');
+
+    // Build drawer header with close button
+    const header = document.createElement('div');
+    header.className = 'nav-drawer__header';
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'nav-drawer__close';
+    closeBtn.innerHTML = '&times;';
+    closeBtn.setAttribute('aria-label', 'Close navigation menu');
+    closeBtn.addEventListener('click', () => closeDrawer());
+    header.appendChild(closeBtn);
+    drawer.appendChild(header);
+
+    // Build drawer nav from existing nav-links
+    const navContainer = document.createElement('nav');
+    navContainer.className = 'nav-drawer__nav';
+    if (navLinks) {
+      const links = navLinks.querySelectorAll('a');
+      links.forEach((link) => {
+        const clone = link.cloneNode(true);
+        clone.addEventListener('click', () => {
+          if (window.audioManager && window.audioManager.isEnabled()) {
+            window.audioManager.play('ui', 'navigation-click', { volume: 0.5 });
+          }
+          closeDrawer(true);
+        });
+        navContainer.appendChild(clone);
+      });
+    }
+    drawer.appendChild(navContainer);
+
+    // Sound settings — volume sliders wired straight to audioManager
+    const soundSection = document.createElement('div');
+    soundSection.className = 'nav-drawer__sound';
+    const soundTitle = document.createElement('h3');
+    soundTitle.textContent = 'Sound';
+    soundSection.appendChild(soundTitle);
+    [['music', 'Music'], ['ambience', 'Ambience'], ['sfx', 'Effects']].forEach(
+      ([category, labelText]) => {
+        const row = document.createElement('label');
+        row.className = 'sound-row';
+        const caption = document.createElement('span');
+        caption.textContent = labelText;
+        const slider = document.createElement('input');
+        slider.type = 'range';
+        slider.min = '0';
+        slider.max = '100';
+        slider.step = '1';
+        slider.setAttribute('aria-label', labelText + ' volume');
+        slider.value = window.audioManager
+          ? String(Math.round(window.audioManager.getVolume(category) * 100))
+          : '50';
+        slider.addEventListener('input', () => {
+          if (window.audioManager) {
+            window.audioManager.setVolume(category, Number(slider.value) / 100);
+          }
+        });
+        row.appendChild(caption);
+        row.appendChild(slider);
+        soundSection.appendChild(row);
+      }
+    );
+    drawer.appendChild(soundSection);
+
+    // Divider + credits link
+    const divider = document.createElement('div');
+    divider.className = 'nav-drawer__divider';
+    drawer.appendChild(divider);
+
+    const creditsSection = document.createElement('div');
+    creditsSection.className = 'nav-drawer__credits';
+    const creditsLink = document.createElement('a');
+    const href = window.location.pathname.includes('/projects/') ? '../credits.html' : 'credits.html';
+    creditsLink.href = href;
+    creditsLink.textContent = 'Credits';
+    creditsLink.addEventListener('click', () => {
+      if (window.audioManager && window.audioManager.isEnabled()) {
+        window.audioManager.play('ui', 'navigation-click', { volume: 0.5 });
+      }
     });
+    creditsSection.appendChild(creditsLink);
+    drawer.appendChild(creditsSection);
+
+    document.body.appendChild(drawer);
+  }
+}
+
+function openDrawer() {
+  ensureDrawerElements();
+  drawerBackdrop.classList.add('is-visible');
+  drawer.classList.add('is-open');
+  document.body.classList.add('nav-drawer-open');
+  if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
+  // Focus the close button for keyboard users
+  const closeBtn = drawer.querySelector('.nav-drawer__close');
+  if (closeBtn) closeBtn.focus();
+
+  // Play menu toggle sound
+  if (window.audioManager && window.audioManager.isEnabled()) {
+    window.audioManager.play('ui', 'menu-toggle', { volume: 0.4 });
+  }
+}
+
+function closeDrawer(silent) {
+  if (!drawerBackdrop || !drawer) return;
+  const wasOpen = drawer.classList.contains('is-open');
+  drawerBackdrop.classList.remove('is-visible');
+  drawer.classList.remove('is-open');
+  document.body.classList.remove('nav-drawer-open');
+  if (menuToggle) {
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.focus();
+  }
+  // Close feedback sound (suppressed when a link click already played one).
+  if (!silent && wasOpen && window.audioManager && window.audioManager.isEnabled()) {
+    window.audioManager.play('ui', 'menu-toggle', { volume: 0.3 });
+  }
+}
+
+function toggleDrawer() {
+  if (drawer && drawer.classList.contains('is-open')) {
+    closeDrawer();
+  } else {
+    openDrawer();
+  }
+}
+
+if (menuToggle) {
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDrawer();
   });
 }
+
+// Close drawer on backdrop click
+if (drawerBackdrop) {
+  drawerBackdrop.addEventListener('click', () => closeDrawer());
+}
+
+// Close drawer on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeDrawer();
+  }
+});
+
+// Close drawer when clicking a link inside it (handled in ensureDrawerElements)
+// Also close the old mobile menu when drawer opens/closes
+const origLinks = document.querySelectorAll('.nav-links a');
+origLinks.forEach((link) => {
+  link.addEventListener('click', () => {
+    closeDrawer();
+    document.querySelectorAll('.nav-links a').forEach((item) => item.classList.remove('active'));
+    link.classList.add('active');
+  });
+});
 
 document.querySelectorAll('[data-character-image]').forEach((visual) => {
   const soloImage = visual.querySelector('.character-image-solo');
@@ -741,4 +900,129 @@ document.querySelectorAll('[data-character-image]').forEach((visual) => {
   };
 
   typeHeadline();
+})();
+
+// ============================================================================
+// ORBIT-X — Audio Integration (click sounds on UI elements)
+// ============================================================================
+
+(function initAudioInteractions() {
+  // Delegated click handler for elements with data-audio attribute
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-audio]');
+    if (!trigger) return;
+
+    const category = trigger.dataset.audioCategory || 'ui';
+    const soundName = trigger.dataset.audio;
+    if (!soundName) return;
+
+    // Prevent sound when clicking nav drawer links (they already play menu sound)
+    if (trigger.closest('.nav-drawer')) return;
+
+    if (window.audioManager && window.audioManager.isEnabled()) {
+      window.audioManager.play(category, soundName, { volume: 0.5 });
+    }
+  }, { passive: true });
+
+  // Add data-audio to common button types automatically
+  document.querySelectorAll('a.button, button').forEach((el) => {
+    if (el.dataset.audio) return; // already has explicit audio
+    const classes = el.className || '';
+    if (classes.includes('button-primary')) {
+      el.dataset.audio = 'button-click';
+      el.dataset.audioCategory = 'ui';
+    } else if (classes.includes('button-secondary')) {
+      el.dataset.audio = 'button-click';
+      el.dataset.audioCategory = 'ui';
+    }
+  });
+
+  // Note: .theme-toggle intentionally gets NO data-audio here —
+  // themeManager.toggle() already plays its own toggle-switch sound,
+  // so an extra assignment would double the sound.
+})();
+
+// ============================================================================
+// ORBIT-X — Sound toggle button + floating toggles + ambience loop
+// ============================================================================
+
+(function initSoundUI() {
+  // Pages without a navbar (credits, login) get a floating theme toggle.
+  let themeBtn = document.querySelector('.theme-toggle');
+  const needsFloatingToggles = !themeBtn;
+  if (needsFloatingToggles) {
+    themeBtn = document.createElement('button');
+    themeBtn.className = 'theme-toggle floating';
+    themeBtn.type = 'button';
+    themeBtn.setAttribute('aria-label', 'Switch to Dark Mode');
+    themeBtn.setAttribute('aria-pressed', 'false');
+    const icon = document.createElement('span');
+    icon.className = 'theme-icon';
+    icon.textContent = '\u{1F319}';
+    const label = document.createElement('span');
+    label.className = 'theme-label';
+    label.textContent = 'Dark';
+    themeBtn.appendChild(icon);
+    themeBtn.appendChild(label);
+    if (window.themeManager) window.themeManager.bindToggle(themeBtn);
+  }
+
+  // Global sound ON/OFF toggle, injected next to the theme toggle on every
+  // page so the control stays consistent without editing 9 HTML files.
+  if (!document.querySelector('.sound-toggle')) {
+    const soundBtn = document.createElement('button');
+    soundBtn.className = 'sound-toggle';
+    soundBtn.type = 'button';
+    const soundIcon = document.createElement('span');
+    soundIcon.className = 'sound-icon';
+    soundIcon.setAttribute('aria-hidden', 'true');
+    soundBtn.appendChild(soundIcon);
+    themeBtn.insertAdjacentElement('afterend', soundBtn);
+
+    // On navbar-less pages, park both buttons in a fixed top-right group.
+    if (needsFloatingToggles) {
+      const wrap = document.createElement('div');
+      wrap.className = 'floating-toggles';
+      document.body.appendChild(wrap);
+      wrap.appendChild(themeBtn);
+      wrap.appendChild(soundBtn);
+    }
+
+    const syncSoundUI = () => {
+      if (!window.audioManager) return;
+      const on = window.audioManager.isEnabled();
+      soundBtn.classList.toggle('is-muted', !on);
+      soundBtn.setAttribute('aria-pressed', String(on));
+      soundBtn.setAttribute('aria-label', on ? 'Mute sound' : 'Unmute sound');
+      soundIcon.textContent = on ? '\u{1F50A}' : '\u{1F507}'; // 🔊 / 🔇
+    };
+    syncSoundUI();
+
+    soundBtn.addEventListener('click', () => {
+      if (!window.audioManager) return;
+      const wasOn = window.audioManager.isEnabled();
+      window.audioManager.setEnabled(!wasOn);
+      if (!wasOn) {
+        // Turning sound back on: immediate audible feedback.
+        window.audioManager.play('ui', 'toggle-switch', { volume: 0.5 });
+      }
+    });
+    window.addEventListener('orbitx-sound-change', syncSoundUI);
+  }
+})();
+
+// Loop the night-wind ambience after the first user gesture (autoplay-safe).
+// audioManager registers its interaction flag before this script runs, so
+// by the time these document-level listeners fire, canPlay() is already true.
+(function initAmbience() {
+  let started = false;
+  const startAmbience = () => {
+    if (started) return;
+    started = true;
+    if (window.audioManager && window.audioManager.canPlay()) {
+      window.audioManager.playAmbience('night-wind', { loop: true, volume: 0.7 });
+    }
+  };
+  document.addEventListener('click', startAmbience, { once: true, passive: true });
+  document.addEventListener('keydown', startAmbience, { once: true, passive: true });
 })();

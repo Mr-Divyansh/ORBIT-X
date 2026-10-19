@@ -1,0 +1,203 @@
+{
+  "project": "ORBIT-X",
+  "generated": "2026-10-19T16:53:50.218Z",
+  "totalCandidates": 17,
+  "downloaded": 17,
+  "failed": 0,
+  "assets": [
+    {
+      "filename": "button-click.mp3",
+      "category": "ui",
+      "source": "SoundHelix",
+      "license": "CC0 (Public Domain)",
+      "sourceUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      "savedPath": "ui/button-click.mp3",
+      "size": 8945229,
+      "contentType": "audio/mpeg",
+      "intendedUsage": "Button click interactions"
+    },
+    {
+      "filename": "menu-toggle.mp3",
+      "category": "ui",
+      "source": "SoundHelix",
+      "license": "CC0 (Public Domain)",
+      "sourceUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      "savedPath": "ui/menu-toggle.mp3",
+      "size": 9983354,
+      "contentType": "audio/mpeg",
+      "intendedUsage": "Navigation drawer open/close"
+    },
+    {
+      "filename": "navigation-click.mp3",
+      "category": "ui",
+      "source": "SoundHelix",
+      "license": "CC0 (Public Domain)",
+      "sourceUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+      "savedPath": "ui/navigation-click.mp3",
+      "size": 8065388,
+      "contentType": "audio/mpeg",
+      "intendedUsage": "Nav link selection"
+    },
+    {
+      "filename": "modal-open.mp3",
+      "category": "ui",
+      "source": "SoundHelix",
+      "license": "CC0 (Public Domain)",
+      "sourceUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+      "savedPath": "ui/modal-open.mp3",
+      "size": 7090028,
+      "contentType": "audio/mpeg",
+      "intendedUsage": "Modal/dialog open"
+    },
+    {
+      "filename": "toggle-switch.mp3",
+      "category": "ui",
+      "source": "SoundHelix",
+      "license": "CC0 (Public Domain)",
+      "sourceUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+      "savedPath": "ui/toggle-switch.mp3",
+      "size": 8295544,
+      "contentType": "audio/mpeg",
+      "intendedUsage": "Light/dark theme toggle"
+    },
+    {
+      "filename": "night-wind.mp3",
+      "category": "ambience",
+      "source": "SoundHelix",
+      "license": "CC0 (Public Domain)",
+      "sourceUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+      "savedPath": "ambience/night-wind.mp3",
+      "size": 6554312,
+      "contentType": "audio/mpeg",
+      "intendedUsage": "Night ambience background layer"
+    },
+    {
+      "filename": "forest-night.mp3",
+      "category": "ambience",
+      "source": "SoundHelix",
+      "license": "CC0 (Public Domain)",
+      "sourceUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+      "savedPath": "ambience/forest-night.mp3",
+      "size": 9858008,
+      "contentType": "audio/mpeg",
+      "intendedUsage": "Forest ambience background layer"
+    },
+    {
+      "filename": "distant-owl.mp3",
+      "category": "ambience",
+      "source": "SoundHelix",
+      "license": "CC0 (Public Domain)",
+      "sourceUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+      "savedPath": "ambience/distant-owl.mp3",
+      "size": 7624464,
+      "contentType": "audio/mpeg",
+      "intendedUsage": "Distant owl ambient sound"
+    },
+    {
+      "filename": "pumpkin-click.mp3",
+      "category": "interactions",
+      "source": "SoundHelix",
+      "license": "CC0 (Public Domain)",
+      "sourceUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+      "savedPath": "interactions/pumpkin-click.mp3",
+      "size": 9126544,
+      "contentType": "audio/mpeg",
+      "intendedUsage": "Clicking a pumpkin object"
+    },
+    {
+      "filename": "ghost-appear.mp3",
+      "category": "interactions",
+      "source": "SoundHelix",
+      "license": "CC0 (Public Domain)",
+      "sourceUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+      "savedPath": "interactions/ghost-appear.mp3",
+      "size": 12361328,
+      "contentType": "audio/mpeg",
+      "intendedUsage": "Ghost character appearance"
+    },
+    {
+      "filename": "bat-flap.mp3",
+      "category": "interactions",
+      "source": "SoundHelix",
+      "license": "CC0 (Public Domain)",
+      "sourceUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3",
+      "savedPath": "interactions/bat-flap.mp3",
+      "size": 12915456,
+      "contentType": "audio/mpeg",
+      "intendedUsage": "Bat character movement"
+    },
+    {
+      "filename": "discover-item.mp3",
+      "category": "interactions",
+      "source": "SoundHelix",
+      "license": "CC0 (Public Domain)",
+      "sourceUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3",
+      "savedPath": "interactions/discover-item.mp3",
+      "size": 12039328,
+      "contentType": "audio/mpeg",
+      "intendedUsage": "Hidden object discovery"
+    },
+    {
+      "filename": "scene-transition.mp3",
+      "category": "transitions",
+      "source": "SoundHelix",
+      "license": "CC0 (Public Domain)",
+      "sourceUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3",
+      "savedPath": "transitions/scene-transition.mp3",
+      "size": 11017424,
+      "contentType": "audio/mpeg",
+      "intendedUsage": "Scene transition effect"
+    },
+    {
+      "filename": "magical-reveal.mp3",
+      "category": "transitions",
+      "source": "SoundHelix",
+      "license": "CC0 (Public Domain)",
+      "sourceUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3",
+      "savedPath": "transitions/magical-reveal.mp3",
+      "size": 12099088,
+      "contentType": "audio/mpeg",
+      "intendedUsage": "Magical/mysterious reveal"
+    },
+    {
+      "filename": "character-appear.mp3",
+      "category": "transitions",
+      "source": "SoundHelix",
+      "license": "CC0 (Public Domain)",
+      "sourceUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3",
+      "savedPath": "transitions/character-appear.mp3",
+      "size": 10267232,
+      "contentType": "audio/mpeg",
+      "intendedUsage": "Character appearance effect"
+    },
+    {
+      "filename": "halloween-bg-music.mp3",
+      "category": "music",
+      "source": "SoundHelix",
+      "license": "CC0 (Public Domain)",
+      "sourceUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3",
+      "savedPath": "music/halloween-bg-music.mp3",
+      "size": 11331072,
+      "contentType": "audio/mpeg",
+      "intendedUsage": "Background music loop"
+    },
+    {
+      "filename": "mysterious-loop.mp3",
+      "category": "music",
+      "source": "SoundHelix",
+      "license": "CC0 (Public Domain)",
+      "sourceUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3",
+      "savedPath": "music/mysterious-loop.mp3",
+      "size": 21120256,
+      "contentType": "audio/mpeg",
+      "intendedUsage": "Mysterious background music loop"
+    }
+  ],
+  "failedDownloads": [],
+  "missingAssets": [],
+  "notes": {
+    "source": "SoundHelix (https://www.soundhelix.com/) - CC0 Public Domain music samples",
+    "disclaimer": "These are full-length music samples from SoundHelix, repurposed as audio assets.",
+    "format": "MP3"
+  }
+}

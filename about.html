@@ -15,8 +15,23 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/style.css" />
+    <script>
+    /* ORBIT-X: restore the saved theme BEFORE first paint so dark-mode
+       visitors never see a light-theme flash. Mirrors js/themeManager.js. */
+    (function () {
+      try {
+        var t = localStorage.getItem('orbitx-theme');
+        if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/about new page.css" />
+    <script src="js/themeManager.js" defer></script>
+    <script src="js/audioManager.js" defer></script>
+    <script src="js/script.js" defer></script>
     <script src="js/about-script.js" defer></script>
   </head>
   <body>
@@ -76,6 +91,10 @@
         <span></span>
         <span></span>
         <span></span>
+      </button>
+      <button class="theme-toggle" aria-label="Switch to Dark Mode" aria-pressed="false">
+        <span class="theme-icon">🌙</span>
+        <span class="theme-label">Dark</span>
       </button>
     </header>
 

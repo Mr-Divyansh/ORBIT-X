@@ -200,3 +200,100 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+/* ==========================================================================
+   ORBIT-X - Dark theme (login page).
+   login.css is a self-contained design system (it does not load
+   css/style.css), so it re-points its OWN tokens when
+   [data-theme="dark"] is set on <html> by js/themeManager.js.
+   ========================================================================== */
+
+[data-theme="dark"] {
+  --ink: #F0EBFA;
+  --muted: #A79DC0;
+  --lavender: #4a3f6b;
+  --lilac: #241f38;
+  --purple: #A984F5;
+  --purple-deep: #C9B3FF;
+  --line: #403750;
+  --cream: #171522;
+  color-scheme: dark;
+}
+
+[data-theme="dark"] body {
+  background: var(--cream);
+  color: var(--ink);
+}
+
+[data-theme="dark"] .login-scene {
+  background:
+    radial-gradient(ellipse at 50% 46%, rgba(86, 66, 148, .4) 0, rgba(86, 66, 148, .14) 26%, transparent 52%),
+    radial-gradient(ellipse at 15% 16%, rgba(122, 92, 62, .2), transparent 33%),
+    radial-gradient(ellipse at 85% 17%, rgba(56, 76, 120, .3), transparent 31%),
+    linear-gradient(112deg, #171522 0%, #1b1729 44%, #191527 100%);
+}
+
+[data-theme="dark"] .login-scene::before,
+[data-theme="dark"] .login-scene::after {
+  background: linear-gradient(180deg, rgba(80, 64, 130, .35), rgba(58, 48, 92, .18));
+}
+
+[data-theme="dark"] .ambient-one { background: rgba(140, 100, 70, .16); }
+[data-theme="dark"] .ambient-two { background: rgba(96, 84, 170, .18); }
+
+[data-theme="dark"] .moon-glow {
+  background: rgba(240, 234, 255, .1);
+  box-shadow: 0 0 60px rgba(150, 130, 220, .18);
+}
+
+[data-theme="dark"] .login-card {
+  border-color: rgba(120, 100, 165, .6);
+  background: rgba(45, 38, 70, .5);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, .5), 0 4px 12px rgba(0, 0, 0, .35);
+}
+
+[data-theme="dark"] .card-inner {
+  border-color: rgba(120, 100, 165, .35);
+  background: linear-gradient(145deg, rgba(38, 33, 56, .94), rgba(30, 26, 46, .91));
+}
+
+[data-theme="dark"] .brand,
+[data-theme="dark"] .heading-block h1 { color: #F5F1FF; }
+[data-theme="dark"] .heading-block p { color: #B9B0CE; }
+
+[data-theme="dark"] .field {
+  border-color: #4a4162;
+  background: rgba(23, 21, 34, .85);
+}
+
+[data-theme="dark"] .field:focus-within {
+  border-color: #A984F5;
+  box-shadow: 0 0 0 3px rgba(169, 132, 245, .18);
+}
+
+[data-theme="dark"] .field-icon,
+[data-theme="dark"] .toggle-password { color: #9b93ad; }
+[data-theme="dark"] .field input::placeholder { color: #857d99; }
+[data-theme="dark"] .toggle-password:hover { background: #2c2545; }
+
+[data-theme="dark"] .remember { color: #b4abc6; }
+[data-theme="dark"] .text-link { color: #b79bf0; }
+[data-theme="dark"] .text-link:hover { color: #d0bdff; }
+[data-theme="dark"] .form-message { color: #f0a5c4; }
+
+[data-theme="dark"] .separator { color: #cfc6e0; }
+[data-theme="dark"] .separator span { background: #403750; }
+
+[data-theme="dark"] .google-button {
+  border-color: #4a4162;
+  background: rgba(255, 255, 255, .06);
+  color: #F0EBFA;
+}
+
+[data-theme="dark"] .google-button:hover {
+  background: rgba(255, 255, 255, .12);
+  border-color: #7a6aa8;
+}
+
+[data-theme="dark"] .signup-line { color: #b4abc6; }
+[data-theme="dark"] .scene-caption { color: rgba(199, 188, 217, .55); }

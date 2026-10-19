@@ -2742,3 +2742,92 @@
     filter: drop-shadow(0 0 9px rgba(181, 207, 255, 0.6));
   }
 }
+
+/* ============================================================================
+   ORBIT-X — Dark theme overrides (homepage sections + shared orbit-footer).
+   Driven by [data-theme="dark"] on <html>; tokens come from css/style.css.
+   Decorative light sources (stars, halos, lamp glows, sparkles) intentionally
+   keep their light fills in both themes.
+   ============================================================================ */
+
+[data-theme="dark"] .about-page {
+  --about-cream: #1a1727;
+  --about-text: #F7F2FF;
+  background:
+    radial-gradient(72% 46% at 50% 0%, rgba(84, 64, 140, 0.32), transparent 70%),
+    radial-gradient(60% 38% at 8% 100%, rgba(35, 30, 54, 0.9), transparent 74%),
+    radial-gradient(60% 38% at 92% 100%, rgba(40, 33, 60, 0.85), transparent 74%),
+    linear-gradient(180deg, #1c1830 0%, var(--about-cream) 45%, #191527 100%);
+}
+
+[data-theme="dark"] .about-eyebrow,
+[data-theme="dark"] .teamwork-eyebrow { color: var(--purple); }
+
+[data-theme="dark"] .about-heading p,
+[data-theme="dark"] .teamwork-copy > p { color: var(--ink-soft); }
+
+[data-theme="dark"] .about-intro h2 { color: var(--ink); }
+
+[data-theme="dark"] .about-intro p { color: var(--purple-strong); }
+
+[data-theme="dark"] .character-info h3 { color: var(--ink); }
+
+[data-theme="dark"] .abhay-card {
+  background: var(--surface);
+  border-color: rgba(230, 209, 156, 0.45);
+}
+
+[data-theme="dark"] .divyansh-card {
+  background: var(--surface);
+  border-color: rgba(200, 181, 232, 0.45);
+}
+
+[data-theme="dark"] .gadget-callout {
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .gadget-copy > span { color: var(--muted); }
+
+[data-theme="dark"] .divider-line { background: var(--line); }
+
+[data-theme="dark"] .mission-card {
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .halloween-mission,
+[data-theme="dark"] .dream-mission {
+  background: var(--surface);
+}
+
+[data-theme="dark"] .mission-card p { color: var(--ink-soft); }
+
+/* ---- Shared orbit-footer (this stylesheet provides it for index/about) ---- */
+
+[data-theme="dark"] .orbit-footer {
+  --footer-ink: var(--ink);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(62, 52, 96, 0.5), transparent 55%),
+    linear-gradient(180deg, #1b1729 0%, #171426 55%, #1a1628 100%);
+  border-top-color: var(--line);
+}
+
+[data-theme="dark"] .orbit-footer__cta {
+  background: var(--surface-2);
+  border-color: var(--line);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .orbit-footer__eyebrow { color: var(--purple-strong); }
+[data-theme="dark"] .orbit-footer__cta h2 { color: var(--ink); }
+[data-theme="dark"] .orbit-footer__cta p,
+[data-theme="dark"] .orbit-footer__nav a { color: var(--ink-soft); }
+[data-theme="dark"] .orbit-footer__tagline { color: var(--purple-strong); }
+[data-theme="dark"] .orbit-footer__description,
+[data-theme="dark"] .orbit-footer__connect p { color: var(--ink-soft); }
+[data-theme="dark"] .orbit-footer__friends span { color: var(--muted); }
+[data-theme="dark"] .orbit-footer__nav h3 { color: var(--ink); }
+[data-theme="dark"] .orbit-footer__nav a:hover { color: var(--purple-strong); }
+[data-theme="dark"] .orbit-footer__bottom p { color: var(--muted); }
+[data-theme="dark"] .orbit-footer__bottom-star { color: var(--purple); }

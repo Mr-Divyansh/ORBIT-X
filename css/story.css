@@ -914,3 +914,36 @@ a:focus-visible {
     transform: none;
   }
 }
+
+/* ==========================================================================
+   ORBIT-X - Dark theme overrides (Story page shell).
+   Driven by [data-theme="dark"] on <html>; tokens come from css/style.css.
+   Portal/star/orb decorations keep their light fills (light sources).
+   ========================================================================== */
+
+[data-theme="dark"] .story-nav {
+  background: var(--bg-navbar);
+}
+
+[data-theme="dark"] .secondary-button {
+  background: var(--btn2-bg);
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .secondary-button:hover {
+  background: var(--btn2-hover);
+}
+
+[data-theme="dark"] .floating-note {
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .story-tag {
+  background: var(--surface-2);
+}
+
+[data-theme="dark"] .story-footer {
+  background: var(--bg-navbar);
+  border-top-color: var(--line);
+}

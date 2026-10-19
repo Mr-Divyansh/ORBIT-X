@@ -8,6 +8,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    /* ORBIT-X: restore the saved theme BEFORE first paint so dark-mode
+       visitors never see a light-theme flash. Mirrors js/themeManager.js. */
+    (function () {
+      try {
+        var t = localStorage.getItem('orbitx-theme');
+        if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/exploration.css" />
   <link rel="stylesheet" href="../css/exploration2.css" />
@@ -34,9 +46,13 @@
       <a href="../index.html#about">About</a>
       <a class="active" href="../Exploration.html" aria-current="page">Exploration</a>
       <a href="../Exploration.html#stories">Stories</a>
-      <a href="../../credits.html">Credits</a>
+      <a href="../credits.html">Credits</a>
     </nav>
     <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    <button class="theme-toggle" aria-label="Switch to Dark Mode" aria-pressed="false">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-label">Dark</span>
+    </button>
   </header>
 
   <main class="page-shell">
@@ -48,7 +64,7 @@
           <h1>Halloween <span class="accent">Helpers</span></h1>
           <p class="detail-lede">Every child deserves a little Halloween magic. On Halloween night, Abhay and Divyansh set out to bring costumes, treats and kindness to the kids and the streets that always get skipped over.</p>
           <div class="detail-actions">
-            <a class="button button-primary" href="../Story1.html">Read the story <span aria-hidden="true">→</span></a>
+            <a class="button button-primary" href="../Story.html">Read the story <span aria-hidden="true">→</span></a>
             <a class="button button-secondary" href="#story">Enter the world</a>
           </div>
           <ul class="detail-facts" aria-label="Project facts">
@@ -267,6 +283,8 @@
 </footer>
     </div>
   </main>
+  <script src="../js/themeManager.js" defer></script>
+  <script src="../js/audioManager.js" defer></script>
   <script src="../js/script.js"></script>
 </body>
 </html>

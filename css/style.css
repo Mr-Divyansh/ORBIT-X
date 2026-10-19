@@ -11,6 +11,20 @@
   --line: rgba(130, 104, 170, 0.22);
   --shadow-soft: rgba(91, 58, 133, 0.12);
   --shadow-strong: rgba(142, 104, 205, 0.28);
+
+  /* Shared surface/role tokens. The dark theme re-points these in the
+     [data-theme="dark"] block near the bottom of this file, so every rule
+     that uses var(...) switches with a single toggle. */
+  --surface: #ffffff;
+  --surface-2: rgba(255, 255, 255, 0.7);
+  --bg-navbar: rgba(255, 250, 245, 0.92);
+  --btn2-ink: #49356e;
+  --btn2-bg: rgba(255, 250, 245, 0.68);
+  --btn2-border: #7857aa;
+  --btn2-hover: #ffffff;
+  --text-heading: #392D66;
+  --text-caption: #514768;
+  color-scheme: light;
 }
 
 @property --swing {
@@ -73,7 +87,7 @@ img {
   min-height: 92px;
   padding: 0 5%;
   border-bottom: 1px solid var(--line);
-  background: rgba(255, 250, 245, 0.92);
+  background: var(--bg-navbar);
   backdrop-filter: blur(8px);
 }
 
@@ -376,13 +390,13 @@ h1.typing-done .typing-line:last-child::after {
 }
 
 .button-secondary {
-  color: #49356e;
-  background: rgba(255, 250, 245, 0.68);
-  border: 2px solid #7857aa;
+  color: var(--btn2-ink);
+  background: var(--btn2-bg);
+  border: 2px solid var(--btn2-border);
 }
 
 .button-secondary:hover {
-  background: #fff;
+  background: var(--btn2-hover);
 }
 
 .hero-art {
@@ -838,7 +852,7 @@ h1.typing-done .typing-line:last-child::after {
   z-index: 1;
   padding: 100px 20px;
   text-align: center;
-  background: #fffaf7;
+  background: var(--paper-rose);
 }
 
 .section-kicker {
@@ -862,7 +876,7 @@ h1.typing-done .typing-line:last-child::after {
 }
 
 .story-section {
-  background: #f5efff;
+  background: var(--paper-mist);
 }
 
 @keyframes float {
@@ -1146,7 +1160,7 @@ h1.typing-done .typing-line:last-child::after {
     align-items: stretch;
     width: min(240px, 90vw);
     padding: 10px;
-    background: rgba(255, 250, 247, 0.97);
+    background: var(--bg-navbar);
     border: 1px solid var(--line);
     border-radius: 18px;
     box-shadow: 0 12px 35px rgba(57, 38, 81, 0.1);
@@ -2973,7 +2987,7 @@ h1.typing-done .typing-line:last-child::after {
     top: 70px;
     flex-direction: column;
     align-items: stretch;
-    background: rgba(255, 250, 245, 0.97);
+    background: var(--bg-navbar);
     backdrop-filter: blur(12px);
     border: 1px solid var(--line);
     border-top: none;
@@ -2992,4 +3006,468 @@ h1.typing-done .typing-line:last-child::after {
     width: 100%;
   }
   .nav-links a + a::before { display: none; }
+}
+
+/* ============================================================================
+   ORBIT-X — Dark Theme (Light ON / Light OFF)
+   Uses [data-theme="dark"] on <html> for consistent theming.
+   ============================================================================ */
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Primary text: soft moonlight white, never pure #fff */
+  --ink: #F7F2FF;
+  --ink-soft: #C5BCD9;
+  --muted: #A79DC0;
+
+  /* Accents: ORBIT-X purple family, brightened for dark surfaces */
+  --purple: #A984F5;
+  --purple-strong: #C9B3FF;
+  --purple-deep: #A984F5;
+
+  /* Surfaces: night-violet ladder (page > tinted section > card) */
+  --paper: #171522;
+  --paper-rose: #1b1729;
+  --paper-mist: #211d30;
+  --surface: #211d30;
+  --surface-2: rgba(33, 29, 48, 0.72);
+  --bg-navbar: rgba(41, 37, 54, 0.94);
+
+  /* Lines & shadows */
+  --line: rgba(122, 106, 152, 0.45);
+  --shadow-soft: rgba(0, 0, 0, 0.45);
+  --shadow-strong: rgba(0, 0, 0, 0.6);
+
+  /* Secondary button ("ghost") */
+  --btn2-ink: #C5BCD9;
+  --btn2-bg: rgba(38, 34, 54, 0.8);
+  --btn2-border: #8B6FD4;
+  --btn2-hover: #2E2842;
+
+  /* Misc text roles */
+  --text-heading: #F0EAFF;
+  --text-caption: #C5BCD9;
+}
+
+[data-theme="dark"] body {
+  color: var(--ink);
+}
+
+/* The light theme paints its cream gradient on body::before — a fixed,
+   full-viewport layer with z-index:-2. Setting only body's background in
+   dark mode had NO visible effect because that layer painted on top of
+   it, so the hero and every unstyled section stayed cream. Repaint the
+   layer itself with the ORBIT-X night gradient. */
+[data-theme="dark"] body::before {
+  background:
+    radial-gradient(ellipse at 77% 65%, rgba(94, 70, 158, 0.34), transparent 29%),
+    radial-gradient(ellipse at 8% 79%, rgba(48, 68, 120, 0.32), transparent 24%),
+    linear-gradient(120deg, #171522 0%, #1b1729 54%, #171522 100%);
+}
+
+/* ---- Shared chrome ---- */
+[data-theme="dark"] .navbar {
+  background: var(--bg-navbar);
+  border-bottom-color: var(--line);
+}
+
+[data-theme="dark"] .nav-links a {
+  color: var(--ink-soft);
+}
+
+[data-theme="dark"] .nav-links a.active {
+  color: var(--ink);
+}
+
+[data-theme="dark"] .nav-mascot .nav-sparkle {
+  filter: drop-shadow(0 0 6px rgba(248, 216, 137, 0.6));
+}
+
+[data-theme="dark"] .page-frame {
+  background: rgba(23, 21, 34, 0.6);
+}
+
+/* ---- Homepage hero ---- */
+[data-theme="dark"] .hero-copy .eyebrow,
+[data-theme="dark"] .hero-copy .description {
+  color: var(--ink-soft);
+}
+
+[data-theme="dark"] .eyebrow {
+  color: #b79bee;
+}
+
+/* ---- Homepage content sections ---- */
+[data-theme="dark"] .section-kicker {
+  color: var(--purple-strong);
+}
+
+[data-theme="dark"] .storybook__eyebrow,
+[data-theme="dark"] .storybook__scene-number {
+  color: var(--purple-strong);
+}
+
+[data-theme="dark"] .storybook__friend-name {
+  color: var(--ink-soft);
+}
+
+[data-theme="dark"] .storybook__friend-name i {
+  color: var(--purple);
+}
+
+[data-theme="dark"] .storybook__visual-caption {
+  color: var(--ink-soft);
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .storybook__finale-kicker {
+  color: var(--ink-soft);
+}
+
+[data-theme="dark"] .storybook__finale-content > p {
+  color: var(--ink-soft);
+  text-shadow: none;
+}
+
+[data-theme="dark"] .storybook__finale-footnote {
+  color: var(--muted);
+}
+
+[data-theme="dark"] .storybook__finale-content::before {
+  background: radial-gradient(ellipse at 50% 50%, rgba(62, 52, 96, 0.5), rgba(40, 34, 64, 0.3) 46%, transparent 72%);
+}
+
+/* Decorative lanterns, moons, stars and clouds keep their light
+   luminous fills in both themes — they are light SOURCES, not surfaces. */
+
+/* ============================================================================
+   ORBIT-X — Light Toggle Button
+   ============================================================================ */
+
+.theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--paper-mist);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 12px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--purple);
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid rgba(152, 113, 221, 0.5);
+  outline-offset: 2px;
+}
+
+.theme-toggle[aria-pressed="true"] {
+  background: var(--purple);
+  color: #fff;
+}
+
+.theme-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.theme-label {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .theme-label { display: inline; }
+}
+
+/* ============================================================================
+   ORBIT-X — Right-Side Navigation Drawer
+   ============================================================================ */
+
+.nav-drawer-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(40, 27, 61, 0.4);
+  z-index: 90;
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-drawer-backdrop.is-visible {
+  display: block;
+  opacity: 1;
+}
+
+.nav-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 320px;
+  height: 100vh;
+  background: var(--paper);
+  z-index: 100;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.2, 0, 0, 0.9);
+  box-shadow: -12px 0 32px var(--shadow-strong);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+[data-theme="dark"] .nav-drawer {
+  background: var(--paper);
+  box-shadow: -12px 0 32px rgba(0, 0, 0, 0.4);
+}
+
+.nav-drawer.is-open {
+  transform: translateX(0);
+}
+
+.nav-drawer__header {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-drawer__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  border-radius: 10px;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  transition: background 0.2s ease;
+}
+
+.nav-drawer__close:hover {
+  background: var(--paper-mist);
+}
+
+.nav-drawer__close:focus-visible {
+  outline: 3px solid rgba(152, 113, 221, 0.5);
+  outline-offset: 2px;
+}
+
+.nav-drawer__nav {
+  padding: 24px;
+  flex: 1;
+}
+
+.nav-drawer__nav a {
+  display: block;
+  padding: 14px 18px;
+  color: var(--ink-soft);
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+}
+
+.nav-drawer__nav a:hover {
+  background: var(--paper-mist);
+  color: var(--ink);
+  padding-left: 22px;
+}
+
+.nav-drawer__nav a.active {
+  color: var(--ink);
+  background: var(--paper-mist);
+}
+
+.nav-drawer__divider {
+  height: 1px;
+  background: var(--line);
+  margin: 20px 0;
+}
+
+.nav-drawer__credits {
+  padding: 20px 24px;
+  border-top: 1px solid var(--line);
+}
+
+.nav-drawer__credits a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--purple);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.nav-drawer__credits a:hover {
+  background: var(--paper-mist);
+  color: var(--purple-strong);
+}
+
+/* Mobile drawer width adjustments */
+@media (max-width: 480px) {
+  .nav-drawer {
+    max-width: 280px;
+  }
+}
+
+@media (min-width: 901px) {
+  .nav-drawer,
+  .nav-drawer-backdrop {
+    display: none !important;
+  }
+}
+
+/* Reduce motion support */
+@media (prefers-reduced-motion: reduce) {
+  .nav-drawer {
+    transition: none;
+  }
+  .nav-drawer-backdrop {
+    transition: none;
+  }
+  .theme-toggle {
+    transition: none;
+  }
+}
+
+/* Lock body scroll when drawer is open */
+body.nav-drawer-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* ============================================================================
+   ORBIT-X — Sound Toggle Button + Drawer Sound Panel
+   ============================================================================ */
+
+.sound-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  background: var(--paper-mist);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--ink);
+  font-family: inherit;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.sound-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--purple);
+}
+
+.sound-toggle:focus-visible {
+  outline: 3px solid rgba(152, 113, 221, 0.5);
+  outline-offset: 2px;
+}
+
+.sound-toggle.is-muted {
+  opacity: 0.65;
+}
+
+.sound-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* Fixed top-right group for pages without a navbar (credits, login) */
+.floating-toggles {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.floating-toggles .theme-toggle {
+  margin-left: 0;
+  box-shadow: 0 6px 18px rgba(40, 27, 61, 0.14);
+}
+
+.floating-toggles .sound-toggle {
+  margin-left: 0;
+  box-shadow: 0 6px 18px rgba(40, 27, 61, 0.14);
+}
+
+/* Drawer sound settings */
+.nav-drawer__sound {
+  padding: 18px 24px 6px;
+}
+
+.nav-drawer__sound h3 {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sound-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.sound-row input[type="range"] {
+  flex: 1;
+  max-width: 150px;
+  accent-color: var(--purple);
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .sound-toggle {
+    padding: 8px 10px;
+    margin-left: 6px;
+  }
+  .floating-toggles {
+    top: 12px;
+    right: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sound-toggle {
+    transition: none;
+  }
 }

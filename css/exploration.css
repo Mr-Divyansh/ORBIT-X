@@ -28,7 +28,7 @@
 .exp-heading h1 .accent { background: linear-gradient(100deg, #9b7de0 8%, #7651b7 95%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .exp-subtitle { margin: 0 auto; max-width: 560px; color: var(--muted); font-size: clamp(15px, 1.7vw, 19px); font-weight: 600; line-height: 1.6; }
 .projects-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; align-items: stretch; }
-.project-card { display: flex; flex-direction: column; overflow: hidden; background: #fff; border: 2px solid rgba(130, 104, 170, 0.55); border-top: 7px solid var(--purple); border-radius: 26px; box-shadow: 0 14px 34px var(--shadow-soft); transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
+.project-card { display: flex; flex-direction: column; overflow: hidden; background: var(--surface); border: 2px solid rgba(130, 104, 170, 0.55); border-top: 7px solid var(--purple); border-radius: 26px; box-shadow: 0 14px 34px var(--shadow-soft); transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
 .project-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px var(--shadow-strong); border-color: rgba(152, 113, 221, 0.8); }
 .project-card:focus-within { outline: 3px solid rgba(152,113,221,.5); outline-offset: 3px; }
 .project-halloween { border-top-color: #f0a35e; }
@@ -150,3 +150,35 @@
     padding: 8px;
   }
 }
+/* ==========================================================================
+   ORBIT-X - Dark theme overrides (Exploration page).
+   Driven by [data-theme="dark"] on <html>; tokens come from css/style.css.
+   Pastel project-visual panels are artwork canvases and stay light so the
+   character images remain readable in both themes.
+   ========================================================================== */
+
+[data-theme="dark"] .exp-ending {
+  background: linear-gradient(115deg, #3a2c40, #3c2b37, #372a44);
+}
+
+[data-theme="dark"] .exp-ending p { color: var(--ink-soft); }
+
+[data-theme="dark"] .project-action { background: var(--surface-2); }
+
+[data-theme="dark"] .project-card:hover .project-action { background: var(--surface); }
+
+[data-theme="dark"] .back-home-button {
+  background: var(--surface-2);
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .back-home-button:hover { background: var(--surface); }
+
+[data-theme="dark"] .about-footer {
+  background: var(--bg-navbar);
+  border-top-color: var(--line);
+}
+
+[data-theme="dark"] .about-footer p { color: var(--muted); }
+[data-theme="dark"] .about-footer > a:last-child { color: var(--purple-strong); }

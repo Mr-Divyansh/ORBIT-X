@@ -666,3 +666,34 @@
     translate: none;
   }
 }
+/* ==========================================================================
+   ORBIT-X - Dark theme overrides (shared orbit-footer used by Exploration,
+   Story and the project pages). Tokens come from css/style.css.
+   ========================================================================== */
+
+[data-theme="dark"] .orbit-footer {
+  --footer-ink: var(--ink);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(62, 52, 96, 0.5), transparent 55%),
+    linear-gradient(180deg, #1b1729 0%, #171426 55%, #1a1628 100%);
+  border-top-color: var(--line);
+}
+
+[data-theme="dark"] .orbit-footer__cta {
+  background: var(--surface-2);
+  border-color: var(--line);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .orbit-footer__eyebrow { color: var(--purple-strong); }
+[data-theme="dark"] .orbit-footer__cta h2 { color: var(--ink); }
+[data-theme="dark"] .orbit-footer__cta p,
+[data-theme="dark"] .orbit-footer__nav a { color: var(--ink-soft); }
+[data-theme="dark"] .orbit-footer__tagline { color: var(--purple-strong); }
+[data-theme="dark"] .orbit-footer__description,
+[data-theme="dark"] .orbit-footer__connect p { color: var(--ink-soft); }
+[data-theme="dark"] .orbit-footer__friends span { color: var(--muted); }
+[data-theme="dark"] .orbit-footer__nav h3 { color: var(--ink); }
+[data-theme="dark"] .orbit-footer__nav a:hover { color: var(--purple-strong); }
+[data-theme="dark"] .orbit-footer__bottom p { color: var(--muted); }
+[data-theme="dark"] .orbit-footer__bottom-star { color: var(--purple); }
