@@ -99,8 +99,21 @@
     <div class="flying-bat bat-b" data-bat="b" aria-hidden="true"><img src="Assets/img/icons/bat trans.png" alt="" width="36" height="26" /></div>
     <div class="flying-bat bat-c" data-bat="c" aria-hidden="true"><img src="Assets/img/icons/bat trans.png" alt="" width="60" height="44" /></div>
 
+    <!-- Soft pastel cloud banks framing the bottom-left / bottom-right corners.
+         Pure CSS layered puffs (no new image assets). Three depth layers each,
+         painted behind the pumpkins & ghosts, pointer-events: none. -->
     <div class="bottom-clouds" aria-hidden="true">
-      <div class="cloud cloud-a"></div><div class="cloud cloud-b"></div><div class="cloud cloud-c"></div><div class="cloud cloud-d"></div>
+      <div class="cloud-bank cloud-bank-left">
+        <span class="cloud-puff cloud-puff--back"></span>
+        <span class="cloud-puff cloud-puff--mid"></span>
+        <span class="cloud-puff cloud-puff--front"></span>
+      </div>
+      <div class="cloud-bank cloud-bank-right">
+        <span class="cloud-puff cloud-puff--back"></span>
+        <span class="cloud-puff cloud-puff--mid"></span>
+        <span class="cloud-puff cloud-puff--front"></span>
+      </div>
+      <span class="cloud-mist"></span>
     </div>
     <img class="hero-deco halloween-char ghost-char" src="Assets/img/icons/ghost trans.png" alt="" aria-hidden="true" />
     <img class="hero-deco halloween-char pumpkin-char" src="Assets/img/icons/pumpkin trans.png" alt="" aria-hidden="true" />

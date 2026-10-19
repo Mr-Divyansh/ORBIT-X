@@ -643,48 +643,147 @@ h1.typing-done .typing-line:last-child::after {
   animation-delay: 3.1s;
 }
 
+/* ── Pastel corner clouds (hero bottom decoration) ───────────────────
+   Layered, fluffy formations rising from the bottom-left and
+   bottom-right corners. Pure radial-gradient puffs — no raster asset.
+   z-index: -1 keeps them BEHIND the pumpkins/ghosts (z 2), copy (z 3),
+   bats and spiders; pointer-events: none so clicks always pass through;
+   .hero's overflow: hidden clips them inside the section. */
 .bottom-clouds {
   position: absolute;
   inset: auto 0 0;
   z-index: -1;
-  height: 145px;
+  height: clamp(150px, 22vh, 230px);
   overflow: hidden;
+  pointer-events: none;
 }
 
-.cloud {
+.cloud-bank {
   position: absolute;
-  bottom: -70px;
-  height: 150px;
-  border-radius: 100px 100px 0 0;
-  background: linear-gradient(180deg, rgba(231, 222, 255, 0.77), rgba(224, 233, 255, 0.68));
+  bottom: -22px;
+  height: 104%;
+  pointer-events: none;
 }
 
-.cloud-a {
-  left: -4%;
-  width: 35%;
-  height: 105px;
-  background: linear-gradient(180deg, #f6e8ff, #dfe8ff);
+.cloud-bank-left {
+  left: -3%;
+  width: min(52vw, 660px);
 }
 
-.cloud-b {
-  left: 21%;
-  width: 35%;
-  height: 128px;
-  background: linear-gradient(180deg, #eee5ff, #e5e9ff);
+/* Not a perfect mirror of the left bank — different width + colours. */
+.cloud-bank-right {
+  right: -3%;
+  width: min(46vw, 600px);
 }
 
-.cloud-c {
-  right: 16%;
-  width: 36%;
-  height: 120px;
-  background: linear-gradient(180deg, #f4e6ff, #e3e9ff);
+.cloud-puff {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
-.cloud-d {
-  right: -4%;
-  width: 31%;
-  height: 100px;
-  background: linear-gradient(180deg, #ffe9f1, #e6e7ff);
+/* Back layer: tallest, pale lavender + periwinkle, hugs the side edge. */
+.cloud-puff--back {
+  background:
+    radial-gradient(38% 55% at 4% 84%, #e2d6ff 0 58%, rgba(226, 214, 255, 0) 100%),
+    radial-gradient(30% 46% at 24% 70%, #ddd0ff 0 55%, rgba(221, 208, 255, 0) 100%),
+    radial-gradient(26% 40% at 47% 82%, #d8d5ff 0 55%, rgba(216, 213, 255, 0) 100%),
+    radial-gradient(20% 34% at 12% 54%, #ece3ff 0 58%, rgba(236, 227, 255, 0) 100%),
+    radial-gradient(15% 26% at 37% 60%, #e6dcff 0 58%, rgba(230, 220, 255, 0) 100%);
+  filter: drop-shadow(0 -5px 16px rgba(174, 154, 238, 0.22));
+  animation: cloud-crest 17s ease-in-out -3s infinite alternate;
+}
+
+/* Right bank back layer leans a touch more baby-blue for asymmetry. */
+.cloud-bank-right .cloud-puff--back {
+  background:
+    radial-gradient(38% 55% at 96% 84%, #dce4ff 0 58%, rgba(220, 228, 255, 0) 100%),
+    radial-gradient(30% 46% at 74% 70%, #dcd9ff 0 55%, rgba(220, 217, 255, 0) 100%),
+    radial-gradient(26% 40% at 54% 82%, #e2d6ff 0 55%, rgba(226, 214, 255, 0) 100%),
+    radial-gradient(20% 34% at 86% 54%, #e7edff 0 58%, rgba(231, 237, 255, 0) 100%),
+    radial-gradient(15% 26% at 63% 60%, #ece3ff 0 58%, rgba(236, 227, 255, 0) 100%);
+}
+
+/* Middle layer: warm off-white + baby-blue body — the fluffy core. */
+.cloud-puff--mid {
+  background:
+    radial-gradient(34% 48% at 8% 94%, #fffdfb 0 60%, rgba(255, 253, 251, 0) 100%),
+    radial-gradient(28% 42% at 30% 86%, #f8f5ff 0 58%, rgba(248, 245, 255, 0) 100%),
+    radial-gradient(24% 36% at 52% 94%, #eff4ff 0 58%, rgba(239, 244, 255, 0) 100%),
+    radial-gradient(18% 28% at 20% 74%, #ffffff 0 60%, rgba(255, 255, 255, 0) 100%),
+    radial-gradient(13% 22% at 43% 80%, #fbfaff 0 60%, rgba(251, 250, 255, 0) 100%);
+  filter: drop-shadow(0 -3px 12px rgba(255, 255, 255, 0.75));
+  animation: cloud-crest 21s ease-in-out -9s infinite alternate;
+}
+
+.cloud-bank-right .cloud-puff--mid {
+  background:
+    radial-gradient(34% 48% at 92% 94%, #fffdfb 0 60%, rgba(255, 253, 251, 0) 100%),
+    radial-gradient(28% 42% at 70% 86%, #f7f4ff 0 58%, rgba(247, 244, 255, 0) 100%),
+    radial-gradient(24% 36% at 48% 94%, #f3f6ff 0 58%, rgba(243, 246, 255, 0) 100%),
+    radial-gradient(18% 28% at 80% 74%, #ffffff 0 60%, rgba(255, 255, 255, 0) 100%),
+    radial-gradient(13% 22% at 57% 80%, #fdfbff 0 60%, rgba(253, 251, 255, 0) 100%);
+}
+
+/* Front layer: small blush-pink / peach lobes low along the edge. */
+.cloud-puff--front {
+  background:
+    radial-gradient(22% 34% at 2% 102%, #ffe9f2 0 60%, rgba(255, 233, 242, 0) 100%),
+    radial-gradient(18% 28% at 34% 106%, #ffeff5 0 60%, rgba(255, 239, 245, 0) 100%),
+    radial-gradient(14% 22% at 58% 102%, #fff3e8 0 60%, rgba(255, 243, 232, 0) 100%);
+  animation: cloud-crest 14s ease-in-out -6s infinite alternate-reverse;
+}
+
+.cloud-bank-right .cloud-puff--front {
+  background:
+    radial-gradient(22% 34% at 98% 102%, #ffeef0 0 60%, rgba(255, 238, 240, 0) 100%),
+    radial-gradient(18% 28% at 66% 106%, #ffe9f2 0 60%, rgba(255, 233, 242, 0) 100%),
+    radial-gradient(14% 22% at 42% 102%, #fff6ea 0 60%, rgba(255, 246, 234, 0) 100%);
+}
+
+/* Subtle, barely-there continuation across the bottom centre so the two
+   corner formations read as one scene without covering content. */
+.cloud-mist {
+  position: absolute;
+  left: 27%;
+  right: 27%;
+  bottom: -34px;
+  height: 96px;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.85) 45%,
+      rgba(246, 240, 255, 0.8) 62%,
+      rgba(255, 255, 255, 0));
+  filter: blur(14px);
+  opacity: 0.55;
+  pointer-events: none;
+  animation: cloud-crest 25s ease-in-out -12s infinite alternate;
+}
+
+/* Dreamy slow bob — transform only, alternate so the loop is seamless. */
+@keyframes cloud-crest {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(12px, -8px, 0);
+  }
+}
+
+@media (max-width: 1000px) {
+  .bottom-clouds {
+    height: clamp(140px, 20vh, 185px);
+  }
+
+  .cloud-bank-left {
+    width: 58vw;
+  }
+
+  .cloud-bank-right {
+    width: 52vw;
+  }
 }
 
 .halloween-char {
@@ -1213,8 +1312,25 @@ h1.typing-done .typing-line:last-child::after {
     padding-top: 52px;
   }
 
+  /* Phones: compact corner clouds that stay well below stacked copy,
+     characters' feet, and the CTA buttons. */
   .bottom-clouds {
-    height: 100px;
+    height: 112px;
+  }
+
+  .cloud-bank-left {
+    width: 66vw;
+  }
+
+  .cloud-bank-right {
+    width: 58vw;
+  }
+
+  .cloud-mist {
+    left: 20%;
+    right: 20%;
+    height: 64px;
+    opacity: 0.4;
   }
 
   .ghost-char {
