@@ -35,7 +35,12 @@
 /* --- intro band with solo characters --- */
 .exp-intro { display: flex; align-items: center; justify-content: center; gap: clamp(18px, 3vw, 40px); margin-bottom: clamp(28px, 4vw, 44px); }
 .exp-intro .exp-heading { text-align: center; }
-.exp-intro-friends { display: flex; gap: 10px; }
+/* The friends wrapper dissolves (display:contents) so one friend flanks each
+   side of the heading; .exp-heading's existing margin:0 auto keeps the text
+   dead-centre while the images sit left and right of it. */
+.exp-intro-friends { display: contents; }
+.exp-intro-friends img:first-child { order: -1; }
+.exp-intro-friends img:last-child { order: 1; }
 .exp-intro-friends img { width: clamp(74px, 9vw, 120px); height: auto; filter: drop-shadow(0 10px 18px var(--shadow-soft)); }
 .exp-intro-friends img:first-child { animation: exp-float 5s ease-in-out infinite; }
 .exp-intro-friends img:last-child { animation: exp-float 5s ease-in-out infinite 1.2s; }
@@ -121,7 +126,7 @@
 }
 @media (max-width: 560px) {
   .exp-intro { flex-direction: column; }
-  .exp-intro-friends { order: 2; }
+  .exp-intro-friends { display: flex; order: 2; gap: 10px; }
   .exp-hero-stats { gap: 16px; }
   .exp-hero-actions .button { width: 100%; justify-content: center; }
   .project-body h3 { font-size: 21px; }
