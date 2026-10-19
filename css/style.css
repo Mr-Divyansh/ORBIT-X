@@ -665,6 +665,26 @@ h1.typing-done .typing-line:last-child::after {
   pointer-events: none;
 }
 
+/* Solid rounded cloud body so the puffs sit on a real mass instead of
+   floating circles. Painted above the back layer (z 1) but below the
+   mid/front lobes (z 2/3); its arched top + inset highlight create the
+   soft lower shading / upper light of the formation. */
+.cloud-bank::before {
+  content: "";
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  bottom: -70px;
+  height: 58%;
+  z-index: 1;
+  background: linear-gradient(180deg, #f7f4ff 0%, #ece9fc 52%, #e3e0f6 100%);
+  border-radius: 44% 50% 0 0 / 64% 72% 0 0;
+  box-shadow:
+    inset 0 7px 12px rgba(255, 255, 255, 0.75),
+    0 -3px 9px rgba(150, 130, 210, 0.22);
+  pointer-events: none;
+}
+
 .cloud-bank-left {
   left: -3%;
   width: min(52vw, 660px);
@@ -682,93 +702,105 @@ h1.typing-done .typing-line:last-child::after {
   pointer-events: none;
 }
 
-/* Back layer: tallest, pale lavender + periwinkle, hugs the side edge. */
+/* Back layer — tallest lavender/periwinkle puffs rising along the side
+   edge. Each lobe is solid to ~70%, rim-shaded, then feathered over a
+   few % so the SILHOUETTE stays crisp (blur never defines the shape);
+   a small white lobe adds a gentle top-edge highlight. */
 .cloud-puff--back {
+  z-index: 0;
   background:
-    radial-gradient(38% 55% at 4% 84%, #e2d6ff 0 58%, rgba(226, 214, 255, 0) 100%),
-    radial-gradient(30% 46% at 24% 70%, #ddd0ff 0 55%, rgba(221, 208, 255, 0) 100%),
-    radial-gradient(26% 40% at 47% 82%, #d8d5ff 0 55%, rgba(216, 213, 255, 0) 100%),
-    radial-gradient(20% 34% at 12% 54%, #ece3ff 0 58%, rgba(236, 227, 255, 0) 100%),
-    radial-gradient(15% 26% at 37% 60%, #e6dcff 0 58%, rgba(230, 220, 255, 0) 100%);
-  filter: drop-shadow(0 -5px 16px rgba(174, 154, 238, 0.22));
+    radial-gradient(11% 16% at 3% 56%, rgba(255, 255, 255, 0.55) 0 55%, rgba(255, 255, 255, 0) 78%),
+    radial-gradient(34% 46% at 0% 78%, #cabcf2 0 70%, #bcb0ed 76%, rgba(188, 176, 237, 0) 81%),
+    radial-gradient(25% 35% at 16% 60%, #cfc3f4 0 70%, #c0b4f0 76%, rgba(192, 180, 240, 0) 81%),
+    radial-gradient(19% 27% at 30% 78%, #d4c9f6 0 70%, #c6bbf2 76%, rgba(198, 187, 242, 0) 81%),
+    radial-gradient(14% 21% at 9% 44%, #d9cff7 0 70%, #cabff3 76%, rgba(202, 191, 243, 0) 81%),
+    radial-gradient(11% 17% at 25% 52%, #ded5f9 0 70%, #d1c7f5 76%, rgba(209, 199, 245, 0) 81%);
+  filter: drop-shadow(0 -2px 6px rgba(134, 112, 196, 0.3));
   animation: cloud-crest 17s ease-in-out -3s infinite alternate;
 }
 
-/* Right bank back layer leans a touch more baby-blue for asymmetry. */
+/* Right bank back layer: a DIFFERENT silhouette (pastel-blue dominant,
+   lobes repositioned) so the corner formations complement, not mirror. */
 .cloud-bank-right .cloud-puff--back {
   background:
-    radial-gradient(38% 55% at 96% 84%, #dce4ff 0 58%, rgba(220, 228, 255, 0) 100%),
-    radial-gradient(30% 46% at 74% 70%, #dcd9ff 0 55%, rgba(220, 217, 255, 0) 100%),
-    radial-gradient(26% 40% at 54% 82%, #e2d6ff 0 55%, rgba(226, 214, 255, 0) 100%),
-    radial-gradient(20% 34% at 86% 54%, #e7edff 0 58%, rgba(231, 237, 255, 0) 100%),
-    radial-gradient(15% 26% at 63% 60%, #ece3ff 0 58%, rgba(236, 227, 255, 0) 100%);
+    radial-gradient(11% 16% at 97% 58%, rgba(255, 255, 255, 0.55) 0 55%, rgba(255, 255, 255, 0) 78%),
+    radial-gradient(35% 49% at 100% 80%, #c9d2f4 0 70%, #bcc5ef 76%, rgba(188, 197, 239, 0) 81%),
+    radial-gradient(24% 34% at 82% 62%, #d0d9f7 0 70%, #c2cbf2 76%, rgba(194, 203, 242, 0) 81%),
+    radial-gradient(18% 26% at 68% 80%, #d6dcf9 0 70%, #c8cff4 76%, rgba(200, 207, 244, 0) 81%),
+    radial-gradient(13% 20% at 90% 46%, #dce2fb 0 70%, #ced5f6 76%, rgba(206, 213, 246, 0) 81%),
+    radial-gradient(10% 16% at 74% 55%, #e1e5fc 0 70%, #d3d9f7 76%, rgba(211, 217, 247, 0) 81%);
 }
 
-/* Middle layer: warm off-white + baby-blue body — the fluffy core. */
+/* Middle layer — warm white + baby-blue fluffy core lobes overlapping
+   the body arch, each with a lavender-blue rim for clear separation. */
 .cloud-puff--mid {
+  z-index: 2;
   background:
-    radial-gradient(34% 48% at 8% 94%, #fffdfb 0 60%, rgba(255, 253, 251, 0) 100%),
-    radial-gradient(28% 42% at 30% 86%, #f8f5ff 0 58%, rgba(248, 245, 255, 0) 100%),
-    radial-gradient(24% 36% at 52% 94%, #eff4ff 0 58%, rgba(239, 244, 255, 0) 100%),
-    radial-gradient(18% 28% at 20% 74%, #ffffff 0 60%, rgba(255, 255, 255, 0) 100%),
-    radial-gradient(13% 22% at 43% 80%, #fbfaff 0 60%, rgba(251, 250, 255, 0) 100%);
-  filter: drop-shadow(0 -3px 12px rgba(255, 255, 255, 0.75));
+    radial-gradient(30% 42% at 3% 92%, #ffffff 0 72%, #eef0fc 78%, rgba(238, 240, 252, 0) 83%),
+    radial-gradient(23% 33% at 21% 86%, #fbfdff 0 72%, #e8edff 78%, rgba(232, 237, 255, 0) 83%),
+    radial-gradient(18% 26% at 36% 94%, #ffffff 0 72%, #ecf0ff 78%, rgba(236, 240, 255, 0) 83%),
+    radial-gradient(13% 20% at 12% 70%, #ffffff 0 72%, #f0eefe 78%, rgba(240, 238, 254, 0) 83%),
+    radial-gradient(10% 16% at 28% 75%, #fdfcff 0 72%, #ecf0ff 78%, rgba(236, 240, 255, 0) 83%);
+  filter: drop-shadow(0 -2px 5px rgba(150, 140, 205, 0.22));
   animation: cloud-crest 21s ease-in-out -9s infinite alternate;
 }
 
 .cloud-bank-right .cloud-puff--mid {
   background:
-    radial-gradient(34% 48% at 92% 94%, #fffdfb 0 60%, rgba(255, 253, 251, 0) 100%),
-    radial-gradient(28% 42% at 70% 86%, #f7f4ff 0 58%, rgba(247, 244, 255, 0) 100%),
-    radial-gradient(24% 36% at 48% 94%, #f3f6ff 0 58%, rgba(243, 246, 255, 0) 100%),
-    radial-gradient(18% 28% at 80% 74%, #ffffff 0 60%, rgba(255, 255, 255, 0) 100%),
-    radial-gradient(13% 22% at 57% 80%, #fdfbff 0 60%, rgba(253, 251, 255, 0) 100%);
+    radial-gradient(31% 43% at 97% 92%, #ffffff 0 72%, #f0f2fd 78%, rgba(240, 242, 253, 0) 83%),
+    radial-gradient(23% 33% at 78% 86%, #fbfcff 0 72%, #ebf0ff 78%, rgba(235, 240, 255, 0) 83%),
+    radial-gradient(17% 25% at 62% 95%, #ffffff 0 72%, #eef3ff 78%, rgba(238, 243, 255, 0) 83%),
+    radial-gradient(12% 19% at 88% 70%, #ffffff 0 72%, #f4f1fe 78%, rgba(244, 241, 254, 0) 83%),
+    radial-gradient(10% 16% at 71% 76%, #fdfcff 0 72%, #edf1ff 78%, rgba(237, 241, 255, 0) 83%);
 }
 
-/* Front layer: small blush-pink / peach lobes low along the edge. */
+/* Front layer — small blush-pink / peach lobes peeking from the very
+   bottom edge over the body, with soft rose rims. */
 .cloud-puff--front {
+  z-index: 3;
   background:
-    radial-gradient(22% 34% at 2% 102%, #ffe9f2 0 60%, rgba(255, 233, 242, 0) 100%),
-    radial-gradient(18% 28% at 34% 106%, #ffeff5 0 60%, rgba(255, 239, 245, 0) 100%),
-    radial-gradient(14% 22% at 58% 102%, #fff3e8 0 60%, rgba(255, 243, 232, 0) 100%);
+    radial-gradient(19% 30% at 1% 106%, #ffe9f1 0 72%, #fddaec 78%, rgba(253, 218, 236, 0) 83%),
+    radial-gradient(15% 24% at 23% 110%, #fff1f5 0 72%, #ffe0ec 78%, rgba(255, 224, 236, 0) 83%),
+    radial-gradient(12% 19% at 43% 106%, #fff5ea 0 72%, #ffe9d8 78%, rgba(255, 233, 216, 0) 83%);
+  filter: drop-shadow(0 -2px 4px rgba(226, 150, 180, 0.22));
   animation: cloud-crest 14s ease-in-out -6s infinite alternate-reverse;
 }
 
 .cloud-bank-right .cloud-puff--front {
   background:
-    radial-gradient(22% 34% at 98% 102%, #ffeef0 0 60%, rgba(255, 238, 240, 0) 100%),
-    radial-gradient(18% 28% at 66% 106%, #ffe9f2 0 60%, rgba(255, 233, 242, 0) 100%),
-    radial-gradient(14% 22% at 42% 102%, #fff6ea 0 60%, rgba(255, 246, 234, 0) 100%);
+    radial-gradient(20% 31% at 99% 106%, #ffedf1 0 72%, #ffdee7 78%, rgba(255, 222, 231, 0) 83%),
+    radial-gradient(15% 24% at 76% 110%, #ffe9f2 0 72%, #ffd8e6 78%, rgba(255, 216, 230, 0) 83%),
+    radial-gradient(12% 19% at 56% 105%, #fff4ec 0 72%, #ffe8db 78%, rgba(255, 232, 219, 0) 83%);
 }
 
-/* Subtle, barely-there continuation across the bottom centre so the two
-   corner formations read as one scene without covering content. */
+/* Centre: only a whisper of transition between the two corner banks —
+   low, narrow and faint so it never becomes a full-width blur band. */
 .cloud-mist {
   position: absolute;
-  left: 27%;
-  right: 27%;
-  bottom: -34px;
-  height: 96px;
+  left: 32%;
+  right: 32%;
+  bottom: -30px;
+  height: 60px;
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
   background: linear-gradient(90deg,
       rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0.85) 45%,
-      rgba(246, 240, 255, 0.8) 62%,
+      rgba(252, 250, 255, 0.9) 50%,
       rgba(255, 255, 255, 0));
-  filter: blur(14px);
-  opacity: 0.55;
+  filter: blur(7px);
+  opacity: 0.3;
   pointer-events: none;
   animation: cloud-crest 25s ease-in-out -12s infinite alternate;
 }
 
-/* Dreamy slow bob — transform only, alternate so the loop is seamless. */
+/* Dreamy, barely-there bob — transform only, tiny amplitude, seamless
+   via alternate so there is never a jump at the loop point. */
 @keyframes cloud-crest {
   from {
     transform: translate3d(0, 0, 0);
   }
 
   to {
-    transform: translate3d(12px, -8px, 0);
+    transform: translate3d(7px, -4px, 0);
   }
 }
 
