@@ -77,6 +77,44 @@
   line-height: 1.7;
 }
 
+/* Main section heading: "About Two Friends" — centered, dark-purple with a
+   subtle lavender accent, sitting above the existing "Meet the Ghost
+   Purificators" header. Sized with clamp so it stays modest on desktop. */
+
+.about-intro {
+  max-width: 720px;
+  margin: 0 auto clamp(26px, 3.4vw, 42px);
+  text-align: center;
+}
+
+.about-intro h2 {
+  margin: 0;
+  color: #4C3A83;
+  font-size: clamp(25px, 2.7vw, 36px);
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.9px;
+}
+
+/* Subtle lavender accent rule under the heading */
+.about-intro h2::after {
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin: 13px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--about-lavender), #B9A4F5);
+  content: "";
+}
+
+.about-intro p {
+  margin: 15px 0 0;
+  color: #8B6FC7;
+  font-size: clamp(15px, 1.6vw, 18px);
+  font-weight: 600;
+  line-height: 1.6;
+}
+
 .opening-art {
   position: relative;
   isolation: isolate;
@@ -526,6 +564,7 @@
   border-radius: 24px;
   box-shadow: 0 9px 20px rgba(67, 48, 82, 0.09);
   isolation: isolate;
+  overflow: hidden;
   transition: transform 350ms ease, box-shadow 350ms ease, border-color 350ms ease;
 }
 
@@ -553,7 +592,7 @@
   position: relative;
   isolation: isolate;
   z-index: 1;
-  height: 235px;
+  height: clamp(280px, 26vw, 330px);
   min-width: 0;
   display: flex;
   justify-content: center;
@@ -572,7 +611,7 @@
 
 .character-halo {
   position: absolute;
-  width: min(190px, 95%);
+  width: min(230px, 92%);
   aspect-ratio: 1;
   border-radius: 50%;
   background: #FFE8A3;
@@ -587,19 +626,15 @@
 
 .character-image {
   position: absolute;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  margin-inline: auto;
+  inset: 0;
   z-index: 1;
   display: block;
-  width: auto;
-  height: 180%;
-  max-width: none;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
   object-fit: contain;
   object-position: center bottom;
-  transform: scale(1.08);
-  transform-origin: center;
+  transform: none;
   filter: drop-shadow(0 5px 3px rgba(57, 54, 79, 0.10));
   animation: character-hover 5.8s ease-in-out infinite;
   transition: opacity 300ms ease;
@@ -2062,6 +2097,26 @@
     letter-spacing: 1.3px;
   }
 
+  .about-intro {
+    margin-bottom: 26px;
+  }
+
+  .about-intro h2 {
+    font-size: clamp(22px, 6vw, 28px);
+    letter-spacing: -0.4px;
+  }
+
+  .about-intro h2::after {
+    width: 46px;
+    height: 3.5px;
+    margin-top: 10px;
+  }
+
+  .about-intro p {
+    margin-top: 12px;
+    font-size: 14px;
+  }
+
   .opening-art {
     min-height: 0;
     aspect-ratio: 1.4;
@@ -2316,6 +2371,14 @@
 
   .about-heading h1 {
     font-size: 28px;
+  }
+
+  .about-intro h2 {
+    font-size: 21px;
+  }
+
+  .about-intro p {
+    font-size: 13.5px;
   }
 
   .opening-art {
