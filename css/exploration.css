@@ -89,3 +89,64 @@
   .project-deco-bat, .story-deco-bat { width: 44px; }
   .project-deco-web, .story-deco-web { width: 56px; }
 }
+
+
+/* ==============================
+   FOOTER
+============================== */
+
+.about-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 100px;
+  padding: 18px max(24px, calc((100vw - 1180px) / 2));
+  border-top: 1px solid rgba(130, 104, 170, 0.16);
+  background: rgba(255, 250, 245, 0.82);
+}
+
+.about-footer .brand {
+  gap: 8px;
+}
+
+.about-footer .brand-planet {
+  width: 55px;
+}
+
+.about-footer .brand span {
+  font-size: 1.2rem;
+}
+
+.about-footer p {
+  margin-bottom: 0;
+  color: #777187;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.about-footer > a:last-child {
+  color: #73618f;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+@media (max-width: 768px) {
+  .about-footer {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 18px;
+    padding: 21px 16px;
+    text-align: center;
+  }
+
+  .about-footer .brand {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .about-footer > a:last-child {
+    min-height: 38px;
+    padding: 8px;
+  }
+}
