@@ -45,7 +45,7 @@
 .exp-intro-friends img:first-child { animation: exp-float 5s ease-in-out infinite; }
 .exp-intro-friends img:last-child { animation: exp-float 5s ease-in-out infinite 1.2s; }
 
-/* --- friend button: solo ↔ gadget image swap on hover --- */
+/* --- friend button: solo ↔ gadget image swap on hover/click --- */
 .exp-intro-friend { position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 0; border: none; background: none; cursor: pointer; }
 
 .exp-intro-friend .character-image-solo,
@@ -54,7 +54,9 @@
 .exp-intro-friend .character-image-solo { opacity: 1; visibility: visible; }
 .exp-intro-friend .character-image-gadget { opacity: 0; visibility: hidden; }
 
+.exp-intro-friend.is-gadget-visible .character-image-solo,
 .exp-intro-friend:hover .character-image-solo { opacity: 0; visibility: hidden; }
+.exp-intro-friend.is-gadget-visible .character-image-gadget,
 .exp-intro-friend:hover .character-image-gadget { opacity: 1; visibility: visible; }
 
 /* --- photo treatment for real artwork: full-bleed cover --- */
