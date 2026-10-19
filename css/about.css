@@ -773,10 +773,11 @@
   border-radius: 0 0 5px 5px;
 }
 
-/* Fully automatic lantern sequence (no hover): the light switches itself on,
-   flickers "one - two - three", the ghost materialises in front of the lantern,
-   the beam lands on it, then the light cuts out and the ghost vanishes together,
-   a dark pause, and the 7-second cycle repeats on its own. */
+/* Two steady states, no blinking: the lantern is OFF (dim) until the existing
+   character toggle (hover / click / Enter / Space on the portrait) switches the
+   gadget view on, then it stays steadily lit. The glass glow, beam, ghost, and
+   sparks all read the same state via .is-gadget-on (mirrored in script.js) with
+   a :has() fallback, so they can never desync or animate on their own loop. */
 
 .lamp-glass {
   position: absolute;
@@ -790,7 +791,6 @@
   background: linear-gradient(#F6EFDB, #DFC792);
   box-shadow: none;
   transition: background 450ms ease, border-color 450ms ease, box-shadow 450ms ease;
-  animation: lamp-glass-cycle 7s ease-in-out infinite;
 }
 
 .lamp-glass::before,
@@ -814,7 +814,10 @@
 
 /* Soft tapered beam anchored to the lantern's light-emitting top: the glass cap
    centre sits at ~24px from the left and ~9px from the top of the 70x50 art box,
-   so the beam pivots from that exact point (transform-origin at its own base). */
+   so the beam pivots from that exact point (transform-origin at its own base).
+   rotate(100deg) projects it outward to the right and slightly downward - away
+   from Abhay's portrait (character LEFT of the callout on desktop, stacked
+   ABOVE it on mobile) - never upward at his face. */
 
 .lamp-beam {
   position: absolute;
@@ -827,26 +830,24 @@
   background: linear-gradient(0deg, rgba(255, 216, 116, 0.85), rgba(255, 243, 190, 0.3) 68%, rgba(255, 250, 222, 0));
   filter: blur(0.6px) drop-shadow(0 0 7px rgba(255, 212, 100, 0.75));
   transform-origin: 50% 100%;
-  transform: rotate(78deg); /* tip lands where the ghost floats, up-right of the lantern */
+  transform: rotate(100deg); /* steady beam: tip lands on the ghost ahead-right of the cap */
   opacity: 0;
   transition: opacity 450ms ease;
   pointer-events: none;
-  animation: lamp-beam-cycle 7s ease-in-out infinite;
 }
 
-/* Ghost waits hidden above the lantern, then settles in front of it, fully inside
-   the beam (never poking over the callout's top edge) for the lit phase only */
+/* Ghost stays hidden while OFF; when ON it sits inside the beam's illuminated
+   area ahead of the lantern, fully within the art box and clear of the copy */
 
 .lamp-ghost {
   position: absolute;
-  top: 1px;
-  right: 6px;
+  top: 4px;
+  right: 0;
   z-index: 0;
-  width: 20px;
+  width: 19px;
   opacity: 0;
-  transform-origin: 50% 90%;
   filter: drop-shadow(0 0 8px rgba(255, 250, 213, 0.95));
-  animation: lamp-ghost-cycle 7s ease-in-out infinite;
+  transition: opacity 500ms ease;
 }
 
 .lamp-ghost img {
@@ -855,7 +856,8 @@
   height: auto;
 }
 
-/* Tiny golden sparks along the beam, only during the lit phase of the cycle */
+/* Tiny steady golden sparks inside the beam while the lantern is ON
+   (positions follow the rotate(100deg) beam axis from the lantern cap) */
 
 .lamp-art::before,
 .lamp-art::after {
@@ -867,21 +869,48 @@
   opacity: 0;
   content: "";
   pointer-events: none;
-  animation: lamp-spark-cycle 7s ease-in-out infinite;
+  transition: opacity 500ms ease;
 }
 
 .lamp-art::before {
   left: 38px;
-  top: 3px;
+  top: 12px;
   width: 3px;
   height: 3px;
 }
 
 .lamp-art::after {
-  left: 50px;
-  top: 0;
+  left: 47px;
+  top: 14px;
   width: 2px;
   height: 2px;
+}
+
+/* ON state (steady - no pulsing or flicker): glass lit, beam at a constant
+   glow, ghost revealed in the light, sparks visible. Defaults above = OFF. */
+
+.character-card.is-gadget-on .lamp-glass,
+.character-card:has(.character-visual.is-gadget-visible) .lamp-glass {
+  border-color: #A87525;
+  background: linear-gradient(#FFF6B7, #FFC94E);
+  box-shadow: 0 0 12px rgba(255, 204, 77, 0.85), 0 0 26px rgba(255, 190, 60, 0.4);
+}
+
+.character-card.is-gadget-on .lamp-beam,
+.character-card:has(.character-visual.is-gadget-visible) .lamp-beam {
+  opacity: 0.85;
+}
+
+.character-card.is-gadget-on .lamp-ghost,
+.character-card:has(.character-visual.is-gadget-visible) .lamp-ghost {
+  opacity: 1;
+}
+
+.character-card.is-gadget-on .lamp-art::before,
+.character-card.is-gadget-on .lamp-art::after,
+.character-card:has(.character-visual.is-gadget-visible) .lamp-art::before,
+.character-card:has(.character-visual.is-gadget-visible) .lamp-art::after {
+  opacity: 0.9;
 }
 
 .magic-staff {
@@ -955,14 +984,20 @@
    portal, the stick sprinkles it, the ghost solidifies and stands still, bright
    purification sparkles flash over it, then it dissolves upward and disappears. */
 
+/* Measured stick geometry (70x50 art box): the staff body runs from ~(23,46) up
+   to its glowing gem tip at ~(42,5). The ghost sits beyond that tip - left:52px
+   leaves a visible ~4px gap past the ~47px gem edge - in front of the stick's
+   up-right direction, never over the staff body (z 1 renders above the portal
+   rings but under the stick's z 2), inside the callout and clear of the copy. */
+
 .staff-ghost {
   position: absolute;
-  left: 17px;
-  top: 15px;
-  z-index: 0;
+  left: 52px;
+  top: 1px;
+  z-index: 1;
   width: 16px;
   opacity: 0;
-  filter: drop-shadow(0 0 6px rgba(171, 151, 237, 0.85));
+  filter: drop-shadow(0 0 8px rgba(171, 151, 237, 0.95));
   animation: purify-ghost-cycle 8s ease-in-out infinite;
 }
 
@@ -1956,169 +1991,6 @@
   }
 }
 
-/* Lantern cycle keyframes - all four share the same 7s timeline so the glass glow,
-   beam, ghost, and sparks stay perfectly in sync:
-   0-7% dark · 14% light on · flickers at 20/29/38% (one-two-three) · ghost fades
-   in at ~50% · beam strengthens onto it at 53% · 66-76% light and ghost cut out
-   together · dark pause until the loop restarts. */
-
-@keyframes lamp-glass-cycle {
-  0%,
-  7% {
-    box-shadow: none;
-    filter: brightness(0.92) saturate(0.75);
-  }
-
-  14%,
-  19% {
-    box-shadow: 0 0 12px rgba(255, 204, 77, 0.85), 0 0 26px rgba(255, 190, 60, 0.4);
-    filter: brightness(1.18) saturate(1.35);
-  }
-
-  20%,
-  22% {
-    box-shadow: 0 0 5px rgba(255, 204, 77, 0.3);
-    filter: brightness(0.96) saturate(0.85);
-  }
-
-  24%,
-  28% {
-    box-shadow: 0 0 12px rgba(255, 204, 77, 0.85), 0 0 26px rgba(255, 190, 60, 0.4);
-    filter: brightness(1.18) saturate(1.35);
-  }
-
-  29%,
-  31% {
-    box-shadow: 0 0 5px rgba(255, 204, 77, 0.3);
-    filter: brightness(0.96) saturate(0.85);
-  }
-
-  33%,
-  37% {
-    box-shadow: 0 0 12px rgba(255, 204, 77, 0.85), 0 0 26px rgba(255, 190, 60, 0.4);
-    filter: brightness(1.18) saturate(1.35);
-  }
-
-  38%,
-  40% {
-    box-shadow: 0 0 5px rgba(255, 204, 77, 0.3);
-    filter: brightness(0.96) saturate(0.85);
-  }
-
-  44%,
-  66% {
-    box-shadow: 0 0 14px rgba(255, 204, 77, 0.9), 0 0 30px rgba(255, 190, 60, 0.45);
-    filter: brightness(1.22) saturate(1.4);
-  }
-
-  74%,
-  100% {
-    box-shadow: none;
-    filter: brightness(0.92) saturate(0.75);
-  }
-}
-
-@keyframes lamp-beam-cycle {
-  0%,
-  7% {
-    opacity: 0;
-  }
-
-  14%,
-  19% {
-    opacity: 0.85;
-  }
-
-  20%,
-  22% {
-    opacity: 0.15;
-  }
-
-  24%,
-  28% {
-    opacity: 0.85;
-  }
-
-  29%,
-  31% {
-    opacity: 0.15;
-  }
-
-  33%,
-  37% {
-    opacity: 0.85;
-  }
-
-  38%,
-  40% {
-    opacity: 0.15;
-  }
-
-  44%,
-  49% {
-    opacity: 0.7;
-  }
-
-  53%,
-  66% {
-    opacity: 0.95;
-  }
-
-  76%,
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes lamp-ghost-cycle {
-  0%,
-  43% {
-    opacity: 0;
-    transform: translate(-2px, -8px) scale(0.85);
-  }
-
-  52% {
-    opacity: 0.55;
-    transform: translate(0, 0) scale(0.97);
-  }
-
-  58%,
-  67% {
-    opacity: 1;
-    transform: translate(0, 0) scale(1);
-  }
-
-  76%,
-  100% {
-    opacity: 0;
-    transform: translate(0, 5px) scale(0.92);
-  }
-}
-
-@keyframes lamp-spark-cycle {
-  0%,
-  40% {
-    opacity: 0;
-    translate: 0 3px;
-  }
-
-  50% {
-    opacity: 0.95;
-    translate: 3px -3px;
-  }
-
-  64% {
-    opacity: 0.8;
-    translate: 6px -8px;
-  }
-
-  74%,
-  100% {
-    opacity: 0;
-    translate: 7px -11px;
-  }
-}
-
 @keyframes portal-open {
   0%,
   100% {
@@ -2175,19 +2047,19 @@
 
   31% {
     opacity: 1;
-    translate: -5px 5px;
+    translate: 7px 1px;
     scale: 1.25;
   }
 
   37% {
     opacity: 0.9;
-    translate: -12px 10px;
+    translate: 13px 3px;
     scale: 1.1;
   }
 
   41% {
     opacity: 0;
-    translate: -15px 13px;
+    translate: 17px 4px;
     scale: 0.8;
   }
 
@@ -2785,21 +2657,10 @@
     opacity: 1;
   }
 
-  /* Freeze both gadget scenes mid-reveal instead of running the cycles:
-     lantern lit with its revealed ghost, purification ghost standing solid. */
+  /* The lantern follows its normal ON/OFF state (changes simply become
+     instant here). Only the purification ghost is frozen visible, since
+     its timed cycle is disabled under reduced motion. */
 
-  .lamp-glass {
-    border-color: #A87525;
-    background: linear-gradient(#FFF6B7, #FFC94E);
-    box-shadow: 0 0 12px rgba(255, 204, 77, 0.85), 0 0 26px rgba(255, 190, 60, 0.4);
-    filter: none;
-  }
-
-  .lamp-beam {
-    opacity: 0.9;
-  }
-
-  .lamp-ghost,
   .staff-ghost {
     opacity: 1;
     transform: none;

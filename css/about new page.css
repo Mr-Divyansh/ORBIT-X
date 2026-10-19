@@ -310,6 +310,24 @@
   animation: stage-breathe 9s ease-in-out infinite alternate;
 }
 
+.hero-stage-backdrop {
+  position: absolute;
+  z-index: 0;
+  inset: 6% 8% 8% 8%;
+  /* width:auto on an absolutely-positioned <img> resolves to the intrinsic
+     444px and ignores right:8%, pushing the art off-centre past the box.
+     Explicit 84% (= 100% - 8% - 8%) and 86% (= 100% - 6% - 8%) make the
+     image box match the stage insets exactly: fully inside the box, symmetric,
+     bottom-anchored, scaled by object-fit:contain (no crop, no stretch). */
+  width: 84%;
+  height: 86%;
+  object-fit: contain;
+  object-position: center bottom;
+  pointer-events: none;
+  opacity: 0.92;
+  filter: drop-shadow(0 12px 18px rgba(62, 47, 85, 0.16));
+}
+
 .hero-stage::before,
 .hero-stage::after {
   position: absolute;
@@ -333,7 +351,7 @@
 
 .hero-orbit {
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   width: 13px;
   height: 13px;
   border: 3px solid #fff;
@@ -358,6 +376,7 @@
 
 .hero-moon {
   position: absolute;
+  z-index: 1;
   top: 10%;
   right: 17%;
   width: 64px;

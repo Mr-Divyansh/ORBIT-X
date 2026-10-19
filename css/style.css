@@ -87,24 +87,18 @@ img {
 }
 
 .brand span {
-  font-size: clamp(25px, 3vw, 46px);
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -1.7px;
+  display: none;
 }
 
 .brand-planet {
-  width: 144px;
-  height: auto;
-  color: #8c6cc8;
+  display: none;
 }
 
 .brand-logo-img {
-  width: 40px;
-  height: 40px;
+  width: 160px;
+  height: auto;
   flex-shrink: 0;
-  object-fit: cover;
-  border-radius: 10px;
+  object-fit: contain;
   display: block;
 }
 
@@ -1065,9 +1059,8 @@ h1.typing-done .typing-line:last-child::after {
     gap: 7px;
   }
 
-  .brand-planet {
-    width: 108px;
-    height: auto;
+  .brand-logo-img {
+    width: 130px;
   }
 
   .nav-links a {
@@ -1130,14 +1123,8 @@ h1.typing-done .typing-line:last-child::after {
     padding: 0 5%;
   }
 
-  .brand-planet {
-    width: 96px;
-    height: auto;
-  }
-
-  .brand span {
-    font-size: 29px;
-    letter-spacing: -1px;
+  .brand-logo-img {
+    width: 88px;
   }
 
   .nav-mascot {
