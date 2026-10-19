@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ORBIT-X — Credits</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ===== ORBIT-X — Credits page (internal styles) ===== */
+    :root {
+      --ink: #281b3d;
+      --ink-soft: #30234d;
+      --muted: #716787;
+      --purple: #9871dd;
+      --purple-strong: #8d65cf;
+      --paper: #fffaf5;
+      --line: rgba(130, 104, 170, 0.22);
+      --shadow-soft: rgba(91, 58, 133, 0.12);
+      --shadow-strong: rgba(142, 104, 205, 0.28);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Nunito", sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .credits-hero {
+      padding: 64px 20px 44px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(152, 113, 221, 0.16), transparent 45%),
+        radial-gradient(ellipse at 20% 80%, rgba(209, 228, 255, 0.14), transparent 45%);
+    }
+    .credits-hero h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      color: var(--ink);
+      margin: 0 0 10px;
+      letter-spacing: -0.5px;
+    }
+    .credits-tagline {
+      color: var(--purple);
+      font-weight: 800;
+      font-size: clamp(14px, 2vw, 18px);
+      margin: 0 0 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .credits-intro {
+      color: var(--muted);
+      font-size: clamp(15px, 1.6vw, 19px);
+      line-height: 1.75;
+      max-width: 680px;
+      margin: 0 auto 26px;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px 70px;
+    }
+    .credits-section {
+      margin: 42px 0;
+      padding: 30px 26px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 8px 24px var(--shadow-soft);
+    }
+    .credits-section h2 {
+      font-size: clamp(21px, 3vw, 27px);
+      font-weight: 800;
+      color: var(--ink);
+      margin: 0 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .credits-section p {
+      color: var(--ink-soft);
+      font-size: clamp(15px, 1.5vw, 18px);
+      margin: 0 0 10px;
+    }
+    .credits-section ul {
+      color: var(--ink-soft);
+      font-size: clamp(15px, 1.5vw, 18px);
+      line-height: 1.9;
+      margin: 0;
+      padding-left: 22px;
+    }
+    .credits-section li { margin: 6px 0; }
+    .credits-section strong { color: var(--ink); }
+    .credits-footer {
+      padding: 42px 20px 30px;
+      text-align: center;
+      color: var(--muted);
+      font-size: clamp(14px, 1.4vw, 17px);
+      border-top: 1px solid var(--line);
+    }
+    .credits-footer p { margin: 6px 0; }
+    .credits-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      color: var(--purple);
+      font-weight: 700;
+      font-size: 15px;
+      transition: color 0.2s ease;
+    }
+    .credits-back:hover { color: var(--purple-strong); }
+    @media (max-width: 640px) {
+      .credits-section { padding: 22px 18px; margin: 32px 0; }
+      .credits-hero { padding: 48px 16px 32px; }
+      main { padding: 0 16px 56px; }
+      .credits-intro { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="credits-hero">
+    <h1>ORBIT-X — Credits</h1>
+    <p class="credits-tagline">Made with imagination ✨</p>
+    <p class="credits-intro">Every story has a team behind it. Meet the people, tools, and creative efforts that brought our interactive storytelling experience to life.</p>
+  </header>
+
+  <main>
+
+    <section class="credits-section" id="team">
+      <h2>🚀 Our Team</h2>
+      <ul>
+        <li><strong>ORBIT-X</strong> — Creative Team</li>
+        <li><strong>D Web Studio</strong> — Development and Design</li>
+        <li><strong>Story Creators</strong> — Creative Writing and Narrative</li>
+        <li><strong>Design Team</strong> — Visual Design and User Experience</li>
+      </ul>
+    </section>
+
+    <section class="credits-section" id="tools">
+      <h2>🛠️ Tools &amp; Technology</h2>
+      <ul>
+        <li><strong>HTML5</strong> — Website structure</li>
+        <li><strong>CSS3</strong> — Styling, animations, and visual design</li>
+        <li><strong>JavaScript</strong> — Interactive elements and scroll-based storytelling</li>
+        <li><strong>AI Tools</strong> — Creative brainstorming, coding assistance, and asset development</li>
+      </ul>
+    </section>
+
+    <section class="credits-section" id="story-assets">
+      <h2>🎭 Story &amp; Assets</h2>
+      <p>Our interactive storytelling experience combines imagination, characters, visual design, and web technology to create an engaging journey.</p>
+      <p>Character artwork, illustrations, and other media are credited to their respective creators and sources. Original work remains with its respective creators.</p>
+    </section>
+
+    <section class="credits-section" id="thanks">
+      <h2>💜 Special Thanks</h2>
+      <p>A heartfelt thank you to everyone who inspired, supported, and contributed to this project. This experience was built through creativity, collaboration, experimentation, and a passion for storytelling.</p>
+    </section>
+
+    <section class="credits-section" id="vision">
+      <h2>🌌 Our Vision</h2>
+      <p>To make storytelling more immersive, interactive, and memorable by bringing stories to life through scrolling animations and digital experiences.</p>
+    </section>
+
+  </main>
+
+  <footer class="credits-footer">
+    <p>Built with curiosity, creativity, and a little bit of magic.</p>
+    <p>© 2026 ORBIT-X. All rights reserved.</p>
+    <a href="index.html" class="credits-back"><span aria-hidden="true">←</span> Back to Home</a>
+  </footer>
+
+</body>
+</html>

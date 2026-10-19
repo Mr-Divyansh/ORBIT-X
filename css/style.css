@@ -70,8 +70,8 @@ img {
   align-items: center;
   justify-content: space-between;
   gap: 26px;
-  min-height: 136px;
-  padding: 0 6.8%;
+  min-height: 92px;
+  padding: 0 5%;
   border-bottom: 1px solid var(--line);
   background: rgba(255, 250, 245, 0.92);
   backdrop-filter: blur(8px);
@@ -2955,4 +2955,41 @@ h1.typing-done .typing-line:last-child::after {
   .storybook.has-scene-reveals .storybook__finale:not(.is-visible) .storybook__finale-pumpkin {
     opacity: 1;
   }
+}
+
+/* ===== Navbar: reduced breadth + responsive mobile menu (ORBIT-X) ===== */
+@media (max-width: 900px) {
+  .navbar { min-height: 84px; padding: 0 4%; gap: 14px; }
+  .brand-logo-img { width: 140px; }
+}
+@media (max-width: 700px) {
+  .navbar { min-height: 70px; padding: 0 16px; gap: 10px; }
+  .brand-logo-img { width: 110px; height: auto; }
+  .nav-mascot { display: none; }
+  .menu-toggle { display: block; position: relative; z-index: 20; }
+  .nav-links {
+    position: absolute;
+    left: 0; right: 0;
+    top: 70px;
+    flex-direction: column;
+    align-items: stretch;
+    background: rgba(255, 250, 245, 0.97);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--line);
+    border-top: none;
+    box-shadow: 0 12px 28px var(--shadow-strong);
+    display: none;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a {
+    padding: 15px 18px;
+    font-size: 17px;
+    border-top: 1px solid var(--line);
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .nav-links a + a::before { display: none; }
 }
