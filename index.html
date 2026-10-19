@@ -90,11 +90,14 @@
     <img class="hero-deco floating-sparkle s2" src="Assets/img/icons/sparkle-pink.svg" alt="" aria-hidden="true" />
     <img class="hero-deco floating-sparkle s3" src="Assets/img/icons/sparkle-yellow.svg" alt="" aria-hidden="true" />
 
-    <!-- Two independently flying bats. They reuse the supplied bat PNG
+    <!-- Three independently flying bats. They reuse the supplied bat PNG
          (actual project asset); the skeleton/lantern/music-box references are
-         style inspiration only and must never replace the Together characters. -->
-    <div class="flying-bat bat-a" aria-hidden="true"><img src="Assets/img/icons/bat trans.png" alt="" width="52" height="38" /></div>
-    <div class="flying-bat bat-b" aria-hidden="true"><img src="Assets/img/icons/bat trans.png" alt="" width="36" height="26" /></div>
+         style inspiration only and must never replace the Together characters.
+         Desktop shows 3 (JS flight AI drives them); mobile CSS hides bat-c
+         so exactly 2 remain. -->
+    <div class="flying-bat bat-a" data-bat="a" aria-hidden="true"><img src="Assets/img/icons/bat trans.png" alt="" width="52" height="38" /></div>
+    <div class="flying-bat bat-b" data-bat="b" aria-hidden="true"><img src="Assets/img/icons/bat trans.png" alt="" width="36" height="26" /></div>
+    <div class="flying-bat bat-c" data-bat="c" aria-hidden="true"><img src="Assets/img/icons/bat trans.png" alt="" width="60" height="44" /></div>
 
     <div class="bottom-clouds" aria-hidden="true">
       <div class="cloud cloud-a"></div><div class="cloud cloud-b"></div><div class="cloud cloud-c"></div><div class="cloud cloud-d"></div>
