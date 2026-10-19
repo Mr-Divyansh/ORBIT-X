@@ -773,8 +773,10 @@
   border-radius: 0 0 5px 5px;
 }
 
-/* Lantern state: OFF by default; the beam, ghost, and glow light up only while the
-   gadget view is active (.is-gadget-on on the card, mirrored from the image swap). */
+/* Fully automatic lantern sequence (no hover): the light switches itself on,
+   flickers "one - two - three", the ghost materialises in front of the lantern,
+   the beam lands on it, then the light cuts out and the ghost vanishes together,
+   a dark pause, and the 7-second cycle repeats on its own. */
 
 .lamp-glass {
   position: absolute;
@@ -788,14 +790,7 @@
   background: linear-gradient(#F6EFDB, #DFC792);
   box-shadow: none;
   transition: background 450ms ease, border-color 450ms ease, box-shadow 450ms ease;
-}
-
-.character-card.is-gadget-on .lamp-glass,
-.character-card:has(.character-visual.is-gadget-visible) .lamp-glass {
-  border-color: #A87525;
-  background: linear-gradient(#FFF6B7, #FFC94E);
-  box-shadow: 0 0 12px rgba(255, 204, 77, 0.85), 0 0 26px rgba(255, 190, 60, 0.4);
-  animation: lamp-pulse 2.8s ease-in-out infinite;
+  animation: lamp-glass-cycle 7s ease-in-out infinite;
 }
 
 .lamp-glass::before,
@@ -836,34 +831,22 @@
   opacity: 0;
   transition: opacity 450ms ease;
   pointer-events: none;
+  animation: lamp-beam-cycle 7s ease-in-out infinite;
 }
 
-.character-card.is-gadget-on .lamp-beam,
-.character-card:has(.character-visual.is-gadget-visible) .lamp-beam {
-  opacity: 0.85;
-  animation: lamp-beam-pulse 2.8s ease-in-out infinite;
-}
-
-/* Ghost stays hidden while the lamp is OFF and fades in only inside the lit beam */
+/* Ghost waits hidden above the lantern, then settles in front of it, fully inside
+   the beam (never poking over the callout's top edge) for the lit phase only */
 
 .lamp-ghost {
   position: absolute;
-  top: -6px;
-  right: 0;
+  top: 1px;
+  right: 6px;
   z-index: 0;
-  width: 19px;
+  width: 20px;
   opacity: 0;
-  transform: translate(-5px, 6px) scale(0.8);
   transform-origin: 50% 90%;
   filter: drop-shadow(0 0 8px rgba(255, 250, 213, 0.95));
-  transition: opacity 600ms ease, transform 600ms ease;
-}
-
-.character-card.is-gadget-on .lamp-ghost,
-.character-card:has(.character-visual.is-gadget-visible) .lamp-ghost {
-  opacity: 1;
-  transform: none;
-  transition-delay: 120ms; /* ghost emerges just after the light switches on */
+  animation: lamp-ghost-cycle 7s ease-in-out infinite;
 }
 
 .lamp-ghost img {
@@ -872,7 +855,7 @@
   height: auto;
 }
 
-/* Tiny golden sparks drifting along the beam while the lamp is lit */
+/* Tiny golden sparks along the beam, only during the lit phase of the cycle */
 
 .lamp-art::before,
 .lamp-art::after {
@@ -882,9 +865,9 @@
   background: #FFEAA8;
   box-shadow: 0 0 6px 2px rgba(255, 226, 130, 0.8);
   opacity: 0;
-  transition: opacity 500ms ease;
   content: "";
   pointer-events: none;
+  animation: lamp-spark-cycle 7s ease-in-out infinite;
 }
 
 .lamp-art::before {
@@ -899,20 +882,6 @@
   top: 0;
   width: 2px;
   height: 2px;
-  transition-delay: 180ms;
-}
-
-.character-card.is-gadget-on .lamp-art::before,
-.character-card.is-gadget-on .lamp-art::after,
-.character-card:has(.character-visual.is-gadget-visible) .lamp-art::before,
-.character-card:has(.character-visual.is-gadget-visible) .lamp-art::after {
-  opacity: 0.95;
-  animation: lamp-spark-drift 2.6s ease-in-out infinite;
-}
-
-.character-card.is-gadget-on .lamp-art::after,
-.character-card:has(.character-visual.is-gadget-visible) .lamp-art::after {
-  animation-delay: -1.3s;
 }
 
 .magic-staff {
@@ -982,6 +951,48 @@
   transform: rotate(-45deg);
 }
 
+/* Automatic purification sequence (8s loop, no hover): a ghost drifts in at the
+   portal, the stick sprinkles it, the ghost solidifies and stands still, bright
+   purification sparkles flash over it, then it dissolves upward and disappears. */
+
+.staff-ghost {
+  position: absolute;
+  left: 17px;
+  top: 15px;
+  z-index: 0;
+  width: 16px;
+  opacity: 0;
+  filter: drop-shadow(0 0 6px rgba(171, 151, 237, 0.85));
+  animation: purify-ghost-cycle 8s ease-in-out infinite;
+}
+
+.staff-ghost img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Bright gleam + sparkle flash that hits the ghost when the purification power lands */
+
+.staff-ghost::before,
+.staff-ghost::after {
+  position: absolute;
+  inset: -7px;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.95), rgba(221, 210, 255, 0.55) 42%, transparent 72%);
+  opacity: 0;
+  content: "";
+  pointer-events: none;
+  animation: purify-gleam 8s ease-in-out infinite;
+}
+
+.staff-ghost::after {
+  inset: -4px;
+  background:
+    linear-gradient(45deg, transparent 45%, rgba(255, 255, 255, 0.95) 50%, transparent 55%),
+    linear-gradient(-45deg, transparent 45%, rgba(255, 255, 255, 0.95) 50%, transparent 55%);
+  animation-delay: 0.3s; /* cross-sparkle flares a beat after the glow */
+}
+
 .staff-spark {
   position: absolute;
   z-index: 3;
@@ -990,18 +1001,18 @@
   border-radius: 50%;
   background: #FFF;
   box-shadow: 0 0 8px 2px #C9B8FF;
-  animation: staff-spark-flow 2s ease-in-out infinite;
 }
 
 .staff-spark-one {
   top: 5px;
   left: 39px;
+  animation: purify-sprinkle 8s ease-in-out infinite; /* hop from the gem onto the ghost */
 }
 
 .staff-spark-two {
   bottom: 5px;
   left: 21px;
-  animation-delay: -1s;
+  animation: purify-zap-spark 8s ease-in-out infinite; /* flashes with the gleam */
 }
 
 /* Small floating sparkles */
@@ -1075,9 +1086,12 @@
   overflow: hidden;
   padding: 76px 24px 18px;
   color: var(--footer-ink);
+  /* Light neutral lavender-gray footer: clearly distinct from the dreamy
+     lavender/periwinkle closing CTA above it. */
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(220, 207, 255, 0.9), transparent 48%),
-    linear-gradient(180deg, #F0E9FF 0%, #E4EEFF 38%, #FFF8F2 100%);
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.7), transparent 55%),
+    linear-gradient(180deg, #FAF8FC 0%, #F0EDF6 55%, #F4F2F8 100%);
+  border-top: 1px solid rgba(147, 131, 195, 0.32);
 }
 
 .orbit-footer::before,
@@ -1224,7 +1238,7 @@
   background:
     radial-gradient(ellipse at 50% 0%, rgba(255, 232, 163, 0.45), transparent 54%),
     linear-gradient(130deg, rgba(255, 248, 242, 0.9), rgba(255, 220, 232, 0.72) 52%, rgba(220, 207, 255, 0.8));
-  box-shadow: 0 18px 48px rgba(91, 58, 133, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  box-shadow: 0 20px 46px rgba(91, 58, 133, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.9);
   text-align: center;
 }
 
@@ -1942,42 +1956,166 @@
   }
 }
 
-@keyframes lamp-pulse {
+/* Lantern cycle keyframes - all four share the same 7s timeline so the glass glow,
+   beam, ghost, and sparks stay perfectly in sync:
+   0-7% dark · 14% light on · flickers at 20/29/38% (one-two-three) · ghost fades
+   in at ~50% · beam strengthens onto it at 53% · 66-76% light and ghost cut out
+   together · dark pause until the loop restarts. */
+
+@keyframes lamp-glass-cycle {
   0%,
-  100% {
-    box-shadow: 0 0 9px rgba(255, 204, 77, 0.58);
+  7% {
+    box-shadow: none;
+    filter: brightness(0.92) saturate(0.75);
   }
 
-  50% {
-    box-shadow: 0 0 20px rgba(255, 218, 111, 0.98);
+  14%,
+  19% {
+    box-shadow: 0 0 12px rgba(255, 204, 77, 0.85), 0 0 26px rgba(255, 190, 60, 0.4);
+    filter: brightness(1.18) saturate(1.35);
+  }
+
+  20%,
+  22% {
+    box-shadow: 0 0 5px rgba(255, 204, 77, 0.3);
+    filter: brightness(0.96) saturate(0.85);
+  }
+
+  24%,
+  28% {
+    box-shadow: 0 0 12px rgba(255, 204, 77, 0.85), 0 0 26px rgba(255, 190, 60, 0.4);
+    filter: brightness(1.18) saturate(1.35);
+  }
+
+  29%,
+  31% {
+    box-shadow: 0 0 5px rgba(255, 204, 77, 0.3);
+    filter: brightness(0.96) saturate(0.85);
+  }
+
+  33%,
+  37% {
+    box-shadow: 0 0 12px rgba(255, 204, 77, 0.85), 0 0 26px rgba(255, 190, 60, 0.4);
+    filter: brightness(1.18) saturate(1.35);
+  }
+
+  38%,
+  40% {
+    box-shadow: 0 0 5px rgba(255, 204, 77, 0.3);
+    filter: brightness(0.96) saturate(0.85);
+  }
+
+  44%,
+  66% {
+    box-shadow: 0 0 14px rgba(255, 204, 77, 0.9), 0 0 30px rgba(255, 190, 60, 0.45);
+    filter: brightness(1.22) saturate(1.4);
+  }
+
+  74%,
+  100% {
+    box-shadow: none;
+    filter: brightness(0.92) saturate(0.75);
   }
 }
 
-@keyframes lamp-beam-pulse {
+@keyframes lamp-beam-cycle {
   0%,
-  100% {
-    opacity: 0.6;
+  7% {
+    opacity: 0;
   }
 
-  50% {
-    opacity: 0.95;
+  14%,
+  19% {
+    opacity: 0.85;
   }
-}
 
-@keyframes lamp-spark-drift {
-  0%,
-  100% {
+  20%,
+  22% {
     opacity: 0.15;
-    translate: 0 4px;
   }
 
-  45% {
+  24%,
+  28% {
+    opacity: 0.85;
+  }
+
+  29%,
+  31% {
+    opacity: 0.15;
+  }
+
+  33%,
+  37% {
+    opacity: 0.85;
+  }
+
+  38%,
+  40% {
+    opacity: 0.15;
+  }
+
+  44%,
+  49% {
+    opacity: 0.7;
+  }
+
+  53%,
+  66% {
     opacity: 0.95;
   }
 
-  80% {
-    opacity: 0.2;
-    translate: 7px -10px;
+  76%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes lamp-ghost-cycle {
+  0%,
+  43% {
+    opacity: 0;
+    transform: translate(-2px, -8px) scale(0.85);
+  }
+
+  52% {
+    opacity: 0.55;
+    transform: translate(0, 0) scale(0.97);
+  }
+
+  58%,
+  67% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+
+  76%,
+  100% {
+    opacity: 0;
+    transform: translate(0, 5px) scale(0.92);
+  }
+}
+
+@keyframes lamp-spark-cycle {
+  0%,
+  40% {
+    opacity: 0;
+    translate: 0 3px;
+  }
+
+  50% {
+    opacity: 0.95;
+    translate: 3px -3px;
+  }
+
+  64% {
+    opacity: 0.8;
+    translate: 6px -8px;
+  }
+
+  74%,
+  100% {
+    opacity: 0;
+    translate: 7px -11px;
   }
 }
 
@@ -1996,18 +2134,135 @@
   }
 }
 
-@keyframes staff-spark-flow {
+/* Purification cycle keyframes - all four share one 8s timeline:
+   12-22% ghost drifts in faintly · 26-41% the stick sprinkles a droplet onto it ·
+   38-70% the ghost solidifies and stands still · 56-74% bright gleam + sparkles
+   flash over it (the purification power) · 70-82% it dissolves upward and is gone. */
+
+@keyframes purify-ghost-cycle {
   0%,
+  12% {
+    opacity: 0;
+    transform: translateY(7px) scale(0.9);
+  }
+
+  22%,
+  30% {
+    opacity: 0.55;
+    transform: translateY(0) scale(0.96);
+  }
+
+  38%,
+  70% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  82%,
   100% {
-    opacity: 0.25;
-    translate: 0 4px;
+    opacity: 0;
+    transform: translateY(-7px) scale(1.08);
+  }
+}
+
+@keyframes purify-sprinkle {
+  0%,
+  26% {
+    opacity: 0.3;
+    translate: 0 0;
     scale: 0.7;
   }
 
-  50% {
+  31% {
     opacity: 1;
-    translate: 5px -5px;
+    translate: -5px 5px;
+    scale: 1.25;
+  }
+
+  37% {
+    opacity: 0.9;
+    translate: -12px 10px;
+    scale: 1.1;
+  }
+
+  41% {
+    opacity: 0;
+    translate: -15px 13px;
+    scale: 0.8;
+  }
+
+  45%,
+  54% {
+    opacity: 0;
+    translate: 0 0;
+    scale: 0.7;
+  }
+
+  59% {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1.6;
+  }
+
+  63% {
+    opacity: 0.5;
+    translate: 0 0;
+    scale: 1;
+  }
+
+  70%,
+  100% {
+    opacity: 0.3;
+    translate: 0 0;
+    scale: 0.7;
+  }
+}
+
+@keyframes purify-zap-spark {
+  0%,
+  52% {
+    opacity: 0.3;
+    scale: 0.7;
+  }
+
+  59% {
+    opacity: 1;
+    scale: 1.7;
+  }
+
+  64% {
+    opacity: 0.85;
+    scale: 1.2;
+  }
+
+  72%,
+  100% {
+    opacity: 0.3;
+    scale: 0.7;
+  }
+}
+
+@keyframes purify-gleam {
+  0%,
+  56% {
+    opacity: 0;
+    scale: 0.5;
+  }
+
+  62% {
+    opacity: 1;
     scale: 1.3;
+  }
+
+  67% {
+    opacity: 0.75;
+    scale: 1.05;
+  }
+
+  74%,
+  100% {
+    opacity: 0;
+    scale: 1.55;
   }
 }
 
@@ -2528,6 +2783,26 @@
 
   .opening-ghost {
     opacity: 1;
+  }
+
+  /* Freeze both gadget scenes mid-reveal instead of running the cycles:
+     lantern lit with its revealed ghost, purification ghost standing solid. */
+
+  .lamp-glass {
+    border-color: #A87525;
+    background: linear-gradient(#FFF6B7, #FFC94E);
+    box-shadow: 0 0 12px rgba(255, 204, 77, 0.85), 0 0 26px rgba(255, 190, 60, 0.4);
+    filter: none;
+  }
+
+  .lamp-beam {
+    opacity: 0.9;
+  }
+
+  .lamp-ghost,
+  .staff-ghost {
+    opacity: 1;
+    transform: none;
   }
 
   .character-halo {
