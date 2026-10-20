@@ -1,0 +1,82 @@
+ORBIT-X candidate selector — 2026-10-20T23:30:02.270Z
+
+### Story1.html  (7 distinct blobs)
+    blob        bytes  utf8 moji mrg  ref res git mis  lastseen  title
+    48f34a794b   17242  Y      0  12   18  16   0   2  2026-10-19  "The Beginning — ORBIT-X Stories" h2=8 p=37 sc=0
+         missing: assets/abhay.png, assets/divyansh.png
+         MERGE MARKERS x12
+    9ee68a4936   12175  Y      0   0   20  20   0   0  2026-10-19  "ORBIT-X — The Halloween Lantern" h2=4 p=27 sc=0
+    566f26641e    6991  Y      0   0    5   3   0   2  2026-10-19  "The Beginning — ORBIT-X Stories" h2=4 p=10 sc=0
+         missing: assets/abhay.png, assets/divyansh.png
+    5d41b9bb86    8434  Y      0   0   14  14   0   0  2026-10-19  "ORBIT-X — The Halloween Lantern" h2=3 p=22 sc=0
+    b3de921575    8571  Y     27   0   14  14   0   0  2026-10-19  "ORBIT-X â€” The Halloween Lantern" h2=3 p=22 sc=0
+         MOJIBAKE x27
+    81b61dd078    8450  Y     27   0   13  13   0   0  2026-10-18  "ORBIT-X â€” The Halloween Lantern" h2=3 p=22 sc=0
+         MOJIBAKE x27
+    0228ac91eb    8261  Y      0   0   13  13   0   0  2026-10-18  "ORBIT-X — The Halloween Lantern" h2=3 p=22 sc=0
+
+### Story2.html  (5 distinct blobs)
+    blob        bytes  utf8 moji mrg  ref res git mis  lastseen  title
+    fa261cf752   12011  Y      0   0   22  20   2   0  2026-10-19  "ORBIT-X — The Dream Beyond the Sha" h2=4 p=24 sc=0
+    5673763bf0    8384  Y     20   0   16  14   2   0  2026-10-19  "ORBIT-X â€” The Dream Beyond the S" h2=3 p=19 sc=0
+         MOJIBAKE x20
+    130c45d71a    8272  Y      0   0   16  14   2   0  2026-10-19  "ORBIT-X — The Dream Beyond the Sha" h2=3 p=19 sc=0
+    3b23ab432c    8263  Y     20   0   15  13   2   0  2026-10-18  "ORBIT-X â€” The Dream Beyond the S" h2=3 p=19 sc=0
+         MOJIBAKE x20
+    dffd9b3667    8098  Y      0   0   15  13   2   0  2026-10-18  "ORBIT-X — The Dream Beyond the Sha" h2=3 p=19 sc=0
+
+### Story3.html  (5 distinct blobs)
+    blob        bytes  utf8 moji mrg  ref res git mis  lastseen  title
+    3a47f1482b   12537  Y      0   0   20  20   0   0  2026-10-19  "ORBIT-X — The Last Wandering Ghost" h2=4 p=28 sc=0
+    2360e38340    8947  Y     29   0   15  15   0   0  2026-10-19  "ORBIT-X â€” The Last Wandering Gho" h2=3 p=23 sc=0
+         MOJIBAKE x29
+    a8c10236c1    8807  Y      0   0   15  15   0   0  2026-10-19  "ORBIT-X — The Last Wandering Ghost" h2=3 p=23 sc=0
+    2827a8112a    8826  Y     29   0   14  14   0   0  2026-10-18  "ORBIT-X â€” The Last Wandering Gho" h2=3 p=23 sc=0
+         MOJIBAKE x29
+    3889ee3cab    8633  Y      0   0   14  14   0   0  2026-10-18  "ORBIT-X — The Last Wandering Ghost" h2=3 p=23 sc=0
+
+### stories/index.html  (8 distinct blobs)
+    blob        bytes  utf8 moji mrg  ref res git mis  lastseen  title
+    e07d17e530   12006  Y      0   0   31  24   3   4  2026-10-19  "ORBIT-X — Stories Library" h2=6 p=12 sc=0
+         missing: Exploration.html, projects/halloween-helpers.html, projects/ghost-catchers.html, Story2.html
+    e4be19a692   10790  Y      0   0   29  23   2   4  2026-10-19  "ORBIT-X — Stories Library" h2=5 p=11 sc=0
+         missing: Exploration.html, projects/halloween-helpers.html, projects/ghost-catchers.html, Story2.html
+    08a0a1841a    8321  Y     14   0   23  20   3   0  2026-10-19  "ORBIT-X â€” Stories Library" h2=5 p=7 sc=0
+         MOJIBAKE x14
+    2d0dad0904    7012  Y      0   0   21  19   2   0  2026-10-19  "ORBIT-X — Stories Library" h2=4 p=6 sc=0
+    99ec60174a    7105  Y     14   0   21  19   2   0  2026-10-19  "ORBIT-X â€” Stories Library" h2=4 p=6 sc=0
+         MOJIBAKE x14
+    966f32fe1f    6981  Y     14   0   20  18   2   0  2026-10-18  "ORBIT-X â€” Stories Library" h2=4 p=6 sc=0
+         MOJIBAKE x14
+    ff968e85d7    6835  Y      0   0   20  18   2   0  2026-10-18  "ORBIT-X — Stories Library" h2=4 p=6 sc=0
+    44a323b1c9    6865  Y      0   0   20  20   0   0  2026-10-18  "ORBIT-X — Stories Library" h2=4 p=6 sc=0
+
+### script.js  (4 distinct blobs)
+    blob        bytes  utf8 moji mrg  ref res git mis  lastseen  title
+    1407971fe8     616  Y      0   0    0   0   0   0  2026-10-17  "" h2=0 p=0 sc=0
+    eb5b69fbfd    4896  Y      0   0    0   0   0   0  2026-10-16  "" h2=0 p=0 sc=0
+    20d1f0e39f    4641  Y      5   0    0   0   0   0  2026-10-16  "" h2=0 p=0 sc=0
+         MOJIBAKE x5
+    4c6a7d54b5    4983  Y      0   0    0   0   0   0  2026-10-15  "" h2=0 p=0 sc=0
+
+### style.css  (2 distinct blobs)
+    blob        bytes  utf8 moji mrg  ref res git mis  lastseen  title
+    caed4ff7d9   12778  Y      0   0    0   0   0   0  2026-10-17  "" h2=0 p=0 sc=0
+    1370408b54    9372  Y      0   0    0   0   0   0  2026-10-16  "" h2=0 p=0 sc=0
+
+### stories/halloween-lantern.html  (1 distinct blobs)
+    blob        bytes  utf8 moji mrg  ref res git mis  lastseen  title
+    d6d82232ba    8308  Y      0   0   13  13   0   0  2026-10-18  "ORBIT-X — The Halloween Lantern" h2=3 p=22 sc=0
+
+### stories/dream-beyond-shadows.html  (1 distinct blobs)
+    blob        bytes  utf8 moji mrg  ref res git mis  lastseen  title
+    06b73eded4    8160  Y      0   0   15  15   0   0  2026-10-18  "ORBIT-X — The Dream Beyond the Sha" h2=3 p=19 sc=0
+
+### stories/last-wandering-ghost.html  (1 distinct blobs)
+    blob        bytes  utf8 moji mrg  ref res git mis  lastseen  title
+    ea5b09773d    8684  Y      0   0   14  14   0   0  2026-10-18  "ORBIT-X — The Last Wandering Ghost" h2=3 p=23 sc=0
+
+### the-night-of-forgotten-treats.html  (1 distinct blobs)
+    blob        bytes  utf8 moji mrg  ref res git mis  lastseen  title
+    2116cb2ac2   20610  Y      0   0   25  21   0   4  2026-10-19  "ORBIT-X — The Night of Forgotten T" h2=8 p=31 sc=0
+         missing: Assets/img/icons/web.svg, Assets/img/icons/spider.svg, Assets/img/icons/ghost-trans.png, Assets/img/icons/ghost-blue.svg
