@@ -1,0 +1,46 @@
+﻿ORBIT-X link audit
+Files scanned: 12
+Local references checked: 536
+
+== MISSING FILE (16) ==
+  about.html:649  "stories/index.html"  -> stories/index.html
+  projects/dream-guardians.html:211  "../stories/index.html"  -> stories/index.html
+  projects/dream-guardians.html:236  "Exploration.html"  -> projects/Exploration.html
+  projects/dream-guardians.html:259  "projects/halloween-helpers.html"  -> projects/projects/halloween-helpers.html
+  projects/dream-guardians.html:263  "projects/ghost-catchers.html"  -> projects/projects/ghost-catchers.html
+  projects/ghost-catchers.html:207  "../Story3.html"  -> Story3.html
+  projects/ghost-catchers.html:218  "../stories/index.html"  -> stories/index.html
+  projects/ghost-catchers.html:243  "Exploration.html"  -> projects/Exploration.html
+  projects/ghost-catchers.html:266  "projects/halloween-helpers.html"  -> projects/projects/halloween-helpers.html
+  projects/ghost-catchers.html:270  "projects/ghost-catchers.html"  -> projects/projects/ghost-catchers.html
+  projects/halloween-helpers.html:201  "../Story1.html"  -> Story1.html
+  projects/halloween-helpers.html:210  "../stories/index.html"  -> stories/index.html
+  projects/halloween-helpers.html:236  "Exploration.html"  -> projects/Exploration.html
+  projects/halloween-helpers.html:259  "projects/halloween-helpers.html"  -> projects/projects/halloween-helpers.html
+  projects/halloween-helpers.html:263  "projects/ghost-catchers.html"  -> projects/projects/ghost-catchers.html
+  story2.html:49  "script.js"  -> script.js
+
+== MISSING ANCHOR (21) ==
+  about.html:698  "#about"
+  about.html:698  "#story"
+  about.html:698  "#character-abhay"
+  about.html:704  "#gadget-lamp"
+  login.html:88  "#forgot-password"
+  login.html:105  "#create-account"
+  projects/dream-guardians.html:242  "#home"
+  projects/dream-guardians.html:257  "#home"
+  projects/dream-guardians.html:257  "#about"
+  projects/dream-guardians.html:258  "#character-abhay"
+  projects/dream-guardians.html:264  "#gadget-lamp"
+  projects/ghost-catchers.html:249  "#home"
+  projects/ghost-catchers.html:264  "#home"
+  projects/ghost-catchers.html:264  "#about"
+  projects/ghost-catchers.html:265  "#character-abhay"
+  projects/ghost-catchers.html:271  "#gadget-lamp"
+  projects/halloween-helpers.html:242  "#home"
+  projects/halloween-helpers.html:257  "#home"
+  projects/halloween-helpers.html:257  "#about"
+  projects/halloween-helpers.html:258  "#character-abhay"
+  projects/halloween-helpers.html:264  "#gadget-lamp"
+
+TOTAL PROBLEMS: 37
