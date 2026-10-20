@@ -1263,4 +1263,58 @@ function buildSoundUI() {
   } else {
     waitForManager();
   }
+
+
+// ============================================================================
+// ORBIT-X — Global nav / footer active-state sync (audit + patch)
+// ============================================================================
+(function initGlobalNav() {
+  'use strict';
+
+  const navContainers = Array.prototype.concat(
+    document.querySelectorAll('.nav-links'),
+    document.querySelectorAll('.orbit-footer__nav')
+  );
+  if (!navContainers.length) return;
+
+  const resolveTarget = (href) => {
+    try {
+      return new URL(href, window.location.href).pathname;
+    } catch (error) {
+      return href;
+    }
+  };
+
+  const normalizePath = (value) =>
+    value.replace(/\/+/g, '/').replace(/^\/+/, '');
+
+  const currentPage = normalizePath(window.location.pathname)
+    .split('/')
+    .pop() || 'index.html';
+
+  const setActive = (link) => {
+    if (link.classList.contains('active') || link.getAttribute('aria-current') === 'page') {
+      return;
+    }
+    link.classList.add('active');
+    link.setAttribute('aria-current', 'page');
+  };
+
+  navContainers.forEach((container) => {
+    const links = Array.from(container.querySelectorAll('a[href]'));
+    links.forEach((link) => {
+      const href = link.getAttribute('href') || '';
+      if (href.charAt(0) === '#') return;
+
+      let target = normalizePath(resolveTarget(href));
+      target = target.replace(/\/index\.html$/, '/index.html');
+      if (target === '/' || target === '') target = 'index.html';
+
+      if (target === currentPage) {
+        setActive(link);
+      }
+    });
+  });
+})();
+
 })();
