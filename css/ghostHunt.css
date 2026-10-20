@@ -1,0 +1,377 @@
+﻿
+/* Ghost Hunting Game Styles */
+#ghost-hunt-game {
+  padding-top: 80px; /* Account for navbar */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-primary, #1e1b29);
+  color: var(--text-primary, #fff);
+  overflow: hidden;
+  touch-action: none; /* Prevent scrolling during gameplay */
+}
+
+/* HUD */
+.gh-hud {
+  width: 100%;
+  max-width: 800px;
+  padding: 10px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  z-index: 10;
+}
+
+.gh-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #bca0ef;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.gh-stats {
+  display: flex;
+  gap: 15px;
+  font-size: 1.1rem;
+}
+
+.gh-stat {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
+.gh-label {
+  color: #f8d889;
+}
+
+.gh-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.gh-controls button {
+  padding: 5px 15px;
+  font-size: 0.9rem;
+}
+
+.gh-instruction {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #a8f0ff;
+  min-height: 1.5em;
+  transition: opacity 0.3s;
+}
+
+/* Game Area */
+.gh-game-area-wrapper {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.gh-game-area {
+  position: relative;
+  width: 100%;
+  max-width: 800px; /* Square room */
+  aspect-ratio: 1 / 1;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(188, 160, 239, 0.3);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.gh-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.gh-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Darkness & Lighting */
+.gh-darkness {
+  background: rgba(10, 5, 20, 0.9); /* Very dark purple/black */
+  transition: opacity 0.5s;
+  /* The light mask will be updated via JS using radial-gradient in mask-image */
+}
+
+/* Tools */
+#gh-tools-container {
+  pointer-events: auto; /* Allow interaction with tools */
+}
+
+.gh-tool {
+  position: absolute;
+  width: 10%; /* Responsive sizing */
+  min-width: 60px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  cursor: grab;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+  transition: transform 0.1s;
+  touch-action: none; /* Prevent scroll on drag */
+}
+
+.gh-tool:active {
+  cursor: grabbing;
+  transform: scale(1.1);
+}
+
+#gh-lantern {
+  bottom: 5%;
+  left: 5%;
+  z-index: 100;
+  filter: drop-shadow(0 0 15px rgba(248, 216, 137, 0.5));
+}
+
+#gh-staff {
+  bottom: 5%;
+  right: 5%;
+  z-index: 100;
+  filter: drop-shadow(0 0 15px rgba(188, 160, 239, 0.5));
+}
+
+/* Ghosts */
+.gh-ghost {
+  position: absolute;
+  width: 8%;
+  min-width: 40px;
+  aspect-ratio: 1 / 1;
+  background-image: url("../Assets/img/icons/ghost-cute.svg"); /* Fallback ghost if we dont have specific */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.5s, transform 0.3s;
+  transform: translate(-50%, -50%) scale(0.8);
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 50;
+}
+
+.gh-ghost.discovered {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  filter: drop-shadow(0 0 10px rgba(168, 240, 255, 0.8));
+  animation: float-ghost 3s ease-in-out infinite;
+}
+
+.gh-ghost.captured {
+  filter: drop-shadow(0 0 15px rgba(188, 160, 239, 0.9));
+  animation: captured-pulse 2s infinite;
+}
+
+.gh-ghost.purified {
+  opacity: 0 !important;
+  transform: translate(-50%, -100%) scale(1.5) !important;
+  pointer-events: none;
+}
+
+/* UI Layer (Capture Sequence) */
+.gh-ui-layer {
+  z-index: 60;
+}
+
+.gh-capture-indicator {
+  position: absolute;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px #bca0ef, 0 0 20px #bca0ef;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: pop-indicator 0.6s forwards;
+}
+
+.gh-sparkle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #fff 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: sparkle-fade 0.5s forwards;
+}
+
+/* Yellow Interaction Circle */
+.gh-interaction-circle {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, #fff8e1 0%, #f8d889 60%, #f6c94a 100%);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(248, 216, 137, 0.8), 0 0 40px rgba(248, 216, 137, 0.4);
+  z-index: 110;
+  cursor: pointer;
+  touch-action: none;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  opacity: 0.9;
+  transition: transform 0.1s;
+}
+
+.gh-interaction-circle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  pointer-events: none;
+}
+
+.gh-interaction-circle:active {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.gh-interaction-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  border: 2px solid rgba(248, 216, 137, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: pulse-ring 2s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.3; }
+}
+
+/* Victory Overlay */
+.gh-victory-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.gh-victory-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.gh-victory-modal {
+  background: var(--bg-secondary, #2a2538);
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(188, 160, 239, 0.4);
+  border: 2px solid #bca0ef;
+  transform: scale(1);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gh-victory-overlay.hidden .gh-victory-modal {
+  transform: scale(0.8);
+}
+
+.gh-victory-modal h2 {
+  font-size: 2.5rem;
+  color: #f8d889;
+  margin-bottom: 10px;
+}
+
+.gh-victory-modal p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.gh-victory-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* Animations */
+@keyframes float-ghost {
+  0%, 100% { margin-top: 0; }
+  50% { margin-top: -10px; }
+}
+
+@keyframes captured-pulse {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(188, 160, 239, 0.5)); transform: translate(-50%, -50%) scale(1); }
+  50% { filter: drop-shadow(0 0 20px rgba(188, 160, 239, 1)); transform: translate(-50%, -50%) scale(0.95); }
+}
+
+@keyframes pop-indicator {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  30% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+  70% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -100%) scale(1); }
+}
+
+@keyframes sparkle-fade {
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(2); }
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  .gh-stats {
+    flex-direction: column;
+    gap: 5px;
+    font-size: 0.9rem;
+    width: 100%;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .gh-controls {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+  .gh-hud {
+    padding: 10px;
+  }
+  .gh-tool {
+    width: 15%;
+  }
+}
+
