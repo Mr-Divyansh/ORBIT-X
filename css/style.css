@@ -129,19 +129,46 @@ img {
 }
 
 .navbar {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  /* Medium height (72px): room for the larger, clearly visible brand mark
-     while keeping a slim, premium profile. */
+  gap: 22px;
+  /* Premium bar (72px): room for the larger, clearly visible brand mark.
+     Starts translucent, turns opaque on scroll via .is-scrolled. */
   min-height: 72px;
   padding: 6px 4.5%;
+  background: rgba(255, 250, 245, 0.35);
+  border-bottom: none;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: background 0.3s ease, border-bottom 0.3s ease, backdrop-filter 0.3s ease;
+  will-change: background, backdrop-filter;
+}
+
+/* Scrolled state: navbar turns opaque */
+.navbar.is-scrolled {
+  background: rgba(255, 250, 245, 0.92);
   border-bottom: 1px solid var(--line);
-  background: var(--bg-navbar);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .navbar.is-scrolled {
+  background: rgba(25, 22, 36, 0.92);
+  border-bottom-color: var(--line);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Push page content down so it doesn't hide behind the fixed navbar */
+body {
+  padding-top: 68px;
 }
 
 .brand {
@@ -3288,7 +3315,17 @@ h1.typing-done .typing-line:last-child::after {
    luminous fills in both themes — they are light SOURCES, not surfaces. */
 
 /* ============================================================================
-   ORBIT-X — Light Toggle Button
+   ORBIT-X — Toggle group: keeps theme + sound buttons side-by-side
+   ============================================================================ */
+
+.toggle-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* ============================================================================
+   ORBIT-X — Simple & Pretty Theme Toggle (Dark ⇄ Light)
    ============================================================================ */
 
 .theme-toggle {
@@ -3311,6 +3348,7 @@ h1.typing-done .typing-line:last-child::after {
   transition: background-color 0.2s ease, border-color 0.2s ease,
     color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
   white-space: nowrap;
+  box-shadow: 0 2px 6px var(--shadow-soft);
 }
 
 .theme-toggle:hover {
@@ -3535,6 +3573,94 @@ body.nav-drawer-open {
 }
 
 /* ============================================================================
+   ORBIT-X — Games Page
+   ============================================================================ */
+
+.games-page {
+  min-height: calc(100vh - 68px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 5%;
+}
+
+.games-copy {
+  text-align: center;
+  max-width: 800px;
+}
+
+.games-copy h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--ink);
+}
+
+.games-copy p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: var(--ink-soft);
+}
+
+.games-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 24px var(--shadow-soft);
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.games-card__art {
+  height: 200px;
+  overflow: hidden;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.games-card__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.games-card__body {
+  padding: 24px;
+}
+
+.games-card__tag {
+  display: inline-block;
+  background: var(--purple);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.games-card__body h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 2rem;
+  color: var(--ink);
+}
+
+.games-card__body p {
+  margin-bottom: 24px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* ============================================================================
    ORBIT-X — Sound Toggle Button + Drawer Sound Panel
    ============================================================================ */
 
@@ -3550,7 +3676,7 @@ body.nav-drawer-open {
   color: var(--ink);
   font-family: inherit;
   cursor: pointer;
-  margin-left: 8px;
+  margin-left: 0;
   transition: all 0.2s ease;
   line-height: 1;
 }
@@ -3662,7 +3788,7 @@ body.nav-drawer-open {
   z-index: 60;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .floating-toggles .theme-toggle {
@@ -3733,7 +3859,7 @@ body.nav-drawer-open {
 @media (max-width: 480px) {
   .sound-toggle {
     padding: 8px 10px;
-    margin-left: 6px;
+    margin-left: 0;
   }
   .floating-toggles {
     top: 12px;
