@@ -158,9 +158,12 @@ img {
   position: relative;
   display: inline-flex;
   align-items: center;
-  padding: 8px 25px;
+  /* Fluid horizontal padding keeps the row from overflowing on mid-size
+     screens (768-1024px) where brand + links + both toggles compete
+     for horizontal space. */
+  padding: 8px clamp(12px, 1.35vw, 25px);
   color: var(--ink-soft);
-  font-size: clamp(15px, 1.55vw, 23px);
+  font-size: clamp(15px, 1.35vw, 21px);
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
@@ -3006,7 +3009,46 @@ h1.typing-done .typing-line:last-child::after {
   }
 }
 
-/* ===== Navbar: reduced breadth + responsive mobile menu (ORBIT-X) ===== */
+/* ============================================================================
+   ORBIT-X — Navbar: reduced breadth + responsive mobile menu
+   ============================================================================ */
+
+/* Tablet band (701-900px): the full link row plus the brand, the mascot
+   and BOTH toggle buttons no longer fit, so the link row collapses into
+   the compact dropdown menu. Only the navbar is affected here — the rest
+   of the page keeps its desktop/tablet layout. */
+@media (min-width: 701px) and (max-width: 900px) {
+  .navbar { min-height: 64px; padding: 6px 4%; gap: 14px; }
+  .brand-logo-img { width: 104px; max-height: 48px; }
+  .nav-mascot { display: none; }
+  .menu-toggle { display: block; position: relative; z-index: 20; }
+  .nav-links {
+    position: absolute;
+    left: 0; right: 0;
+    top: calc(100% + 4px);
+    flex-direction: column;
+    align-items: stretch;
+    background: var(--bg-navbar);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--line);
+    border-top: none;
+    box-shadow: 0 12px 28px var(--shadow-strong);
+    display: none;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a {
+    padding: 13px 18px;
+    font-size: 16px;
+    border-top: 1px solid var(--line);
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .nav-links a + a::before { display: none; }
+}
+
 @media (max-width: 900px) {
   .navbar { min-height: 64px; padding: 6px 4%; gap: 14px; }
   .brand-logo-img { width: 104px; max-height: 48px; }
@@ -3216,8 +3258,9 @@ h1.typing-done .typing-line:last-child::after {
 }
 
 .theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--paper-mist);
   border-color: var(--purple);
+  transform: translateY(-1px);
 }
 
 .theme-toggle:focus-visible {
@@ -3228,6 +3271,10 @@ h1.typing-done .typing-line:last-child::after {
 .theme-toggle[aria-pressed="true"] {
   background: var(--purple);
   color: #fff;
+}
+
+.theme-toggle:active {
+  transform: translateY(1px) scale(0.97);
 }
 
 .theme-icon {
@@ -3434,8 +3481,9 @@ body.nav-drawer-open {
 }
 
 .sound-toggle:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--paper-mist);
   border-color: var(--purple);
+  transform: translateY(-1px);
 }
 
 .sound-toggle:focus-visible {
@@ -3443,13 +3491,92 @@ body.nav-drawer-open {
   outline-offset: 2px;
 }
 
-.sound-toggle.is-muted {
-  opacity: 0.65;
-}
-
 .sound-icon {
   font-size: 16px;
   line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SVG speaker states: waves while ON, mute cross while OFF. */
+.sound-icon svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.sound-icon .sound-wave,
+.sound-icon .sound-mute {
+  transition: opacity 0.2s ease;
+}
+
+.sound-icon.is-on .sound-wave { opacity: 1; }
+.sound-icon.is-on .sound-mute { opacity: 0; }
+.sound-icon.is-off .sound-wave { opacity: 0; }
+.sound-icon.is-off .sound-mute { opacity: 1; }
+
+/* ON state reads as an active, filled control in both themes. */
+.sound-toggle[aria-pressed="true"] {
+  background: var(--purple);
+  border-color: var(--purple);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(152, 113, 221, 0.32);
+}
+
+.sound-toggle[aria-pressed="true"]:hover {
+  background: #7d54c4;
+  border-color: #7d54c4;
+}
+
+/* Pressed feedback for the physical click. */
+.sound-toggle:active {
+  transform: translateY(1px) scale(0.97);
+}
+
+.sound-toggle.is-muted {
+  opacity: 0.72;
+}
+
+/* Visible text state: "Sound ON" / "Sound OFF". Hidden on tight screens so
+   the navbar never overflows; the icon + aria-label carry the meaning. */
+.sound-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+@media (max-width: 860px) {
+  .sound-label { display: none; }
+  .sound-toggle { padding: 8px 10px; }
+}
+
+/* ============================================================================
+   ORBIT-X — Premium Circular Theme Reveal
+   A fixed overlay in the incoming theme colour; the Web Animations API
+   expands its clip-path circle from the toggle button to cover the
+   viewport. Removed as soon as the real theme is painted.
+   ============================================================================ */
+
+.theme-reveal {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  /* Above the navbar/drawer, below nothing that matters visually. */
+  z-index: 9998;
+  pointer-events: none;
+  will-change: clip-path;
+  /* Contain the effect to the compositor: no layout, no repaint per frame. */
+  transform: translateZ(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-reveal {
+    /* The JS skips the circular reveal entirely under reduced motion. */
+    display: none;
+  }
 }
 
 /* Fixed top-right group for pages without a navbar (credits, login) */

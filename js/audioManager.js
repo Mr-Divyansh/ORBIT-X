@@ -53,19 +53,41 @@
   const SOUND_ENABLED_KEY = 'orbitx-sound-enabled';
   const VOLUMES_KEY = 'orbitx-volumes';
 
+  // Short procedural UI blips (WebAudio synth). The local ui/*.mp3 files are
+  // full-length songs (6-10MB each), so streaming one for a 100ms click would
+  // stall the UI. The synth plays instantly with zero network cost.
+  const SYNTH_PRESETS = {
+    'button-click': { freq: 660, endFreq: 880, dur: 0.09, type: 'sine' },
+    'navigation-click': { freq: 520, endFreq: 780, dur: 0.1, type: 'sine' },
+    'menu-toggle': { freq: 440, endFreq: 620, dur: 0.12, type: 'triangle' },
+    'toggle-switch': { freq: 740, endFreq: 520, dur: 0.12, type: 'sine' },
+    'modal-open': { freq: 480, endFreq: 720, dur: 0.14, type: 'sine' }
+  };
+
   function clamp01(value) {
     return Math.max(0, Math.min(1, value));
   }
 
   class AudioManager {
     constructor() {
-      this.enabled = this._loadPref(SOUND_ENABLED_KEY, true);
+      // Fresh page load = sound OFF, always. Clear any stale saved preference
+      // (mirrors themeManager's session-only policy) so a previous Sound ON
+      // choice can never leak into a new visit.
+      this._clearSavedPref();
+      this.enabled = false;
       this.volumes = this._loadPref(VOLUMES_KEY, Object.assign({}, DEFAULT_VOLUMES));
       this.sounds = {};
       this.musicNode = null;
       this.ambienceNode = null;
       this.initialized = false;
       this.userInteracted = false;
+      // Procedural WebAudio synth (see _ensureSynth): instant UI blips so we
+      // never stream multi-MB song files for a 100ms click.
+      this._synthCtx = null;
+      this._lastSfxAt = 0;
+      // In-flight one-shot elements, so Sound OFF can silence them
+      // immediately instead of letting them ring out.
+      this._activeOneShots = new Set();
     }
 
     init() {
@@ -117,7 +139,15 @@
       }
     }
 
+    _clearSavedPref() {
+      /* Sound ON/OFF is session-only: never carry a previous visit's choice
+         into a fresh page load. (Volumes are still persisted.) */
+      try { localStorage.removeItem(SOUND_ENABLED_KEY); } catch (e) { /* ignore */ }
+      try { sessionStorage.removeItem(SOUND_ENABLED_KEY); } catch (e) { /* ignore */ }
+    }
+
     _savePref(key, value) {
+      if (key === SOUND_ENABLED_KEY) return; /* session-only, never persist */
       try {
         localStorage.setItem(key, JSON.stringify(value));
       } catch (e) { /* localStorage may be blocked */ }
@@ -134,10 +164,12 @@
 
     setEnabled(enabled) {
       this.enabled = !!enabled;
-      this._savePref(SOUND_ENABLED_KEY, this.enabled);
+      this._clearSavedPref(); /* session-only: wipes any stale saved value */
       if (!this.enabled) {
         this.stopMusic();
         this.stopAmbience();
+        this.stopAll();
+        this._silenceSynth();
       }
       this._dispatchChange();
     }
@@ -148,14 +180,66 @@
     }
 
     isEnabled() {
-      return this.enabled;
+      return !!this.enabled;
     }
 
     // True only when sound is enabled AND the user interacted with the page.
     canPlay() {
-      return this.enabled && this.userInteracted;
+      return this.initialized && this.enabled && this.userInteracted;
     }
 
+    // ---- Procedural WebAudio synth -------------------------------------
+    // Instant, zero-network UI blips. The local ui/*.mp3 files are
+    // full-length songs (6-10MB each), so streaming one for a 100ms click
+    // would stall the UI. Frequencies sit in the soft 440-880Hz band with
+    // a fast decay: subtle, never harsh. No-op when WebAudio is missing.
+    _ensureSynth() {
+      if (this._synthCtx) return this._synthCtx;
+      try {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return null;
+        this._synthCtx = new AC();
+        return this._synthCtx;
+      } catch (e) {
+        return null;
+      }
+    }
+    _silenceSynth() {
+      if (!this._synthCtx) return;
+      try {
+        if (typeof this._synthCtx.suspend === 'function') { this._synthCtx.suspend(); }
+      } catch (e) { /* ignore */ }
+    }
+    _playSynth(name) {
+      const preset = SYNTH_PRESETS[name];
+      if (!preset) return false;
+      // 60ms floor stops machine-gun repeats from rapid clicks.
+      const now = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+      if (now - this._lastSfxAt < 60) return true;
+      this._lastSfxAt = now;
+      const ctx = this._ensureSynth();
+      if (!ctx) return false;
+      try {
+        if (ctx.state === 'suspended' && typeof ctx.resume === 'function') { ctx.resume(); }
+        const t0 = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = preset.type;
+        osc.frequency.setValueAtTime(preset.freq, t0);
+        osc.frequency.exponentialRampToValueAtTime(preset.endFreq, t0 + preset.dur);
+        const peak = clamp01(this.volumes.sfx) * 0.25;
+        gain.gain.setValueAtTime(0.0001, t0);
+        gain.gain.exponentialRampToValueAtTime(Math.max(peak, 0.001), t0 + 0.012);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t0 + preset.dur);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(t0);
+        osc.stop(t0 + preset.dur + 0.02);
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
     setVolume(category, value) {
       if (!(category in this.volumes)) return;
       const v = clamp01(Number(value));
@@ -176,11 +260,46 @@
       return typeof this.volumes[category] === 'number' ? this.volumes[category] : 0;
     }
 
+    // Warm up the audio cache in the background once sound is enabled, so
+    // story/interaction sounds are ready to play instantly when triggered.
+    // Uses requestIdleCallback when available to avoid competing with the
+    // UI thread during the click that turned sound on.
+    warmUp(names) {
+      const list = Array.isArray(names) ? names : [];
+      const run = () => {
+        list.forEach((entry) => {
+          const category = entry.category;
+          const name = entry.name;
+          const template = this.sounds[category] && this.sounds[category][name];
+          if (!template) return;
+          try {
+            template.preload = 'auto';
+            template.load();
+          } catch (e) { /* ignore - asset may be missing */ }
+        });
+      };
+      try {
+        if (typeof window.requestIdleCallback === 'function') {
+          window.requestIdleCallback(run, { timeout: 2000 });
+        } else {
+          setTimeout(run, 400);
+        }
+      } catch (e) {
+        setTimeout(run, 400);
+      }
+    }
+
     // Fire-and-forget one-shot sound. Clones the template so overlapping
     // sounds can play at once. Returns the playing element or null.
     play(category, name, options) {
       options = options || {};
       if (!this.canPlay()) return null;
+      // UI blips: instant procedural synth (zero network). The local
+      // ui/*.mp3 files are full-length songs; streaming one per click would
+      // stall the UI. Pass { forceFile: true } to use the file instead.
+      if (category === 'ui' && SYNTH_PRESETS[name] && !options.forceFile) {
+        return this._playSynth(name) ? { synth: true, name: name } : null;
+      }
       const template = this.sounds[category] && this.sounds[category][name];
       if (!template) return null;
       try {
@@ -195,6 +314,11 @@
         if (played && typeof played.catch === 'function') {
           played.catch(() => { /* autoplay blocked or asset missing */ });
         }
+        // Track the one-shot so Sound OFF can silence it mid-playback.
+        this._activeOneShots.add(node);
+        const release = () => { this._activeOneShots.delete(node); };
+        node.addEventListener('ended', release, { once: true });
+        node.addEventListener('error', release, { once: true });
         return node;
       } catch (e) {
         return null;
@@ -250,6 +374,25 @@
         return node;
       } catch (e) {
         return null;
+      }
+    }
+
+    stopAll() {
+      // Single cleanup entry point for in-flight audio. Persistent nodes
+      // (music/ambience) are halted here; one-shots are paused and released
+      // so Sound OFF takes effect immediately. The synth tail (~150ms max)
+      // is silenced via _silenceSynth() in setEnabled(false).
+      this.stopMusic();
+      this.stopAmbience();
+      if (this._activeOneShots && this._activeOneShots.size) {
+        this._activeOneShots.forEach((node) => {
+          try {
+            node.pause();
+            node.currentTime = 0;
+          } catch (e) { /* ignore */ }
+          try { node.removeAttribute('src'); } catch (e) { /* ignore */ }
+        });
+        this._activeOneShots.clear();
       }
     }
 

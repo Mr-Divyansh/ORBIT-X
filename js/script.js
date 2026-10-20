@@ -947,6 +947,28 @@ document.querySelectorAll('[data-character-image]').forEach((visual) => {
 // ============================================================================
 
 (function initSoundUI() {
+  // This block injects the global sound toggle. It must run AFTER
+  // audioManager.js has defined window.audioManager, otherwise the button
+  // would render with no state, no accessible name and no wiring.
+  // script.js may be loaded with or without `defer`, so we wait for the
+  // DOM to be ready and poll briefly for the manager.
+  const start = () => {
+    if (!window.audioManager) {
+      // audioManager.js is deferred: it will land right after this tick.
+      setTimeout(start, 30);
+      return;
+    }
+    buildSoundUI();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+})();
+
+function buildSoundUI() {
   // Pages without a navbar (credits, login) get a floating theme toggle.
   let themeBtn = document.querySelector('.theme-toggle');
   const needsFloatingToggles = !themeBtn;
@@ -971,12 +993,28 @@ document.querySelectorAll('[data-character-image]').forEach((visual) => {
   // page so the control stays consistent without editing 9 HTML files.
   if (!document.querySelector('.sound-toggle')) {
     const soundBtn = document.createElement('button');
-    soundBtn.className = 'sound-toggle';
+    soundBtn.className = 'sound-toggle is-muted';
     soundBtn.type = 'button';
     const soundIcon = document.createElement('span');
     soundIcon.className = 'sound-icon';
     soundIcon.setAttribute('aria-hidden', 'true');
+    // Crisp inline SVG speaker: waves appear only when sound is ON, so the
+    // icon itself communicates the state (not just the text next to it).
+    soundIcon.innerHTML =
+      '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" ' +
+      'stroke="currentColor" stroke-width="1.9" stroke-linecap="round" ' +
+      'stroke-linejoin="round" focusable="false">' +
+      '<path d="M11 5L6.5 9H3v6h3.5L11 19V5z" fill="currentColor" stroke="none"/>' +
+      '<path class="sound-wave sound-wave-1" d="M14.5 9.2a4 4 0 010 5.6"/>' +
+      '<path class="sound-wave sound-wave-2" d="M17.6 6.6a7.8 7.8 0 010 10.8"/>' +
+      '<path class="sound-mute" d="M15 9.5l5 5M20 9.5l-5 5"/>' +
+      '</svg>';
+    const soundLabel = document.createElement('span');
+    soundLabel.className = 'sound-label';
+    soundLabel.setAttribute('aria-hidden', 'true');
+    soundLabel.textContent = 'Sound OFF';
     soundBtn.appendChild(soundIcon);
+    soundBtn.appendChild(soundLabel);
     themeBtn.insertAdjacentElement('afterend', soundBtn);
 
     // On navbar-less pages, park both buttons in a fixed top-right group.
@@ -993,8 +1031,12 @@ document.querySelectorAll('[data-character-image]').forEach((visual) => {
       const on = window.audioManager.isEnabled();
       soundBtn.classList.toggle('is-muted', !on);
       soundBtn.setAttribute('aria-pressed', String(on));
-      soundBtn.setAttribute('aria-label', on ? 'Mute sound' : 'Unmute sound');
-      soundIcon.textContent = on ? '\u{1F50A}' : '\u{1F507}'; // 🔊 / 🔇
+      soundBtn.setAttribute('aria-label', on ? 'Turn sound off' : 'Turn sound on');
+      soundBtn.title = on ? 'Sound ON - click to mute' : 'Sound OFF - click to enable';
+      soundLabel.textContent = on ? 'Sound ON' : 'Sound OFF';
+      // The SVG shows sound waves when ON and a mute cross when OFF.
+      soundIcon.classList.toggle('is-on', on);
+      soundIcon.classList.toggle('is-off', !on);
     };
     syncSoundUI();
 
@@ -1005,24 +1047,105 @@ document.querySelectorAll('[data-character-image]').forEach((visual) => {
       if (!wasOn) {
         // Turning sound back on: immediate audible feedback.
         window.audioManager.play('ui', 'toggle-switch', { volume: 0.5 });
+        // Preload the story/interaction sounds in the background so they
+        // play without delay when the user reaches them.
+        window.audioManager.warmUp([
+          { category: 'transitions', name: 'magical-reveal' },
+          { category: 'transitions', name: 'scene-transition' },
+          { category: 'interactions', name: 'ghost-appear' }
+        ]);
       }
     });
     window.addEventListener('orbitx-sound-change', syncSoundUI);
   }
+}
+
+// Story page: Enter-the-Story CTA + scene navigation + artwork hovers.
+// Forgotten Treats scenes use anchor navigation (#scene-N) with an
+// IntersectionObserver reveal (js/forgotten-treats.js); sounds hook onto the
+// same user gestures without touching story text or animation code.
+(function initStorySounds() {
+  const play = (category, name, volume) => {
+    try {
+      if (window.audioManager && window.audioManager.canPlay()) {
+        window.audioManager.play(category, name, { volume: volume });
+      }
+    } catch (e) { /* never break story nav on audio errors */ }
+  };
+  const bind = () => {
+    document.querySelectorAll('.ft-primary-btn').forEach((btn) => {
+      if (btn.dataset.soundBound) return;
+      btn.dataset.soundBound = '1';
+      btn.addEventListener('click', () => play('transitions', 'magical-reveal', 0.5));
+    });
+    document.querySelectorAll('a[href^="#scene-"]').forEach((link) => {
+      if (link.classList.contains('ft-primary-btn')) return; // counted above
+      if (link.dataset.soundBound) return;
+      link.dataset.soundBound = '1';
+      link.addEventListener('click', () => play('transitions', 'scene-transition', 0.45));
+    });
+    document.querySelectorAll('.ft-scene-art img, .ft-frame img, .ft-ghost, .ft-bat').forEach((art) => {
+      if (art.dataset.soundBound) return;
+      art.dataset.soundBound = '1';
+      art.addEventListener('pointerenter', () => play('interactions', 'ghost-appear', 0.3), { passive: true });
+    });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bind);
+  } else {
+    bind();
+  }
 })();
 
-// Loop the night-wind ambience after the first user gesture (autoplay-safe).
-// audioManager registers its interaction flag before this script runs, so
-// by the time these document-level listeners fire, canPlay() is already true.
+// STORY-SOUNDS-ANCHOR
+// Global audio bed: looping night-wind ambience + a quiet background music
+// track. Both start ONLY after the user turns Sound ON and interacts, so
+// nothing is ever audible before a gesture (autoplay policy).
+// The audioManager owns the actual nodes and guarantees a single music
+// track plays at a time (playMusic stops the previous one first).
 (function initAmbience() {
-  let started = false;
-  const startAmbience = () => {
-    if (started) return;
-    started = true;
-    if (window.audioManager && window.audioManager.canPlay()) {
+  let ambienceStarted = false;
+  let musicStarted = false;
+
+  const startBed = () => {
+    if (!window.audioManager || !window.audioManager.canPlay()) return false;
+    if (!ambienceStarted) {
+      ambienceStarted = true;
       window.audioManager.playAmbience('night-wind', { loop: true, volume: 0.7 });
     }
+    if (!musicStarted) {
+      musicStarted = true;
+      // Background music sits under the ambience at the music volume.
+      window.audioManager.playMusic('halloween-bg', { loop: true, volume: 0.8 });
+    }
+    return true;
   };
-  document.addEventListener('click', startAmbience, { once: true, passive: true });
-  document.addEventListener('keydown', startAmbience, { once: true, passive: true });
+
+  const arm = () => {
+    document.addEventListener('click', startBed, { once: true, passive: true });
+    document.addEventListener('keydown', startBed, { once: true, passive: true });
+  };
+
+  // Sound ON -> (re)start the bed. Sound OFF -> the manager already stopped
+  // every node, so we just clear the flags to allow a clean restart.
+  window.addEventListener('orbitx-sound-change', (e) => {
+    if (e.detail && e.detail.enabled) {
+      if (!startBed()) arm();
+    } else {
+      ambienceStarted = false;
+      musicStarted = false;
+      arm();
+    }
+  });
+
+  // audioManager.js is deferred, so wait for it before arming the bed.
+  const waitForManager = () => {
+    if (window.audioManager) { arm(); return; }
+    setTimeout(waitForManager, 30);
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', waitForManager);
+  } else {
+    waitForManager();
+  }
 })();

@@ -15,6 +15,9 @@ class ThemeManager {
     this.iconEl = null;
     this.labelEl = null;
     this.isInitialized = false;
+    this._transitioning = false;
+    this._revealOverlay = null;
+    this._revealGen = 0;
   }
 
   init() {
@@ -51,6 +54,19 @@ class ThemeManager {
 
   applyTheme(theme, persist = true) {
     if (!Object.values(THEME_VALUES).includes(theme)) return;
+    if (theme === this.currentTheme) {
+      this._paintTheme(theme, persist);
+      return;
+    }
+    const from = this.currentTheme;
+    if (!this._animateThemeCircle(from, theme, persist)) {
+      this._paintTheme(theme, persist);
+    }
+  }
+
+  // Instant theme paint: attribute + meta + UI + event. Single place the DOM
+  // theme state changes, so animation and fallback paths never disagree.
+  _paintTheme(theme, persist) {
     this.currentTheme = theme;
     if (persist) this._saveTheme(theme);
 
@@ -73,7 +89,118 @@ class ThemeManager {
     this._dispatchThemeEvent();
   }
 
+  _toggleCenter() {
+    try {
+      const el = this.toggleBtn && this.toggleBtn.getBoundingClientRect
+        ? this.toggleBtn : document.querySelector('.theme-toggle');
+      if (!el) return null;
+      const r = el.getBoundingClientRect();
+      return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+    } catch (e) { return null; }
+  }
+
+  _maxRevealRadius(x, y) {
+    const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    const h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    return Math.hypot(Math.max(x, w - x), Math.max(y, h - y));
+  }
+
+  // ---- Premium circular theme reveal ---------------------------------
+  // A fixed overlay painted in the INCOMING theme colour expands as a
+  // circle from the toggle button; when it finishes, the real theme is
+  // applied and the overlay is removed. Returns true when the animation
+  // took over the paint, false when the caller should paint instantly.
+  _animateThemeCircle(from, theme, persist) {
+    // A reveal is already running (rapid double click): land it now so a
+    // stale overlay can never be left behind.
+    if (this._transitioning) {
+      this._finishReveal();
+      return false;
+    }
+    // Reduced motion: switch themes directly, no sweeping circle.
+    if (this._prefersReducedMotion()) return false;
+
+    const center = this._toggleCenter();
+    if (!center) return false;
+
+    const radius = this._maxRevealRadius(center.x, center.y);
+    const isDark = theme === THEME_VALUES.dark;
+    const x = center.x;
+    const y = center.y;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'theme-reveal';
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.style.background = isDark
+      ? 'radial-gradient(circle at ' + x + 'px ' + y + 'px, #2a2340 0%, #191624 72%)'
+      : 'radial-gradient(circle at ' + x + 'px ' + y + 'px, #fffaf5 0%, #f4eefc 72%)';
+    document.body.appendChild(overlay);
+
+    this._transitioning = true;
+    this._revealOverlay = overlay;
+
+    const anim = overlay.animate(
+      [
+        { clipPath: 'circle(0px at ' + x + 'px ' + y + 'px)' },
+        { clipPath: 'circle(' + radius + 'px at ' + x + 'px ' + y + 'px)' }
+      ],
+      {
+        duration: this._revealDuration(),
+        easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
+        fill: 'forwards'
+      }
+    );
+
+    const gen = this._revealGen; // generation counter (increments on every click)
+    const done = () => {
+      if (done._gen !== this._revealGen) return; // stale reveal (cancelled by a newer click)
+      if (!this._transitioning) return;
+      this._transitioning = false;
+      // Paint the real theme FIRST, then drop the overlay. The overlay is
+      // already fully covering the viewport, so removing it afterwards
+      // reveals an identical colour — no white flash, no mismatch.
+      this._paintTheme(theme, persist);
+      this._revealOverlay = null;
+      if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+    };
+    done._gen = gen;
+
+    if (anim && anim.finished && typeof anim.finished.then === 'function') {
+      anim.finished.then(done).catch(() => {
+        if (this._transitioning) done();
+      });
+    } else {
+      // No Web Animations support: land on the correct theme immediately.
+      done();
+    }
+    return true;
+  }
+
+  _finishReveal() {
+    const overlay = this._revealOverlay;
+    if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+    this._revealOverlay = null;
+    this._transitioning = false;
+  }
+
+  _prefersReducedMotion() {
+    try {
+      return !!(window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    } catch (e) { return false; }
+  }
+
+  // Desktop gets the full cinematic sweep; smaller screens get a quicker,
+  // lighter reveal so mobile stays responsive.
+  _revealDuration() {
+    const w = window.innerWidth || 0;
+    if (w <= 480) return 520;
+    if (w <= 900) return 640;
+    return 780;
+  }
+
   toggle() {
+    this._revealGen += 1; // bump generation so any in-flight reveal is invalidated
     const next = this.currentTheme === THEME_VALUES.light
       ? THEME_VALUES.dark
       : THEME_VALUES.light;
