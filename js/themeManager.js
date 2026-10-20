@@ -8,12 +8,24 @@ const THEME_KEY = 'orbitx-theme';
 const THEME_ATTR = 'data-theme';
 const THEME_VALUES = { light: 'light', dark: 'dark' };
 
+// Clean inline SVG icons (no emoji). The control shows the CURRENT mode:
+// a sun in light mode, a crescent moon in dark mode. currentColor keeps the
+// icon in sync with the button's text colour in both themes.
+const THEME_SVG_SUN =
+  '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" ' +
+  'stroke-width="2" stroke-linecap="round" focusable="false" aria-hidden="true">' +
+  '<circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/>' +
+  '<path d="M12 2.6v2.4M12 19v2.4M2.6 12H5M19 12h2.4M5.2 5.2l1.7 1.7M17.1 17.1l1.7 1.7M18.8 5.2l-1.7 1.7M6.9 17.1l-1.7 1.7"/>' +
+  '</svg>';
+const THEME_SVG_MOON =
+  '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" focusable="false" ' +
+  'aria-hidden="true"><path d="M20.4 14.6A8.6 8.6 0 019.4 3.6a8.9 8.9 0 1011 11z"/></svg>';
+
 class ThemeManager {
   constructor() {
     this.currentTheme = THEME_VALUES.light;
-    this.toggleBtn = null;
-    this.iconEl = null;
-    this.labelEl = null;
+    // All bound toggle buttons (navbar copy + drawer copy + floating copies).
+    this.toggleButtons = [];
     this.isInitialized = false;
     this._transitioning = false;
     this._revealOverlay = null;
@@ -91,8 +103,11 @@ class ThemeManager {
 
   _toggleCenter() {
     try {
-      const el = this.toggleBtn && this.toggleBtn.getBoundingClientRect
-        ? this.toggleBtn : document.querySelector('.theme-toggle');
+      // Use the first VISIBLE bound button (navbar copy is hidden on mobile,
+      // the drawer copy is the visible one there).
+      const el = this.toggleButtons.find((btn) => btn && btn.isConnected &&
+        btn.offsetParent !== null) || this.toggleButtons[0] ||
+        document.querySelector('.theme-toggle');
       if (!el) return null;
       const r = el.getBoundingClientRect();
       return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
@@ -213,19 +228,41 @@ class ThemeManager {
   }
 
   _updateToggleUI() {
-    if (!this.toggleBtn) return;
     const isDark = this.currentTheme === THEME_VALUES.dark;
-    this.toggleBtn.setAttribute('aria-pressed', String(isDark));
-    this.toggleBtn.setAttribute('aria-label', isDark
-      ? 'Switch to Light Mode'
-      : 'Switch to Dark Mode');
+    this.toggleButtons.forEach((btn) => {
+      if (!btn || !btn.isConnected) return;
+      btn.setAttribute('aria-pressed', String(isDark));
+      btn.setAttribute('aria-label', isDark
+        ? 'Switch to Light Mode'
+        : 'Switch to Dark Mode');
 
-    if (this.iconEl) {
-      this.iconEl.textContent = isDark ? '\u{1F319}' : '\u{1F31A}'; // 🌙 light -> 🌕 dark
-    }
-    if (this.labelEl) {
-      this.labelEl.textContent = isDark ? 'Dark' : 'Light';
-    }
+      const iconEl = btn.querySelector('.theme-icon');
+      if (iconEl) {
+        // Sun while in light mode, crescent moon in dark mode (no emoji).
+        iconEl.innerHTML = isDark ? THEME_SVG_MOON : THEME_SVG_SUN;
+      }
+      const labelEl = btn.querySelector('.theme-label');
+      if (labelEl) {
+        labelEl.textContent = isDark ? 'Dark' : 'Light';
+      }
+    });
+    this._announce(isDark ? 'Dark mode on' : 'Light mode on');
+  }
+
+  // Polite live-region status for assistive tech (theme changes).
+  _announce(message) {
+    try {
+      let status = document.getElementById('orbit-a11y-status');
+      if (!status) {
+        status = document.createElement('div');
+        status.id = 'orbit-a11y-status';
+        status.className = 'vh-only';
+        status.setAttribute('role', 'status');
+        status.setAttribute('aria-live', 'polite');
+        document.body.appendChild(status);
+      }
+      status.textContent = message;
+    } catch (e) { /* ignore */ }
   }
 
   _dispatchThemeEvent() {
@@ -235,11 +272,10 @@ class ThemeManager {
   }
 
   bindToggle(buttonElement) {
-    this.toggleBtn = buttonElement;
-    this.iconEl = buttonElement.querySelector('.theme-icon');
-    this.labelEl = buttonElement.querySelector('.theme-label');
+    if (!buttonElement || this.toggleButtons.includes(buttonElement)) return;
+    this.toggleButtons.push(buttonElement);
 
-    this.toggleBtn.addEventListener('click', (e) => {
+    buttonElement.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
       this.toggle();
@@ -255,12 +291,14 @@ class ThemeManager {
 const themeManager = new ThemeManager();
 window.themeManager = themeManager;
 
-// Self-initialize: apply saved theme ASAP and bind the navbar theme button
-// (or the JS-injected floating button on pages without a navbar).
+// Self-initialize: apply the light default ASAP and bind EVERY theme button
+// present on the page (navbar copy, drawer copy created later by script.js,
+// or the JS-injected floating button on pages without a navbar).
 function bootThemeManager() {
   themeManager.init();
-  const btn = document.querySelector('.theme-toggle');
-  if (btn) themeManager.bindToggle(btn);
+  document.querySelectorAll('.theme-toggle').forEach((btn) => {
+    themeManager.bindToggle(btn);
+  });
 }
 
 if (document.readyState === 'loading') {

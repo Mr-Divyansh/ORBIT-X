@@ -13,6 +13,9 @@ function ensureDrawerElements() {
     drawerBackdrop = document.createElement('div');
     drawerBackdrop.className = 'nav-drawer-backdrop';
     drawerBackdrop.setAttribute('aria-hidden', 'true');
+    // Clicking the backdrop closes the drawer (the element is created lazily,
+    // so its listener is attached here where the node exists).
+    drawerBackdrop.addEventListener('click', () => closeDrawer());
     document.body.appendChild(drawerBackdrop);
   }
   if (!drawer) {
@@ -49,6 +52,28 @@ function ensureDrawerElements() {
       });
     }
     drawer.appendChild(navContainer);
+
+    // Theme + sound controls. On mobile the navbar copies are hidden by CSS,
+    // so the drawer carries the real controls. Both stay synced through
+    // themeManager (multi-button) and the 'orbitx-sound-change' event.
+    const controlsSection = document.createElement('div');
+    controlsSection.className = 'nav-drawer__controls';
+    const drawerThemeBtn = document.createElement('button');
+    drawerThemeBtn.className = 'theme-toggle';
+    drawerThemeBtn.type = 'button';
+    drawerThemeBtn.setAttribute('aria-label', 'Switch to Dark Mode');
+    drawerThemeBtn.setAttribute('aria-pressed', 'false');
+    const dtIcon = document.createElement('span');
+    dtIcon.className = 'theme-icon';
+    const dtLabel = document.createElement('span');
+    dtLabel.className = 'theme-label';
+    dtLabel.textContent = 'Light';
+    drawerThemeBtn.appendChild(dtIcon);
+    drawerThemeBtn.appendChild(dtLabel);
+    if (window.themeManager) window.themeManager.bindToggle(drawerThemeBtn);
+    controlsSection.appendChild(drawerThemeBtn);
+    controlsSection.appendChild(createSoundToggle());
+    drawer.appendChild(controlsSection);
 
     // Sound settings — volume sliders wired straight to audioManager
     const soundSection = document.createElement('div');
@@ -106,8 +131,14 @@ function ensureDrawerElements() {
   }
 }
 
+let drawerScrollY = 0;
+
 function openDrawer() {
   ensureDrawerElements();
+  drawerScrollY = window.scrollY;
+  // Lock background scrolling (position:fixed via .nav-drawer-open) while
+  // remembering the user's place so closing restores the exact spot.
+  document.body.style.top = `-${drawerScrollY}px`;
   drawerBackdrop.classList.add('is-visible');
   drawer.classList.add('is-open');
   document.body.classList.add('nav-drawer-open');
@@ -128,6 +159,8 @@ function closeDrawer(silent) {
   drawerBackdrop.classList.remove('is-visible');
   drawer.classList.remove('is-open');
   document.body.classList.remove('nav-drawer-open');
+  document.body.style.top = '';
+  window.scrollTo(0, drawerScrollY);
   if (menuToggle) {
     menuToggle.setAttribute('aria-expanded', 'false');
     menuToggle.focus();
@@ -162,6 +195,26 @@ if (drawerBackdrop) {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeDrawer();
+  }
+});
+
+// Keep keyboard focus inside the open drawer (Tab cycles through visible
+// controls only; Shift+Tab wraps backwards).
+const ORBIT_FOCUSABLE =
+  'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Tab' || !drawer || !drawer.classList.contains('is-open')) return;
+  const items = Array.from(drawer.querySelectorAll(ORBIT_FOCUSABLE))
+    .filter((el) => el.offsetParent !== null);
+  if (!items.length) return;
+  const first = items[0];
+  const last = items[items.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
   }
 });
 
@@ -946,6 +999,82 @@ document.querySelectorAll('[data-character-image]').forEach((visual) => {
 // ORBIT-X — Sound toggle button + floating toggles + ambience loop
 // ============================================================================
 
+// Shared factory: the navbar copy and the drawer copy are both built with
+// this, and they stay in sync through the 'orbitx-sound-change' event.
+function createSoundToggle() {
+  const soundBtn = document.createElement('button');
+  soundBtn.className = 'sound-toggle is-muted';
+  soundBtn.type = 'button';
+  const soundIcon = document.createElement('span');
+  soundIcon.className = 'sound-icon';
+  soundIcon.setAttribute('aria-hidden', 'true');
+  // Crisp inline SVG speaker: waves appear only when sound is ON, so the
+  // icon itself communicates the state (not just the text next to it).
+  soundIcon.innerHTML =
+    '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" ' +
+    'stroke="currentColor" stroke-width="1.9" stroke-linecap="round" ' +
+    'stroke-linejoin="round" focusable="false">' +
+    '<path d="M11 5L6.5 9H3v6h3.5L11 19V5z" fill="currentColor" stroke="none"/>' +
+    '<path class="sound-wave sound-wave-1" d="M14.5 9.2a4 4 0 010 5.6"/>' +
+    '<path class="sound-wave sound-wave-2" d="M17.6 6.6a7.8 7.8 0 010 10.8"/>' +
+    '<path class="sound-mute" d="M15 9.5l5 5M20 9.5l-5 5"/>' +
+    '</svg>';
+  const soundLabel = document.createElement('span');
+  soundLabel.className = 'sound-label';
+  soundLabel.setAttribute('aria-hidden', 'true');
+  soundLabel.textContent = 'Sound OFF';
+  soundBtn.appendChild(soundIcon);
+  soundBtn.appendChild(soundLabel);
+
+  const sync = () => {
+    if (!window.audioManager) return;
+    const on = window.audioManager.isEnabled();
+    soundBtn.classList.toggle('is-muted', !on);
+    soundBtn.setAttribute('aria-pressed', String(on));
+    soundBtn.setAttribute('aria-label', on ? 'Turn sound off' : 'Turn sound on');
+    soundBtn.title = on ? 'Sound ON - click to mute' : 'Sound OFF - click to enable';
+    soundLabel.textContent = on ? 'Sound ON' : 'Sound OFF';
+    soundIcon.classList.toggle('is-on', on);
+    soundIcon.classList.toggle('is-off', !on);
+  };
+
+  soundBtn.addEventListener('click', () => {
+    if (!window.audioManager) return;
+    const wasOn = window.audioManager.isEnabled();
+    window.audioManager.setEnabled(!wasOn);
+    if (!wasOn) {
+      // Turning sound back on: immediate audible feedback + warm the story
+      // sounds so they play without delay when the user reaches them.
+      window.audioManager.play('ui', 'toggle-switch', { volume: 0.5 });
+      window.audioManager.warmUp([
+        { category: 'transitions', name: 'magical-reveal' },
+        { category: 'transitions', name: 'scene-transition' },
+        { category: 'interactions', name: 'ghost-appear' }
+      ]);
+    }
+    sync();
+    // Tell every other copy (navbar <-> drawer) to refresh.
+    window.dispatchEvent(new CustomEvent('orbitx-sound-change', {
+      detail: { enabled: !wasOn }
+    }));
+  });
+
+  document.addEventListener('orbitx-sound-change', sync);
+  sync();
+  // audioManager.js may load just after this button (deferred on some pages);
+  // poll briefly so the button reflects the real state instead of staying
+  // muted. On pages with no audio manager at all it simply stays OFF.
+  if (!window.audioManager) {
+    let tries = 0;
+    const wait = () => {
+      if (window.audioManager) { sync(); return; }
+      if (++tries < 80) setTimeout(wait, 40);
+    };
+    setTimeout(wait, 40);
+  }
+  return soundBtn;
+}
+
 (function initSoundUI() {
   // This block injects the global sound toggle. It must run AFTER
   // audioManager.js has defined window.audioManager, otherwise the button
@@ -980,10 +1109,10 @@ function buildSoundUI() {
     themeBtn.setAttribute('aria-pressed', 'false');
     const icon = document.createElement('span');
     icon.className = 'theme-icon';
-    icon.textContent = '\u{1F319}';
+    // themeManager.bindToggle fills the sun/moon SVG for the current mode.
     const label = document.createElement('span');
     label.className = 'theme-label';
-    label.textContent = 'Dark';
+    label.textContent = 'Light';
     themeBtn.appendChild(icon);
     themeBtn.appendChild(label);
     if (window.themeManager) window.themeManager.bindToggle(themeBtn);
@@ -991,30 +1120,9 @@ function buildSoundUI() {
 
   // Global sound ON/OFF toggle, injected next to the theme toggle on every
   // page so the control stays consistent without editing 9 HTML files.
+  // Built with the shared factory so the drawer copy stays in sync.
   if (!document.querySelector('.sound-toggle')) {
-    const soundBtn = document.createElement('button');
-    soundBtn.className = 'sound-toggle is-muted';
-    soundBtn.type = 'button';
-    const soundIcon = document.createElement('span');
-    soundIcon.className = 'sound-icon';
-    soundIcon.setAttribute('aria-hidden', 'true');
-    // Crisp inline SVG speaker: waves appear only when sound is ON, so the
-    // icon itself communicates the state (not just the text next to it).
-    soundIcon.innerHTML =
-      '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" ' +
-      'stroke="currentColor" stroke-width="1.9" stroke-linecap="round" ' +
-      'stroke-linejoin="round" focusable="false">' +
-      '<path d="M11 5L6.5 9H3v6h3.5L11 19V5z" fill="currentColor" stroke="none"/>' +
-      '<path class="sound-wave sound-wave-1" d="M14.5 9.2a4 4 0 010 5.6"/>' +
-      '<path class="sound-wave sound-wave-2" d="M17.6 6.6a7.8 7.8 0 010 10.8"/>' +
-      '<path class="sound-mute" d="M15 9.5l5 5M20 9.5l-5 5"/>' +
-      '</svg>';
-    const soundLabel = document.createElement('span');
-    soundLabel.className = 'sound-label';
-    soundLabel.setAttribute('aria-hidden', 'true');
-    soundLabel.textContent = 'Sound OFF';
-    soundBtn.appendChild(soundIcon);
-    soundBtn.appendChild(soundLabel);
+    const soundBtn = createSoundToggle();
     themeBtn.insertAdjacentElement('afterend', soundBtn);
 
     // On navbar-less pages, park both buttons in a fixed top-right group.
@@ -1025,38 +1133,6 @@ function buildSoundUI() {
       wrap.appendChild(themeBtn);
       wrap.appendChild(soundBtn);
     }
-
-    const syncSoundUI = () => {
-      if (!window.audioManager) return;
-      const on = window.audioManager.isEnabled();
-      soundBtn.classList.toggle('is-muted', !on);
-      soundBtn.setAttribute('aria-pressed', String(on));
-      soundBtn.setAttribute('aria-label', on ? 'Turn sound off' : 'Turn sound on');
-      soundBtn.title = on ? 'Sound ON - click to mute' : 'Sound OFF - click to enable';
-      soundLabel.textContent = on ? 'Sound ON' : 'Sound OFF';
-      // The SVG shows sound waves when ON and a mute cross when OFF.
-      soundIcon.classList.toggle('is-on', on);
-      soundIcon.classList.toggle('is-off', !on);
-    };
-    syncSoundUI();
-
-    soundBtn.addEventListener('click', () => {
-      if (!window.audioManager) return;
-      const wasOn = window.audioManager.isEnabled();
-      window.audioManager.setEnabled(!wasOn);
-      if (!wasOn) {
-        // Turning sound back on: immediate audible feedback.
-        window.audioManager.play('ui', 'toggle-switch', { volume: 0.5 });
-        // Preload the story/interaction sounds in the background so they
-        // play without delay when the user reaches them.
-        window.audioManager.warmUp([
-          { category: 'transitions', name: 'magical-reveal' },
-          { category: 'transitions', name: 'scene-transition' },
-          { category: 'interactions', name: 'ghost-appear' }
-        ]);
-      }
-    });
-    window.addEventListener('orbitx-sound-change', syncSoundUI);
   }
 }
 

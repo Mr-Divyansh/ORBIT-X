@@ -79,6 +79,49 @@ img {
   max-width: 100%;
 }
 
+/* ---------------------------------------------------------------------------
+   Accessibility utilities
+   --------------------------------------------------------------------------- */
+
+/* Skip link: first focusable element on every page, hidden until keyboard
+   focus lands on it. */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 10050;
+  padding: 12px 20px;
+  background: var(--purple-deep);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(40, 27, 61, 0.25);
+  transform: translateY(-200%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Visually hidden but available to assistive tech (live status region). */
+.vh-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* The homepage reference shows a clean, borderless hero, so this hook renders
    nothing. Kept (not deleted) in case layout code references it. */
 .page-frame {
@@ -91,12 +134,11 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 26px;
-  /* Medium height (68px): balanced between the oversized 76px original and
-     the over-compacted 58px pass. Logo capped by max-height so the wide
-     artwork can't stretch the bar back open. */
-  min-height: 68px;
-  padding: 6px 5%;
+  gap: 20px;
+  /* Medium height (72px): room for the larger, clearly visible brand mark
+     while keeping a slim, premium profile. */
+  min-height: 72px;
+  padding: 6px 4.5%;
   border-bottom: 1px solid var(--line);
   background: var(--bg-navbar);
   backdrop-filter: blur(8px);
@@ -105,10 +147,16 @@ img {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 13px;
+  gap: 11px;
   flex-shrink: 0;
   color: var(--ink);
   text-decoration: none;
+  border-radius: 12px;
+}
+
+.brand:focus-visible {
+  outline: 3px solid rgba(152, 113, 221, 0.55);
+  outline-offset: 3px;
 }
 
 .brand span {
@@ -120,10 +168,11 @@ img {
 }
 
 .brand-logo-img {
-  width: 112px;
-  /* Cap the rendered height: Logo.png is a 1024x1024 banner with large
-     transparent padding, so without this the image box inflates the bar. */
-  max-height: 52px;
+  /* Clearly visible brand mark on desktop. Logo.png is a 1024x1024 banner
+     with transparent padding, so height is capped to keep the bar slim and
+     object-fit keeps the intrinsic aspect ratio (never stretched). */
+  width: 148px;
+  max-height: 58px;
   height: auto;
   flex-shrink: 0;
   object-fit: contain;
@@ -158,16 +207,18 @@ img {
   position: relative;
   display: inline-flex;
   align-items: center;
+  min-height: 42px;
   /* Fluid horizontal padding keeps the row from overflowing on mid-size
      screens (768-1024px) where brand + links + both toggles compete
      for horizontal space. */
-  padding: 8px clamp(12px, 1.35vw, 25px);
+  padding: 8px clamp(12px, 1.2vw, 20px);
   color: var(--ink-soft);
-  font-size: clamp(15px, 1.35vw, 21px);
-  font-weight: 600;
+  font-size: clamp(15px, 1.1vw, 17px);
+  font-weight: 700;
   text-decoration: none;
   white-space: nowrap;
-  transition: color 0.2s ease;
+  border-radius: 12px;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 /* Slim separators between nav items, matching the light "|" dividers in the
@@ -183,40 +234,42 @@ img {
   transform: translateY(-50%);
 }
 
-.nav-links a::after {
-  /* Kept as an always-hidden hook so future underline styles have one place
-     to live. Never sized here: the Home underline is intentionally removed. */
-  content: "";
-  position: absolute;
-  left: 25px;
-  bottom: 2px;
-  width: 0;
-  height: 0;
-  border-radius: 10px;
-  background: transparent;
-}
-
-/* Active Home item: the task explicitly removes the underline pill,
-   so Home is marked only by ink color (no ::after bar anywhere). */
-.nav-links a:hover,
-.nav-links a.active {
+/* Active page: soft lavender pill + ink text so the current location reads
+   through shape and color, not color alone. */
+.nav-links a:hover {
   color: var(--ink);
+  background: rgba(152, 113, 221, 0.09);
 }
 
-/* Keyboard focus stays visible even though the underline was removed. */
+.nav-links a.active {
+  color: var(--purple-deep);
+  background: rgba(152, 113, 221, 0.13);
+}
+
+[data-theme="dark"] .nav-links a.active {
+  color: #cdb6f5;
+}
+
+/* Keyboard focus stays visible on every item. */
 .nav-links a:focus-visible {
   outline: 3px solid rgba(152, 113, 221, 0.5);
-  outline-offset: 4px;
-  border-radius: 8px;
+  outline-offset: 2px;
 }
 
 .menu-toggle {
   display: none;
-  padding: 8px;
+  padding: 10px;
+  min-width: 44px;
+  min-height: 44px;
   background: none;
   border: 0;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.menu-toggle:hover {
+  background: var(--paper-mist);
 }
 
 .menu-toggle span {
@@ -231,7 +284,7 @@ img {
 /* Keep the hamburger keyboard-operable: visible focus, no extra border. */
 .menu-toggle:focus-visible {
   outline: 3px solid rgba(152, 113, 221, 0.5);
-  outline-offset: 4px;
+  outline-offset: 2px;
 }
 
 .hero {
@@ -1117,11 +1170,7 @@ h1.typing-done .typing-line:last-child::after {
     padding: 12px 16px;
   }
 
-  .nav-links a::after {
-    left: 16px;
-  }
-
-  /* No underline pill: Home/active is color-only (see base nav rules). */
+  /* No underline pill: active state is the lavender pill (base nav rules). */
 
   .hero {
     padding-left: 5%;
@@ -1216,12 +1265,14 @@ h1.typing-done .typing-line:last-child::after {
     display: none;
   }
 
-  .nav-links a::after {
-    left: 16px;
-    bottom: 5px;
-  }
+  /* No underline pill: active state is the lavender pill (base nav rules). */
 
-  /* No underline pill: Home/active is color-only (see base nav rules). */
+  .navbar .theme-toggle,
+  .navbar .sound-toggle {
+    /* On phones the theme + sound controls live inside the opened drawer
+       (see js/script.js drawer controls) so the bar stays uncluttered. */
+    display: none;
+  }
 
   .hero {
     display: flex;
@@ -1240,8 +1291,9 @@ h1.typing-done .typing-line:last-child::after {
   .eyebrow {
     display: block;
     margin: 0 0 13px 3px;
-    color: #9674c9;
-    font-size: 10px;
+    /* Darkened from #9674c9 to clear WCAG AA 4.5:1 on the cream background. */
+    color: #7a55b8;
+    font-size: 12px;
     font-weight: 900;
     letter-spacing: 2px;
   }
@@ -1719,7 +1771,7 @@ h1.typing-done .typing-line:last-child::after {
   z-index: 2;
   top: 67%;
   color: #625572;
-  font-size: 9px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 900;
   letter-spacing: 0.8px;
@@ -2218,8 +2270,9 @@ h1.typing-done .typing-line:last-child::after {
 
 .storybook__finale-kicker {
   margin-bottom: 13px;
-  color: #756299;
-  font-size: 10px;
+  /* Darkened from #756299 for WCAG AA on cream at small sizes. */
+  color: #65518c;
+  font-size: 12px;
   font-weight: 900;
   letter-spacing: 2px;
 }
@@ -3242,18 +3295,21 @@ h1.typing-done .typing-line:last-child::after {
   position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 6px 14px;
-  background: var(--paper-mist);
+  min-height: 40px;
+  padding: 8px 14px;
+  background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 12px;
   color: var(--ink);
   font-family: inherit;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   margin-left: 12px;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
   white-space: nowrap;
 }
 
@@ -3261,6 +3317,7 @@ h1.typing-done .typing-line:last-child::after {
   background: var(--paper-mist);
   border-color: var(--purple);
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(152, 113, 221, 0.18);
 }
 
 .theme-toggle:focus-visible {
@@ -3268,9 +3325,18 @@ h1.typing-done .typing-line:last-child::after {
   outline-offset: 2px;
 }
 
+/* Pressed/dark state: filled lavender control, sun icon swaps to moon in JS.
+   State is communicated by icon shape + label text, never color alone. */
 .theme-toggle[aria-pressed="true"] {
   background: var(--purple);
+  border-color: var(--purple);
   color: #fff;
+  box-shadow: 0 4px 14px rgba(152, 113, 221, 0.32);
+}
+
+.theme-toggle[aria-pressed="true"]:hover {
+  background: #7d54c4;
+  border-color: #7d54c4;
 }
 
 .theme-toggle:active {
@@ -3278,8 +3344,17 @@ h1.typing-done .typing-line:last-child::after {
 }
 
 .theme-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 16px;
   line-height: 1;
+}
+
+.theme-icon svg {
+  display: block;
+  width: 18px;
+  height: 18px;
 }
 
 .theme-label {
@@ -3603,6 +3678,29 @@ body.nav-drawer-open {
 /* Drawer sound settings */
 .nav-drawer__sound {
   padding: 18px 24px 6px;
+}
+
+/* Theme + sound controls shown inside the opened drawer (mobile). They mirror
+   the navbar controls and stay in sync via themeManager/audioManager. */
+.nav-drawer__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 24px 4px;
+  border-top: 1px solid var(--line);
+}
+
+.nav-drawer__controls .theme-toggle,
+.nav-drawer__controls .sound-toggle {
+  margin-left: 0;
+  flex: 1 1 auto;
+  justify-content: center;
+}
+
+.nav-drawer__controls .sound-label,
+.nav-drawer__controls .theme-label {
+  display: inline;
 }
 
 .nav-drawer__sound h3 {
