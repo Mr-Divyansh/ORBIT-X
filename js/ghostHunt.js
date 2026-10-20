@@ -1,8 +1,9 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const gameArea = document.getElementById('gh-playfield');
   const darkness = document.getElementById('gh-darkness');
   const lantern = document.getElementById('gh-lantern');
-  const staff = document.getElementById('gh-staff');\n  const interactionCircle = document.getElementById('gh-interaction-circle');
+  const staff = document.getElementById('gh-staff');
+  const interactionCircle = document.getElementById('gh-interaction-circle');
   const ghostsContainer = document.getElementById('gh-ghosts-container');
   const uiLayer = document.getElementById('gh-ui-layer');
   const instructionEl = document.getElementById('gh-instruction');
@@ -21,8 +22,13 @@
   let capturedCount = 0;
   let purifiedCount = 0;
   let isSoundOn = false;
-  let activeTool = null;\n  let lanternX = 5;\n  let lanternY = 80;
+  let activeTool = null;
   let audioCtx = null;
+  let lanternX = 5;
+  let lanternY = 80;
+  let currentDragEl = null;
+  let dragOffsetX = 0;
+  let dragOffsetY = 0;
 
   function initAudio() {
     if (!audioCtx) {
@@ -45,7 +51,6 @@
     osc.connect(gain);
     gain.connect(audioCtx.destination);
     const now = audioCtx.currentTime;
-    
     if (type === 'discover') {
       osc.type = 'sine';
       osc.frequency.setValueAtTime(440, now);
@@ -85,7 +90,7 @@
     }
   }
 
-  function updateToolPositions() {\n    lantern.style.left = 'calc(' + lanternX + '% - ' + (lantern.offsetWidth / 2) + 'px)';\n    lantern.style.top = 'calc(' + lanternY + '% - ' + (lantern.offsetHeight / 2) + 'px)';\n    interactionCircle.style.left = 'calc(' + lanternX + '% - 20px)';\n    interactionCircle.style.top = 'calc(' + lanternY + '% - 20px)';\n  }\n\n  function updateToolPositions() {
+  function updateToolPositions() {
     lantern.style.left = 'calc(' + lanternX + '% - ' + (lantern.offsetWidth / 2) + 'px)';
     lantern.style.top = 'calc(' + lanternY + '% - ' + (lantern.offsetHeight / 2) + 'px)';
     interactionCircle.style.left = 'calc(' + lanternX + '% - 20px)';
@@ -99,7 +104,6 @@
     capturedCount = 0;
     purifiedCount = 0;
     updateStats();
-    
     for (let i = 0; i < TOTAL_GHOSTS; i++) {
       const ghost = {
         id: i,
@@ -108,7 +112,6 @@
         state: 'hidden',
         el: document.createElement('div')
       };
-      
       ghost.el.className = 'gh-ghost';
       ghost.el.style.left = ghost.x + '%';
       ghost.el.style.top = ghost.y + '%';
@@ -116,17 +119,11 @@
       ghostsContainer.appendChild(ghost.el);
       ghosts.push(ghost);
     }
-    
-    lantern.style.transform = 'none';
-    lantern.style.left = '5%';
-    lantern.style.top = '80%';
-    
-    staff.style.transform = 'none';
-    staff.style.left = '85%';
-    staff.style.top = '80%';
-    
+    lanternX = 5;
+    lanternY = 80;
+    updateToolPositions();
     updateDarknessMask(null);
-    instructionEl.textContent = 'Drag the lantern to explore the dark room...';
+    instructionEl.textContent = 'Drag the lantern or the yellow circle to explore the dark room...';
     victoryOverlay.classList.add('hidden');
   }
 
@@ -148,6 +145,7 @@
     }, 3000);
   }
 
+
   function updateDarknessMask(pos) {
     if (!pos) {
       darkness.style.maskImage = 'none';
@@ -161,14 +159,14 @@
     darkness.style.webkitMaskImage = gradient;
     darkness.style.backgroundColor = 'rgba(10, 5, 20, 0.95)';
   }
-  
+
   function checkRevealGhosts(pos) {
-    const revealRadius = 20; 
+    const revealRadius = 20;
     ghosts.forEach(ghost => {
       if (ghost.state === 'hidden') {
         const dx = ghost.x - pos.x;
         const dy = ghost.y - pos.y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
+        const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < revealRadius) {
           ghost.state = 'discovered';
           ghost.el.classList.add('discovered');
@@ -180,7 +178,7 @@
       }
     });
   }
-  
+
   function handleGhostClick(e, ghost) {
     e.preventDefault();
     e.stopPropagation();
@@ -188,7 +186,6 @@
     ghost.isCapturing = true;
     let step = 1;
     const maxSteps = 3;
-    
     function runStep() {
       if (step > maxSteps) {
         ghost.state = 'captured';
@@ -208,27 +205,24 @@
     }
     runStep();
   }
-  
-  function showIndicator(targetEl, text, color = '#bca0ef') {
+
+  function showIndicator(targetEl, text, color) {
     const ind = document.createElement('div');
     ind.className = 'gh-capture-indicator';
     ind.textContent = text;
-    ind.style.color = color;
-    
+    ind.style.color = color || '#bca0ef';
     const rect = targetEl.getBoundingClientRect();
     const areaRect = gameArea.getBoundingClientRect();
     const x = rect.left - areaRect.left + rect.width / 2;
     const y = rect.top - areaRect.top + rect.height / 2;
-    
     ind.style.left = x + 'px';
     ind.style.top = y + 'px';
     uiLayer.appendChild(ind);
-    
     setTimeout(() => {
       if (uiLayer.contains(ind)) ind.remove();
     }, 600);
   }
-  
+
   function showSparkles(x, y, color) {
     for (let i = 0; i < 5; i++) {
       const spark = document.createElement('div');
@@ -243,6 +237,7 @@
     }
   }
 
+
   function checkStaffPurify(posRect) {
     const staffCenterX = posRect.left + posRect.width / 2;
     const staffCenterY = posRect.top + posRect.height / 2;
@@ -250,24 +245,22 @@
     const staffRelX = ((staffCenterX - areaRect.left) / areaRect.width) * 100;
     const staffRelY = ((staffCenterY - areaRect.top) / areaRect.height) * 100;
     const purifyRadius = 15;
-    
     ghosts.forEach(ghost => {
       if (ghost.state === 'captured' && !ghost.isPurifying) {
         const dx = ghost.x - staffRelX;
         const dy = ghost.y - staffRelY;
-        const dist = Math.sqrt(dx*dx + dy*dy);
+        const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < purifyRadius) {
           purifyGhost(ghost);
         }
       }
     });
   }
-  
+
   function purifyGhost(ghost) {
     ghost.isPurifying = true;
     let step = 1;
     const maxSteps = 3;
-    
     function runStep() {
       if (step > maxSteps) {
         ghost.state = 'purified';
@@ -291,9 +284,6 @@
     runStep();
   }
 
-  let currentDragEl = null;
-  let dragOffsetX = 0;
-  let dragOffsetY = 0;
 
   function onPointerDown(e) {
     if (e.target === lantern) {
@@ -302,6 +292,9 @@
     } else if (e.target === staff) {
       currentDragEl = staff;
       activeTool = 'staff';
+    } else if (e.target === interactionCircle || e.target.parentElement === interactionCircle) {
+      currentDragEl = interactionCircle;
+      activeTool = 'circle';
     } else {
       return;
     }
@@ -309,14 +302,20 @@
     initAudio();
     const rect = currentDragEl.getBoundingClientRect();
     const areaRect = gameArea.getBoundingClientRect();
-    const startLeft = ((rect.left - areaRect.left) / areaRect.width) * 100;
-    const startTop = ((rect.top - areaRect.top) / areaRect.height) * 100;
-    currentDragEl.style.left = startLeft + '%';
-    currentDragEl.style.top = startTop + '%';
+    if (activeTool === 'circle') {
+      const circleCenterX = rect.left + rect.width / 2;
+      const circleCenterY = rect.top + rect.height / 2;
+      lanternX = ((circleCenterX - areaRect.left) / areaRect.width) * 100;
+      lanternY = ((circleCenterY - areaRect.top) / areaRect.height) * 100;
+      updateToolPositions();
+    } else if (activeTool === 'lantern') {
+      lanternX = ((rect.left - areaRect.left) / areaRect.width) * 100;
+      lanternY = ((rect.top - areaRect.top) / areaRect.height) * 100;
+    }
     const clientX = e.clientX || (e.touches && e.touches[0].clientX);
     const clientY = e.clientY || (e.touches && e.touches[0].clientY);
-    dragOffsetX = clientX - rect.left - (rect.width/2);
-    dragOffsetY = clientY - rect.top - (rect.height/2);
+    dragOffsetX = clientX - rect.left - (rect.width / 2);
+    dragOffsetY = clientY - rect.top - (rect.height / 2);
     currentDragEl.setPointerCapture(e.pointerId);
   }
 
@@ -332,20 +331,24 @@
     let percY = (y / areaRect.height) * 100;
     percX = Math.max(5, Math.min(95, percX));
     percY = Math.max(5, Math.min(95, percY));
-    currentDragEl.style.left = 'calc(' + percX + '% - ' + (currentDragEl.offsetWidth/2) + 'px)';
-    currentDragEl.style.top = 'calc(' + percY + '% - ' + (currentDragEl.offsetHeight/2) + 'px)';
-    if (activeTool === 'lantern') {
-      updateDarknessMask({x: percX, y: percY});
-      checkRevealGhosts({x: percX, y: percY});
+    if (activeTool === 'lantern' || activeTool === 'circle') {
+      lanternX = percX;
+      lanternY = percY;
+      updateToolPositions();
+      updateDarknessMask({ x: lanternX, y: lanternY });
+      checkRevealGhosts({ x: lanternX, y: lanternY });
     } else if (activeTool === 'staff') {
-      checkStaffPurify(currentDragEl.getBoundingClientRect());
+      staff.style.left = 'calc(' + percX + '% - ' + (staff.offsetWidth / 2) + 'px)';
+      staff.style.top = 'calc(' + percY + '% - ' + (staff.offsetHeight / 2) + 'px)';
+      checkStaffPurify(staff.getBoundingClientRect());
     }
   }
 
   function onPointerUp(e) {
     if (currentDragEl) {
-      currentDragEl.releasePointerCapture(e.pointerId);
+      try { currentDragEl.releasePointerCapture(e.pointerId); } catch (err) { /* ignore */ }
       currentDragEl = null;
+      activeTool = null;
     }
   }
 
@@ -354,9 +357,6 @@
   interactionCircle.addEventListener('pointerdown', onPointerDown);
   document.addEventListener('pointermove', onPointerMove, { passive: false });
   document.addEventListener('pointerup', onPointerUp);
-  lantern.addEventListener('touchstart', (e) => { e.preventDefault(); }, { passive: false });
-  staff.addEventListener('touchstart', (e) => { e.preventDefault(); }, { passive: false });
-  interactionCircle.addEventListener('touchstart', (e) => { e.preventDefault(); }, { passive: false });
   document.addEventListener('touchmove', (e) => {
     if (currentDragEl) e.preventDefault();
   }, { passive: false });
@@ -368,7 +368,7 @@
     soundBtn.classList.toggle('button-secondary', !isSoundOn);
     initAudio();
   });
-  
+
   restartBtn.addEventListener('click', initGhosts);
   playAgainBtn.addEventListener('click', initGhosts);
 
@@ -380,11 +380,4 @@
 
   initGhosts();
 });
-
-
-
-
-
-
-
 
