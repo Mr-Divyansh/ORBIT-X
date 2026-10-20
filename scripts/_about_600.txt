@@ -1,0 +1,125 @@
+596:                 class="gadget-sparkle"
+597:                 src="Assets/img/icons/sparkle-lavender.svg"
+598:                 alt=""
+599:                 aria-hidden="true"
+600:               />
+601:             </div>
+602:             <div class="gadget-copy">
+603:               <p class="gadget-number">02 PURIFY &amp; GUIDE</p>
+604:               <h3>The Dreamweaver Wand</h3>
+605:               <p>
+606:                 DivyanshG��s twisted wand focuses calm, caring magic. It purifies
+607:                 troubled ghosts and helps open a safe route through a childG��s
+608:                 dream world.
+609:               </p>
+610:               <ul>
+611:                 <li>Turns restless spirits gentle and friendly</li>
+612:                 <li>Guides the friends through dream journeys</li>
+613:                 <li>Helps little dreamers meet fear with courage</li>
+614:               </ul>
+615:               <span class="gadget-signature">
+616:                 <img src="Assets/img/icons/sparkle-lavender.svg" alt="" />
+617:                 DivyanshG��s signature gadget
+618:               </span>
+619:             </div>
+620:           </article>
+621:         </div>
+622:       </section>
+623: 
+624:       <section class="promise-section shell reveal" aria-labelledby="promise-title">
+625:         <div class="promise-art">
+626:           <img
+627:             src="Assets/img/TogetherNoBg.png"
+628:             alt="Abhay and Divyansh sharing a magical moment together"
+629:             width="640"
+630:             height="480"
+631:             loading="lazy"
+632:           />
+633:           <img
+634:             class="promise-pumpkin"
+635:             src="Assets/img/icons/pumpkin trans.png"
+636:             alt=""
+637:             aria-hidden="true"
+638:           />
+639:           <img
+640:             class="promise-ghost"
+641:             src="Assets/img/icons/ghost trans.png"
+642:             alt=""
+643:             aria-hidden="true"
+644:           />
+645:           <img
+646:             class="promise-bat"
+647:             src="Assets/img/icons/bat trans.png"
+648:             alt=""
+649:             aria-hidden="true"
+650:           />
+651:         </div>
+652:         <div class="promise-copy">
+653:           <p class="section-kicker">THE PROMISE OF ORBIT-X</p>
+654:           <h2 id="promise-title">
+655:             Because every child deserves a <span>dream without fear.</span>
+656:           </h2>
+657:           <p>
+658:             One lamp to find the way. One wand to make it safe. Two friends who
+659:             never leave a little dreamer behind.
+660:           </p>
+661:           <a class="button button-primary" href="stories/index.html">
+662:             Explore their stories 
+663:           </a>
+664:         </div>
+665:       </section>
+666:     </main>
+667: 
+668:     <footer class="orbit-footer" id="site-footer" aria-labelledby="footer-title">
+669:   <div class="orbit-footer__decor" aria-hidden="true">
+670:     <span class="orbit-footer__bat orbit-footer__bat--one"><img src="Assets/img/icons/bat trans.png" alt="" loading="lazy" /></span>
+671:     <span class="orbit-footer__bat orbit-footer__bat--two"><img src="Assets/img/icons/bat trans.png" alt="" loading="lazy" /></span>
+672:     <span class="orbit-footer__ghost orbit-footer__ghost--one"><img src="Assets/img/icons/ghost-cute.svg" alt="" loading="lazy" /></span>
+673:     <span class="orbit-footer__ghost orbit-footer__ghost--two"><img src="Assets/img/icons/ghost-cute.svg" alt="" loading="lazy" /></span>
+674:     <span class="orbit-footer__pumpkin orbit-footer__pumpkin--left"><img src="Assets/img/icons/pumpkin trans.png" alt="" loading="lazy" /></span>
+675:     <span class="orbit-footer__pumpkin orbit-footer__pumpkin--right"><img src="Assets/img/icons/pumpkin trans.png" alt="" loading="lazy" /></span>
+676:     <span class="orbit-footer__spark orbit-footer__spark--one"><img src="Assets/img/icons/sparkle-yellow.svg" alt="" loading="lazy" /></span>
+677:     <span class="orbit-footer__spark orbit-footer__spark--two"><img src="Assets/img/icons/sparkle-lavender.svg" alt="" loading="lazy" /></span>
+678:   </div>
+679: 
+680:   <div class="orbit-footer__inner">
+681:     <section class="orbit-footer__cta footer-reveal" aria-labelledby="footer-title">
+682:       <span class="orbit-footer__eyebrow">OUR NEXT CHAPTER STARTS HERE</span>
+683:       <h2 id="footer-title">Ready for Your Next Magical Adventure?</h2>
+684:       <p>Step into the ORBIT-X universe and discover what happens when friendship meets a little Halloween magic.</p>
+685:       <a class="button button-primary orbit-footer__cta-button" href="Exploration.html">
+686:         Explore Our Universe <span aria-hidden="true">→</span>
+687:       </a>
+688:     </section>
+689: 
+690:     <div class="orbit-footer__main">
+691:       <section class="orbit-footer__brand footer-reveal" aria-labelledby="footer-brand">
+692:         <a class="orbit-footer__logo" href="#home" aria-label="ORBIT-X home">
+693:           <img src="Assets/img/Logo.png" alt="ORBIT-X logo" class="orbit-footer__logo-img" />
+694:         </a>
+695:         <p class="orbit-footer__tagline">Two Friends. One Magical Universe.</p>
+696:         <p class="orbit-footer__description">Meet Abhay and Divyansh — Halloween Helpers and Ghost Purificators who turn spooky nights into magical adventures and guide children safely out of their nightmares.</p>
+697:         <div class="orbit-footer__friends" aria-label="Abhay and Divyansh">
+698:           <img src="Assets/img/abhay bg solo.png" alt="Abhay in his yellow hoodie" loading="lazy" width="444" height="562" />
+699:           <img src="Assets/img/divyansh solo.png" alt="Divyansh in his black and white outfit" loading="lazy" width="444" height="562" />
+700:           <span aria-hidden="true">✦ &nbsp; best friends, always &nbsp; ✦</span>
+701:         </div>
+702:       </section>
+703: 
+704:       <nav class="orbit-footer__nav footer-reveal" aria-label="Explore">
+705:         <h3>Explore</h3>
+706:         <a href="#home">Home</a>
+707:         <a href="#about">About Us</a>
+708:         <a href="#story">Our Story</a>
+709:         <a href="#character-abhay">Characters</a>
+710:       </nav>
+711: 
+712:       <nav class="orbit-footer__nav footer-reveal" aria-label="The ORBIT-X Universe">
+713:         <h3>The ORBIT-X Universe</h3>
+714:         <a href="projects/halloween-helpers.html">Halloween Helpers</a>
+715:         <a href="projects/ghost-catchers.html">Ghost Purificators</a>
+716:         <a href="#gadget-lamp">Magical Gadgets</a>
+717:         <a href="Story.html">Dream Adventures</a>
+718:       </nav>
+719: 
+720:       <nav class="orbit-footer__nav orbit-footer__connect footer-reveal" aria-label="Connect">

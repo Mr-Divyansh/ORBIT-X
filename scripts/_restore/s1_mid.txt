@@ -1,0 +1,58 @@
+63:         <section class="read-scene" aria-labelledby="sc1-h">
+64:           <div class="scene-head"><span class="scene-index" aria-hidden="true">01</span><h2 id="sc1-h">The Dark Doorstep</h2></div>
+65:           <p class="scene-setting">Old quarter · Halloween night</p>
+66:           <p>The old quarter was quiet on Halloween night — too quiet for Abhay and Divyansh. Every house they passed had curtains drawn and porch lights off, as if the whole street had quietly decided not to celebrate.</p>
+67:           <p>Divyansh hugged his magic staff and frowned at the darkness ahead.</p>
+68:           <p class="line-dialogue"><strong>Divyansh:</strong> “No lights means no treats. No treats means no Halloween for the kids down here.”</p>
+69:           <p class="line-dialogue"><strong>Abhay:</strong> “Then we bring the Halloween to them.”</p>
+70:           <p>He lifted his lantern staff high, and its warm glow spilled across the pavement like a door being opened. Somewhere behind a curtain, a small face pressed closer to the glass — and for the first time that night, it smiled.</p>
+71:         </section>
+72: 
+73:         <section class="read-scene" aria-labelledby="sc2-h">
+74:           <div class="scene-head"><span class="scene-index" aria-hidden="true">02</span><h2 id="sc2-h">The First Lantern</h2></div>
+75:           <p class="scene-setting">The corner house</p>
+76:           <p>Their first stop was the house at the corner. A small face peeked from behind the curtain — a boy in a t-shirt costume that was clearly meant to be something braver.</p>
+77:           <p>Abhay knelt down and held out a carved pumpkin, its smile glowing from within. The boy stared at it as if it were a small sun that had wandered indoors.</p>
+78:           <p class="line-dialogue"><strong>Divyansh:</strong> “Happy Halloween.”</p>
+79:           <p>The boy smiled so wide it looked like his costume had finally come true. He took the pumpkin in both hands, and when he stepped outside with it, the porch light above him flickered on all by itself.</p>
+80:           <figure class="scene-art">
+81:             <div class="scene-frame banner-lantern">
+82:               <img src="Assets/img/icons/pumpkin trans.png" alt="A cheerful carved pumpkin glowing from within" width="150" height="120" loading="lazy" />
+83:             </div>
+84:             <figcaption>The first lantern of the night.</figcaption>
+85:           </figure>
+86:           <p>By the time the friends left, three more lanterns were swinging from the porch rail — and the street was no longer dark.</p>
+87:         </section>
+88: 
+89:         <section class="read-scene" aria-labelledby="sc3-h">
+90:           <div class="scene-head"><span class="scene-index" aria-hidden="true">03</span><h2 id="sc3-h">A Trail Of Light</h2></div>
+91:           <p class="scene-setting">Midnight · looking back</p>
+92:           <p>Door after door, the trail grew. Kids who had never knocked on a neighbour's house started joining the line, carrying lanterns of their own, handing out treats as fast as they received them. The skipped street turned into the brightest one in the old quarter.</p>
+93:           <p class="line-dialogue"><strong>Abhay:</strong> “Every doorstep has one.”</p>
+94:           <p class="line-dialogue"><strong>Divyansh:</strong> “Then the night's complete.”</p>
+95:           <figure class="scene-art">
+96:             <div class="scene-frame banner-lantern">
+97:               <img src="Assets/img/icons/sparkle-yellow.svg" alt="A yellow sparkle" width="90" height="90" loading="lazy" />
+98:             </div>
+99:             <figcaption>The last doorstep, finally lit.</figcaption>
+100:           </figure>
+101:           <p>When the clock struck midnight, Abhay and Divyansh stood at the end of the street and looked back. It was a river of lanterns — and every single doorstep had a light.</p>
+102:           <p class="line-dialogue"><strong>Divyansh:</strong> “Best Halloween ever.”</p>
+103:           <p class="line-dialogue"><strong>Abhay:</strong> “Until next year.”</p>
+104:           <p>He was already planning the next mission, because the street behind them did not stay kind on its own — it stayed kind because somebody kept carrying lanterns. And lanterns, it turns out, are the kind of treat that multiplies when you give it away.</p>
+105:         </section>
+106:       </article>
+107: 
+108:       <nav class="read-nav" aria-label="Story navigation">
+109:         <a class="button button-secondary" href="stories/index.html"><span aria-hidden="true">←</span> Back to Stories</a>
+110:         <a class="story-hop hop-next" href="Story2.html">
+111:           <span class="hop-label">Next story <span aria-hidden="true">→</span></span>
+112:           <span class="hop-title">The Dream Beyond the Shadows</span>
+113:         </a>
+114:       </nav>
+115: 
+116:       <footer class="orbit-footer" id="site-footer" aria-labelledby="footer-title">
+117:   <div class="orbit-footer__decor" aria-hidden="true">
+118:     <span class="orbit-footer__bat orbit-footer__bat--one"><img src="Assets/img/icons/bat trans.png" alt="" loading="lazy" /></span>
+119:     <span class="orbit-footer__bat orbit-footer__bat--two"><img src="Assets/img/icons/bat trans.png" alt="" loading="lazy" /></span>
+120:     <span class="orbit-footer__ghost orbit-footer__ghost--one"><img src="Assets/img/icons/ghost-cute.svg" alt="" loading="lazy" /></span>

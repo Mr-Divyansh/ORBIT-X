@@ -1,0 +1,105 @@
+481:           <p>Side by side, the friends turn frightening dreams into brave, beautiful adventures—one child, one kind moment, one little spark at a time.</p>
+482:         </div>
+483:       </article>
+484:     </div>
+485:   </div>
+486: 
+487:   <section class="storybook__finale story-reveal">
+488:     <span class="storybook__finale-moon" aria-hidden="true"></span>
+489:     <span class="storybook__finale-cloud storybook__finale-cloud--one" aria-hidden="true"></span>
+490:     <span class="storybook__finale-cloud storybook__finale-cloud--two" aria-hidden="true"></span>
+491:     <span class="storybook__finale-trail" aria-hidden="true"></span>
+492:     <span class="storybook__finale-spark storybook__finale-spark--one" aria-hidden="true"><img src="Assets/img/icons/sparkle-yellow.svg" alt="" loading="lazy" /></span>
+493:     <span class="storybook__finale-spark storybook__finale-spark--two" aria-hidden="true"><img src="Assets/img/icons/sparkle-lavender.svg" alt="" loading="lazy" /></span>
+494:     <span class="storybook__finale-ghost" aria-hidden="true"><img src="Assets/img/icons/ghost trans.png" alt="" loading="lazy" /></span>
+495:     <span class="storybook__finale-bat" aria-hidden="true"><img src="Assets/img/icons/bat trans.png" alt="" loading="lazy" /></span>
+496:     <span class="storybook__finale-pumpkin" aria-hidden="true"><img src="Assets/img/icons/pumpkin trans.png" alt="" loading="lazy" /></span>
+497:     <div class="storybook__finale-content">
+498:       <span class="storybook__finale-kicker">AND SO, A NEW DREAM BEGINS</span>
+499:       <span class="storybook__finale-sparkle" aria-hidden="true">✦</span>
+500:       <p>Because every child<br class="storybook__finale-break" /> deserves a dream without fear.</p>
+501:       <a class="storybook__finale-cta" href="Story.html">
+502:         <span class="storybook__finale-cta-icon" aria-hidden="true"><img src="Assets/img/icons/sparkle-yellow.svg" alt="" /></span>
+503:         Explore the Full Story
+504:         <span class="storybook__finale-cta-arrow" aria-hidden="true">→</span>
+505:       </a>
+506:       <span class="storybook__finale-footnote">A little courage. A little magic. A universe of possibility.</span>
+507:     </div>
+508:   </section>
+509: </section>
+510: 
+511: <footer class="orbit-footer" id="site-footer" aria-labelledby="footer-title">
+512:   <div class="orbit-footer__decor" aria-hidden="true">
+513:     <span class="orbit-footer__bat orbit-footer__bat--one"><img src="Assets/img/icons/bat trans.png" alt="" loading="lazy" /></span>
+514:     <span class="orbit-footer__bat orbit-footer__bat--two"><img src="Assets/img/icons/bat trans.png" alt="" loading="lazy" /></span>
+515:     <span class="orbit-footer__ghost orbit-footer__ghost--one"><img src="Assets/img/icons/ghost-cute.svg" alt="" loading="lazy" /></span>
+516:     <span class="orbit-footer__ghost orbit-footer__ghost--two"><img src="Assets/img/icons/ghost-cute.svg" alt="" loading="lazy" /></span>
+517:     <span class="orbit-footer__pumpkin orbit-footer__pumpkin--left"><img src="Assets/img/icons/pumpkin trans.png" alt="" loading="lazy" /></span>
+518:     <span class="orbit-footer__pumpkin orbit-footer__pumpkin--right"><img src="Assets/img/icons/pumpkin trans.png" alt="" loading="lazy" /></span>
+519:     <span class="orbit-footer__spark orbit-footer__spark--one"><img src="Assets/img/icons/sparkle-yellow.svg" alt="" loading="lazy" /></span>
+520:     <span class="orbit-footer__spark orbit-footer__spark--two"><img src="Assets/img/icons/sparkle-lavender.svg" alt="" loading="lazy" /></span>
+521:   </div>
+522: 
+523:   <div class="orbit-footer__inner">
+524:     <section class="orbit-footer__cta footer-reveal" aria-labelledby="footer-title">
+525:       <span class="orbit-footer__eyebrow">OUR NEXT CHAPTER STARTS HERE</span>
+526:       <h2 id="footer-title">Ready for Your Next Magical Adventure?</h2>
+527:       <p>Step into the ORBIT-X universe and discover what happens when friendship meets a little Halloween magic.</p>
+528:       <a class="button button-primary orbit-footer__cta-button" href="Exploration.html">
+529:         Explore Our Universe <span aria-hidden="true">→</span>
+530:       </a>
+531:     </section>
+532: 
+533:     <div class="orbit-footer__main">
+534:       <section class="orbit-footer__brand footer-reveal" aria-labelledby="footer-brand">
+535:         <a class="orbit-footer__logo" href="#home" aria-label="ORBIT-X home">
+536:           <img src="Assets/img/Logo.png" alt="ORBIT-X logo" class="orbit-footer__logo-img" width="96" height="96" loading="lazy" decoding="async" />
+537:         </a>
+538:         <p class="orbit-footer__tagline">Two Friends. One Magical Universe.</p>
+539:         <p class="orbit-footer__description">Meet Abhay and Divyansh — Halloween Helpers and Ghost Purificators who turn spooky nights into magical adventures and guide children safely out of their nightmares.</p>
+540:         <div class="orbit-footer__friends" aria-label="Abhay and Divyansh">
+541:           <img src="Assets/img/abhay bg solo.webp" alt="Abhay in his yellow hoodie" width="280" height="354" loading="lazy" decoding="async" />
+542:           <img src="Assets/img/divyansh solo.webp" alt="Divyansh in his black and white outfit" width="280" height="354" loading="lazy" decoding="async" />
+543:           <span aria-hidden="true">✦ &nbsp; best friends, always &nbsp; ✦</span>
+544:         </div>
+545:       </section>
+546: 
+547:       <nav class="orbit-footer__nav footer-reveal" aria-label="Explore">
+548:         <h3>Explore</h3>
+549:         <a href="#home">Home</a>
+550:         <a href="#about">About Us</a>
+551:         <a href="#story">Our Story</a>
+552:         <a href="#character-abhay">Characters</a>
+553:       </nav>
+554: 
+555:       <nav class="orbit-footer__nav footer-reveal" aria-label="The ORBIT-X Universe">
+556:         <h3>The ORBIT-X Universe</h3>
+557:         <a href="projects/halloween-helpers.html">Halloween Helpers</a>
+558:         <a href="projects/ghost-catchers.html">Ghost Purificators</a>
+559:         <a href="#gadget-lamp">Magical Gadgets</a>
+560:         <a href="Story.html">Dream Adventures</a>
+561:       </nav>
+562: 
+563:       <nav class="orbit-footer__nav orbit-footer__connect footer-reveal" aria-label="Connect">
+564:         <h3>Connect</h3>
+565:         <a href="https://github.com/Mr-Divyansh/ORBIT-X" target="_blank" rel="noopener noreferrer">
+566:           GitHub <span aria-hidden="true">↗</span>
+567:         </a>
+568:         <p>Follow the magic, explore the stories, and come along for the next adventure.</p>
+569:       </nav>
+570:     </div>
+571: 
+572:     <div class="orbit-footer__bottom">
+573:       <p>© <span data-current-year></span> ORBIT-X. All rights reserved.</p>
+574:       <span class="orbit-footer__bottom-star" aria-hidden="true">✦</span>
+575:       <p>Made with magic and friendship</p>
+576:     </div>
+577:   </div>
+578: </footer>
+579: 
+580:   <script src="js/themeManager.js" defer></script>
+581:   <script src="js/audioManager.js" defer></script>
+582:   <script src="js/script.js" defer></script>
+583: </body>
+584: </html>
+585: 

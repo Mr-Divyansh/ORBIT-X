@@ -1,0 +1,12 @@
+index.html :: home, about, character-abhay, gadget-lamp, character-divyansh, gadget-staff, teamwork-title, mission-title, story, story-title, site-footer, footer-title
+Exploration.html :: exp-hero-title, exp-title, projects, stories, stories-title, exp-footer-title
+about.html :: primary-navigation, home, hero-title, duo, duo-title, missions, missions-title, gadgets, gadgets-title, promise-title, site-footer, footer-title
+Story.html :: readingProgressBar, nav-links, main-content, scene-1, s1-title, scene-2, s2-title, scene-3, s3-title, scene-4, s4-title, scene-5, s5-title, scene-6, s6-title, scene-7, s7-title, closing-title
+credits.html :: main-content, team, stories, artwork, backgrounds, audio, tools, thanks, vision, site-footer, footer-title
+login.html :: main-content, welcome-title, login-form, email, password, forgot-link, form-message, google-button, signup-link
+projects/dream-guardians.html :: main-content, brief-h, cast-h, chal-h, story, world-h, rel-h, site-footer, footer-title
+projects/ghost-catchers.html :: main-content, brief-h, cast-h, chal-h, story, world-h, rel-h, site-footer, footer-title
+projects/halloween-helpers.html :: main-content, brief-h, cast-h, chal-h, story, world-h, rel-h, site-footer, footer-title
+games.html :: games
+ghost-hunt.html :: ghost-hunt-game, gh-discovered, gh-captured, gh-purified, gh-sound-btn, gh-restart-btn, gh-instruction, gh-playfield, gh-ghosts-container, gh-darkness, gh-tools-container, gh-lantern, gh-staff, gh-interaction-circle, gh-ui-layer, gh-victory-overlay, gh-victory-count, gh-play-again
+story2.html :: currentCount, prevBtn, sceneDots, nextBtn, storyGrid, replayBtn

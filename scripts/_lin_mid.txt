@@ -1,0 +1,143 @@
+=== 4ef9070 2026-10-19 index on main: 239ee84 I AM IFIX ALL THINKG
+   Story1.html  48f34a794b size=17242 conflict=true moji=0
+   Story2.html  fa261cf752 size=12011 conflict=false moji=0
+   Story3.html  3a47f1482b size=12537 conflict=false moji=0
+   stories/index.html  -
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  c8af1aba73 size=29720 conflict=false moji=0
+
+=== aae2e1f 2026-10-19 go
+   Story1.html  48f34a794b size=17242 conflict=true moji=0
+   Story2.html  fa261cf752 size=12011 conflict=false moji=0
+   Story3.html  3a47f1482b size=12537 conflict=false moji=0
+   stories/index.html  -
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  c8af1aba73 size=29720 conflict=false moji=0
+
+=== 69984c2 2026-10-19 gu
+   Story1.html  48f34a794b size=17242 conflict=true moji=0
+   Story2.html  fa261cf752 size=12011 conflict=false moji=0
+   Story3.html  3a47f1482b size=12537 conflict=false moji=0
+   stories/index.html  e07d17e530 size=12006 conflict=false moji=0
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  c8af1aba73 size=29720 conflict=false moji=0
+
+=== 6bfd925 2026-10-19 main toh tut gya
+   Story1.html  566f26641e size=6991 conflict=false moji=0
+   Story2.html  5673763bf0 size=8384 conflict=false moji=19
+   Story3.html  2360e38340 size=8947 conflict=false moji=26
+   stories/index.html  08a0a1841a size=8321 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  611e480ff8 size=29590 conflict=false moji=0
+
+=== a62b624 2026-10-19 I am add thinks and abut page is fuck up
+   Story1.html  9ee68a4936 size=12175 conflict=false moji=0
+   Story2.html  fa261cf752 size=12011 conflict=false moji=0
+   Story3.html  3a47f1482b size=12537 conflict=false moji=0
+   stories/index.html  e4be19a692 size=10790 conflict=false moji=0
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  c8af1aba73 size=29720 conflict=false moji=0
+
+=== 616f227 2026-10-19 cline checkpoint session=1792390198043_9ty5m run=11
+   Story1.html  5d41b9bb86 size=8434 conflict=false moji=0
+   Story2.html  130c45d71a size=8272 conflict=false moji=0
+   Story3.html  a8c10236c1 size=8807 conflict=false moji=0
+   stories/index.html  2d0dad0904 size=7012 conflict=false moji=0
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  c8af1aba73 size=29720 conflict=false moji=0
+
+=== 3a1e9c8 2026-10-19  I fix thinkg
+   Story1.html  b3de921575 size=8571 conflict=false moji=24
+   Story2.html  5673763bf0 size=8384 conflict=false moji=19
+   Story3.html  2360e38340 size=8947 conflict=false moji=26
+   stories/index.html  99ec60174a size=7105 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  611e480ff8 size=29590 conflict=false moji=0
+
+=== a92770e 2026-10-19 On main: cline checkpoint session=1792390198043_9ty5m run=9
+   Story1.html  b3de921575 size=8571 conflict=false moji=24
+   Story2.html  5673763bf0 size=8384 conflict=false moji=19
+   Story3.html  2360e38340 size=8947 conflict=false moji=26
+   stories/index.html  99ec60174a size=7105 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  611e480ff8 size=29590 conflict=false moji=0
+
+=== a87eb86 2026-10-19  I am addd stick and lap fix
+   Story1.html  b3de921575 size=8571 conflict=false moji=24
+   Story2.html  5673763bf0 size=8384 conflict=false moji=19
+   Story3.html  2360e38340 size=8947 conflict=false moji=26
+   stories/index.html  99ec60174a size=7105 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  c8af1aba73 size=29720 conflict=false moji=0
+
+=== 0dd367a 2026-10-19 cline checkpoint session=1792390198043_9ty5m run=8
+   Story1.html  b3de921575 size=8571 conflict=false moji=24
+   Story2.html  5673763bf0 size=8384 conflict=false moji=19
+   Story3.html  2360e38340 size=8947 conflict=false moji=26
+   stories/index.html  99ec60174a size=7105 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  c8af1aba73 size=29720 conflict=false moji=0
+
+=== 2f04944 2026-10-19  OK now ba can run good and work properlyy
+   Story1.html  b3de921575 size=8571 conflict=false moji=24
+   Story2.html  5673763bf0 size=8384 conflict=false moji=19
+   Story3.html  2360e38340 size=8947 conflict=false moji=26
+   stories/index.html  99ec60174a size=7105 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  611e480ff8 size=29590 conflict=false moji=0
+
+=== 3cd5fc1 2026-10-19  I am add bat runner but that have some issunes
+   Story1.html  b3de921575 size=8571 conflict=false moji=24
+   Story2.html  5673763bf0 size=8384 conflict=false moji=19
+   Story3.html  2360e38340 size=8947 conflict=false moji=26
+   stories/index.html  99ec60174a size=7105 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  b6f38924e0 size=23144 conflict=false moji=0
+
+=== fb4d56e 2026-10-19  I am add smotthens and spaider try to eat me
+   Story1.html  b3de921575 size=8571 conflict=false moji=24
+   Story2.html  5673763bf0 size=8384 conflict=false moji=19
+   Story3.html  2360e38340 size=8947 conflict=false moji=26
+   stories/index.html  99ec60174a size=7105 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  364b13de8a size=16982 conflict=false moji=0
+
+=== d85f674 2026-10-19 Add Logo.png to brand/title section across all pages
+   Story1.html  b3de921575 size=8571 conflict=false moji=24
+   Story2.html  5673763bf0 size=8384 conflict=false moji=19
+   Story3.html  2360e38340 size=8947 conflict=false moji=26
+   stories/index.html  99ec60174a size=7105 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  32459e4540 size=14028 conflict=false moji=0
+
+=== 5349d65 2026-10-18 Add shared footer with Logo.jpeg to all pages
+   Story1.html  81b61dd078 size=8450 conflict=false moji=24
+   Story2.html  3b23ab432c size=8263 conflict=false moji=19
+   Story3.html  2827a8112a size=8826 conflict=false moji=26
+   stories/index.html  966f32fe1f size=6981 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  32459e4540 size=14028 conflict=false moji=0
+
+=== 4ba1b9c 2026-10-18 story mode
+   Story1.html  0228ac91eb size=8261 conflict=false moji=0
+   Story2.html  dffd9b3667 size=8098 conflict=false moji=0
+   Story3.html  3889ee3cab size=8633 conflict=false moji=0
+   stories/index.html  ff968e85d7 size=6835 conflict=false moji=0
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  32459e4540 size=14028 conflict=false moji=0
+
+=== 729d938 2026-10-18 responsive
+   Story1.html  0228ac91eb size=8261 conflict=false moji=0
+   Story2.html  dffd9b3667 size=8098 conflict=false moji=0
+   Story3.html  3889ee3cab size=8633 conflict=false moji=0
+   stories/index.html  ff968e85d7 size=6835 conflict=false moji=0
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  df55ad9aeb size=13229 conflict=false moji=0
+
+=== 187a14d 2026-10-18 Merge remote-tracking branch 'origin/main'
+   Story1.html  0228ac91eb size=8261 conflict=false moji=0
+   Story2.html  dffd9b3667 size=8098 conflict=false moji=0
+   Story3.html  3889ee3cab size=8633 conflict=false moji=0
+   stories/index.html  ff968e85d7 size=6835 conflict=false moji=0
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  9c371b8755 size=12339 conflict=false moji=0

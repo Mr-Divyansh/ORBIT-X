@@ -1,0 +1,56 @@
+60:             <p class="library-teaser">On the quietest street in the old quarter, two friends carry a lantern to every doorstep that has gone dark — and discover that light, shared, is the one treat that multiplies.</p>
+61:             <blockquote class="library-quote">“No lights means no treats. Then we bring the Halloween to them.”</blockquote>
+62:             <div class="library-actions">
+63:               <a class="story-read" href="../Story1.html">Enter Story Mode <span aria-hidden="true">→</span></a>
+64:               <a class="button button-secondary" href="../projects/halloween-helpers.html">Its project</a>
+65:             </div>
+66:           </div>
+67:         </article>
+68: 
+69:         <article class="library-item lib-dream">
+70:           <div class="library-art" aria-hidden="true">
+71:             <img src="../Assets/img/TogetherNoBg.png" alt="" width="160" height="128" loading="lazy" />
+72:             <img class="story-sparkle" src="../Assets/img/icons/sparkle-lavender.svg" alt="" width="26" height="26" loading="lazy" />
+73:             <span class="library-index">02</span>
+74:           </div>
+75:           <div class="library-body">
+76:             <div class="library-tags"><span>Dream tale</span><span>3 scenes</span><span>~4 min</span></div>
+77:             <h2>The Dream Beyond the Shadows</h2>
+78:             <p class="library-teaser">For three nights Hexa Baby has not slept. Two guardians step through a star portal into a hallway that will not hold still, and tell the dark a better story.</p>
+79:             <blockquote class="library-quote">“The nightmare did not disappear — it just became a hallway, and hallways have ends.”</blockquote>
+80:             <div class="library-actions">
+81:               <a class="story-read" href="../Story2.html">Enter Story Mode <span aria-hidden="true">→</span></a>
+82:               <a class="button button-secondary" href="../projects/dream-guardians.html">Its project</a>
+83:             </div>
+84:           </div>
+85:         </article>
+86: 
+87:         <article class="library-item lib-ghost">
+88:           <div class="library-art" aria-hidden="true">
+89:             <img src="../Assets/img/icons/ghost trans.png" alt="" width="160" height="140" loading="lazy" />
+90:             <img class="story-sparkle" src="../Assets/img/icons/sparkle-pink.svg" alt="" width="26" height="26" loading="lazy" />
+91:             <span class="library-index">03</span>
+92:           </div>
+93:           <div class="library-body">
+94:             <div class="library-tags"><span>Ghost tale</span><span>3 scenes</span><span>~4 min</span></div>
+95:             <h2>The Last Wandering Ghost</h2>
+96:             <p class="library-teaser">A ghost has wandered Bell Street for a hundred years. Two friends sit down on the bakery steps and ask him, politely, how the whole thing ends.</p>
+97:             <blockquote class="library-quote">“You don't look dangerous.” — “I've forgotten how.”</blockquote>
+98:             <div class="library-actions">
+99:               <a class="story-read" href="../Story3.html">Enter Story Mode <span aria-hidden="true">→</span></a>
+100:               <a class="button button-secondary" href="../projects/ghost-catchers.html">Its project</a>
+101:             </div>
+102:           </div>
+103:         </article>
+104:       </div>
+105: 
+106:       <footer class="orbit-footer" id="site-footer" aria-labelledby="footer-title">
+107:   <div class="orbit-footer__decor" aria-hidden="true">
+108:     <span class="orbit-footer__bat orbit-footer__bat--one"><img src="../Assets/img/icons/bat trans.png" alt="" loading="lazy" /></span>
+109:     <span class="orbit-footer__bat orbit-footer__bat--two"><img src="../Assets/img/icons/bat trans.png" alt="" loading="lazy" /></span>
+110:     <span class="orbit-footer__ghost orbit-footer__ghost--one"><img src="../Assets/img/icons/ghost-cute.svg" alt="" loading="lazy" /></span>
+111:     <span class="orbit-footer__ghost orbit-footer__ghost--two"><img src="../Assets/img/icons/ghost-cute.svg" alt="" loading="lazy" /></span>
+112:     <span class="orbit-footer__pumpkin orbit-footer__pumpkin--left"><img src="../Assets/img/icons/pumpkin trans.png" alt="" loading="lazy" /></span>
+113:     <span class="orbit-footer__pumpkin orbit-footer__pumpkin--right"><img src="../Assets/img/icons/pumpkin trans.png" alt="" loading="lazy" /></span>
+114:     <span class="orbit-footer__spark orbit-footer__spark--one"><img src="../Assets/img/icons/sparkle-yellow.svg" alt="" loading="lazy" /></span>
+115:     <span class="orbit-footer__spark orbit-footer__spark--two"><img src="../Assets/img/icons/sparkle-lavender.svg" alt="" loading="lazy" /></span>

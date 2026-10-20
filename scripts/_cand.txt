@@ -1,0 +1,155 @@
+=== candidate revisions ===
+--- 920db02 ---
+  !! 920db02:Story1.html -> Command failed: git cat-file -p 920db02:Story1.html
+  !! 920db02:Story2.html -> Command failed: git cat-file -p 920db02:Story2.html
+  !! 920db02:Story3.html -> Command failed: git cat-file -p 920db02:Story3.html
+  920db02:stories/index.html  len=6825
+     title: ORBIT-X — Stories Library
+     h1: []
+     h2: ["Tales From Our Little Universe","The Halloween Lantern","The Dream Beyond the Shadows","The Last Wandering Ghost"]
+     css : ../css/style.css | ../css/exploration.css | ../css/exploration2.css | ../css/pages.css
+     js  : ../js/script.js
+     links: ../css/style.css | ../css/exploration.css | ../css/exploration2.css | ../css/pages.css | ../index.html | ../index.html#about | ../Exploration.html | index.html | halloween-lantern.html | ../projects/halloween-helpers.html | dream-beyond-shadows.html | ../projects/dream-guardians.html | last-wandering-ghost.html | ../projects/ghost-catchers.html
+     imgs: ../Assets/img/icons/sparkle-yellow.svg | ../Assets/img/icons/pumpkin trans.png | ../Assets/img/TogetherNoBg.png | ../Assets/img/icons/sparkle-lavender.svg | ../Assets/img/icons/ghost trans.png | ../Assets/img/icons/sparkle-pink.svg
+  920db02:stories/halloween-lantern.html  len=8247
+     title: ORBIT-X — The Halloween Lantern
+     h1: ["The Halloween Lantern"]
+     h2: ["The Dark Doorstep","The First Lantern","A Trail Of Light"]
+     css : ../css/style.css | ../css/exploration.css | ../css/exploration2.css | ../css/pages.css
+     js  : ../js/script.js
+     links: ../css/style.css | ../css/exploration.css | ../css/exploration2.css | ../css/pages.css | ../index.html | ../index.html#about | ../Exploration.html | index.html | dream-beyond-shadows.html | ../projects/halloween-helpers.html
+     imgs: ../Assets/img/icons/sparkle-yellow.svg | ../Assets/img/HalloweenHelpers.jpeg | ../Assets/img/icons/pumpkin trans.png
+  920db02:stories/dream-beyond-shadows.html  len=8111
+     title: ORBIT-X — The Dream Beyond the Shadows
+     h1: ["The Dream Beyond The Shadows"]
+     h2: ["The Dreamer Who Stopped","Inside The Nightmare","Beyond The Shadows"]
+     css : ../css/style.css | ../css/exploration.css | ../css/exploration2.css | ../css/pages.css
+     js  : ../js/script.js
+     links: ../css/style.css | ../css/exploration.css | ../css/exploration2.css | ../css/pages.css | ../index.html | ../index.html#about | ../Exploration.html | index.html | halloween-lantern.html | last-wandering-ghost.html | ../projects/dream-guardians.html
+     imgs: ../Assets/img/icons/sparkle-yellow.svg | ../Assets/img/TogetherNoBg.png | ../Assets/img/icons/bat trans.png | ../Assets/img/icons/sparkle-lavender.svg
+  920db02:stories/last-wandering-ghost.html  len=8621
+     title: ORBIT-X — The Last Wandering Ghost
+     h1: ["The Last Wandering Ghost"]
+     h2: ["The Ghost On Bell Street","One Hundred Years Of Stories","The Farewell"]
+     css : ../css/style.css | ../css/exploration.css | ../css/exploration2.css | ../css/pages.css
+     js  : ../js/script.js
+     links: ../css/style.css | ../css/exploration.css | ../css/exploration2.css | ../css/pages.css | ../index.html | ../index.html#about | ../Exploration.html | index.html | dream-beyond-shadows.html | ../projects/ghost-catchers.html
+     imgs: ../Assets/img/icons/sparkle-yellow.svg | ../Assets/img/icons/ghost-cute.svg | ../Assets/img/icons/pumpkin trans.png | ../Assets/img/icons/sparkle-pink.svg
+--- bbc87aa ---
+  bbc87aa:Story1.html  len=8314
+     title: ORBIT-X â€” The Halloween Lantern
+     h1: ["The Halloween Lantern"]
+     h2: ["The Dark Doorstep","The First Lantern","A Trail Of Light"]
+     css : css/style.css | css/exploration.css | css/exploration2.css | css/pages.css
+     js  : js/script.js
+     links: css/style.css | css/exploration.css | css/exploration2.css | css/pages.css | index.html | index.html#about | Exploration.html | stories/index.html | Story2.html | projects/halloween-helpers.html
+     imgs: Assets/img/icons/sparkle-yellow.svg | Assets/img/HalloweenHelpers.jpeg | Assets/img/icons/pumpkin trans.png
+  bbc87aa:Story2.html  len=8152
+     title: ORBIT-X â€” The Dream Beyond the Shadows
+     h1: ["The Dream Beyond The Shadows"]
+     h2: ["The Dreamer Who Stopped","Inside The Nightmare","Beyond The Shadows"]
+     css : css/style.css | css/exploration.css | css/exploration2.css | css/pages.css
+     js  : js/script.js
+     links: css/style.css | css/exploration.css | css/exploration2.css | css/pages.css | index.html | index.html#about | Exploration.html | stories/index.html | Story1.html | Story3.html | projects/dream-guardians.html
+     imgs: Assets/img/icons/sparkle-yellow.svg | Assets/img/TogetherNoBg.png | Assets/img/icons/bat trans.png | Assets/img/icons/sparkle-lavender.svg
+  bbc87aa:Story3.html  len=8687
+     title: ORBIT-X â€” The Last Wandering Ghost
+     h1: ["The Last Wandering Ghost"]
+     h2: ["The Ghost On Bell Street","One Hundred Years Of Stories","The Farewell"]
+     css : css/style.css | css/exploration.css | css/exploration2.css | css/pages.css
+     js  : js/script.js
+     links: css/style.css | css/exploration.css | css/exploration2.css | css/pages.css | index.html | index.html#about | Exploration.html | stories/index.html | Story2.html | projects/ghost-catchers.html
+     imgs: Assets/img/icons/sparkle-yellow.svg | Assets/img/icons/ghost-cute.svg | Assets/img/icons/pumpkin trans.png | Assets/img/icons/sparkle-pink.svg
+  bbc87aa:stories/index.html  len=6889
+     title: ORBIT-X â€” Stories Library
+     h1: []
+     h2: ["Tales From Our Little Universe","The Halloween Lantern","The Dream Beyond the Shadows","The Last Wandering Ghost"]
+     css : ../css/style.css | ../css/exploration.css | ../css/exploration2.css | ../css/pages.css
+     js  : ../js/script.js
+     links: ../css/style.css | ../css/exploration.css | ../css/exploration2.css | ../css/pages.css | ../index.html | ../index.html#about | ../Exploration.html | index.html | ../Story1.html | ../projects/halloween-helpers.html | ../Story2.html | ../projects/dream-guardians.html | ../Story3.html | ../projects/ghost-catchers.html
+     imgs: ../Assets/img/icons/sparkle-yellow.svg | ../Assets/img/icons/pumpkin trans.png | ../Assets/img/TogetherNoBg.png | ../Assets/img/icons/sparkle-lavender.svg | ../Assets/img/icons/ghost trans.png | ../Assets/img/icons/sparkle-pink.svg
+  !! bbc87aa:stories/halloween-lantern.html -> Command failed: git cat-file -p bbc87aa:stories/halloween-lantern.html
+  !! bbc87aa:stories/dream-beyond-shadows.html -> Command failed: git cat-file -p bbc87aa:stories/dream-beyond-shadows.html
+  !! bbc87aa:stories/last-wandering-ghost.html -> Command failed: git cat-file -p bbc87aa:stories/last-wandering-ghost.html
+--- aae2e1f ---
+  aae2e1f:Story1.html  len=17114
+     title: The Beginning — ORBIT-X Stories
+     h1: ["The Halloween Lantern","Every magic has a beginning."]
+     h2: ["The Dark Doorstep","The First Lantern","A Trail Of Light","A quiet night.A world of possibilities.","Two friends.One discovery.","The door to amagical world.","This is only the first chapter.","Ready for Your Next Magical Adventure?"]
+     css : css/story.css
+     js  : 
+     links: css/story.css | index.html | stories/index.html | Story2.html | index.html#characters | story2.html | Exploration.html | projects/halloween-helpers.html | projects/ghost-catchers.html
+     imgs: Assets/img/icons/pumpkin trans.png | Assets/img/icons/sparkle-yellow.svg | assets/abhay.png | assets/divyansh.png | Assets/img/icons/bat trans.png | Assets/img/icons/ghost-cute.svg | Assets/img/icons/sparkle-lavender.svg | Assets/img/Logo.png | Assets/img/abhay bg solo.png | Assets/img/divyansh solo.png
+  aae2e1f:Story2.html  len=11955
+     title: ORBIT-X — The Dream Beyond the Shadows
+     h1: ["The Dream Beyond The Shadows"]
+     h2: ["The Dreamer Who Stopped","Inside The Nightmare","Beyond The Shadows","Ready for Your Next Magical Adventure?"]
+     css : css/style.css | css/exploration.css | css/exploration2.css | css/pages.css
+     js  : js/script.js
+     links: css/style.css | css/exploration.css | css/exploration2.css | css/pages.css | index.html | index.html#about | Exploration.html | stories/index.html | Story1.html | Story3.html | projects/halloween-helpers.html | projects/ghost-catchers.html | Story2.html
+     imgs: Assets/img/Logo.png | Assets/img/icons/sparkle-yellow.svg | Assets/img/TogetherNoBg.png | Assets/img/icons/bat trans.png | Assets/img/icons/sparkle-lavender.svg | Assets/img/icons/ghost-cute.svg | Assets/img/icons/pumpkin trans.png | Assets/img/abhay bg solo.png | Assets/img/divyansh solo.png
+  aae2e1f:Story3.html  len=12467
+     title: ORBIT-X — The Last Wandering Ghost
+     h1: ["The Last Wandering Ghost"]
+     h2: ["The Ghost On Bell Street","One Hundred Years Of Stories","The Farewell","Ready for Your Next Magical Adventure?"]
+     css : css/style.css | css/exploration.css | css/exploration2.css | css/pages.css
+     js  : js/script.js
+     links: css/style.css | css/exploration.css | css/exploration2.css | css/pages.css | index.html | index.html#about | Exploration.html | stories/index.html | Story2.html | projects/halloween-helpers.html | projects/ghost-catchers.html
+     imgs: Assets/img/Logo.png | Assets/img/icons/sparkle-yellow.svg | Assets/img/icons/ghost-cute.svg | Assets/img/icons/pumpkin trans.png | Assets/img/icons/sparkle-pink.svg | Assets/img/icons/bat trans.png | Assets/img/icons/sparkle-lavender.svg | Assets/img/abhay bg solo.png | Assets/img/divyansh solo.png
+  !! aae2e1f:stories/index.html -> Command failed: git cat-file -p aae2e1f:stories/index.html
+  !! aae2e1f:stories/halloween-lantern.html -> Command failed: git cat-file -p aae2e1f:stories/halloween-lantern.html
+  !! aae2e1f:stories/dream-beyond-shadows.html -> Command failed: git cat-file -p aae2e1f:stories/dream-beyond-shadows.html
+  !! aae2e1f:stories/last-wandering-ghost.html -> Command failed: git cat-file -p aae2e1f:stories/last-wandering-ghost.html
+--- 4ef9070 ---
+  4ef9070:Story1.html  len=17114
+     title: The Beginning — ORBIT-X Stories
+     h1: ["The Halloween Lantern","Every magic has a beginning."]
+     h2: ["The Dark Doorstep","The First Lantern","A Trail Of Light","A quiet night.A world of possibilities.","Two friends.One discovery.","The door to amagical world.","This is only the first chapter.","Ready for Your Next Magical Adventure?"]
+     css : css/story.css
+     js  : 
+     links: css/story.css | index.html | stories/index.html | Story2.html | index.html#characters | story2.html | Exploration.html | projects/halloween-helpers.html | projects/ghost-catchers.html
+     imgs: Assets/img/icons/pumpkin trans.png | Assets/img/icons/sparkle-yellow.svg | assets/abhay.png | assets/divyansh.png | Assets/img/icons/bat trans.png | Assets/img/icons/ghost-cute.svg | Assets/img/icons/sparkle-lavender.svg | Assets/img/Logo.png | Assets/img/abhay bg solo.png | Assets/img/divyansh solo.png
+  4ef9070:Story2.html  len=11955
+     title: ORBIT-X — The Dream Beyond the Shadows
+     h1: ["The Dream Beyond The Shadows"]
+     h2: ["The Dreamer Who Stopped","Inside The Nightmare","Beyond The Shadows","Ready for Your Next Magical Adventure?"]
+     css : css/style.css | css/exploration.css | css/exploration2.css | css/pages.css
+     js  : js/script.js
+     links: css/style.css | css/exploration.css | css/exploration2.css | css/pages.css | index.html | index.html#about | Exploration.html | stories/index.html | Story1.html | Story3.html | projects/halloween-helpers.html | projects/ghost-catchers.html | Story2.html
+     imgs: Assets/img/Logo.png | Assets/img/icons/sparkle-yellow.svg | Assets/img/TogetherNoBg.png | Assets/img/icons/bat trans.png | Assets/img/icons/sparkle-lavender.svg | Assets/img/icons/ghost-cute.svg | Assets/img/icons/pumpkin trans.png | Assets/img/abhay bg solo.png | Assets/img/divyansh solo.png
+  4ef9070:Story3.html  len=12467
+     title: ORBIT-X — The Last Wandering Ghost
+     h1: ["The Last Wandering Ghost"]
+     h2: ["The Ghost On Bell Street","One Hundred Years Of Stories","The Farewell","Ready for Your Next Magical Adventure?"]
+     css : css/style.css | css/exploration.css | css/exploration2.css | css/pages.css
+     js  : js/script.js
+     links: css/style.css | css/exploration.css | css/exploration2.css | css/pages.css | index.html | index.html#about | Exploration.html | stories/index.html | Story2.html | projects/halloween-helpers.html | projects/ghost-catchers.html
+     imgs: Assets/img/Logo.png | Assets/img/icons/sparkle-yellow.svg | Assets/img/icons/ghost-cute.svg | Assets/img/icons/pumpkin trans.png | Assets/img/icons/sparkle-pink.svg | Assets/img/icons/bat trans.png | Assets/img/icons/sparkle-lavender.svg | Assets/img/abhay bg solo.png | Assets/img/divyansh solo.png
+  !! 4ef9070:stories/index.html -> Command failed: git cat-file -p 4ef9070:stories/index.html
+  !! 4ef9070:stories/halloween-lantern.html -> Command failed: git cat-file -p 4ef9070:stories/halloween-lantern.html
+  !! 4ef9070:stories/dream-beyond-shadows.html -> Command failed: git cat-file -p 4ef9070:stories/dream-beyond-shadows.html
+  !! 4ef9070:stories/last-wandering-ghost.html -> Command failed: git cat-file -p 4ef9070:stories/last-wandering-ghost.html
+--- 3217186 ---
+  !! 3217186:Story1.html -> Command failed: git cat-file -p 3217186:Story1.html
+  !! 3217186:Story2.html -> Command failed: git cat-file -p 3217186:Story2.html
+  !! 3217186:Story3.html -> Command failed: git cat-file -p 3217186:Story3.html
+  !! 3217186:stories/index.html -> Command failed: git cat-file -p 3217186:stories/index.html
+  !! 3217186:stories/halloween-lantern.html -> Command failed: git cat-file -p 3217186:stories/halloween-lantern.html
+  !! 3217186:stories/dream-beyond-shadows.html -> Command failed: git cat-file -p 3217186:stories/dream-beyond-shadows.html
+  !! 3217186:stories/last-wandering-ghost.html -> Command failed: git cat-file -p 3217186:stories/last-wandering-ghost.html
+--- cf70857 ---
+  !! cf70857:Story1.html -> Command failed: git cat-file -p cf70857:Story1.html
+  !! cf70857:Story2.html -> Command failed: git cat-file -p cf70857:Story2.html
+  !! cf70857:Story3.html -> Command failed: git cat-file -p cf70857:Story3.html
+  !! cf70857:stories/index.html -> Command failed: git cat-file -p cf70857:stories/index.html
+  !! cf70857:stories/halloween-lantern.html -> Command failed: git cat-file -p cf70857:stories/halloween-lantern.html
+  !! cf70857:stories/dream-beyond-shadows.html -> Command failed: git cat-file -p cf70857:stories/dream-beyond-shadows.html
+  !! cf70857:stories/last-wandering-ghost.html -> Command failed: git cat-file -p cf70857:stories/last-wandering-ghost.html
+--- HEAD ---
+  !! HEAD:Story1.html -> Command failed: git cat-file -p HEAD:Story1.html
+  !! HEAD:Story2.html -> Command failed: git cat-file -p HEAD:Story2.html
+  !! HEAD:Story3.html -> Command failed: git cat-file -p HEAD:Story3.html
+  !! HEAD:stories/index.html -> Command failed: git cat-file -p HEAD:stories/index.html
+  !! HEAD:stories/halloween-lantern.html -> Command failed: git cat-file -p HEAD:stories/halloween-lantern.html
+  !! HEAD:stories/dream-beyond-shadows.html -> Command failed: git cat-file -p HEAD:stories/dream-beyond-shadows.html
+  !! HEAD:stories/last-wandering-ghost.html -> Command failed: git cat-file -p HEAD:stories/last-wandering-ghost.html

@@ -1,0 +1,88 @@
+ORBIT-X — paths that existed in git history but are absent from the working tree
+Generated: 2026-10-20T18:21:33.555Z
+Paths ever seen: 715   On disk: 299
+
+== MISSING ENTIRELY (55) ==
+  .freebuff/project-id                                       blobs=1 revs=16 2026-10-19..2026-10-19
+  .kilo/kilo.jsonc                                           blobs=1 revs=5 2026-10-19..2026-10-19
+  Assets.rar                                                 blobs=1 revs=12 2026-10-19..2026-10-19
+  Assets/img/Abhay Solo.png                                  blobs=1 revs=9 2026-10-18..2026-10-18
+  Assets/img/abhay trans.png                                 blobs=1 revs=5 2026-10-18..2026-10-18
+  Assets/img/icons/bat.jpeg                                  blobs=1 revs=4 2026-10-18..2026-10-18
+  Assets/img/icons/ghost.jpeg                                blobs=1 revs=4 2026-10-18..2026-10-18
+  Assets/img/icons/pumpkin.jpeg                              blobs=1 revs=4 2026-10-18..2026-10-18
+  Assets/img/LogoMin.jpeg                                    blobs=2 revs=4 2026-10-19..2026-10-19
+  Assets/img/one.jpeg                                        blobs=1 revs=9 2026-10-18..2026-10-18
+  character-day.jpg                                          blobs=1 revs=2 2026-10-17..2026-10-17
+  character-night.jpg                                        blobs=1 revs=2 2026-10-17..2026-10-17
+  character.jpeg                                             blobs=1 revs=2 2026-10-17..2026-10-17
+  css/team.css                                               blobs=1 revs=3 2026-10-15..2026-10-16
+  fix_footer.ps1                                             blobs=2 revs=18 2026-10-19..2026-10-19
+  fix_ghost.js                                               blobs=1 revs=3 2026-10-20..2026-10-20
+  fix_logo.ps1                                               blobs=1 revs=18 2026-10-19..2026-10-19
+  fix_logo.py                                                blobs=1 revs=18 2026-10-19..2026-10-19
+  hackathon.html                                             blobs=5 revs=5 2026-10-15..2026-10-16
+  home page (1).jpeg                                         blobs=1 revs=1 2026-10-17..2026-10-17
+  home page.jpeg                                             blobs=1 revs=2 2026-10-17..2026-10-17
+  img/AbbhayImg1.jpg                                         blobs=1 revs=2 2026-10-17..2026-10-17
+  img/character-day.jpg                                      blobs=1 revs=1 2026-10-17..2026-10-17
+  img/character-night.jpg                                    blobs=1 revs=1 2026-10-17..2026-10-17
+  img/character.jpeg                                         blobs=1 revs=1 2026-10-17..2026-10-17
+  img/DivyanshImg1.jpg                                       blobs=1 revs=2 2026-10-17..2026-10-17
+  img/home page.jpeg                                         blobs=1 revs=1 2026-10-17..2026-10-17
+  img/HomePage.jpeg                                          blobs=1 revs=2 2026-10-17..2026-10-17
+  img/my character.jpeg                                      blobs=1 revs=1 2026-10-17..2026-10-17
+  img/orbit-characters.png                                   blobs=1 revs=1 2026-10-17..2026-10-17
+  img/together.jpeg                                          blobs=1 revs=3 2026-10-17..2026-10-17
+  img/TogetherNoBg.png                                       blobs=1 revs=2 2026-10-17..2026-10-17
+  img/Two_Friends__One_Magical_World-removebg-preview (1).png blobs=1 revs=1 2026-10-17..2026-10-17
+  kling_20261018_VIDEO_Use_the_up_421_0 (1).mp4              blobs=1 revs=2 2026-10-17..2026-10-17
+  my character.jpeg                                          blobs=1 revs=2 2026-10-17..2026-10-17
+  orbit-characters (1).png                                   blobs=1 revs=1 2026-10-17..2026-10-17
+  orbit-characters (2).png                                   blobs=1 revs=1 2026-10-17..2026-10-17
+  orbit-characters.png                                       blobs=1 revs=2 2026-10-17..2026-10-17
+  ORBIT-X-About-Page.zip                                     blobs=1 revs=9 2026-10-18..2026-10-19
+  script.js                                                  blobs=4 revs=7 2026-10-15..2026-10-17
+  stories/dream-beyond-shadows.html                          blobs=1 revs=2 2026-10-18..2026-10-18
+  stories/halloween-lantern.html                             blobs=1 revs=2 2026-10-18..2026-10-18
+  stories/index.html                                         blobs=8 revs=58 2026-10-18..2026-10-19
+  stories/last-wandering-ghost.html                          blobs=1 revs=2 2026-10-18..2026-10-18
+  Story1.html                                                blobs=7 revs=63 2026-10-18..2026-10-19
+  Story3.html                                                blobs=5 revs=63 2026-10-18..2026-10-19
+  style.css                                                  blobs=2 revs=5 2026-10-15..2026-10-17
+  team.html                                                  blobs=5 revs=5 2026-10-15..2026-10-16
+  the-night-of-forgotten-treats.html                         blobs=1 revs=5 2026-10-19..2026-10-19
+  together.jpeg                                              blobs=1 revs=2 2026-10-17..2026-10-17
+  Two_Friends__One_Magical_World-removebg-preview (1).png    blobs=1 revs=2 2026-10-17..2026-10-17
+  video/kling_20261018_VIDEO_Use_the_up_421_0 (1).mp4        blobs=1 revs=1 2026-10-17..2026-10-17
+  video/TogetherComeRightToLeft.mp4                          blobs=1 revs=2 2026-10-17..2026-10-17
+  write_files.js                                             blobs=1 revs=3 2026-10-20..2026-10-20
+  write_ghost.js                                             blobs=1 revs=3 2026-10-20..2026-10-20
+
+== PRESENT BUT DIFFERENT CASE (1) ==
+  git="Story2.html"  disk="story2.html"  revs=63 2026-10-18..2026-10-19
+
+== DISK DIRECTORIES ==
+  Assets
+  Assets/audio
+  Assets/audio/ambience
+  Assets/audio/interactions
+  Assets/audio/music
+  Assets/audio/transitions
+  Assets/audio/ui
+  Assets/img
+  Assets/img/icons
+  Assets/img/story
+  Assets/img/story/forgotten-treats
+  Assets/video
+  css
+  js
+  projects
+  scripts
+  scripts/_cand
+  scripts/_cand3
+  scripts/_restore
+  scripts/extract
+  tests
+  tests/shots
+  tools

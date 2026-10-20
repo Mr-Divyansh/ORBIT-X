@@ -1,0 +1,328 @@
+
+=== 359bc38 2026-10-20  I am  add all thiniks
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  8d3674adb2 size=24402 conflict=false moji=0
+   js/script.js  1fe336fbf3 size=51408 conflict=false moji=0
+
+=== 180844f 2026-10-20  I am add think
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  8d3674adb2 size=24402 conflict=false moji=0
+   js/script.js  35176942f3 size=51409 conflict=false moji=0
+
+=== ac51d66 2026-10-20  I done all thinks
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  8d3674adb2 size=24402 conflict=false moji=0
+   js/script.js  be9279468b size=49849 conflict=false moji=0
+
+=== 2697af3 2026-10-20  I am add all tink and now i am fix al bugs
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  8d3674adb2 size=24402 conflict=false moji=0
+   js/script.js  0c6e44fedb size=48720 conflict=false moji=0
+
+=== a409227 2026-10-20 story 2 img
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  8d3674adb2 size=24402 conflict=false moji=0
+   js/script.js  06376c495d size=46605 conflict=false moji=0
+
+=== 58f63e2 2026-10-20 fix(theme/audio): accessible sound toggle + circular dark/light theme reveal; mobile drawer; visual suite
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  8d3674adb2 size=24402 conflict=false moji=0
+   js/script.js  a6a727fddf size=45534 conflict=false moji=0
+
+=== d629ae6 2026-10-20 cline checkpoint session=1792390198043_9ty5m run=30
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  8d3674adb2 size=24402 conflict=false moji=0
+   js/script.js  a6a727fddf size=45534 conflict=false moji=0
+
+=== 56a8942 2026-10-20 cline checkpoint session=1792390198043_9ty5m run=29
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  8d3674adb2 size=24402 conflict=false moji=0
+   js/script.js  c7e2075cf0 size=42512 conflict=false moji=0
+
+=== f46ff98 2026-10-20  I am add dark mod
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  8d3674adb2 size=24402 conflict=false moji=0
+   js/script.js  b8f0ef06d5 size=40493 conflict=false moji=0
+
+=== 7e47422 2026-10-19 cline checkpoint session=1792390198043_9ty5m run=21
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  b8f0ef06d5 size=40493 conflict=false moji=0
+
+=== cf70857 2026-10-19 Fix: project card border visibility + friend image hover swap
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  c8af1aba73 size=29720 conflict=false moji=0
+
+=== 3217186 2026-10-19 exploration complete
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  c8af1aba73 size=29720 conflict=false moji=0
+
+=== 4ef9070 2026-10-19 index on main: 239ee84 I AM IFIX ALL THINKG
+   Story1.html  48f34a794b size=17242 conflict=true moji=0
+   Story2.html  fa261cf752 size=12011 conflict=false moji=0
+   Story3.html  3a47f1482b size=12537 conflict=false moji=0
+   stories/index.html  -
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  c8af1aba73 size=29720 conflict=false moji=0
+
+=== aae2e1f 2026-10-19 go
+   Story1.html  48f34a794b size=17242 conflict=true moji=0
+   Story2.html  fa261cf752 size=12011 conflict=false moji=0
+   Story3.html  3a47f1482b size=12537 conflict=false moji=0
+   stories/index.html  -
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  c8af1aba73 size=29720 conflict=false moji=0
+
+=== 69984c2 2026-10-19 gu
+   Story1.html  48f34a794b size=17242 conflict=true moji=0
+   Story2.html  fa261cf752 size=12011 conflict=false moji=0
+   Story3.html  3a47f1482b size=12537 conflict=false moji=0
+   stories/index.html  e07d17e530 size=12006 conflict=false moji=0
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  c8af1aba73 size=29720 conflict=false moji=0
+
+=== 6bfd925 2026-10-19 main toh tut gya
+   Story1.html  566f26641e size=6991 conflict=false moji=0
+   Story2.html  5673763bf0 size=8384 conflict=false moji=19
+   Story3.html  2360e38340 size=8947 conflict=false moji=26
+   stories/index.html  08a0a1841a size=8321 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  611e480ff8 size=29590 conflict=false moji=0
+
+=== a62b624 2026-10-19 I am add thinks and abut page is fuck up
+   Story1.html  9ee68a4936 size=12175 conflict=false moji=0
+   Story2.html  fa261cf752 size=12011 conflict=false moji=0
+   Story3.html  3a47f1482b size=12537 conflict=false moji=0
+   stories/index.html  e4be19a692 size=10790 conflict=false moji=0
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  c8af1aba73 size=29720 conflict=false moji=0
+
+=== 616f227 2026-10-19 cline checkpoint session=1792390198043_9ty5m run=11
+   Story1.html  5d41b9bb86 size=8434 conflict=false moji=0
+   Story2.html  130c45d71a size=8272 conflict=false moji=0
+   Story3.html  a8c10236c1 size=8807 conflict=false moji=0
+   stories/index.html  2d0dad0904 size=7012 conflict=false moji=0
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  c8af1aba73 size=29720 conflict=false moji=0
+
+=== 3a1e9c8 2026-10-19  I fix thinkg
+   Story1.html  b3de921575 size=8571 conflict=false moji=24
+   Story2.html  5673763bf0 size=8384 conflict=false moji=19
+   Story3.html  2360e38340 size=8947 conflict=false moji=26
+   stories/index.html  99ec60174a size=7105 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  611e480ff8 size=29590 conflict=false moji=0
+
+=== a92770e 2026-10-19 On main: cline checkpoint session=1792390198043_9ty5m run=9
+   Story1.html  b3de921575 size=8571 conflict=false moji=24
+   Story2.html  5673763bf0 size=8384 conflict=false moji=19
+   Story3.html  2360e38340 size=8947 conflict=false moji=26
+   stories/index.html  99ec60174a size=7105 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  611e480ff8 size=29590 conflict=false moji=0
+
+=== a87eb86 2026-10-19  I am addd stick and lap fix
+   Story1.html  b3de921575 size=8571 conflict=false moji=24
+   Story2.html  5673763bf0 size=8384 conflict=false moji=19
+   Story3.html  2360e38340 size=8947 conflict=false moji=26
+   stories/index.html  99ec60174a size=7105 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  c8af1aba73 size=29720 conflict=false moji=0
+
+=== 0dd367a 2026-10-19 cline checkpoint session=1792390198043_9ty5m run=8
+   Story1.html  b3de921575 size=8571 conflict=false moji=24
+   Story2.html  5673763bf0 size=8384 conflict=false moji=19
+   Story3.html  2360e38340 size=8947 conflict=false moji=26
+   stories/index.html  99ec60174a size=7105 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  c8af1aba73 size=29720 conflict=false moji=0
+
+=== 2f04944 2026-10-19  OK now ba can run good and work properlyy
+   Story1.html  b3de921575 size=8571 conflict=false moji=24
+   Story2.html  5673763bf0 size=8384 conflict=false moji=19
+   Story3.html  2360e38340 size=8947 conflict=false moji=26
+   stories/index.html  99ec60174a size=7105 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  611e480ff8 size=29590 conflict=false moji=0
+
+=== 3cd5fc1 2026-10-19  I am add bat runner but that have some issunes
+   Story1.html  b3de921575 size=8571 conflict=false moji=24
+   Story2.html  5673763bf0 size=8384 conflict=false moji=19
+   Story3.html  2360e38340 size=8947 conflict=false moji=26
+   stories/index.html  99ec60174a size=7105 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  b6f38924e0 size=23144 conflict=false moji=0
+
+=== fb4d56e 2026-10-19  I am add smotthens and spaider try to eat me
+   Story1.html  b3de921575 size=8571 conflict=false moji=24
+   Story2.html  5673763bf0 size=8384 conflict=false moji=19
+   Story3.html  2360e38340 size=8947 conflict=false moji=26
+   stories/index.html  99ec60174a size=7105 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  364b13de8a size=16982 conflict=false moji=0
+
+=== d85f674 2026-10-19 Add Logo.png to brand/title section across all pages
+   Story1.html  b3de921575 size=8571 conflict=false moji=24
+   Story2.html  5673763bf0 size=8384 conflict=false moji=19
+   Story3.html  2360e38340 size=8947 conflict=false moji=26
+   stories/index.html  99ec60174a size=7105 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  32459e4540 size=14028 conflict=false moji=0
+
+=== 5349d65 2026-10-18 Add shared footer with Logo.jpeg to all pages
+   Story1.html  81b61dd078 size=8450 conflict=false moji=24
+   Story2.html  3b23ab432c size=8263 conflict=false moji=19
+   Story3.html  2827a8112a size=8826 conflict=false moji=26
+   stories/index.html  966f32fe1f size=6981 conflict=false moji=14
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  32459e4540 size=14028 conflict=false moji=0
+
+=== 4ba1b9c 2026-10-18 story mode
+   Story1.html  0228ac91eb size=8261 conflict=false moji=0
+   Story2.html  dffd9b3667 size=8098 conflict=false moji=0
+   Story3.html  3889ee3cab size=8633 conflict=false moji=0
+   stories/index.html  ff968e85d7 size=6835 conflict=false moji=0
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  32459e4540 size=14028 conflict=false moji=0
+
+=== 729d938 2026-10-18 responsive
+   Story1.html  0228ac91eb size=8261 conflict=false moji=0
+   Story2.html  dffd9b3667 size=8098 conflict=false moji=0
+   Story3.html  3889ee3cab size=8633 conflict=false moji=0
+   stories/index.html  ff968e85d7 size=6835 conflict=false moji=0
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  df55ad9aeb size=13229 conflict=false moji=0
+
+=== 187a14d 2026-10-18 Merge remote-tracking branch 'origin/main'
+   Story1.html  0228ac91eb size=8261 conflict=false moji=0
+   Story2.html  dffd9b3667 size=8098 conflict=false moji=0
+   Story3.html  3889ee3cab size=8633 conflict=false moji=0
+   stories/index.html  ff968e85d7 size=6835 conflict=false moji=0
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  9c371b8755 size=12339 conflict=false moji=0
+
+=== c26b2bf 2026-10-18 Character designing
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  -
+   js/script.js  9804e7544c size=12283 conflict=false moji=0
+
+=== 7a5e338 2026-10-18 Reformat pages.css rules to expanded multi-line style
+   Story1.html  0228ac91eb size=8261 conflict=false moji=0
+   Story2.html  dffd9b3667 size=8098 conflict=false moji=0
+   Story3.html  3889ee3cab size=8633 conflict=false moji=0
+   stories/index.html  ff968e85d7 size=6835 conflict=false moji=0
+   css/pages.css  f7d8d08825 size=23524 conflict=false moji=0
+   js/script.js  cd088b59c8 size=10778 conflict=false moji=0
+
+=== 83f07ce 2026-10-18 Move story pages to root Story1/2/3.html with direct navigation from Exploration and Stories library
+   Story1.html  0228ac91eb size=8261 conflict=false moji=0
+   Story2.html  dffd9b3667 size=8098 conflict=false moji=0
+   Story3.html  3889ee3cab size=8633 conflict=false moji=0
+   stories/index.html  ff968e85d7 size=6835 conflict=false moji=0
+   css/pages.css  b1aaf6f63c size=21982 conflict=false moji=0
+   js/script.js  cd088b59c8 size=10778 conflict=false moji=0
+
+=== 39521f0 2026-10-18 Replace Exploration dialogs with real page navigation
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  44a323b1c9 size=6865 conflict=false moji=0
+   css/pages.css  b1aaf6f63c size=21982 conflict=false moji=0
+   js/script.js  cd088b59c8 size=10778 conflict=false moji=0
+
+=== 920db02 2026-10-18 Add dedicated project pages, Stories library, and three story reading pages
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  44a323b1c9 size=6865 conflict=false moji=0
+   css/pages.css  b1aaf6f63c size=21982 conflict=false moji=0
+   js/script.js  5e19b276de size=25449 conflict=false moji=0
+
+=== 41eb9fe 2026-10-18 Cinematic Exploration landing: hero, project cards, stories section with dialogs
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  -
+   js/script.js  5e19b276de size=25449 conflict=false moji=0
+
+=== 5e13d50 2026-10-18  i am add in exp my projicts
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  -
+   js/script.js  cd088b59c8 size=10778 conflict=false moji=0
+
+=== e8ff2f5 2026-10-18  add fix text aaimtion
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  -
+   js/script.js  f25a984276 size=10722 conflict=false moji=0
+
+=== c8c5cc3 2026-10-18  I am fix inx and css code
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  -
+   js/script.js  009a5c4531 size=7735 conflict=false moji=0
+
+=== 1e5e29c 2026-10-18  I am  fix think and add animtiona lson and add mosterrs
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  -
+   js/script.js  16a25a7068 size=2451 conflict=false moji=0
+
+=== d5f98dd 2026-10-18  I am add folder AND fix that messy thinkg
+   Story1.html  -
+   Story2.html  -
+   Story3.html  -
+   stories/index.html  -
+   css/pages.css  -
+   js/script.js  1407971fe8 size=616 conflict=false moji=0

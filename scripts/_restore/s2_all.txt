@@ -1,0 +1,190 @@
+1: <!DOCTYPE html>
+2: <html lang="en">
+3: <head>
+4:   <meta charset="UTF-8" />
+5:   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+6:   <meta name="theme-color" content="#fffaf5" />
+7:   <title>ORBIT-X — The Dream Beyond the Shadows</title>
+8:   <link rel="preconnect" href="https://fonts.googleapis.com">
+9:   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+10:   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+11:   <link rel="stylesheet" href="css/style.css" />
+12:   <link rel="stylesheet" href="css/exploration.css" />
+13:   <link rel="stylesheet" href="css/exploration2.css" />
+14:   <link rel="stylesheet" href="css/pages.css" />
+15: </head>
+16: <body class="theme-dream">
+17:   <div class="page-frame" aria-hidden="true"></div>
+18:   <header class="navbar">
+19:     <a class="brand" href="index.html" aria-label="Orbit-X home">
+20:       <img src="Assets/img/Logo.png" alt="ORBIT-X logo" class="brand-logo-img" width="40" height="40" loading="eager" />
+21:       <svg class="brand-planet" viewBox="0 0 76 58" aria-hidden="true">
+22:         <ellipse cx="36" cy="29" rx="30" ry="11" transform="rotate(-28 36 29)" fill="none" stroke="currentColor" stroke-width="4" />
+23:         <circle cx="34" cy="28" r="15" fill="#bca0ef" />
+24:         <path d="M22 18c5-7 13-9 20-7" fill="none" stroke="#fff8ff" stroke-width="4" stroke-linecap="round" />
+25:         <path d="M59 9l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#f8d889" />
+26:       </svg>
+27:       <span>ORBIT-X</span>
+28:     </a>
+29:     <div class="nav-mascot" aria-hidden="true">
+30:       <img class="nav-sparkle" src="Assets/img/icons/sparkle-yellow.svg" alt="" width="17" height="17" />
+31:     </div>
+32:     <nav class="nav-links" aria-label="Main navigation">
+33:       <a href="index.html">Home</a>
+34:       <a href="index.html#about">About</a>
+35:       <a href="Exploration.html">Exploration</a>
+36:       <a class="active" href="stories/index.html">Stories</a>
+37:     </nav>
+38:     <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+39:   </header>
+40: 
+41:   <main class="page-shell">
+42:     <div class="page-container">
+43:       <header class="read-hero">
+44:         <a class="back-pill" href="stories/index.html"><span aria-hidden="true">←</span> Back to Stories</a>
+45:         <div><span class="story-no">Story 02 · Dream tale</span></div>
+46:         <h1>The Dream Beyond <span class="accent">The Shadows</span></h1>
+47:         <p class="read-lede">For three nights, a little dreamer has not slept. Two guardians step through a star portal into a hallway that will not hold still — and tell the dark a better story. A bedtime-sized rescue in three scenes.</p>
+48:         <ul class="read-meta" aria-label="Story details">
+49:           <li>3 scenes</li>
+50:           <li>~4 min read</li>
+51:           <li>From: Hexa Baby, Dream Guardians</li>
+52:         </ul>
+53:       </header>
+54: 
+55:       <figure class="read-banner">
+56:         <div class="banner-frame banner-dream">
+57:           <img src="Assets/img/TogetherNoBg.png" alt="The two friends standing together, ready to enter the dream" width="240" height="170" fetchpriority="high" />
+58:         </div>
+59:         <figcaption>The guardians, moments before the portal opens.</figcaption>
+60:       </figure>
+61: 
+62:       <article class="read-article">
+63:         <section class="read-scene" aria-labelledby="sc1-h">
+64:           <div class="scene-head"><span class="scene-index" aria-hidden="true">01</span><h2 id="sc1-h">The Dreamer Who Stopped</h2></div>
+65:           <p class="scene-setting">Three nights without sleep</p>
+66:           <p>For three nights in a row, Hexa Baby had not slept. Every time sleep came, the shadows came with it — long, quiet shapes that filled the room and swallowed the light.</p>
+67:           <p>Abhay and Divyansh noticed immediately, the way astronomers notice a star going out.</p>
+68:           <p class="line-dialogue"><strong>Divyansh:</strong> “A nightmare has trapped him inside. If we don't go in, he'll never fall asleep again.”</p>
+69:           <p>They packed the lantern, the staff, and a story to spare, and stepped toward the star portal — a door of light hanging in the air, patient as only a door can be.</p>
+70:         </section>
+71: 
+72:         <section class="read-scene" aria-labelledby="sc2-h">
+73:           <div class="scene-head"><span class="scene-index" aria-hidden="true">02</span><h2 id="sc2-h">Inside The Nightmare</h2></div>
+74:           <p class="scene-setting">The hallway with no end</p>
+75:           <p>The dream world was a hallway of shadows that moved when nobody watched. Every corner they turned, the exit shifted — politely, at first, then with something almost like mischief.</p>
+76:           <p>The shadow was not attacking. It was simply afraid, the way Hexa Baby was afraid, wearing the same coat in a bigger size.</p>
+77:           <figure class="scene-art">
+78:             <div class="scene-frame banner-dream">
+79:               <img src="Assets/img/icons/bat trans.png" alt="A bat gliding through the dream hallway" width="120" height="96" loading="lazy" />
+80:             </div>
+81:             <figcaption>Something small and scared was flying ahead of them.</figcaption>
+82:           </figure>
+83:           <p class="line-dialogue"><strong>Abhay:</strong> “Remember the rule. The dream is only frightened.”</p>
+84:           <p class="line-dialogue"><strong>Divyansh:</strong> “So am I. Frightened things listen when you talk softly.”</p>
+85:           <p>So Divyansh knelt and began to tell a story — not a scary one, but a small tale about a light that had never learned it was allowed to stay. The shadows slowed. For the first time, they listened.</p>
+86:         </section>
+87: 
+88:         <section class="read-scene" aria-labelledby="sc3-h">
+89:           <div class="scene-head"><span class="scene-index" aria-hidden="true">03</span><h2 id="sc3-h">Beyond The Shadows</h2></div>
+90:           <p class="scene-setting">A sky with no stars</p>
+91:           <p>They found Hexa Baby curled beneath a sky with no stars, knees pulled up, making himself as small as fear knows how.</p>
+92:           <p>Abhay raised the lantern until the light lay gently on the floor, and Divyansh finished the story — and the shadows uncurled like paper in warm water. Behind them, the exit was finally standing still.</p>
+93:           <figure class="scene-art">
+94:             <div class="scene-frame banner-dream">
+95:               <img src="Assets/img/icons/sparkle-lavender.svg" alt="A lavender sparkle, like a small star returning" width="90" height="90" loading="lazy" />
+96:             </div>
+97:             <figcaption>The first star of many, coming back.</figcaption>
+98:           </figure>
+99:           <p class="line-dialogue"><strong>Hexa Baby:</strong> “Did the dark go away?”</p>
+100:           <p class="line-dialogue"><strong>Divyansh:</strong> “No. It just became a hallway. Hallways have ends.”</p>
+101:           <p>Walking back, Hexa Baby held both their hands. The nightmare did not disappear that night — it stopped being the whole world. He slept that night, and the next, and every night after; and on the worst of those nights, he dreamed of a lantern first.</p>
+102:         </section>
+103:       </article>
+104: 
+105:       <nav class="read-nav" aria-label="Story navigation">
+106:         <a class="story-hop" href="Story1.html">
+107:           <span class="hop-label"><span aria-hidden="true">←</span> Previous story</span>
+108:           <span class="hop-title">The Halloween Lantern</span>
+109:         </a>
+110:         <a class="button button-secondary" href="stories/index.html">All stories</a>
+111:         <a class="story-hop hop-next" href="Story3.html">
+112:           <span class="hop-label">Next story <span aria-hidden="true">→</span></span>
+113:           <span class="hop-title">The Last Wandering Ghost</span>
+114:         </a>
+115:       </nav>
+116: 
+117:       <footer class="orbit-footer" id="site-footer" aria-labelledby="footer-title">
+118:   <div class="orbit-footer__decor" aria-hidden="true">
+119:     <span class="orbit-footer__bat orbit-footer__bat--one"><img src="Assets/img/icons/bat trans.png" alt="" loading="lazy" /></span>
+120:     <span class="orbit-footer__bat orbit-footer__bat--two"><img src="Assets/img/icons/bat trans.png" alt="" loading="lazy" /></span>
+121:     <span class="orbit-footer__ghost orbit-footer__ghost--one"><img src="Assets/img/icons/ghost-cute.svg" alt="" loading="lazy" /></span>
+122:     <span class="orbit-footer__ghost orbit-footer__ghost--two"><img src="Assets/img/icons/ghost-cute.svg" alt="" loading="lazy" /></span>
+123:     <span class="orbit-footer__pumpkin orbit-footer__pumpkin--left"><img src="Assets/img/icons/pumpkin trans.png" alt="" loading="lazy" /></span>
+124:     <span class="orbit-footer__pumpkin orbit-footer__pumpkin--right"><img src="Assets/img/icons/pumpkin trans.png" alt="" loading="lazy" /></span>
+125:     <span class="orbit-footer__spark orbit-footer__spark--one"><img src="Assets/img/icons/sparkle-yellow.svg" alt="" loading="lazy" /></span>
+126:     <span class="orbit-footer__spark orbit-footer__spark--two"><img src="Assets/img/icons/sparkle-lavender.svg" alt="" loading="lazy" /></span>
+127:   </div>
+128: 
+129:   <div class="orbit-footer__inner">
+130:     <section class="orbit-footer__cta footer-reveal" aria-labelledby="footer-title">
+131:       <span class="orbit-footer__eyebrow">OUR NEXT CHAPTER STARTS HERE</span>
+132:       <h2 id="footer-title">Ready for Your Next Magical Adventure?</h2>
+133:       <p>Step into the ORBIT-X universe and discover what happens when friendship meets a little Halloween magic.</p>
+134:       <a class="button button-primary orbit-footer__cta-button" href="Exploration.html">
+135:         Explore Our Universe <span aria-hidden="true">→</span>
+136:       </a>
+137:     </section>
+138: 
+139:     <div class="orbit-footer__main">
+140:       <section class="orbit-footer__brand footer-reveal" aria-labelledby="footer-brand">
+141:         <a class="orbit-footer__logo" href="#home" aria-label="ORBIT-X home">
+142:           <img src="Assets/img/Logo.png" alt="ORBIT-X logo" class="orbit-footer__logo-img" />
+143:         </a>
+144:         <p class="orbit-footer__tagline">Two Friends. One Magical Universe.</p>
+145:         <p class="orbit-footer__description">Meet Abhay and Divyansh — Halloween Helpers and Ghost Purificators who turn spooky nights into magical adventures and guide children safely out of their nightmares.</p>
+146:         <div class="orbit-footer__friends" aria-label="Abhay and Divyansh">
+147:           <img src="Assets/img/abhay bg solo.png" alt="Abhay in his yellow hoodie" loading="lazy" width="444" height="562" />
+148:           <img src="Assets/img/divyansh solo.png" alt="Divyansh in his black and white outfit" loading="lazy" width="444" height="562" />
+149:           <span aria-hidden="true">✦ &nbsp; best friends, always &nbsp; ✦</span>
+150:         </div>
+151:       </section>
+152: 
+153:       <nav class="orbit-footer__nav footer-reveal" aria-label="Explore">
+154:         <h3>Explore</h3>
+155:         <a href="#home">Home</a>
+156:         <a href="#about">About Us</a>
+157:         <a href="#story">Our Story</a>
+158:         <a href="#character-abhay">Characters</a>
+159:       </nav>
+160: 
+161:       <nav class="orbit-footer__nav footer-reveal" aria-label="The ORBIT-X Universe">
+162:         <h3>The ORBIT-X Universe</h3>
+163:         <a href="projects/halloween-helpers.html">Halloween Helpers</a>
+164:         <a href="projects/ghost-catchers.html">Ghost Purificators</a>
+165:         <a href="#gadget-lamp">Magical Gadgets</a>
+166:         <a href="Story2.html">Dream Adventures</a>
+167:       </nav>
+168: 
+169:       <nav class="orbit-footer__nav orbit-footer__connect footer-reveal" aria-label="Connect">
+170:         <h3>Connect</h3>
+171:         <a href="https://github.com/Mr-Divyansh/ORBIT-X" target="_blank" rel="noopener noreferrer">
+172:           GitHub <span aria-hidden="true">↗</span>
+173:         </a>
+174:         <p>Follow the magic, explore the stories, and come along for the next adventure.</p>
+175:       </nav>
+176:     </div>
+177: 
+178:     <div class="orbit-footer__bottom">
+179:       <p>© <span data-current-year></span> ORBIT-X. All rights reserved.</p>
+180:       <span class="orbit-footer__bottom-star" aria-hidden="true">✦</span>
+181:       <p>Made with magic and friendship</p>
+182:     </div>
+183:   </div>
+184: </footer>
+185:     </div>
+186:   </main>
+187:   <script src="js/script.js"></script>
+188: </body>
+189: </html>
+190: 

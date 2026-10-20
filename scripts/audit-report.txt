@@ -1,0 +1,67 @@
+ORBIT-X link / anchor / encoding audit
+Generated: 2026-10-20T17:44:58.003Z
+HTML files: 12
+
+== MISSING TARGET (16) ==
+  about.html:661 "stories/index.html"
+  projects/dream-guardians.html:218 "../stories/index.html"
+  projects/dream-guardians.html:244 "Exploration.html"
+  projects/dream-guardians.html:273 "projects/halloween-helpers.html"
+  projects/dream-guardians.html:274 "projects/ghost-catchers.html"
+  projects/ghost-catchers.html:219 "../Story3.html"
+  projects/ghost-catchers.html:225 "../stories/index.html"
+  projects/ghost-catchers.html:251 "Exploration.html"
+  projects/ghost-catchers.html:280 "projects/halloween-helpers.html"
+  projects/ghost-catchers.html:281 "projects/ghost-catchers.html"
+  projects/halloween-helpers.html:209 "../Story1.html"
+  projects/halloween-helpers.html:215 "../stories/index.html"
+  projects/halloween-helpers.html:241 "Exploration.html"
+  projects/halloween-helpers.html:270 "projects/halloween-helpers.html"
+  projects/halloween-helpers.html:271 "projects/ghost-catchers.html"
+  story2.html:49 "script.js"
+
+== CASE MISMATCH (0) ==
+
+== MISSING ANCHOR (21) ==
+  about.html:707 "#about"
+  about.html:708 "#story"
+  about.html:709 "#character-abhay"
+  about.html:716 "#gadget-lamp"
+  login.html:96 "#forgot-password"
+  login.html:108 "#create-account"
+  projects/dream-guardians.html:251 "#home"
+  projects/dream-guardians.html:265 "#home"
+  projects/dream-guardians.html:266 "#about"
+  projects/dream-guardians.html:268 "#character-abhay"
+  projects/dream-guardians.html:275 "#gadget-lamp"
+  projects/ghost-catchers.html:258 "#home"
+  projects/ghost-catchers.html:272 "#home"
+  projects/ghost-catchers.html:273 "#about"
+  projects/ghost-catchers.html:275 "#character-abhay"
+  projects/ghost-catchers.html:282 "#gadget-lamp"
+  projects/halloween-helpers.html:248 "#home"
+  projects/halloween-helpers.html:262 "#home"
+  projects/halloween-helpers.html:263 "#about"
+  projects/halloween-helpers.html:265 "#character-abhay"
+  projects/halloween-helpers.html:272 "#gadget-lamp"
+
+== MOJIBAKE (4) ==
+  about.html:606
+    raw  : "DivyanshG��s twisted wand focuses calm, caring magic. It purifies"
+    fixed: "<undecodable>"
+  about.html:607
+    raw  : "troubled ghosts and helps open a safe route through a childG��s"
+    fixed: "<undecodable>"
+  about.html:617
+    raw  : "DivyanshG��s signature gadget"
+    fixed: "<undecodable>"
+  css/exploration2.css:2
+    raw  : "Exploration 2 â€” cinematic layer: hero, intro, stories,"
+    fixed: "<undecodable>"
+
+== ENCODING (3) ==
+  css/ghostHunt.css  (UTF-8 BOM)
+  css/style.css  (UTF-8 BOM)
+  write_games.js  (UTF-16 / NUL bytes detected)
+
+TOTAL FINDINGS: 44

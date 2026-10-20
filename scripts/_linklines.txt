@@ -1,0 +1,216 @@
+projects/dream-guardians.html:9: <link rel="canonical" href="https://orbit-x-brown.vercel.app/projects/dream-guardians.html" />
+projects/dream-guardians.html:15: <link rel="icon" type="image/png" href="../Assets/img/LogoMin.png" />
+projects/dream-guardians.html:16: <link rel="shortcut icon" type="image/png" href="../Assets/img/LogoMin.png" />
+projects/dream-guardians.html:17: <link rel="apple-touch-icon" href="../Assets/img/LogoMin.png" />
+projects/dream-guardians.html:18: <link rel="preconnect" href="https://fonts.googleapis.com">
+projects/dream-guardians.html:19: <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+projects/dream-guardians.html:20: <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+projects/dream-guardians.html:33: <link rel="stylesheet" href="../css/style.css" />
+projects/dream-guardians.html:34: <link rel="stylesheet" href="../css/exploration.css" />
+projects/dream-guardians.html:35: <link rel="stylesheet" href="../css/exploration2.css" />
+projects/dream-guardians.html:36: <link rel="stylesheet" href="../css/pages.css" />
+projects/dream-guardians.html:39: <a class="skip-link" href="#main-content">Skip to main content</a>
+projects/dream-guardians.html:42: <a class="brand" href="../index.html" aria-label="Orbit-X home">
+projects/dream-guardians.html:56: <a href="../index.html">Home</a>
+projects/dream-guardians.html:57: <a href="../index.html#about">About</a>
+projects/dream-guardians.html:58: <a class="active" href="../Exploration.html" aria-current="page">Exploration</a>
+projects/dream-guardians.html:59: <a href="../Exploration.html#stories">Stories</a>
+projects/dream-guardians.html:60: <a href="../credits.html">Credits</a>
+projects/dream-guardians.html:73: <a class="back-pill" href="../Exploration.html"><span aria-hidden="true">←</span> Back to Exploration</a>
+projects/dream-guardians.html:78: <a class="button button-primary" href="../Story.html">Read the story <span aria-hidden="true">→</span></a>
+projects/dream-guardians.html:79: <a class="button button-secondary" href="#story">Enter the dream</a>
+projects/dream-guardians.html:212: <a class="related-card" href="../Story2.html">
+projects/dream-guardians.html:218: <a class="related-card" href="../stories/index.html">
+projects/dream-guardians.html:244: <a class="button button-primary orbit-footer__cta-button" href="Exploration.html">
+projects/dream-guardians.html:251: <a class="orbit-footer__logo" href="#home" aria-label="ORBIT-X home">
+projects/dream-guardians.html:265: <a href="#home">Home</a>
+projects/dream-guardians.html:266: <a href="#about">About Us</a>
+projects/dream-guardians.html:267: <a href="#story">Our Story</a>
+projects/dream-guardians.html:268: <a href="#character-abhay">Characters</a>
+projects/dream-guardians.html:273: <a href="projects/halloween-helpers.html">Halloween Helpers</a>
+projects/dream-guardians.html:274: <a href="projects/ghost-catchers.html">Ghost Purificators</a>
+projects/dream-guardians.html:275: <a href="#gadget-lamp">Magical Gadgets</a>
+projects/dream-guardians.html:276: <a href="../Story.html">Dream Adventures</a>
+projects/dream-guardians.html:281: <a href="https://github.com/Mr-Divyansh/ORBIT-X" target="_blank" rel="noopener noreferrer">
+projects/ghost-catchers.html:9: <link rel="canonical" href="https://orbit-x-brown.vercel.app/projects/ghost-catchers.html" />
+projects/ghost-catchers.html:15: <link rel="icon" type="image/png" href="../Assets/img/LogoMin.png" />
+projects/ghost-catchers.html:16: <link rel="shortcut icon" type="image/png" href="../Assets/img/LogoMin.png" />
+projects/ghost-catchers.html:17: <link rel="apple-touch-icon" href="../Assets/img/LogoMin.png" />
+projects/ghost-catchers.html:18: <link rel="preconnect" href="https://fonts.googleapis.com">
+projects/ghost-catchers.html:19: <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+projects/ghost-catchers.html:20: <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+projects/ghost-catchers.html:33: <link rel="stylesheet" href="../css/style.css" />
+projects/ghost-catchers.html:34: <link rel="stylesheet" href="../css/exploration.css" />
+projects/ghost-catchers.html:35: <link rel="stylesheet" href="../css/exploration2.css" />
+projects/ghost-catchers.html:36: <link rel="stylesheet" href="../css/pages.css" />
+projects/ghost-catchers.html:39: <a class="skip-link" href="#main-content">Skip to main content</a>
+projects/ghost-catchers.html:42: <a class="brand" href="../index.html" aria-label="Orbit-X home">
+projects/ghost-catchers.html:56: <a href="../index.html">Home</a>
+projects/ghost-catchers.html:57: <a href="../index.html#about">About</a>
+projects/ghost-catchers.html:58: <a class="active" href="../Exploration.html" aria-current="page">Exploration</a>
+projects/ghost-catchers.html:59: <a href="../Exploration.html#stories">Stories</a>
+projects/ghost-catchers.html:60: <a href="../credits.html">Credits</a>
+projects/ghost-catchers.html:73: <a class="back-pill" href="../Exploration.html"><span aria-hidden="true">←</span> Back to Exploration</a>
+projects/ghost-catchers.html:78: <a class="button button-primary" href="../Story.html">Read the story <span aria-hidden="true">→</span></a>
+projects/ghost-catchers.html:79: <a class="button button-secondary" href="#story">Enter the world</a>
+projects/ghost-catchers.html:219: <a class="related-card" href="../Story3.html">
+projects/ghost-catchers.html:225: <a class="related-card" href="../stories/index.html">
+projects/ghost-catchers.html:251: <a class="button button-primary orbit-footer__cta-button" href="Exploration.html">
+projects/ghost-catchers.html:258: <a class="orbit-footer__logo" href="#home" aria-label="ORBIT-X home">
+projects/ghost-catchers.html:272: <a href="#home">Home</a>
+projects/ghost-catchers.html:273: <a href="#about">About Us</a>
+projects/ghost-catchers.html:274: <a href="#story">Our Story</a>
+projects/ghost-catchers.html:275: <a href="#character-abhay">Characters</a>
+projects/ghost-catchers.html:280: <a href="projects/halloween-helpers.html">Halloween Helpers</a>
+projects/ghost-catchers.html:281: <a href="projects/ghost-catchers.html">Ghost Purificators</a>
+projects/ghost-catchers.html:282: <a href="#gadget-lamp">Magical Gadgets</a>
+projects/ghost-catchers.html:283: <a href="../Story.html">Dream Adventures</a>
+projects/ghost-catchers.html:288: <a href="https://github.com/Mr-Divyansh/ORBIT-X" target="_blank" rel="noopener noreferrer">
+projects/halloween-helpers.html:9: <link rel="canonical" href="https://orbit-x-brown.vercel.app/projects/halloween-helpers.html" />
+projects/halloween-helpers.html:15: <link rel="icon" type="image/png" href="../Assets/img/LogoMin.png" />
+projects/halloween-helpers.html:16: <link rel="shortcut icon" type="image/png" href="../Assets/img/LogoMin.png" />
+projects/halloween-helpers.html:17: <link rel="apple-touch-icon" href="../Assets/img/LogoMin.png" />
+projects/halloween-helpers.html:18: <link rel="preconnect" href="https://fonts.googleapis.com">
+projects/halloween-helpers.html:19: <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+projects/halloween-helpers.html:20: <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+projects/halloween-helpers.html:30: <link rel="stylesheet" href="../css/style.css" />
+projects/halloween-helpers.html:31: <link rel="stylesheet" href="../css/exploration.css" />
+projects/halloween-helpers.html:32: <link rel="stylesheet" href="../css/exploration2.css" />
+projects/halloween-helpers.html:33: <link rel="stylesheet" href="../css/pages.css" />
+projects/halloween-helpers.html:36: <a class="skip-link" href="#main-content">Skip to main content</a>
+projects/halloween-helpers.html:39: <a class="brand" href="../index.html" aria-label="Orbit-X home">
+projects/halloween-helpers.html:53: <a href="../index.html">Home</a>
+projects/halloween-helpers.html:54: <a href="../index.html#about">About</a>
+projects/halloween-helpers.html:55: <a class="active" href="../Exploration.html" aria-current="page">Exploration</a>
+projects/halloween-helpers.html:56: <a href="../Exploration.html#stories">Stories</a>
+projects/halloween-helpers.html:57: <a href="../credits.html">Credits</a>
+projects/halloween-helpers.html:70: <a class="back-pill" href="../Exploration.html"><span aria-hidden="true">←</span> Back to Exploration</a>
+projects/halloween-helpers.html:75: <a class="button button-primary" href="../Story.html">Read the story <span aria-hidden="true">→</span></a>
+projects/halloween-helpers.html:76: <a class="button button-secondary" href="#story">Enter the world</a>
+projects/halloween-helpers.html:209: <a class="related-card" href="../Story1.html">
+projects/halloween-helpers.html:215: <a class="related-card" href="../stories/index.html">
+projects/halloween-helpers.html:241: <a class="button button-primary orbit-footer__cta-button" href="Exploration.html">
+projects/halloween-helpers.html:248: <a class="orbit-footer__logo" href="#home" aria-label="ORBIT-X home">
+projects/halloween-helpers.html:262: <a href="#home">Home</a>
+projects/halloween-helpers.html:263: <a href="#about">About Us</a>
+projects/halloween-helpers.html:264: <a href="#story">Our Story</a>
+projects/halloween-helpers.html:265: <a href="#character-abhay">Characters</a>
+projects/halloween-helpers.html:270: <a href="projects/halloween-helpers.html">Halloween Helpers</a>
+projects/halloween-helpers.html:271: <a href="projects/ghost-catchers.html">Ghost Purificators</a>
+projects/halloween-helpers.html:272: <a href="#gadget-lamp">Magical Gadgets</a>
+projects/halloween-helpers.html:273: <a href="../Story.html">Dream Adventures</a>
+projects/halloween-helpers.html:278: <a href="https://github.com/Mr-Divyansh/ORBIT-X" target="_blank" rel="noopener noreferrer">
+about.html:13: <link rel="canonical" href="https://orbit-x-brown.vercel.app/about.html" />
+about.html:19: <link rel="icon" type="image/png" href="Assets/img/LogoMin.png" />
+about.html:20: <link rel="shortcut icon" type="image/png" href="Assets/img/LogoMin.png" />
+about.html:21: <link rel="apple-touch-icon" href="Assets/img/LogoMin.png" />
+about.html:22: <link rel="preconnect" href="https://fonts.googleapis.com" />
+about.html:23: <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+about.html:25: href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap"
+about.html:40: <link rel="stylesheet" href="css/style.css" />
+about.html:41: <link rel="stylesheet" href="css/about new page.css" />
+about.html:48: <a class="skip-link" href="#home">Skip to main content</a>
+about.html:51: <a class="brand" href="index.html#home" aria-label="ORBIT-X home">
+about.html:89: <a href="index.html#home">Home</a>
+about.html:90: <a class="active" href="about.html" aria-current="page">About</a>
+about.html:91: <a href="Exploration.html">Exploration</a>
+about.html:92: <a href="Story.html">Stories</a>
+about.html:93: <a href="credits.html">Credits</a>
+about.html:126: <a class="button button-primary hero-primary-button" href="#duo">
+about.html:130: <a class="hero-text-link" href="#gadgets">
+about.html:255: <a class="scroll-cue" href="#duo">
+about.html:661: <a class="button button-primary" href="stories/index.html">
+about.html:685: <a class="button button-primary orbit-footer__cta-button" href="Exploration.html">
+about.html:692: <a class="orbit-footer__logo" href="#home" aria-label="ORBIT-X home">
+about.html:706: <a href="#home">Home</a>
+about.html:707: <a href="#about">About Us</a>
+about.html:708: <a href="#story">Our Story</a>
+about.html:709: <a href="#character-abhay">Characters</a>
+about.html:714: <a href="projects/halloween-helpers.html">Halloween Helpers</a>
+about.html:715: <a href="projects/ghost-catchers.html">Ghost Purificators</a>
+about.html:716: <a href="#gadget-lamp">Magical Gadgets</a>
+about.html:717: <a href="Story.html">Dream Adventures</a>
+about.html:722: <a href="https://github.com/Mr-Divyansh/ORBIT-X" target="_blank" rel="noopener noreferrer">
+login.html:9: <link rel="canonical" href="https://orbit-x-brown.vercel.app/login.html" />
+login.html:15: <link rel="icon" type="image/png" href="Assets/img/LogoMin.png" />
+login.html:16: <link rel="shortcut icon" type="image/png" href="Assets/img/LogoMin.png" />
+login.html:17: <link rel="apple-touch-icon" href="Assets/img/LogoMin.png" />
+login.html:18: <link rel="preconnect" href="https://fonts.googleapis.com" />
+login.html:19: <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+login.html:20: <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+login.html:33: <link rel="stylesheet" href="css/login.css" />
+login.html:36: <a class="skip-link" href="#main-content">Skip to main content</a>
+login.html:64: <a class="brand" href="#" aria-label="ORBIT-X home">
+login.html:96: <a href="#forgot-password" class="text-link" id="forgot-link">Forgot password?</a>
+login.html:108: <p class="signup-line">New to ORBIT-X? <a href="#create-account" class="text-link" id="signup-link">Create an account</a></p>
+Exploration.html:10: <link rel="canonical" href="https://orbit-x-brown.vercel.app/Exploration.html" />
+Exploration.html:16: <link rel="icon" type="image/png" href="Assets/img/LogoMin.png" />
+Exploration.html:17: <link rel="shortcut icon" type="image/png" href="Assets/img/LogoMin.png" />
+Exploration.html:18: <link rel="apple-touch-icon" href="Assets/img/LogoMin.png" />
+Exploration.html:20: <link rel="preconnect" href="https://fonts.googleapis.com">
+Exploration.html:21: <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+Exploration.html:22: <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+Exploration.html:35: <link rel="stylesheet" href="css/style.css" />
+Exploration.html:36: <link rel="stylesheet" href="css/exploration.css" />
+Exploration.html:37: <link rel="stylesheet" href="css/exploration2.css" />
+Exploration.html:40: <a class="skip-link" href="#exp-title">Skip to main content</a>
+Exploration.html:43: <a class="brand" href="index.html#home" aria-label="Orbit-X home">
+Exploration.html:57: <a href="index.html">Home</a>
+Exploration.html:58: <a href="index.html#about">About</a>
+Exploration.html:59: <a class="active" href="Exploration.html" aria-current="page">Exploration</a>
+Exploration.html:60: <a href="Story.html">Stories</a>
+Exploration.html:61: <a href="credits.html">Credits</a>
+Exploration.html:62: <a href="games.html">Games</a>
+Exploration.html:77: <a class="button button-primary" href="#projects">View My Projects </a>
+Exploration.html:78: <a class="button button-secondary" href="#stories">Read Stories</a>
+Exploration.html:130: <a class="project-action" href="projects/halloween-helpers.html">Open Project Page </a>
+Exploration.html:145: <a class="project-action" href="projects/dream-guardians.html">Open Project Page </a>
+Exploration.html:161: <a class="project-action" href="projects/ghost-catchers.html">Open Project Page ></a>
+Exploration.html:183: <a class="story-read" href="Story.html">Enter Story Mode </a>
+Exploration.html:196: <a class="story-read" href="Story.html">Enter Story Mode</a>
+Exploration.html:210: <a class="story-read" href="Story.html">Enter Story Mode</a>
+Exploration.html:215: <a class="button button-primary" href="Story.html">View All Stories </a>
+Exploration.html:238: <a class="button button-primary orbit-footer__cta-button" href="Story.html">Explore Our Stories <span aria-hidden="true">→</span></a>
+Exploration.html:242: <a class="orbit-footer__logo" href="index.html#home" aria-label="ORBIT-X home">
+Exploration.html:255: <a href="index.html#home">Home</a>
+Exploration.html:256: <a href="index.html#about">About Us</a>
+Exploration.html:257: <a href="#projects">My Projects</a>
+Exploration.html:258: <a href="#stories">Stories</a>
+Exploration.html:262: <a href="projects/halloween-helpers.html">Halloween Helpers</a>
+Exploration.html:263: <a href="projects/ghost-catchers.html">Ghost Purificators</a>
+Exploration.html:264: <a href="projects/dream-guardians.html">Dream Guardians</a>
+Exploration.html:265: <a href="Story.html">Dream Adventures</a>
+Exploration.html:269: <a href="https://github.com/Mr-Divyansh/ORBIT-X" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+index.html:9: <link rel="canonical" href="https://orbit-x-brown.vercel.app/index.html" />
+index.html:15: <link rel="icon" type="image/png" href="Assets/img/LogoMin.png" />
+index.html:16: <link rel="shortcut icon" type="image/png" href="Assets/img/LogoMin.png" />
+index.html:17: <link rel="apple-touch-icon" href="Assets/img/LogoMin.png" />
+index.html:18: <link rel="preconnect" href="https://fonts.googleapis.com">
+index.html:19: <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+index.html:20: <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+index.html:21: <link rel="preload" as="image" href="Assets/img/solo gadget abhay.png" />
+index.html:22: <link rel="preload" as="image" href="Assets/img/solo gadget divyansh.png" />
+index.html:35: <link rel="stylesheet" href="css/style.css" />
+index.html:36: <link rel="stylesheet" href="css/about.css" />
+index.html:40: <a class="skip-link" href="#home">Skip to main content</a>
+index.html:44: <a class="brand" href="index.html" aria-label="Orbit-X home">
+index.html:60: <a class="active" href="index.html" aria-current="page">Home</a>
+index.html:61: <a href="about.html">About</a>
+index.html:62: <a href="Exploration.html">Exploration</a>
+index.html:63: <a href="Story.html">Stories</a>
+index.html:64: <a href="credits.html">Credits</a>
+index.html:65: <a href="games.html">Games</a>
+index.html:80: <a class="button button-primary" href="#about">Explore Our World <span aria-hidden="true">→</span></a>
+index.html:81: <a class="button button-secondary" href="#story">Discover Our Story</a>
+index.html:501: <a class="storybook__finale-cta" href="Story.html">
+index.html:528: <a class="button button-primary orbit-footer__cta-button" href="Exploration.html">
+index.html:535: <a class="orbit-footer__logo" href="#home" aria-label="ORBIT-X home">
+index.html:549: <a href="#home">Home</a>
+index.html:550: <a href="#about">About Us</a>
+index.html:551: <a href="#story">Our Story</a>
+index.html:552: <a href="#character-abhay">Characters</a>
+index.html:557: <a href="projects/halloween-helpers.html">Halloween Helpers</a>
+index.html:558: <a href="projects/ghost-catchers.html">Ghost Purificators</a>
+index.html:559: <a href="#gadget-lamp">Magical Gadgets</a>
+index.html:560: <a href="Story.html">Dream Adventures</a>
+index.html:565: <a href="https://github.com/Mr-Divyansh/ORBIT-X" target="_blank" rel="noopener noreferrer">

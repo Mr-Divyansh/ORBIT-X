@@ -1,0 +1,101 @@
+### index.html
+   ids(12): home about character-abhay gadget-lamp character-divyansh gadget-staff teamwork-title mission-title story story-title site-footer footer-title
+   missing-of-interest: forgot-password, create-account
+   scripts: js/themeManager.js | js/audioManager.js | js/script.js
+   styles : css/style.css | css/about.css
+
+### about.html
+   ids(12): primary-navigation home hero-title duo duo-title missions missions-title gadgets gadgets-title promise-title site-footer footer-title
+   missing-of-interest: about, story, character-abhay, gadget-lamp, forgot-password, create-account
+   scripts: js/themeManager.js | js/audioManager.js | js/script.js | js/about-script.js
+   styles : css/style.css | css/about new page.css
+
+### Exploration.html
+   ids(6): exp-hero-title exp-title projects stories stories-title exp-footer-title
+   missing-of-interest: home, about, story, character-abhay, gadget-lamp, forgot-password, create-account
+   scripts: js/themeManager.js | js/audioManager.js | js/script.js
+   styles : css/style.css | css/exploration.css | css/exploration2.css
+
+### Story.html
+   ids(18): readingProgressBar nav-links main-content scene-1 s1-title scene-2 s2-title scene-3 s3-title scene-4 s4-title scene-5 s5-title scene-6 s6-title scene-7 s7-title closing-title
+   missing-of-interest: home, about, story, character-abhay, gadget-lamp, forgot-password, create-account
+   scripts: js/themeManager.js | js/audioManager.js | js/script.js | js/forgotten-treats.js
+   styles : css/style.css | css/exploration.css | css/exploration2.css | css/pages.css | css/story.css | css/forgotten-treats.css
+
+### story2.html
+   ids(6): currentCount prevBtn sceneDots nextBtn storyGrid replayBtn
+   missing-of-interest: home, about, story, character-abhay, gadget-lamp, forgot-password, create-account
+   scripts: script.js
+   styles : style (2).css
+
+### login.html
+   ids(9): main-content welcome-title login-form email password forgot-link form-message google-button signup-link
+   missing-of-interest: home, about, story, character-abhay, gadget-lamp, forgot-password, create-account
+   scripts: js/themeManager.js | js/audioManager.js | js/script.js | login.js
+   styles : css/login.css
+
+### games.html
+   ids(1): games
+   missing-of-interest: home, about, story, character-abhay, gadget-lamp, forgot-password, create-account
+   scripts: js/themeManager.js | js/audioManager.js | js/script.js
+   styles : css/style.css
+
+### ghost-hunt.html
+   ids(18): ghost-hunt-game gh-discovered gh-captured gh-purified gh-sound-btn gh-restart-btn gh-instruction gh-playfield gh-ghosts-container gh-darkness gh-tools-container gh-lantern gh-staff gh-interaction-circle gh-ui-layer gh-victory-overlay gh-victory-count gh-play-again
+   missing-of-interest: home, about, story, character-abhay, gadget-lamp, forgot-password, create-account
+   scripts: js/themeManager.js | js/audioManager.js | js/script.js | js/ghostHunt.js
+   styles : css/style.css | css/ghostHunt.css
+
+### credits.html
+   ids(11): main-content team stories artwork backgrounds audio tools thanks vision site-footer footer-title
+   missing-of-interest: home, about, story, character-abhay, gadget-lamp, forgot-password, create-account
+   scripts: js/themeManager.js | js/audioManager.js | js/script.js
+   styles : css/style.css | css/about.css
+
+### projects/halloween-helpers.html
+   ids(9): main-content brief-h cast-h chal-h story world-h rel-h site-footer footer-title
+   missing-of-interest: home, about, character-abhay, gadget-lamp, forgot-password, create-account
+   scripts: ../js/themeManager.js | ../js/audioManager.js | ../js/script.js
+   styles : ../css/style.css | ../css/exploration.css | ../css/exploration2.css | ../css/pages.css
+
+### projects/dream-guardians.html
+   ids(9): main-content brief-h cast-h chal-h story world-h rel-h site-footer footer-title
+   missing-of-interest: home, about, character-abhay, gadget-lamp, forgot-password, create-account
+   scripts: ../js/themeManager.js | ../js/audioManager.js | ../js/script.js
+   styles : ../css/style.css | ../css/exploration.css | ../css/exploration2.css | ../css/pages.css
+
+### projects/ghost-catchers.html
+   ids(9): main-content brief-h cast-h chal-h story world-h rel-h site-footer footer-title
+   missing-of-interest: home, about, character-abhay, gadget-lamp, forgot-password, create-account
+   scripts: ../js/themeManager.js | ../js/audioManager.js | ../js/script.js
+   styles : ../css/style.css | ../css/exploration.css | ../css/exploration2.css | ../css/pages.css
+
+=== a409227 root-level js ===
+_footer.js
+fix_ghost.js
+login.js
+write_files.js
+write_games.js
+write_ghost.js
+
+=== css/exploration2.css first 3 lines (raw bytes as utf8) ===
+["/* ============================================================\r","   Exploration 2 â€” cinematic layer: hero, intro, stories,\r","   project cards, story links & library.\r","   Loads AFTER exploration.css so overrides win.\r"]
+BOM: false
+
+=== about.html lines 605-618 raw ===
+[
+ "              <p>\r",
+ "                DivyanshG��s twisted wand focuses calm, caring magic. It purifies\r",
+ "                troubled ghosts and helps open a safe route through a childG��s\r",
+ "                dream world.\r",
+ "              </p>\r",
+ "              <ul>\r",
+ "                <li>Turns restless spirits gentle and friendly</li>\r",
+ "                <li>Guides the friends through dream journeys</li>\r",
+ "                <li>Helps little dreamers meet fear with courage</li>\r",
+ "              </ul>\r",
+ "              <span class=\"gadget-signature\">\r",
+ "                <img src=\"Assets/img/icons/sparkle-lavender.svg\" alt=\"\" />\r",
+ "                DivyanshG��s signature gadget\r",
+ "              </span>\r"
+]

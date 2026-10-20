@@ -1,0 +1,59 @@
+Story1__48f34a794b             size= 17242  title="The Beginning — ORBIT-X Stories"
+   h1: ["The Halloween Lantern","Every magic has a beginning."]
+   localRefs: css/story.css | index.html | stories/index.html | Assets/img/icons/pumpkin trans.png | Assets/img/icons/sparkle-yellow.svg | Story2.html | assets/abhay.png | assets/divyansh.png | index.html#characters | story2.html | Assets/img/icons/bat trans.png | Assets/img/icons/ghost-cute.svg | Assets/img/icons/sparkle-lavender.svg | Exploration.html | Assets/img/Logo.png | Assets/img/abhay bg solo.png | Assets/img/divyansh solo.png | projects/halloween-helpers.html | projects/ghost-catchers.html
+
+Story1__9ee68a4936             size= 12175  title="ORBIT-X — The Halloween Lantern"
+   h1: ["The Halloween Lantern"]
+   localRefs: css/style.css | css/exploration.css | css/exploration2.css | css/pages.css | index.html | Assets/img/Logo.png | Assets/img/icons/sparkle-yellow.svg | index.html#about | Exploration.html | stories/index.html | Assets/img/HalloweenHelpers.jpeg | Assets/img/icons/pumpkin trans.png | Story2.html | Assets/img/icons/bat trans.png | Assets/img/icons/ghost-cute.svg | Assets/img/icons/sparkle-lavender.svg | Assets/img/abhay bg solo.png | Assets/img/divyansh solo.png | projects/halloween-helpers.html | projects/ghost-catchers.html | js/script.js
+
+Story1__0228ac91eb             size=  8261  title="ORBIT-X — The Halloween Lantern"
+   h1: ["The Halloween Lantern"]
+   localRefs: css/style.css | css/exploration.css | css/exploration2.css | css/pages.css | index.html | Assets/img/icons/sparkle-yellow.svg | index.html#about | Exploration.html | stories/index.html | Assets/img/HalloweenHelpers.jpeg | Assets/img/icons/pumpkin trans.png | Story2.html | projects/halloween-helpers.html | js/script.js
+
+Story1__5d41b9bb86             size=  8434  title="ORBIT-X — The Halloween Lantern"
+   h1: ["The Halloween Lantern"]
+   localRefs: css/style.css | css/exploration.css | css/exploration2.css | css/pages.css | index.html | Assets/img/Logo.png | Assets/img/icons/sparkle-yellow.svg | index.html#about | Exploration.html | stories/index.html | Assets/img/HalloweenHelpers.jpeg | Assets/img/icons/pumpkin trans.png | Story2.html | projects/halloween-helpers.html | js/script.js
+
+Story1__566f26641e             size=  6991  title="The Beginning — ORBIT-X Stories"
+   h1: ["Every magic has a beginning."]
+   localRefs: css/story.css | index.html | assets/abhay.png | assets/divyansh.png | index.html#characters | story2.html
+
+Story2__fa261cf752             size= 12011  title="ORBIT-X — The Dream Beyond the Shadows"
+   h1: ["The Dream Beyond The Shadows"]
+   localRefs: css/style.css | css/exploration.css | css/exploration2.css | css/pages.css | index.html | Assets/img/Logo.png | Assets/img/icons/sparkle-yellow.svg | index.html#about | Exploration.html | stories/index.html | Assets/img/TogetherNoBg.png | Assets/img/icons/bat trans.png | Assets/img/icons/sparkle-lavender.svg | Story1.html | Story3.html | Assets/img/icons/ghost-cute.svg | Assets/img/icons/pumpkin trans.png | Assets/img/abhay bg solo.png | Assets/img/divyansh solo.png | projects/halloween-helpers.html | projects/ghost-catchers.html | Story2.html | js/script.js
+
+Story2__dffd9b3667             size=  8098  title="ORBIT-X — The Dream Beyond the Shadows"
+   h1: ["The Dream Beyond The Shadows"]
+   localRefs: css/style.css | css/exploration.css | css/exploration2.css | css/pages.css | index.html | Assets/img/icons/sparkle-yellow.svg | index.html#about | Exploration.html | stories/index.html | Assets/img/TogetherNoBg.png | Assets/img/icons/bat trans.png | Assets/img/icons/sparkle-lavender.svg | Story1.html | Story3.html | projects/dream-guardians.html | js/script.js
+
+Story2__130c45d71a             size=  8272  title="ORBIT-X — The Dream Beyond the Shadows"
+   h1: ["The Dream Beyond The Shadows"]
+   localRefs: css/style.css | css/exploration.css | css/exploration2.css | css/pages.css | index.html | Assets/img/Logo.png | Assets/img/icons/sparkle-yellow.svg | index.html#about | Exploration.html | stories/index.html | Assets/img/TogetherNoBg.png | Assets/img/icons/bat trans.png | Assets/img/icons/sparkle-lavender.svg | Story1.html | Story3.html | projects/dream-guardians.html | js/script.js
+
+Story3__3a47f1482b             size= 12537  title="ORBIT-X — The Last Wandering Ghost"
+   h1: ["The Last Wandering Ghost"]
+   localRefs: css/style.css | css/exploration.css | css/exploration2.css | css/pages.css | index.html | Assets/img/Logo.png | Assets/img/icons/sparkle-yellow.svg | index.html#about | Exploration.html | stories/index.html | Assets/img/icons/ghost-cute.svg | Assets/img/icons/pumpkin trans.png | Assets/img/icons/sparkle-pink.svg | Story2.html | Assets/img/icons/bat trans.png | Assets/img/icons/sparkle-lavender.svg | Assets/img/abhay bg solo.png | Assets/img/divyansh solo.png | projects/halloween-helpers.html | projects/ghost-catchers.html | js/script.js
+
+Story3__3889ee3cab             size=  8633  title="ORBIT-X — The Last Wandering Ghost"
+   h1: ["The Last Wandering Ghost"]
+   localRefs: css/style.css | css/exploration.css | css/exploration2.css | css/pages.css | index.html | Assets/img/icons/sparkle-yellow.svg | index.html#about | Exploration.html | stories/index.html | Assets/img/icons/ghost-cute.svg | Assets/img/icons/pumpkin trans.png | Assets/img/icons/sparkle-pink.svg | Story2.html | projects/ghost-catchers.html | js/script.js
+
+Story3__a8c10236c1             size=  8807  title="ORBIT-X — The Last Wandering Ghost"
+   h1: ["The Last Wandering Ghost"]
+   localRefs: css/style.css | css/exploration.css | css/exploration2.css | css/pages.css | index.html | Assets/img/Logo.png | Assets/img/icons/sparkle-yellow.svg | index.html#about | Exploration.html | stories/index.html | Assets/img/icons/ghost-cute.svg | Assets/img/icons/pumpkin trans.png | Assets/img/icons/sparkle-pink.svg | Story2.html | projects/ghost-catchers.html | js/script.js
+
+stories-index__e07d17e530      size= 12006  title="ORBIT-X — Stories Library"
+   h1: []
+   localRefs: ../css/style.css | ../css/exploration.css | ../css/exploration2.css | ../css/pages.css | ../index.html | ../Assets/img/Logo.png | ../Assets/img/icons/sparkle-yellow.svg | ../index.html#about | ../Exploration.html | index.html | ../Assets/img/icons/pumpkin trans.png | ../Story1.html | ../projects/halloween-helpers.html | ../Assets/img/TogetherNoBg.png | ../Assets/img/icons/sparkle-lavender.svg | ../Story2.html | ../projects/dream-guardians.html | ../Assets/img/icons/ghost trans.png | ../Assets/img/icons/sparkle-pink.svg | ../Story3.html | ../projects/ghost-catchers.html | ../Assets/img/story/forgotten-treats/story-01-night.svg | ../the-night-of-forgotten-treats.html | ../Assets/img/icons/bat trans.png | ../Assets/img/icons/ghost-cute.svg | Exploration.html | ../Assets/img/abhay bg solo.png | ../Assets/img/divyansh solo.png | projects/halloween-helpers.html | projects/ghost-catchers.html | Story2.html | ../js/script.js
+
+stories-index__e4be19a692      size= 10790  title="ORBIT-X — Stories Library"
+   h1: []
+   localRefs: ../css/style.css | ../css/exploration.css | ../css/exploration2.css | ../css/pages.css | ../index.html | ../Assets/img/Logo.png | ../Assets/img/icons/sparkle-yellow.svg | ../index.html#about | ../Exploration.html | index.html | ../Assets/img/icons/pumpkin trans.png | ../Story1.html | ../projects/halloween-helpers.html | ../Assets/img/TogetherNoBg.png | ../Assets/img/icons/sparkle-lavender.svg | ../Story2.html | ../projects/dream-guardians.html | ../Assets/img/icons/ghost trans.png | ../Assets/img/icons/sparkle-pink.svg | ../Story3.html | ../projects/ghost-catchers.html | ../Assets/img/icons/bat trans.png | ../Assets/img/icons/ghost-cute.svg | Exploration.html | ../Assets/img/abhay bg solo.png | ../Assets/img/divyansh solo.png | projects/halloween-helpers.html | projects/ghost-catchers.html | Story2.html | ../js/script.js
+
+stories-index__2d0dad0904      size=  7012  title="ORBIT-X — Stories Library"
+   h1: []
+   localRefs: ../css/style.css | ../css/exploration.css | ../css/exploration2.css | ../css/pages.css | ../index.html | ../Assets/img/Logo.png | ../Assets/img/icons/sparkle-yellow.svg | ../index.html#about | ../Exploration.html | index.html | ../Assets/img/icons/pumpkin trans.png | ../Story1.html | ../projects/halloween-helpers.html | ../Assets/img/TogetherNoBg.png | ../Assets/img/icons/sparkle-lavender.svg | ../Story2.html | ../projects/dream-guardians.html | ../Assets/img/icons/ghost trans.png | ../Assets/img/icons/sparkle-pink.svg | ../Story3.html | ../projects/ghost-catchers.html | ../js/script.js
+
+stories-index__44a323b1c9      size=  6865  title="ORBIT-X — Stories Library"
+   h1: []
+   localRefs: ../css/style.css | ../css/exploration.css | ../css/exploration2.css | ../css/pages.css | ../index.html | ../Assets/img/icons/sparkle-yellow.svg | ../index.html#about | ../Exploration.html | index.html | ../Assets/img/icons/pumpkin trans.png | halloween-lantern.html | ../projects/halloween-helpers.html | ../Assets/img/TogetherNoBg.png | ../Assets/img/icons/sparkle-lavender.svg | dream-beyond-shadows.html | ../projects/dream-guardians.html | ../Assets/img/icons/ghost trans.png | ../Assets/img/icons/sparkle-pink.svg | last-wandering-ghost.html | ../projects/ghost-catchers.html | ../js/script.js

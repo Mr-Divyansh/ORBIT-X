@@ -1,0 +1,57 @@
+== exploration2.css line 2 ==
+"   Exploration 2 â€” cinematic layer: hero, intro, stories,"
+bytes: 20 20 20 45 78 70 6c 6f 72 61 74 69 6f 6e 20 32 20 c3 a2 e2 82 ac e2 80 9d 20 63 69 6e 65 6d 61 74 69 63 20 6c 61 79 65 72 3a 20 68 65 72 6f 2c 20 69 6e 74 72 6f 2c 20 73 74 6f 72 69 65 73 2c
+
+== about.html history ==
+revisions touching about.html: 19
+2697af31 fffd=true "DivyanshG��s twisted wand" "DivyanshG��s signature gadget"
+4bafadd4 fffd=true "DivyanshG��s twisted wand" "DivyanshG��s signature gadget"
+bcc7aa1d fffd=true "DivyanshG��s twisted wand" "DivyanshG��s signature gadget"
+5b490b66 fffd=true "DivyanshG��s twisted wand" "DivyanshG��s signature gadget"
+5b40b21d fffd=true "DivyanshG��s twisted wand" "DivyanshG��s signature gadget"
+e5f30c7a fffd=true "DivyanshG��s twisted wand" "DivyanshG��s signature gadget"
+f46ff980 fffd=true "DivyanshG��s twisted wand" "DivyanshG��s signature gadget"
+7e474224 fffd=true "DivyanshG��s twisted wand" "DivyanshG��s signature gadget"
+f46209b4 fffd=true "DivyanshG��s twisted wand" "DivyanshG��s signature gadget"
+2dcbce81 fffd=true "DivyanshG��s twisted wand" "DivyanshG��s signature gadget"
+a62b6247 fffd=true "DivyanshG��s twisted wand" "DivyanshG��s signature gadget"
+616f2276 fffd=true "DivyanshG��s twisted wand" "DivyanshG��s signature gadget"
+442bcbdf fffd=true "-" "-"
+f561a4b4 fffd=true "-" "-"
+9f25df4f fffd=true "-" "-"
+368b1837 fffd=true "-" "-"
+61bbdd52 fffd=false "Divyansh’s twisted wand" "Divyansh’s signature gadget"
+5349d65c fffd=false "Divyansh’s twisted wand" "Divyansh’s signature gadget"
+2136a066 fffd=false "Divyansh’s twisted wand" "Divyansh’s signature gadget"
+
+== exploration2.css history ==
+f46ff980 "   Exploration 2 â€” cinematic layer: hero, intro, stories,"
+cf70857e "   Exploration 2 â€” cinematic layer: hero, intro, stories,"
+819d7cf0 "   Exploration 2 â€” cinematic layer: hero, intro, stories,"
+239ee84c "   Exploration 2 â€” cinematic layer: hero, intro, stories,"
+e1d3f68a "   Exploration 2 â€” cinematic layer: hero, intro, stories,"
+3e24b25f "   Exploration 2 â€” cinematic layer: hero, intro, stories,"
+81bf9dcd "   Exploration 2 â€” cinematic layer: hero, intro, stories,"
+6bfd9251 "   Exploration 2 â€” cinematic layer: hero, intro, stories,"
+f2d3ec46 "   Exploration 2 â€” cinematic layer: hero, intro, stories,"
+0527caef "   Exploration 2 â€” cinematic layer: hero, intro, stories,"
+39521f04 "   Exploration 2 â€” cinematic layer: hero, intro, stories,"
+41eb9feb "   Exploration 2 — cinematic layer: hero, intro, stories,"
+5e13d50d ".project-meta { display: flex; align-items: center; gap: 10px; }"
+
+== references to Story1/2/3.html ==
+BROKEN-LINKS-REPORT.md:26  ## 2. Dead "Dream Adventures" links — "Story2.html" (FIXED)
+BROKEN-LINKS-REPORT.md:27  **Problem:** `Story2.html` does not exist in the project, but it was linked from the footers as "Dream Adventures", causing 404s.
+BROKEN-LINKS-REPORT.md:30  - `index.html`, `Exploration.html`, `about.html` footers: `Story2.html` → `Story.html`
+BROKEN-LINKS-REPORT.md:31  - `projects/dream-guardians.html`, `projects/ghost-catchers.html`, `projects/halloween-helpers.html` footers: `Story2.html` → `../Story.html`
+BROKEN-LINKS-REPORT.md:33  **Note:** These now open `Story.html` ("The Night of Forgotten Treats") because a dedicated `Story2.html` was never created. If you add real story pages later, 
+BROKEN-LINKS-REPORT.md:77  The main console errors were 404s from clicking story/credits links to missing files (`story.html`, `Story2.html`, `stories/index.html`). All now resolve to exi
+BROKEN-LINKS-REPORT.md:85  | Dedicated story pages | `Story2.html`, `Story1.html`, `Story3.html` (missing) | Create these if you want separate story pages; currently all story links resol
+BROKEN-LINKS-REPORT.md:93  - `Exploration.html` — story links → `Story.html`; `Story2.html` → `Story.html`
+BROKEN-LINKS-REPORT.md:94  - `index.html`, `about.html` — navbar Stories → `Story.html`; footer `Story2.html` → `Story.html`
+BROKEN-LINKS-REPORT.md:96  - `projects/dream-guardians.html`, `projects/ghost-catchers.html`, `projects/halloween-helpers.html` — Credits added to navbar; `stories/index.html` → `../Explo
+projects/dream-guardians.html:212  <a class="related-card" href="../Story2.html">
+projects/ghost-catchers.html:219  <a class="related-card" href="../Story3.html">
+projects/halloween-helpers.html:209  <a class="related-card" href="../Story1.html">
+_footer.js:30  t = t.split('href="Story2.html').join('href="../Story2.html');
+_footer.js:51  const rootPages = ['Exploration.html', 'Story1.html', 'Story2.html', 'Story3.html'];

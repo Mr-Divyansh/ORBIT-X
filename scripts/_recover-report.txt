@@ -1,0 +1,126 @@
+Total objects: 2158   blobs: 1379
+
+=== PATH -> BLOB HISTORY (targeted paths) ===
+
+--- Story1.html  (7 distinct blobs) ---
+   blob 48f34a794b  revs=11  newest=819d7cf0@2026-10-19  oldest=69984c2c@2026-10-19  paths=Story1.html
+   blob 9ee68a4936  revs=6  newest=3e24b25f@2026-10-19  oldest=a62b6247@2026-10-19  paths=Story1.html
+   blob 566f26641e  revs=1  newest=6bfd9251@2026-10-19  oldest=6bfd9251@2026-10-19  paths=Story1.html
+   blob 5d41b9bb86  revs=1  newest=616f2276@2026-10-19  oldest=616f2276@2026-10-19  paths=Story1.html
+   blob b3de921575  revs=23  newest=dbbea3ba@2026-10-19  oldest=d85f6744@2026-10-18  paths=Story1.html
+   blob 81b61dd078  revs=4  newest=368b1837@2026-10-18  oldest=5349d65c@2026-10-18  paths=Story1.html
+   blob 0228ac91eb  revs=17  newest=00e445f1@2026-10-18  oldest=83f07cec@2026-10-18  paths=Story1.html
+
+--- Story2.html  (6 distinct blobs) ---
+   blob 0848d84c56  revs=6  newest=28a486e2@2026-10-20  oldest=a409227a@2026-10-20  paths=story2.html
+   blob fa261cf752  revs=17  newest=819d7cf0@2026-10-19  oldest=a62b6247@2026-10-19  paths=Story2.html
+   blob 5673763bf0  revs=24  newest=6bfd9251@2026-10-19  oldest=d85f6744@2026-10-18  paths=Story2.html
+   blob 130c45d71a  revs=1  newest=616f2276@2026-10-19  oldest=616f2276@2026-10-19  paths=Story2.html
+   blob 3b23ab432c  revs=4  newest=368b1837@2026-10-18  oldest=5349d65c@2026-10-18  paths=Story2.html
+   blob dffd9b3667  revs=17  newest=00e445f1@2026-10-18  oldest=83f07cec@2026-10-18  paths=Story2.html
+
+--- Story3.html  (5 distinct blobs) ---
+   blob 3a47f1482b  revs=17  newest=819d7cf0@2026-10-19  oldest=a62b6247@2026-10-19  paths=Story3.html
+   blob 2360e38340  revs=24  newest=6bfd9251@2026-10-19  oldest=d85f6744@2026-10-18  paths=Story3.html
+   blob a8c10236c1  revs=1  newest=616f2276@2026-10-19  oldest=616f2276@2026-10-19  paths=Story3.html
+   blob 2827a8112a  revs=4  newest=368b1837@2026-10-18  oldest=5349d65c@2026-10-18  paths=Story3.html
+   blob 3889ee3cab  revs=17  newest=00e445f1@2026-10-18  oldest=83f07cec@2026-10-18  paths=Story3.html
+
+--- story1.html  (7 distinct blobs) ---
+   blob 48f34a794b  revs=11  newest=819d7cf0@2026-10-19  oldest=69984c2c@2026-10-19  paths=Story1.html
+   blob 9ee68a4936  revs=6  newest=3e24b25f@2026-10-19  oldest=a62b6247@2026-10-19  paths=Story1.html
+   blob 566f26641e  revs=1  newest=6bfd9251@2026-10-19  oldest=6bfd9251@2026-10-19  paths=Story1.html
+   blob 5d41b9bb86  revs=1  newest=616f2276@2026-10-19  oldest=616f2276@2026-10-19  paths=Story1.html
+   blob b3de921575  revs=23  newest=dbbea3ba@2026-10-19  oldest=d85f6744@2026-10-18  paths=Story1.html
+   blob 81b61dd078  revs=4  newest=368b1837@2026-10-18  oldest=5349d65c@2026-10-18  paths=Story1.html
+   blob 0228ac91eb  revs=17  newest=00e445f1@2026-10-18  oldest=83f07cec@2026-10-18  paths=Story1.html
+
+--- story2.html  (6 distinct blobs) ---
+   blob 0848d84c56  revs=6  newest=28a486e2@2026-10-20  oldest=a409227a@2026-10-20  paths=story2.html
+   blob fa261cf752  revs=17  newest=819d7cf0@2026-10-19  oldest=a62b6247@2026-10-19  paths=Story2.html
+   blob 5673763bf0  revs=24  newest=6bfd9251@2026-10-19  oldest=d85f6744@2026-10-18  paths=Story2.html
+   blob 130c45d71a  revs=1  newest=616f2276@2026-10-19  oldest=616f2276@2026-10-19  paths=Story2.html
+   blob 3b23ab432c  revs=4  newest=368b1837@2026-10-18  oldest=5349d65c@2026-10-18  paths=Story2.html
+   blob dffd9b3667  revs=17  newest=00e445f1@2026-10-18  oldest=83f07cec@2026-10-18  paths=Story2.html
+
+--- story3.html  (5 distinct blobs) ---
+   blob 3a47f1482b  revs=17  newest=819d7cf0@2026-10-19  oldest=a62b6247@2026-10-19  paths=Story3.html
+   blob 2360e38340  revs=24  newest=6bfd9251@2026-10-19  oldest=d85f6744@2026-10-18  paths=Story3.html
+   blob a8c10236c1  revs=1  newest=616f2276@2026-10-19  oldest=616f2276@2026-10-19  paths=Story3.html
+   blob 2827a8112a  revs=4  newest=368b1837@2026-10-18  oldest=5349d65c@2026-10-18  paths=Story3.html
+   blob 3889ee3cab  revs=17  newest=00e445f1@2026-10-18  oldest=83f07cec@2026-10-18  paths=Story3.html
+
+--- stories/index.html  (8 distinct blobs) ---
+   blob e07d17e530  revs=4  newest=239ee84c@2026-10-19  oldest=69984c2c@2026-10-19  paths=stories/index.html
+   blob e4be19a692  revs=6  newest=3e24b25f@2026-10-19  oldest=a62b6247@2026-10-19  paths=stories/index.html
+   blob 08a0a1841a  revs=1  newest=6bfd9251@2026-10-19  oldest=6bfd9251@2026-10-19  paths=stories/index.html
+   blob 2d0dad0904  revs=1  newest=616f2276@2026-10-19  oldest=616f2276@2026-10-19  paths=stories/index.html
+   blob 99ec60174a  revs=23  newest=dbbea3ba@2026-10-19  oldest=d85f6744@2026-10-18  paths=stories/index.html
+   blob 966f32fe1f  revs=4  newest=368b1837@2026-10-18  oldest=5349d65c@2026-10-18  paths=stories/index.html
+   blob ff968e85d7  revs=17  newest=00e445f1@2026-10-18  oldest=83f07cec@2026-10-18  paths=stories/index.html
+   blob 44a323b1c9  revs=2  newest=39521f04@2026-10-18  oldest=920db023@2026-10-18  paths=stories/index.html
+
+--- script.js  (4 distinct blobs) ---
+   blob 1407971fe8  revs=2  newest=09300ae4@2026-10-17  oldest=1d10cc78@2026-10-17  paths=script.js
+   blob eb5b69fbfd  revs=1  newest=99797032@2026-10-16  oldest=99797032@2026-10-16  paths=script.js
+   blob 20d1f0e39f  revs=2  newest=4cc89f6e@2026-10-16  oldest=eb6f981b@2026-10-16  paths=script.js
+   blob 4c6a7d54b5  revs=2  newest=c5ed19f3@2026-10-15  oldest=f14e9802@2026-10-15  paths=script.js
+
+--- js/script.js  (22 distinct blobs) ---
+   blob 1fe336fbf3  revs=2  newest=28a486e2@2026-10-20  oldest=359bc38d@2026-10-20  paths=js/script.js
+   blob 35176942f3  revs=1  newest=180844f3@2026-10-20  oldest=180844f3@2026-10-20  paths=js/script.js
+   blob be9279468b  revs=1  newest=ac51d662@2026-10-20  oldest=ac51d662@2026-10-20  paths=js/script.js
+   blob 0c6e44fedb  revs=1  newest=2697af31@2026-10-20  oldest=2697af31@2026-10-20  paths=js/script.js
+   blob 06376c495d  revs=2  newest=f6a8fa94@2026-10-20  oldest=a409227a@2026-10-20  paths=js/script.js
+   blob a6a727fddf  revs=8  newest=076ba228@2026-10-20  oldest=d629ae6c@2026-10-20  paths=js/script.js
+   blob b8f0ef06d5  revs=15  newest=d95df9cb@2026-10-20  oldest=7e474224@2026-10-19  paths=js/script.js
+   blob c7e2075cf0  revs=1  newest=56a8942b@2026-10-19  oldest=56a8942b@2026-10-19  paths=js/script.js
+   blob c8af1aba73  revs=34  newest=bfddd577@2026-10-19  oldest=0dd367ad@2026-10-19  paths=js/script.js
+   blob 611e480ff8  revs=12  newest=6bfd9251@2026-10-19  oldest=2f049442@2026-10-19  paths=js/script.js
+   blob b6f38924e0  revs=2  newest=df04209c@2026-10-19  oldest=3cd5fc13@2026-10-19  paths=js/script.js
+   blob 32459e4540  revs=16  newest=9415935b@2026-10-19  oldest=4ba1b9cf@2026-10-18  paths=js/script.js
+   blob 364b13de8a  revs=1  newest=fb4d56ed@2026-10-19  oldest=fb4d56ed@2026-10-19  paths=js/script.js
+   blob df55ad9aeb  revs=3  newest=611997cd@2026-10-18  oldest=729d938c@2026-10-18  paths=js/script.js
+   blob 9c371b8755  revs=6  newest=12fc8c74@2026-10-18  oldest=187a14d9@2026-10-18  paths=js/script.js
+   blob 9804e7544c  revs=1  newest=c26b2bfc@2026-10-18  oldest=c26b2bfc@2026-10-18  paths=js/script.js
+   blob cd088b59c8  revs=4  newest=7a5e338a@2026-10-18  oldest=5e13d50d@2026-10-18  paths=js/script.js
+   blob 5e19b276de  revs=2  newest=920db023@2026-10-18  oldest=41eb9feb@2026-10-18  paths=js/script.js
+   blob f25a984276  revs=20  newest=fddc2b01@2026-10-18  oldest=e8ff2f51@2026-10-18  paths=js/script.js
+   blob 009a5c4531  revs=1  newest=c8c5cc38@2026-10-18  oldest=c8c5cc38@2026-10-18  paths=js/script.js
+   blob 16a25a7068  revs=6  newest=4bc53074@2026-10-18  oldest=1e5e29cd@2026-10-17  paths=js/script.js
+   blob 1407971fe8  revs=6  newest=fc287c38@2026-10-17  oldest=d5f98ddf@2026-10-17  paths=js/script.js
+
+--- style (2).css  (1 distinct blobs) ---
+   blob ab8fca1a22  revs=6  newest=28a486e2@2026-10-20  oldest=a409227a@2026-10-20  paths=style (2).css
+
+=== SCENE-ENGINE BLOBS (root script.js candidates) ===
+   needles: storyGrid, sceneDots, prevBtn, nextBtn, replayBtn, currentCount
+   58e6f75f51  size=   2172  engineHits=6  merge=0 bom=false nul=false moji=0  paths=scripts/scanobjects.cjs
+   0848d84c56  size=   2643  engineHits=6  merge=0 bom=false nul=false moji=0  paths=story2.html
+
+=== STORY PAGE BLOBS (Story1/2/3 + stories/index) ===
+   Story1.html          48f34a794b size= 17242 merge=  8 bom=false nul=false moji=  0 storyHits=4 revs=11 newest=819d7cf0@2026-10-19
+   Story2.html          fa261cf752 size= 12011 merge=  0 bom=false nul=false moji=  0 storyHits=3 revs=17 newest=819d7cf0@2026-10-19
+   Story3.html          3a47f1482b size= 12537 merge=  0 bom=false nul=false moji=  0 storyHits=3 revs=17 newest=819d7cf0@2026-10-19
+   stories/index.html   e07d17e530 size= 12006 merge=  0 bom=false nul=false moji=  0 storyHits=1 revs=4 newest=239ee84c@2026-10-19
+   Story1.html          9ee68a4936 size= 12175 merge=  0 bom=false nul=false moji=  0 storyHits=3 revs=6 newest=3e24b25f@2026-10-19
+   stories/index.html   e4be19a692 size= 10790 merge=  0 bom=false nul=false moji=  0 storyHits=1 revs=6 newest=3e24b25f@2026-10-19
+   Story1.html          566f26641e size=  6991 merge=  0 bom=false nul=false moji=  0 storyHits=2 revs=1 newest=6bfd9251@2026-10-19
+   Story2.html          5673763bf0 size=  8384 merge=  0 bom=true nul=false moji= 19 storyHits=3 revs=24 newest=6bfd9251@2026-10-19
+   Story3.html          2360e38340 size=  8947 merge=  0 bom=true nul=false moji= 26 storyHits=3 revs=24 newest=6bfd9251@2026-10-19
+   stories/index.html   08a0a1841a size=  8321 merge=  0 bom=true nul=false moji= 14 storyHits=1 revs=1 newest=6bfd9251@2026-10-19
+   Story1.html          5d41b9bb86 size=  8434 merge=  0 bom=false nul=false moji=  0 storyHits=3 revs=1 newest=616f2276@2026-10-19
+   Story2.html          130c45d71a size=  8272 merge=  0 bom=false nul=false moji=  0 storyHits=3 revs=1 newest=616f2276@2026-10-19
+   Story3.html          a8c10236c1 size=  8807 merge=  0 bom=false nul=false moji=  0 storyHits=3 revs=1 newest=616f2276@2026-10-19
+   stories/index.html   2d0dad0904 size=  7012 merge=  0 bom=false nul=false moji=  0 storyHits=1 revs=1 newest=616f2276@2026-10-19
+   Story1.html          b3de921575 size=  8571 merge=  0 bom=true nul=false moji= 24 storyHits=3 revs=23 newest=dbbea3ba@2026-10-19
+   stories/index.html   99ec60174a size=  7105 merge=  0 bom=true nul=false moji= 14 storyHits=1 revs=23 newest=dbbea3ba@2026-10-19
+   Story1.html          81b61dd078 size=  8450 merge=  0 bom=true nul=false moji= 24 storyHits=3 revs=4 newest=368b1837@2026-10-18
+   Story2.html          3b23ab432c size=  8263 merge=  0 bom=true nul=false moji= 19 storyHits=3 revs=4 newest=368b1837@2026-10-18
+   Story3.html          2827a8112a size=  8826 merge=  0 bom=true nul=false moji= 26 storyHits=3 revs=4 newest=368b1837@2026-10-18
+   stories/index.html   966f32fe1f size=  6981 merge=  0 bom=true nul=false moji= 14 storyHits=1 revs=4 newest=368b1837@2026-10-18
+   Story1.html          0228ac91eb size=  8261 merge=  0 bom=false nul=false moji=  0 storyHits=3 revs=17 newest=00e445f1@2026-10-18
+   Story2.html          dffd9b3667 size=  8098 merge=  0 bom=false nul=false moji=  0 storyHits=3 revs=17 newest=00e445f1@2026-10-18
+   Story3.html          3889ee3cab size=  8633 merge=  0 bom=false nul=false moji=  0 storyHits=3 revs=17 newest=00e445f1@2026-10-18
+   stories/index.html   ff968e85d7 size=  6835 merge=  0 bom=false nul=false moji=  0 storyHits=1 revs=17 newest=00e445f1@2026-10-18
+   stories/index.html   44a323b1c9 size=  6865 merge=  0 bom=false nul=false moji=  0 storyHits=1 revs=2 newest=39521f04@2026-10-18
