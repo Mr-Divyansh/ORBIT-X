@@ -1,4 +1,37 @@
 // ============================================================================
+// ORBIT-X — Navbar scroll effect: transparent → opaque on scroll
+// ============================================================================
+
+(function initNavbarScroll() {
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+
+  let ticking = false;
+  function updateNavbar() {
+    if (window.scrollY > 10) {
+      navbar.classList.add('is-scrolled');
+    } else {
+      navbar.classList.remove('is-scrolled');
+    }
+    ticking = false;
+  }
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateNavbar);
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
+
+  // Set initial state on load
+  updateNavbar();
+})();
+
+// ============================================================================
 // ORBIT-X — Navigation Drawer (right-side slide-in)
 // ============================================================================
 
@@ -1015,15 +1048,20 @@ function buildSoundUI() {
     soundLabel.textContent = 'Sound OFF';
     soundBtn.appendChild(soundIcon);
     soundBtn.appendChild(soundLabel);
-    themeBtn.insertAdjacentElement('afterend', soundBtn);
+    // Wrap theme + sound toggles together so they stay side-by-side instead of
+    // being pushed apart by the navbar's justify-content: space-between.
+    const group = document.createElement('div');
+    group.className = 'toggle-group';
+    themeBtn.parentNode.insertBefore(group, themeBtn);
+    group.appendChild(themeBtn);
+    group.appendChild(soundBtn);
 
     // On navbar-less pages, park both buttons in a fixed top-right group.
     if (needsFloatingToggles) {
       const wrap = document.createElement('div');
       wrap.className = 'floating-toggles';
       document.body.appendChild(wrap);
-      wrap.appendChild(themeBtn);
-      wrap.appendChild(soundBtn);
+      wrap.appendChild(group);
     }
 
     const syncSoundUI = () => {
