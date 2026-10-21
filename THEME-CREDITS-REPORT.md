@@ -129,6 +129,7 @@ literal-color rules are overridden by same-file `[data-theme="dark"]` selectors
 | `credits.html` | Full rebuild: shared navbar + drawer + theme/sound toggles, 9 credit sections, shared footer. |
 | `login.js` | Missing script referenced by `login.html` (password toggle, validation feedback, Google placeholder) — fixes a console 404. |
 | `tools/theme-pref-test.mjs` | Node test for OS-preference defaults + saved-precedence. |
+| `tools/credits-visual-test.mjs` | Playwright test for the redesigned `credits.html`: card artwork, https/`rel` links, focus rings, dark-theme contrast, 390 px reflow. Accepts an optional live URL. |
 | `THEME-CREDITS-REPORT.md` | This report. |
 
 ---
@@ -140,6 +141,17 @@ literal-color rules are overridden by same-file `[data-theme="dark"]` selectors
   full `script.js` drawer integration with sound panel).
 - `node tools/theme-pref-test.mjs` → **ALL PASSED** (7 assertions: OS-dark default,
   OS-light default, saved-preference precedence, `data-theme` attribute flipping).
+- `node tools/credits-visual-test.mjs` → **ALL CHECKS PASSED** (52 checks: 3 contributor
+  cards render, artwork letter-boxed via `object-fit: contain` and never cropped, 9
+  external links all `https` + `rel="noopener noreferrer"`, keyboard focus ring visible
+  and Tab reaches the contributor links, no console errors, no failed same-origin
+  requests, dark-theme card backgrounds applied, WCAG AA contrast ≥ 4.5 for every
+  `h3`/`p`/`a` in the dark card, and a single-column layout with no horizontal
+  overflow at 390 px). Screenshots are written to `tests/shots/`.
+- `node tools/credits-visual-test.mjs https://orbit-x-brown.vercel.app/credits.html` →
+  **ALL CHECKS PASSED** (52 checks) against the live deployment, confirming the
+  redesign and its artwork are actually deployed and not just local.
+  Live screenshots are prefixed `live-` and git-ignored.
 - `node --check` clean on `themeManager.js`, `script.js`, `audioManager.js`, `login.js`.
 - Structural sweeps: brace balance equal in all 9 stylesheets; encoding/NUL check on
   every edited file (one corruption incident on the UTF-16 `forgotten-treats.css` was
@@ -152,17 +164,21 @@ literal-color rules are overridden by same-file `[data-theme="dark"]` selectors
 
 ## 6. What could not be tested here (manual checklist)
 
-This environment has no browser, so please verify visually:
+The automated suite above covers the `credits.html` redesign. The items below are the
+ones that still need a human eye (or that were checked before the Playwright suite
+existed and should be re-confirmed by hand):
 1. Open `index.html`, toggle dark → entire page (hero, sections, storybook, footer) goes
    night-violet; toggle back → original cream restored.
 2. Navigate to all 9 pages in dark mode; refresh each → theme persists, no light flash.
 3. `credits.html` directly + via navbar: drawer slides in from the right, sound panel
    works, active link highlighted, footer matches other pages.
-4. Mobile widths 320/375/390/430 px: hamburger drawer, theme+sound toggles fit,
+4. Mobile widths 320/375/430 px: hamburger drawer, theme+sound toggles fit,
    credits cards stack, no horizontal scroll. 768/1024/1440 px: grids reflow.
+   (The 390 px credits reflow is automated; the other widths are not.)
 5. `login.html`: dark card/inputs readable; password eye toggle, validation messages,
    Google placeholder message all respond (new `login.js`).
 6. Keyboard: Tab through toggles/cards/links; focus rings visible in both themes.
+   (The credits-card focus ring and Tab order are automated.)
 7. OS-level dark mode in a private window → site opens dark with no saved preference.
 
 ## 7. Credits information that still needs your input
