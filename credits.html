@@ -161,35 +161,227 @@
       line-height: 1.65;
     }
 
-    .credit-card .credit-link {
+    .credit-card--studio-link:focus-visible,
+    .credit-card--profile-link:focus-visible {
+      outline: 3px solid rgba(152, 113, 221, 0.5);
+      outline-offset: 2px;
+      border-radius: 11px;
+    }
+
+    .credit-card--studio {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+      align-items: start;
+      gap: 28px;
+      padding: 26px 28px 30px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 12px 36px var(--shadow-soft);
+      background: linear-gradient(105deg, var(--surface-2) 0%, rgba(255, 250, 245, 0.82) 62%);
+      transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+    }
+
+    .credit-card--studio:hover {
+      transform: translateY(-3px);
+      border-color: var(--purple);
+      box-shadow: 0 18px 44px rgba(152, 113, 221, 0.2);
+    }
+
+    .credit-card--studio-hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 10px 28px rgba(152, 113, 221, 0.28);
+      /* The studio mark is a square 1024x1024 plate, so it is fitted rather
+         than cropped to avoid cutting the wordmark off. */
+      aspect-ratio: 1 / 1;
+      background: var(--paper);
+    }
+
+    .credit-card--studio-hero img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      transition: transform 400ms ease;
+    }
+
+    .credit-card--studio:hover .credit-card--studio-hero img {
+      transform: scale(1.03);
+    }
+
+    .credit-card--studio-badge {
+      position: absolute;
+      bottom: -14px;
+      left: 22px;
+      background: linear-gradient(100deg, var(--purple) 70%, var(--purple-strong) 100%);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 999px;
+      box-shadow: 0 4px 14px rgba(101, 72, 163, 0.35);
+    }
+
+    .credit-card--studio-body h3 {
+      margin: 0 0 6px;
+      font-size: 22px;
+      letter-spacing: -0.4px;
+    }
+
+    .credit-card--studio-body .role {
+      color: var(--purple-strong);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .credit-card--studio-body p {
+      font-size: 15.5px;
+      line-height: 1.7;
+    }
+
+    .credit-card--studio-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .credit-card--studio-link {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      width: fit-content;
-      margin-top: auto;
-      padding-top: 6px;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
       color: var(--purple);
       font-size: 14px;
       font-weight: 800;
       text-decoration: none;
-      transition: color 160ms ease;
+      transition: background-color 160ms ease, border-color 160ms ease, transform 150ms ease;
     }
 
-    .credit-card .credit-link:hover,
-    .credit-card .credit-link:focus-visible {
+    .credit-card--studio-link:hover {
+      background: var(--purple);
+      border-color: var(--purple);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .credit-card--studio-link .credit-link__icon {
+      font-size: 15px;
+    }
+
+    .credit-card--profile {
+      display: grid;
+      grid-template-columns: 200px minmax(0, 1fr);
+      gap: 20px;
+      padding: 22px 26px 20px;
+      align-items: center;
+      background: linear-gradient(105deg, rgba(255, 250, 245, 0.7) 0%, var(--surface-2) 100%);
+    }
+
+    .credit-card--profile-left {
+      width: 200px;
+      height: 200px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px var(--shadow-soft);
+      background: var(--paper);
+    }
+
+    .credit-card--profile-left img {
+      width: 100%;
+      height: 100%;
+      /* The contributor artwork is a tall character cut-out, so it is fitted
+         (not cropped) inside the square frame to keep the whole figure. */
+      object-fit: contain;
+      display: block;
+      transition: transform 450ms ease;
+    }
+
+    .credit-card--profile:hover .credit-card--profile-left img {
+      transform: scale(1.04);
+    }
+
+    .credit-card--profile-right {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .credit-card--profile-right h3 {
+      font-size: 20px;
+      letter-spacing: -0.3px;
+    }
+
+    .credit-card--profile-right .role {
+      font-size: 11.5px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
       color: var(--purple-strong);
-      text-decoration: underline;
-      text-underline-offset: 3px;
+      margin-bottom: 8px;
     }
 
-    .credit-card .credit-link:focus-visible {
-      outline: 3px solid rgba(152, 113, 221, 0.5);
-      outline-offset: 2px;
-      border-radius: 6px;
+    .credit-card--profile-right p {
+      font-size: 14px;
+      line-height: 1.6;
     }
 
-    .credit-card--placeholder { border-style: dashed; box-shadow: none; }
-    .credit-card--placeholder p { color: var(--muted); font-style: italic; }
+    .credit-card--profile-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .credit-card--profile-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 14px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      color: var(--purple);
+      font-size: 13.5px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+    }
+
+    .credit-card--profile-link:hover {
+      background: var(--purple);
+      border-color: var(--purple);
+      color: #fff;
+    }
+
+    .credit-card--profile-link .credit-link__icon {
+      font-size: 14px;
+    }
+
+    .studio-tagline {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 3px 12px;
+      background: var(--paper-mist);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--purple-strong);
+    }
 
     .credit-chips {
       display: flex;
@@ -242,15 +434,93 @@
       line-height: 1.6;
     }
 
+    /* Two contributor cards side by side (Divyansh + Abhay). */
+    .credits-grid--contributors {
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+      margin-top: 18px;
+    }
+
+    .credits-grid--contributors .credit-card--profile {
+      grid-template-columns: 190px minmax(0, 1fr);
+    }
+
+    /* --- Dark theme overrides (tokens come from css/style.css) --------- */
+    [data-theme="dark"] .credit-card--studio {
+      background: linear-gradient(105deg, var(--surface-2) 0%, rgba(38, 32, 56, 0.86) 62%);
+    }
+
+    [data-theme="dark"] .credit-card--profile {
+      background: linear-gradient(105deg, rgba(33, 29, 48, 0.7) 0%, var(--surface-2) 100%);
+    }
+
+    [data-theme="dark"] .credit-card--studio-hero,
+    [data-theme="dark"] .credit-card--profile-left {
+      background: #14111d;
+    }
+
+    [data-theme="dark"] .credit-card--studio:hover {
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5);
+    }
+
+    [data-theme="dark"] .credit-card--studio-link:hover,
+    [data-theme="dark"] .credit-card--profile-link:hover {
+      background: var(--purple-strong);
+      border-color: var(--purple-strong);
+      color: #1a1526;
+    }
+
+    /* --- Responsive ---------------------------------------------------- */
+    @media (max-width: 900px) {
+      .credit-card--studio {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+        padding: 22px 22px 26px;
+      }
+
+      .credit-card--studio-hero {
+        max-width: 340px;
+      }
+
+      .credits-grid--contributors .credit-card--profile {
+        grid-template-columns: 170px minmax(0, 1fr);
+      }
+    }
+
     @media (max-width: 640px) {
       .credits-main { width: calc(100% - 32px); padding-bottom: 64px; }
       .credit-card { padding: 18px 16px; }
       .credits-section { margin-top: 36px; }
+
+      .credits-grid--contributors { grid-template-columns: minmax(0, 1fr); }
+
+      .credits-grid--contributors .credit-card--profile,
+      .credit-card--profile {
+        grid-template-columns: minmax(0, 1fr);
+        justify-items: start;
+      }
+
+      .credit-card--profile-left {
+        width: 168px;
+        height: 168px;
+      }
+
+      .credit-card--studio-links,
+      .credit-card--profile-links {
+        width: 100%;
+      }
+
+      .credit-card--studio-link,
+      .credit-card--profile-link {
+        flex: 1 1 auto;
+        justify-content: center;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .credit-card { transition: none; }
       .credit-card:hover { transform: none; }
+      .credit-card--studio:hover .credit-card--studio-hero img,
+      .credit-card--profile:hover .credit-card--profile-left img { transform: none; }
     }
   </style>
 </head>
@@ -261,7 +531,7 @@
        js/script.js builds the right-side drawer from these links). -->
   <header class="navbar">
     <a class="brand" href="index.html" aria-label="Orbit-X home">
-      <img src="Assets/img/Logo.png" alt="ORBIT-X logo" class="brand-logo-img" width="40" height="40" loading="eager" />
+      <img src="Assets/img/LogoCrop.png" alt="ORBIT-X logo" class="brand-logo-img" width="964" height="312" loading="eager" decoding="async" />
       <svg class="brand-planet" viewBox="0 0 76 58" aria-hidden="true">
         <ellipse cx="36" cy="29" rx="30" ry="11" transform="rotate(-28 36 29)" fill="none" stroke="currentColor" stroke-width="4" />
         <circle cx="34" cy="28" r="15" fill="#bca0ef" />
@@ -301,29 +571,75 @@
     <!-- 1. Team -->
     <section class="credits-section" id="team">
       <h2>🚀 The ORBIT-X Team</h2>
-      <p>Two friends, one magical universe — built with curiosity, late nights, and a shared love for storytelling.</p>
-      <div class="credits-grid">
-        <article class="credit-card">
-          <p class="role">Project Creator</p>
-          <h3>Divyansh</h3>
-          <p>Creator of ORBIT-X — concept, development, and everything in between. One half of the two-friends universe.</p>
-          <a class="credit-link" href="https://github.com/Mr-Divyansh/ORBIT-X" target="_blank" rel="noopener noreferrer">GitHub · Mr-Divyansh <span aria-hidden="true">↗</span></a>
-        </article>
-        <article class="credit-card">
-          <p class="role">Creative Team</p>
-          <h3>Abhay</h3>
-          <p>The other half of the friendship at the heart of ORBIT-X — co-creator of the world, its characters, and its spooky-night adventures.</p>
-          <span class="credit-link">Links coming soon ✦</span>
-        </article>
-        <article class="credit-card">
-          <p class="role">Studio</p>
+      <p>Two friends, one magical universe — built with curiosity, late nights, and a shared love for storytelling. <span class="studio-tagline">D Web Studio is the creative house behind ORBIT-X.</span></p>
+
+      <!-- D Web Studio — the studio behind ORBIT-X -->
+      <article class="credit-card credit-card--studio">
+        <div class="credit-card--studio-hero">
+          <img src="Assets/img/DWebStudio.png" alt="D Web Studio brand mark — the creative studio behind ORBIT-X" width="1024" height="1024" loading="lazy" decoding="async" />
+          <span class="credit-card--studio-badge">Creative House</span>
+        </div>
+        <div class="credit-card--studio-body">
           <h3>D Web Studio</h3>
-          <p>Development and design of the ORBIT-X web experience.</p>
+          <p class="role">Creative Studio · Responsible for ORBIT-X</p>
+          <p>D Web Studio is the creative studio founded by Divyansh Kumar, bringing ideas to life through design, development, and interactive digital experiences. It is the creative house behind the whole ORBIT-X universe.</p>
+          <div class="credit-card--studio-links">
+            <a class="credit-card--studio-link" href="https://www.instagram.com/d__web_studio" target="_blank" rel="noopener noreferrer">
+              <span class="credit-link__icon" aria-hidden="true">&#128247; Instagram</span>
+            </a>
+            <a class="credit-card--studio-link" href="https://d-web-studio-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <span class="credit-link__icon" aria-hidden="true">&#9670; Portfolio</span>
+            </a>
+            <a class="credit-card--studio-link" href="https://github.com/Mr-Divyansh" target="_blank" rel="noopener noreferrer">
+              <span class="credit-link__icon" aria-hidden="true">&#9784; GitHub</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- The two people behind ORBIT-X -->
+      <div class="credits-grid credits-grid--contributors">
+        <article class="credit-card credit-card--profile">
+          <div class="credit-card--profile-left">
+            <img src="Assets/img/divyansh solo.png" alt="Divyansh Kumar wearing his black and white outfit" width="444" height="562" loading="lazy" decoding="async" />
+          </div>
+          <div class="credit-card--profile-right">
+            <h3>Divyansh Kumar</h3>
+            <p class="role">Founder of D Web Studio · ORBIT-X Creator</p>
+            <p>Founder of D Web Studio and the creative force behind ORBIT-X. He built the concept, design, and development of the entire universe.</p>
+            <div class="credit-card--profile-links">
+              <a class="credit-card--profile-link" href="https://github.com/Mr-Divyansh" target="_blank" rel="noopener noreferrer">
+                <span class="credit-link__icon" aria-hidden="true">&#9784; GitHub</span>
+              </a>
+              <a class="credit-card--profile-link" href="https://www.instagram.com/d__web_studio" target="_blank" rel="noopener noreferrer">
+                <span class="credit-link__icon" aria-hidden="true">&#128247; Instagram</span>
+              </a>
+              <a class="credit-card--profile-link" href="https://d-web-studio-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer">
+                <span class="credit-link__icon" aria-hidden="true">&#9670; Portfolio</span>
+              </a>
+            </div>
+          </div>
         </article>
-        <article class="credit-card credit-card--placeholder">
-          <p class="role">Placeholder</p>
-          <h3>[Add Team Member]</h3>
-          <p>Add any additional contributors, roles, and links here so they can be credited properly.</p>
+        <article class="credit-card credit-card--profile">
+          <div class="credit-card--profile-left">
+            <img src="Assets/img/abhay bg solo.png" alt="Abhay Gautam, Co-Creator of ORBIT-X, in his yellow hoodie" width="444" height="562" loading="lazy" decoding="async" />
+          </div>
+          <div class="credit-card--profile-right">
+            <h3>Abhay Gautam</h3>
+            <p class="role">ORBIT-X Co-Creator · Creative Collaborator</p>
+            <p>Co-creator of the ORBIT-X universe who brought its characters and adventures to life through his own creative vision and spooky-night storytelling.</p>
+            <div class="credit-card--profile-links">
+              <a class="credit-card--profile-link" href="https://github.com/abhaygautam0876-png" target="_blank" rel="noopener noreferrer">
+                <span class="credit-link__icon" aria-hidden="true">&#9784; GitHub</span>
+              </a>
+              <a class="credit-card--profile-link" href="https://www.instagram.com/abhaywebdev" target="_blank" rel="noopener noreferrer">
+                <span class="credit-link__icon" aria-hidden="true">&#128247; Instagram</span>
+              </a>
+              <a class="credit-card--profile-link" href="https://abhay-portflio.netlify.app" target="_blank" rel="noopener noreferrer">
+                <span class="credit-link__icon" aria-hidden="true">&#9670; Portfolio</span>
+              </a>
+            </div>
+          </div>
         </article>
       </div>
     </section>
@@ -338,7 +654,7 @@
         <li><a href="projects/ghost-catchers.html">Project 03 · Ghost Catchers: Spirit Purification</a></li>
         <li><a href="Story.html">The Night of Forgotten Treats</a></li>
       </ul>
-      <span class="credits-note">✍️ Story authors and writers: individual names are not listed in the project yet — add them here (e.g. “Story by [Name]”) so every writer gets credit.</span>
+      <span class="credits-note">✍️ Story authors and writers: individual names are not listed in the project yet — add them here (e.g. "Story by [Name]") so every writer gets credit.</span>
     </section>
 
     <!-- 3. Character artwork & illustrations -->
@@ -440,7 +756,7 @@
       <div class="orbit-footer__main">
         <section class="orbit-footer__brand" aria-label="About ORBIT-X">
           <a class="orbit-footer__logo" href="index.html#home" aria-label="ORBIT-X home">
-            <img src="Assets/img/Logo.png" alt="ORBIT-X logo" class="orbit-footer__logo-img" />
+            <img src="Assets/img/LogoCrop.png" alt="ORBIT-X logo" class="orbit-footer__logo-img" width="964" height="312" loading="lazy" decoding="async" />
           </a>
           <p class="orbit-footer__tagline">Two Friends. One Magical Universe.</p>
           <p class="orbit-footer__description">Meet Abhay and Divyansh — Halloween Helpers and Ghost Purificators who turn spooky nights into magical adventures and guide children safely out of their nightmares.</p>

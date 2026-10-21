@@ -195,11 +195,9 @@ body {
 }
 
 .brand-logo-img {
-  /* Clearly visible brand mark on desktop. Logo.png is a 1024x1024 banner
-     with transparent padding, so height is capped to keep the bar slim and
-     object-fit keeps the intrinsic aspect ratio (never stretched). */
+  /* LogoCrop.png is a tightly cropped 964x312 wordmark, so it is sized by
+     width and the intrinsic ratio keeps it from stretching. */
   width: 148px;
-  max-height: 58px;
   height: auto;
   flex-shrink: 0;
   object-fit: contain;
@@ -1208,7 +1206,6 @@ h1.typing-done .typing-line:last-child::after {
 
   .brand-logo-img {
     width: 130px;
-    max-height: 54px;
   }
 
   .nav-links a {
@@ -1269,8 +1266,7 @@ h1.typing-done .typing-line:last-child::after {
   }
 
   .brand-logo-img {
-    width: 88px;
-    max-height: 44px;
+    width: 92px;
   }
 
   .nav-mascot {
@@ -3117,7 +3113,7 @@ h1.typing-done .typing-line:last-child::after {
    of the page keeps its desktop/tablet layout. */
 @media (min-width: 701px) and (max-width: 900px) {
   .navbar { min-height: 64px; padding: 6px 4%; gap: 14px; }
-  .brand-logo-img { width: 104px; max-height: 48px; }
+  .brand-logo-img { width: 116px; }
   .nav-mascot { display: none; }
   .menu-toggle { display: block; position: relative; z-index: 20; }
   .nav-links {
@@ -3149,11 +3145,11 @@ h1.typing-done .typing-line:last-child::after {
 
 @media (max-width: 900px) {
   .navbar { min-height: 64px; padding: 6px 4%; gap: 14px; }
-  .brand-logo-img { width: 104px; max-height: 48px; }
+  .brand-logo-img { width: 104px; }
 }
 @media (max-width: 700px) {
   .navbar { min-height: 60px; padding: 6px 16px; gap: 10px; }
-  .brand-logo-img { width: 92px; max-height: 44px; height: auto; }
+  .brand-logo-img { width: 92px; height: auto; }
   .nav-mascot { display: none; }
   .menu-toggle { display: block; position: relative; z-index: 20; }
   .nav-links {

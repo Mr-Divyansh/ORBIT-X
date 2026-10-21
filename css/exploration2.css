@@ -1,5 +1,5 @@
 /* ============================================================
-   Exploration 2 â€” cinematic layer: hero, intro, stories,
+   Exploration 2 — cinematic layer: hero, intro, stories,
    project cards, story links & library.
    Loads AFTER exploration.css so overrides win.
    ============================================================ */
@@ -384,8 +384,10 @@
 }
 
 .orbit-footer__logo-img {
+  /* LogoCrop.png is a 964x312 wordmark, so it is sized by width and the
+     intrinsic ratio keeps it from stretching. */
   display: block;
-  width: clamp(30px, 4vw, 42px);
+  width: clamp(96px, 12vw, 132px);
   height: auto;
 }
 

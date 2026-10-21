@@ -652,6 +652,11 @@
 }
 
 .ft-footer-brand img {
+  /* LogoCrop.png is a 964x312 wordmark, so it is sized by width and the
+     intrinsic ratio keeps it from stretching. */
+  display: block;
+  width: 104px;
+  height: auto;
   border-radius: 10px;
   box-shadow: 0 8px 18px rgba(91, 58, 133, 0.12);
 }
